@@ -2,15 +2,20 @@ sudo apt update
 sudo apt upgrade
 
 echo --------------------------- SSH setup -------------------------------------
-if [[ -f ~/.ssh/id_rsa && -"$HOSTNAME" = "raspberrypi" ]]
-then ssh-keygen -q -t rsa -N '' -f ~/.ssh/id_rsa <<<y >/dev/null 2>&1;
-else echo "SSH private key exists"
+if [[ -f ~/.ssh/id_rsa && -"$HOSTNAME" = "raspberrypi" ]]; then 
+    ssh-keygen -q -t rsa -N '' -f ~/.ssh/id_rsa <<<y >/dev/null 2>&1;
+else 
+    echo "SSH private key exists"
 fi
-sudo systemctl enable ssh
-sudo systemctl start ssh
-# sudo service ssh start # start SSH service one time
-sudo service ssh status
-ssh -T git@github.com # test GitHub SSH
+if [ "$HOSTNAME" = "raspberrypi" ]; then
+    sudo systemctl enable ssh
+    sudo systemctl start ssh
+    # sudo service ssh start # start SSH service one time
+    sudo service ssh status
+    ssh -T git@github.com # test GitHub SSH
+else
+    echo "SSH service skipped"
+fi
 
 echo -------------------------- Samba server -----------------------------------
 SHARED_FOLDER="/media/shared"
@@ -31,6 +36,8 @@ sudo chmod 777 $SHARED_FOLDER
 # directory mask = 0777
 # Restart Samba to apply changes
 sudo service smbd restart
+# Create simbolic link (like Windows shortcut) on Desktop
+ln -s /media/shared ~/Desktop/shared_files
 # Test on Windows with \\<RPi_IP_ADDRESS>\SharePi. E.g.
 # \\192.168.0.XXX\SharePi
 
