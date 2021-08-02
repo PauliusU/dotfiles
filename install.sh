@@ -10,6 +10,7 @@ sudo systemctl enable ssh
 sudo systemctl start ssh
 # sudo service ssh start # start SSH service one time
 sudo service ssh status
+ssh -T git@github.com # test GitHub SSH
 
 echo -------------------------- Samba server -----------------------------------
 SHARED_FOLDER="/media/shared"
