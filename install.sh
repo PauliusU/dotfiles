@@ -1,8 +1,33 @@
 sudo apt update
 sudo apt upgrade
 
-echo --------------------------- SSH setup -------------------------------------
+echo "- locale"
+echo "en_US.UTF-8 UTF-8
+lt_LT.UTF-8 UTF-8" > /etc/locale.gen
+locale-gen
+export LC_ALL=en_US
+export LANG=en_US
+export LANGUAGE=en_US
+
+echo "- Timezone: Vilnius"
+sudo timedatectl set-timezone Europe/Vilnius
+
+echo "- Keyboard: Lithuanian layout"
+echo 'XKBMODEL="pc105"
+XKBLAYOUT="lt"
+XKBVARIANT=""
+XKBOPTIONS=""
+BACKSPACE="guess"' > /etc/default/keyboard
+
+echo "- Wi-fi Country"
+sudo echo 'ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
+update_config=1
+country=LT' > /etc/wpa_supplicant/wpa_supplicant.conf
+
+
+echo "-------------------------- SSH setup ------------------------------------"
 if [[ -f ~/.ssh/id_rsa && -"$HOSTNAME" = "raspberrypi" ]]; then 
+    echo "Creating new SSH keys"
     ssh-keygen -q -t rsa -N '' -f ~/.ssh/id_rsa <<<y >/dev/null 2>&1;
 else 
     echo "SSH private key exists"
@@ -17,7 +42,7 @@ else
     echo "SSH service skipped"
 fi
 
-echo -------------------------- Samba server -----------------------------------
+echo "------------------------- Samba server ----------------------------------"
 SHARED_FOLDER="/media/shared"
 sudo mkdir $SHARED_FOLDER
 sudo apt-get install samba
@@ -52,7 +77,7 @@ sudo apt -y install code # VSCode for Debian 10
 sudo apt install -y fonts-cascadia-code
 sudo apt install -y python-is-python3 # minimum Debian 11 and Ubuntu 20.04
 
-echo ------------------------ NODE.JS AND NVM ----------------------------------
+echo "----------------------- NODE.JS AND NVM ---------------------------------"
 # sudo apt install -y nodejs
 curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash
 source ~/.profile
