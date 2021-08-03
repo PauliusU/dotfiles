@@ -49,6 +49,7 @@ ln -s /media/shared ~/Desktop/shared_files
 sudo apt install -y git
 # sudo snap install --classic code # VSCode for Ubuntu
 sudo apt -y install code # VSCode for Debian 10
+sudo apt install -y fonts-cascadia-code
 sudo apt install -y python-is-python3 # minimum Debian 11 and Ubuntu 20.04
 
 echo ------------------------ NODE.JS AND NVM ----------------------------------
@@ -57,6 +58,8 @@ curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash
 source ~/.profile
 nvm install node
 node -v
+npm i -g nodemon
+npm i -g yarn
 
 # ##############################################################################
 # OTHER PROGRAMS
