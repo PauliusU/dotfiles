@@ -1,5 +1,5 @@
 sudo apt update
-sudo apt upgrade
+sudo apt upgrade -y
 
 echo "- locale"
 echo "en_US.UTF-8 UTF-8
@@ -71,11 +71,16 @@ ln -s /media/shared ~/Desktop/shared_files
 # PROGRAMMING TOOLS AND RUNTIMES
 # ##############################################################################
 
-sudo apt install -y git
 # sudo snap install --classic code # VSCode for Ubuntu
 sudo apt -y install code # VSCode for Debian 10
 sudo apt install -y fonts-cascadia-code
+sudo apt install -y git
+sudo apt install -y vim
+
+echo "------------------------------ PYTHON -----------------------------------"
 sudo apt install -y python-is-python3 # minimum Debian 11 and Ubuntu 20.04
+sudo apt install -y python3-pip
+sudo apt install -y pipenv
 
 echo "----------------------- NODE.JS AND NVM ---------------------------------"
 # sudo apt install -y nodejs
