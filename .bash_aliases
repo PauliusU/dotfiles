@@ -25,6 +25,10 @@ alias systemctl-enabled="systemctl list-unit-files | grep enabled"
 # Internal IP
 alias myip="ip -4 addr | grep -oP '(?<=inet\s)\d+(\.\d+){3}'"
 
+# Other actions
+# Reload the shell
+alias reload='exec $SHELL -l'
+
 # Raspberry Pi - Check temperature and voltage
 # alias temp="sudo /opt/vc/bin/vcgencmd measure_temp"
 alias temp="vcgencmd measure_temp"
