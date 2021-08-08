@@ -1,5 +1,6 @@
 sudo apt update
 sudo apt upgrade -y
+# sudo apt full-upgrade
 
 echo "- locale"
 echo "en_US.UTF-8 UTF-8
