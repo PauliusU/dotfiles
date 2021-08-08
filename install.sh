@@ -102,4 +102,6 @@ npm i -g yarn
 # OTHER PROGRAMS
 # ##############################################################################
 sudo apt install -y rclone # Dropbox, Google Drive and other cloud services
-sudo apt install -y qbittorrent
+# sudo apt install -y qbittorrent
+sudo apt install -y rtorrent
+ln -s ~/dotfiles/.rtorrent.rc ~/.rtorrent.rc
