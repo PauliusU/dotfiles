@@ -18,3 +18,15 @@ alias ll='ls -alF' # list entries with detailed info
 # Default options
 alias df='df -h' # human readable
 alias du='du -h' # human readable
+
+# System information
+# List enabled services
+alias systemctl-enabled="systemctl list-unit-files | grep enabled"
+# Internal IP
+alias myip="ip -4 addr | grep -oP '(?<=inet\s)\d+(\.\d+){3}'"
+
+# Raspberry Pi - Check temperature and voltage
+# alias temp="sudo /opt/vc/bin/vcgencmd measure_temp"
+alias temp="vcgencmd measure_temp"
+# alias volts="sudo /opt/vc/bin/vcgencmd measure_volts"
+alias volts="vcgencmd measure_volts"
