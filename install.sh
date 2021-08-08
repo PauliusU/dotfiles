@@ -11,7 +11,10 @@ export LANG=en_US
 export LANGUAGE=en_US
 
 echo "- Timezone: Vilnius"
+# echo "Europe/Vilnius" > /etc/timezone
 sudo timedatectl set-timezone Europe/Vilnius
+# Check timezone
+sudo dpkg-reconfigure -f noninteractive tzdata
 
 echo "- Keyboard: Lithuanian layout"
 echo 'XKBMODEL="pc105"
@@ -69,7 +72,7 @@ ln -s /media/shared ~/Desktop/shared_files
 # \\192.168.0.XXX\SharePi
 
 echo "------------------------- File system -----------------------------------"
-ln -s .bash_aliases ~/.bash_aliases
+ln -s ~/dotfiles/.bash_aliases ~/.bash_aliases
 
 # ##############################################################################
 # PROGRAMMING TOOLS AND RUNTIMES
@@ -99,4 +102,4 @@ npm i -g yarn
 # OTHER PROGRAMS
 # ##############################################################################
 sudo apt install -y rclone # Dropbox, Google Drive and other cloud services
-# sudo apt install -y qbittorrent
+sudo apt install -y qbittorrent

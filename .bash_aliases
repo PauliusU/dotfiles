@@ -8,6 +8,14 @@ alias as='sudo apt search'
 alias au='sudo apt update' # updates repositories
 alias ag='sudo apt upgrade -y' # updates software (packages)
 alias auu='sudo apt update && sudo apt upgrade -y'
+# Updater shortcut
+function apt-updater {
+	sudo apt update && \
+	# sudo apt full-upgrade -Vy && \
+	sudo apt upgrade -y && \
+	sudo apt autoremove -y && \
+	sudo apt autoclean
+}
 
 # Navigation and listing
 alias ...='cd ../..'
@@ -16,6 +24,11 @@ alias dt='cd ~/Desktop'
 alias dwn='cd ~/Downloads'
 alias la='ls -A' # list entries starting with ., but do not list implied . and ..
 alias ll='ls -alF' # list entries with detailed info
+# Always list directory contents upon 'cd'
+function cd() {
+    builtin cd "$@" || exit
+    la
+}
 
 # Default options
 alias df='df -h' # human readable
