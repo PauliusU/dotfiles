@@ -2,7 +2,7 @@ sudo apt update
 sudo apt upgrade -y
 # sudo apt full-upgrade
 
-echo "- locale"
+echo "- Locale"
 echo "en_US.UTF-8 UTF-8
 lt_LT.UTF-8 UTF-8" > /etc/locale.gen
 locale-gen
