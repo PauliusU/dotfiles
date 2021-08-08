@@ -1,3 +1,5 @@
+# ~/.bash_aliases
+
 # Package management
 alias ai='sudo apt install'
 alias ar='sudo apt remove'

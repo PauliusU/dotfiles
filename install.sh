@@ -45,6 +45,7 @@ fi
 
 echo "------------------------- Samba server ----------------------------------"
 SHARED_FOLDER="/media/shared"
+# SHARED_FOLDER="~/Downloads"
 sudo mkdir $SHARED_FOLDER
 sudo apt-get install samba
 # Give all permissions to the folder
@@ -67,6 +68,8 @@ ln -s /media/shared ~/Desktop/shared_files
 # Test on Windows with \\<RPi_IP_ADDRESS>\SharePi. E.g.
 # \\192.168.0.XXX\SharePi
 
+echo "------------------------- File system -----------------------------------"
+ln -s .bash_aliases ~/.bash_aliases
 
 # ##############################################################################
 # PROGRAMMING TOOLS AND RUNTIMES
