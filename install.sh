@@ -3,12 +3,20 @@ sudo apt upgrade -y
 # sudo apt full-upgrade
 
 echo "- Locale"
-echo "en_US.UTF-8 UTF-8
-lt_LT.UTF-8 UTF-8" > /etc/locale.gen
+locale
+# echo "en_US.UTF-8 UTF-8
+# lt_LT.UTF-8 UTF-8" > /etc/locale.gen
+sed -i 's|en_GB.UTF-8 UTF-8|\# en_GB.UTF-8 UTF-8|g' /etc/locale.gen
+sed -i 's|\# en_US.UTF-8 UTF-8|en_US.UTF-8 UTF-8|g' /etc/locale.gen
+sed -i 's|\# lt_LT.UTF-8 UTF-8|lt_LT.UTF-8 UTF-8|g' /etc/locale.gen
+# locale-gen
+# export LC_ALL=en_US
+# export LANG=en_US
+# export LANGUAGE=en_US
 locale-gen
-export LC_ALL=en_US
-export LANG=en_US
-export LANGUAGE=en_US
+locale -a
+locale
+# update-locale LANG=en_US.UTF-8 UTF-8
 
 echo "- Timezone: Vilnius"
 # echo "Europe/Vilnius" > /etc/timezone
