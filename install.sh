@@ -82,6 +82,19 @@ ln -s /media/shared ~/Desktop/shared_files
 echo "------------------------- File system -----------------------------------"
 ln -s ~/dotfiles/.bash_aliases ~/.bash_aliases
 
+echo "--------------------------- DNS setup -----------------------------------"
+sudo apt install -y resolvconf
+# sudo systemctl status resolvconf.service
+sudo systemctl start resolvconf.service
+sudo systemctl enable resolvconf.service
+# sudo systemctl status resolvconf.service
+echo "nameserver 8.8.8.8 
+nameserver 8.8.4.4" >> /etc/resolvconf/resolv.conf.d/head
+# restart the service
+sudo systemctl start resolvconf.service
+cat /etc/resolv.conf
+
+
 # ##############################################################################
 # PROGRAMMING TOOLS AND RUNTIMES
 # ##############################################################################
