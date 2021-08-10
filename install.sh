@@ -9,10 +9,14 @@ locale
 sed -i 's|en_GB.UTF-8 UTF-8|\# en_GB.UTF-8 UTF-8|g' /etc/locale.gen
 sed -i 's|\# en_US.UTF-8 UTF-8|en_US.UTF-8 UTF-8|g' /etc/locale.gen
 sed -i 's|\# lt_LT.UTF-8 UTF-8|lt_LT.UTF-8 UTF-8|g' /etc/locale.gen
+sed -i 's|\# ru_RU.UTF-8 UTF-8|ru_RU.UTF-8 UTF-8|g' /etc/locale.gen
 # locale-gen
 # export LC_ALL=en_US
 # export LANG=en_US
 # export LANGUAGE=en_US
+# export LC_ALL=lt_LT
+# export LANG=lt_LT
+# export LANGUAGE=lt_LT
 locale-gen
 locale -a
 locale
