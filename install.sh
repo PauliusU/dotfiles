@@ -126,7 +126,32 @@ npm i -g yarn
 # ##############################################################################
 # OTHER PROGRAMS
 # ##############################################################################
-sudo apt install -y rclone # Dropbox, Google Drive and other cloud services
+
+echo "----------------------- rclone and Dropbox ------------------------------"
+# sudo apt install -y rclone # Dropbox, Google Drive and other cloud services
+# Install latest version of rclone
+curl https://rclone.org/install.sh | sudo bash
+rclone config # start config to add Dropbox as a "remote"
+#   press n - for new remote
+#   "dropbox" - for name
+#   10 - for Drobpox
+#   clien_id > Enter (leave blank)
+#   client_secret > Enter (leave blank)
+#   advanced config > press "y" if OS has GUI, to simplify token receival
+#   "y" to confirm configuration
+#   "q" to quit configuration
+# Install rclonesync
+sudo curl https://raw.githubusercontent.com/cjnaz/rclonesync-V2/master/rclonesync --output /usr/local/bin/rclonesync && sudo chmod +x /usr/local/bin/rclonesync
+mkdir ~/.rclonesyncwd
+# -p or –parents flag - create the necessary parent directories if they do not exist
+mkdir -p ~/dropbox/DropsyncFiles/audiob
+rclonesync --first-sync dropbox:/DropsyncFiles/audiob ~/dropbox/DropsyncFiles/audiob
+rclonesync --verbose dropbox:/DropsyncFiles/audiob ~/dropbox/DropsyncFiles/audiob
+# run rclonesync every 10 minutes
+# crontab -e
+# */10 * * * * /usr/local/bin/rclonesync dropbox:/DropsyncFiles/audiob ~/dropbox/DropsyncFiles/audiob
+crontab -l | { cat; echo "*/10 * * * * /usr/local/bin/rclonesync dropbox:/DropsyncFiles/audiob ~/dropbox/DropsyncFiles/audiob"; } | crontab -
+
 # sudo apt install -y qbittorrent
 sudo apt install -y rtorrent
 ln -s ~/dotfiles/.rtorrent.rc ~/.rtorrent.rc
