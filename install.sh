@@ -139,6 +139,11 @@ npm i -g yarn
 # OTHER PROGRAMS
 # ##############################################################################
 
+sudo apt install -y bwm-ng # bandwidth meter
+sudo apt install -y doublecmd-gtk # GUI file manager
+sudo apt install -y mc # Midnight Commander
+sudo apt install -y mpv # media player
+
 echo "----------------------- rclone and Dropbox ------------------------------"
 # Based on: https://howchoo.com/pi/how-to-install-dropbox-on-a-raspberry-pi
 # sudo apt install -y rclone # Dropbox, Google Drive and other cloud services
