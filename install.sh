@@ -2,6 +2,10 @@ sudo apt update
 sudo apt upgrade -y
 # sudo apt full-upgrade
 
+# Install ~/dotfiles/crontab as crontab file
+# more info: https://kb.iu.edu/d/afiz
+crontab ~/dotfiles/crontab
+
 echo "- Locale"
 locale
 # echo "en_US.UTF-8 UTF-8
@@ -83,6 +87,12 @@ ln -s /media/shared ~/Desktop/shared_files
 # Test on Windows with \\<RPi_IP_ADDRESS>\SharePi. E.g.
 # \\192.168.0.XXX\SharePi
 
+echo "--------------------- Enable numlock on boot ----------------------------"
+# More info: https://www.raspberrypi.org/forums/viewtopic.php?f=91&t=10081&p=250716&sid=3b8f293cee2d5c6f13e5691681fa485f#p250716
+sudo apt install -y numlockx
+mkdir -p ~/.config/autostart-cron
+ln -s ~/dotfiles/.config/autostart-cron/numlock.sh ~/.config/autostart-cron/numlock.sh
+
 echo "------------------------- File system -----------------------------------"
 ln -s ~/dotfiles/.bash_aliases ~/.bash_aliases
 
@@ -128,6 +138,7 @@ npm i -g yarn
 # ##############################################################################
 
 echo "----------------------- rclone and Dropbox ------------------------------"
+# Based on: https://howchoo.com/pi/how-to-install-dropbox-on-a-raspberry-pi
 # sudo apt install -y rclone # Dropbox, Google Drive and other cloud services
 # Install latest version of rclone
 curl https://rclone.org/install.sh | sudo bash
