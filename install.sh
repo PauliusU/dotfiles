@@ -140,6 +140,7 @@ npm i -g yarn
 # ##############################################################################
 
 sudo apt install -y bwm-ng # bandwidth meter
+sudo apt install -y cbm # color bandwidth meter
 sudo apt install -y doublecmd-gtk # GUI file manager
 sudo apt install -y mc # Midnight Commander
 sudo apt install -y mpv # media player
@@ -173,3 +174,6 @@ crontab -l | { cat; echo "*/10 * * * * /usr/local/bin/rclonesync dropbox:/Dropsy
 # sudo apt install -y qbittorrent
 sudo apt install -y rtorrent
 ln -s ~/dotfiles/.rtorrent.rc ~/.rtorrent.rc
+
+echo "--------------------------- remove soft ---------------------------------"
+sudo apt remove -y thonny # Python IDE in Raspberry Pi OS

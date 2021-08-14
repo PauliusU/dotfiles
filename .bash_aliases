@@ -37,12 +37,18 @@ alias du='du -h' # human readable
 # System information
 # List enabled services
 alias systemctl-enabled="systemctl list-unit-files | grep enabled"
-# Internal IP
-alias myip="ip -4 addr | grep -oP '(?<=inet\s)\d+(\.\d+){3}'"
+# Internal and external IPs
+alias myip="ip -4 addr | grep -oP '(?<=inet\s)\d+(\.\d+){3}' && echo External IP: && curl https://icanhazip.com
+"
 
 # Other actions
 # Reload the shell
+alias bw='bwm-ng -d' # network speed with dynamic units like K, M or G
+alias crn='crontab -e' # edit current crontab
+alias deb='sudo dpkg -i' # install deb package
+alias ee='exit'
 alias reload='exec $SHELL -l'
+alias tarx='tar -xvf'
 
 # Raspberry Pi - Check temperature and voltage
 # alias temp="sudo /opt/vc/bin/vcgencmd measure_temp"
