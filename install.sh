@@ -1,6 +1,8 @@
 sudo apt update
 sudo apt upgrade -y
 # sudo apt full-upgrade
+# sudo apt-get dist-upgrade
+# sudo rpi-update # Update Firmware
 
 # Install ~/dotfiles/crontab as crontab file
 # more info: https://kb.iu.edu/d/afiz
