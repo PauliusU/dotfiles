@@ -6,7 +6,8 @@ sudo apt upgrade -y
 
 # Install ~/dotfiles/crontab as crontab file
 # more info: https://kb.iu.edu/d/afiz
-crontab ~/dotfiles/crontab
+crontab ~/dotfiles/cron/crontab
+sudo ln -s ~/dotfiles/cron/hourly/backup.sh /etc/cron.hourly/backup.sh
 
 echo "- Locale"
 locale
