@@ -121,8 +121,10 @@ log.open_file = "log", (cfg.logfile)
 log.add_output = "info", "log"
 #log.add_output = "tracker_debug", "log"
 
-## Custom:
+############################## Custom ##################################
 # Erase data when torrent is removed
 method.set_key = event.download.erased,delete_erased,"execute=rm,-rf,--,$d.base_path="
+# SCGI port, used to communicate with Flood
+scgi_port = 127.0.0.1:5000
 
 ### END of rtorrent.rc ###
