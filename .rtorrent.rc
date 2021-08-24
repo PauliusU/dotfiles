@@ -26,6 +26,7 @@ execute.throw = sh, -c, (cat,\
 
 
 ## Listening port for incoming peer traffic (fixed; you can also randomize it)
+# Which ports rTorrent can use (Make sure to open them in your router)
 network.port_range.set = 50000-50000
 network.port_random.set = no
 
@@ -48,6 +49,7 @@ throttle.min_peers.seed.set = 30
 throttle.max_peers.seed.set = 80
 trackers.numwant.set = 80
 
+# Enable encryption when possible
 protocol.encryption.set = allow_incoming,try_outgoing,enable_retry
 
 
@@ -66,7 +68,9 @@ network.xmlrpc.size_limit.set = 4M
 
 
 ## Basic operational settings (no need to change these)
+# Where rTorrent saves the session
 session.path.set = (cat, (cfg.session))
+# Where rTorrent saves the downloaded files
 directory.default.set = (cat, (cfg.download))
 log.execute = (cat, (cfg.logs), "execute.log")
 #log.xmlrpc = (cat, (cfg.logs), "xmlrpc.log")
@@ -121,10 +125,18 @@ log.open_file = "log", (cfg.logfile)
 log.add_output = "info", "log"
 #log.add_output = "tracker_debug", "log"
 
-############################## Custom ##################################
+################################## Custom ######################################
 # Erase data when torrent is removed
 method.set_key = event.download.erased,delete_erased,"execute=rm,-rf,--,$d.base_path="
 # SCGI port, used to communicate with Flood
 scgi_port = 127.0.0.1:5000
+# Check the hash after the end of the download
+# check_hash = yes
+# Enable DHT (for torrents without trackers)
+dht = auto
+dht_port = 6881
+peer_exchange = yes
+# Authorize UDP trackers
+use_udp_trackers = yes
 
 ### END of rtorrent.rc ###

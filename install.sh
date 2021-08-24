@@ -4,10 +4,15 @@ sudo apt upgrade -y
 # sudo apt-get dist-upgrade
 # sudo rpi-update # Update Firmware
 
+echo "----------------------------- Cron --------------------------------------"
+# More info about crontab: https://kb.iu.edu/d/afiz
+# Remove user's crontab file
+crontab -r	
 # Install ~/dotfiles/crontab as crontab file
-# more info: https://kb.iu.edu/d/afiz
 crontab ~/dotfiles/cron/crontab
 sudo ln -s ~/dotfiles/cron/hourly/backup.sh /etc/cron.hourly/backup.sh
+# Display your crontab file
+crontab -l
 
 echo "- Locale"
 locale
