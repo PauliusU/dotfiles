@@ -15,28 +15,28 @@ sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/i
 
 echo ================================ DEV TOOLS ================================
 
-echo **** AWS CLI ****
+echo "**** AWS CLI ****"
 brew install awscli
 aws --version
 
-echo **** GIT ****
+echo "**** GIT ****"
 brew install git
 git config --global user.name "PauliusU"
 git config --global user.email "48020370+PauliusU@users.noreply.github.com"
 git --version
 
-echo **** MongoDB compass ****
+echo "**** MongoDB compass ****"
 brew install mongodb-compass
 
-echo **** Python [Python 3] ****
+echo "**** Python [Python 3] ****"
 brew install python # defaults to python3
 python3 --version
 
-echo **** Visual studio code [VSCode] ****
+echo "**** Visual studio code [VSCode] ****"
 brew install visual-studio-code
 code -v
 
-echo **** VOLTA ****
+echo "**** Volta ****"
 volta -v
 
 echo ============================= OTHER TOOLS =================================
