@@ -49,6 +49,10 @@ echo "**** Rectangle - must have window manager ****"
 brew install --cask rectangle
 
 
+echo "**** Dropbox sync ****"
+# brew install dropbox # official client (takes up device spot)
+brew install maestral
+
 echo "================================ ZSH ===================================="
 
 echo "**** oh-my-zsh ****"
