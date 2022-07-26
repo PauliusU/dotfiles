@@ -1,4 +1,4 @@
-echo ============================ BREW [NON ADMIN] =============================
+echo "=========================== BREW [NON ADMIN] ============================"
 mkdir -p ~/bin
 cd ~/bin
 mkdir homebrew && curl -L https://github.com/Homebrew/brew/tarball/master | tar xz --strip 1 -C homebrew
@@ -10,10 +10,7 @@ brew --version
 brew update # update brew itself
 brew upgrade # update packages (installed programs)
 
-echo ================================ OH-MY-ZSH ================================
-sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-
-echo ================================ DEV TOOLS ================================
+echo "=============================== DEV TOOLS ==============================="
 
 echo "**** AWS CLI ****"
 brew install awscli
@@ -39,7 +36,8 @@ code -v
 echo "**** Volta ****"
 volta -v
 
-echo =========================== OTHER PROGRAMS ================================
+echo "=========================== OTHER PROGRAMS =============================="
+
 echo "**** 7zip ****"
 # p7zip is the command line version of 7-Zip for Linux / Unix, made by an independent developer.
 brew install p7zip # Posix 7zip (older version). Acessible using "7z"
@@ -50,7 +48,9 @@ brew install 7zip # Latest version. Acessible using "7zz"
 echo "**** Rectangle - must have window manager ****"
 brew install --cask rectangle
 
-echo ================================= ZSH =====================================
+
+echo "================================ ZSH ===================================="
+
 # Copy ZSH aliases file to home
 rm -f ~/.zsh_aliases
 cp .zsh_aliases ~/
