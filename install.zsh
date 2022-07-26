@@ -48,8 +48,17 @@ brew install 7zip # Latest version. Acessible using "7zz"
 7zz -version
 
 echo ================================= ZSH =====================================
+# Copy ZSH aliases file to home
+rm -f ~/.zsh_aliases
+cp .zsh_aliases ~/
+
 echo "
 export BREW_HOME="$HOME/bin/homebrew"
 export VOLTA_HOME="$HOME/.volta"
 export PATH="$BREW_HOME/bin:$VOLTA_HOME/bin:$PATH"
-" >>~/.zshrc && source ~/.zshrc
+
+# Load aliases
+. ~/.zsh_aliases
+" >>~/.zshrc
+
+source ~/.zshrc
