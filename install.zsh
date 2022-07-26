@@ -51,6 +51,11 @@ brew install --cask rectangle
 
 echo "================================ ZSH ===================================="
 
+echo "**** oh-my-zsh ****"
+sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+echo "**** zsh-completions ****"
+brew install zsh-completions
+
 # Copy ZSH aliases file to home
 rm -f ~/.zsh_aliases
 cp .zsh_aliases ~/
