@@ -1,0 +1,9 @@
+# Navgation
+alias ~~="cd ~"
+alias dev="cd ~/dev/"
+alias dt="cd ~/Desktop/"
+alias dwn="cd ~/Downloads/"
+
+# Other
+# reload ZSH settings
+alias rrr=source ~/.zshrc
