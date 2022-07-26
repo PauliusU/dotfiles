@@ -47,6 +47,9 @@ brew install p7zip # Posix 7zip (older version). Acessible using "7z"
 brew install 7zip # Latest version. Acessible using "7zz"
 7zz -version
 
+echo "**** Rectangle - must have window manager ****"
+brew install --cask rectangle
+
 echo ================================= ZSH =====================================
 # Copy ZSH aliases file to home
 rm -f ~/.zsh_aliases
