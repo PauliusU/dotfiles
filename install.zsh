@@ -39,7 +39,13 @@ code -v
 echo "**** Volta ****"
 volta -v
 
-echo ============================= OTHER TOOLS =================================
+echo =========================== OTHER PROGRAMS ================================
+echo "**** 7zip ****"
+# p7zip is the command line version of 7-Zip for Linux / Unix, made by an independent developer.
+brew install p7zip # Posix 7zip (older version). Acessible using "7z"
+7z -version
+brew install 7zip # Latest version. Acessible using "7zz"
+7zz -version
 
 echo ================================= ZSH =====================================
 echo "
