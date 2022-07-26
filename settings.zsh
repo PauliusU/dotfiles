@@ -8,7 +8,12 @@ echo "**** Enable Dock autohide ****"
 defaults write com.apple.dock autohide -bool TRUE
 defaults read com.apple.dock autohide
 
-# echo ============================== FINDER =====================================
+echo ============================== FINDER =====================================
 
 # echo "**** Allow to exit finder ****"
-# defaults write com.apple.finder QuitMenuItem -bool NO 
+# defaults write com.apple.finder QuitMenuItem -bool NO
+
+echo "**** Auto hide menu bar ****"
+defaults write NSGlobalDomain _HIHideMenuBar -bool true
+defaults read NSGlobalDomain _HIHideMenuBar
+killall Finder
