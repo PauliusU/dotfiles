@@ -55,6 +55,9 @@ echo "**** Dropbox sync ****"
 # brew install dropbox # official client (takes up device spot)
 brew install maestral
 
+echo "**** Hammerspoon ****"
+brew install --cask hammerspoon
+
 echo "================================ ZSH ===================================="
 
 echo "**** oh-my-zsh ****"
