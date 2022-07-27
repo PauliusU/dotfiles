@@ -1,9 +1,10 @@
 # Navgation
-alias ~~="cd ~"
 alias dev="cd ~/dev/"
+alias drb="cd ~/Dropbox/"
 alias dt="cd ~/Desktop/"
 alias dwn="cd ~/Downloads/"
 
 # Other
-# reload ZSH settings
-alias rrr=source ~/.zshrc
+alias cls=clear
+alias rrr=source ~/.zshrc # reload ZSH settings
+alias ycf=yarn install --check-files
