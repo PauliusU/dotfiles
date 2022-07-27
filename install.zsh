@@ -45,9 +45,11 @@ brew install p7zip # Posix 7zip (older version). Acessible using "7z"
 brew install 7zip # Latest version. Acessible using "7zz"
 7zz -version
 
+echo "**** AltTab - Windows alt-tab on macOS ****"
+brew install --cask alt-tab
+
 echo "**** Rectangle - must have window manager ****"
 brew install --cask rectangle
-
 
 echo "**** Dropbox sync ****"
 # brew install dropbox # official client (takes up device spot)
