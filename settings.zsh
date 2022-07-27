@@ -17,3 +17,9 @@ echo "**** Auto hide menu bar ****"
 defaults write NSGlobalDomain _HIHideMenuBar -bool true
 defaults read NSGlobalDomain _HIHideMenuBar
 killall Finder
+
+echo "============================ FILE SYSTEM ================================"
+
+echo "Add symlinks for common folders"
+ln -s ~/Dropbox/code ~/code
+ln -s ~/Dropbox/dev ~/dev
