@@ -23,3 +23,4 @@ echo "============================ FILE SYSTEM ================================"
 echo "Add symlinks for common folders"
 ln -s ~/Dropbox/code ~/code
 ln -s ~/Dropbox/dev ~/dev
+ln -s $(pwd)/.hammerspoon ~/.hammerspoon
