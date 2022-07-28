@@ -21,7 +21,7 @@ hs.hotkey.bind({ "alt" }, "X", fn.open("Xcode"))
 hs.hotkey.bind({ "alt" }, "V", fn.open("Visual Studio Code"))
 
 -- System control (windows management, sound)
-hs.hotkey.bind({ "cmd", "alt", "ctrl" }, "F11", fn.volumeDown())
-hs.hotkey.bind({ "cmd", "alt", "ctrl" }, "F12", fn.volumeUp())
+hs.hotkey.bind({ "cmd", "alt", "ctrl" }, "F11", fn.volumeChange(-10)) -- Decrease volume
+hs.hotkey.bind({ "cmd", "alt", "ctrl" }, "F12", fn.volumeChange(10)) -- Increase volume
 hs.hotkey.bind({ "cmd", "alt", "ctrl" }, "H", fn.moveLeft())
 

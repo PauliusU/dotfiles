@@ -40,11 +40,19 @@ function functions.volumeDown()
     end
 end
 
-function functions.volumeUp()
+
+-- Change volume (both increase and decrease sound level)
+-- @param difference number from -100 to 100
+function functions.volumeChange(difference)
     return function()
-        hs.alert.show("Volume +10")
         local output = hs.audiodevice.defaultOutputDevice()
-        output:setVolume(output:volume() + 10)
+        local newSoundLevel = output:volume() + difference
+        output:setVolume(newSoundLevel)
+        hs.alert.closeAll() -- Closes all alerts currently open on the screen
+        
+        -- Display alert with new and rounded sound level
+        local roundedLevel = math.floor(output:volume() / 10 + 0.5) * 10
+        hs.alert.show("Volume: " .. roundedLevel)
     end
 end
 
