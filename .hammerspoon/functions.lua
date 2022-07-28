@@ -1,19 +1,24 @@
+-- @module Hammerspoon functions
+
 local functions = {}
 
 ----------------- Hammerspoon utilities (reload configuration) -----------------
 
+-- Reload Hammerspoon configuraion
 function functions.reloadHs()
     return function()
         hs.reload()
     end
 end
 
+-- Show hello world alert to see if script is running
 function functions.sayHello()
     hs.alert.show("Hello World!")
 end
 
 ---------------------- Text manipulation (date, time, etc) ---------------------
 
+-- Get date in YYYY-MM-DD format
 function functions.getDate()
     local dateString = os.date('%Y-%m-%d')
     hs.eventtap.keyStrokes(dateString)
@@ -21,6 +26,7 @@ end
 
 ---------------------- Quick open applications and paths -----------------------
 
+-- Open program
 -- A closure function (will not work without it)
 function functions.open(name)
     return function()
@@ -31,15 +37,15 @@ function functions.open(name)
     end
 end
 
----------------- System settings (window management, sound ---------------------
-function functions.volumeDown()
+-- Excecute shell commands
+-- @param command to be executed
+function functions.exec(command)
     return function()
-        hs.alert.show("Volume -10")
-        local output = hs.audiodevice.defaultOutputDevice()
-        output:setVolume(output:volume() - 10)
+        hs.execute(command)
     end
 end
 
+---------------- System settings (window management, sound ---------------------
 
 -- Change volume (both increase and decrease sound level)
 -- @param difference number from -100 to 100
@@ -56,6 +62,7 @@ function functions.volumeChange(difference)
     end
 end
 
+-- Move active window left
 function functions.moveLeft()
     return function()
         local win = hs.window.focusedWindow()
