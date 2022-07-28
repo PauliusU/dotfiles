@@ -5,6 +5,7 @@ alias dt="cd ~/Desktop/"
 alias dwn="cd ~/Downloads/"
 
 # Other
+alias eee=exit
 alias cls=clear # or user keyboard shortcut Command + K { # K }
 alias rrr=source ~/.zshrc # reload ZSH settings
 alias ycf=yarn install --check-files
