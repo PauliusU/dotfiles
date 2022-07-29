@@ -47,6 +47,24 @@ end
 
 ---------------- System settings (window management, sound ---------------------
 
+-- Close focused window (and kill application if it is the last window of app)
+function functions.closeWindow()
+    return function()
+        local window = hs.window.focusedWindow()
+        local windowName = window:application():name()
+        local allWindows = window:application():allWindows()
+        local numOfWindows = #allWindows
+
+        if (numOfWindows == 1) then
+            window:application():kill() -- Close whole application
+        else
+            window:close(); -- Close current window only
+        end
+
+        hs.alert.show(windowName .. " was closed")
+    end
+end
+
 -- Change volume (both increase and decrease sound level)
 -- @param difference number from -100 to 100
 function functions.volumeChange(difference)
@@ -55,7 +73,7 @@ function functions.volumeChange(difference)
         local newSoundLevel = output:volume() + difference
         output:setVolume(newSoundLevel)
         hs.alert.closeAll() -- Closes all alerts currently open on the screen
-        
+
         -- Display alert with new and rounded sound level
         local roundedLevel = math.floor(output:volume() / 10 + 0.5) * 10
         hs.alert.show("Volume: " .. roundedLevel)
