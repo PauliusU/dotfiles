@@ -58,6 +58,10 @@ brew install maestral
 echo "**** Hammerspoon ****"
 brew install --cask hammerspoon
 
+echo "**** MPV ****"
+# brew install mpv # did not work for me
+sudo port install mpv
+
 echo "================================ ZSH ===================================="
 
 echo "**** oh-my-zsh ****"
