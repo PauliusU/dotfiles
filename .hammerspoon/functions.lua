@@ -77,6 +77,25 @@ function functions.closeWindow()
     end
 end
 
+-- Hide all windows and show desktop
+function functions.hideAllWindows()
+    return function()
+        hs.osascript.applescriptFromFile("./AppleScripts/hideWindows.applescript")
+        hs.osascript.applescript([[display dialog "Minimized"]])
+    end
+end
+
+-- Move active window left
+function functions.moveLeft()
+    return function()
+        local win = hs.window.focusedWindow()
+        local f = win:frame()
+
+        f.x = f.x - 10
+        win:setFrame(f)
+    end
+end
+
 -- Change volume (both increase and decrease sound level)
 -- @param difference number from -100 to 100
 function functions.volumeChange(difference)
@@ -89,17 +108,6 @@ function functions.volumeChange(difference)
         -- Display alert with new and rounded sound level
         local roundedLevel = math.floor(output:volume() / 10 + 0.5) * 10
         hs.alert.show("Volume: " .. roundedLevel)
-    end
-end
-
--- Move active window left
-function functions.moveLeft()
-    return function()
-        local win = hs.window.focusedWindow()
-        local f = win:frame()
-
-        f.x = f.x - 10
-        win:setFrame(f)
     end
 end
 
