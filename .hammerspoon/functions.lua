@@ -45,9 +45,21 @@ function functions.exec(command)
     end
 end
 
----------------- System settings (window management, sound ---------------------
+---------------- System settings (window management, sound --[[ ---------------------
 
--- Close focused window (and kill application if it is the last window of app)
+
+-- Maximize active window
+function functions.maximizeWindow()
+    return function()
+        local window = hs.window.focusedWindow()
+        local windowName = window:application():name()
+        window:maximize()
+
+        hs.alert.show(windowName .. " was maximized")
+    end
+end
+
+-- Close focused window (and kill application if it is the last window of app) ]]
 function functions.closeWindow()
     return function()
         local window = hs.window.focusedWindow()

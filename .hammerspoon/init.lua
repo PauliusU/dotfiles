@@ -20,6 +20,7 @@ hs.hotkey.bind({ "cmd", "alt", "ctrl" }, "F", fn.open("Finder")) -- [ ⌃ + ⌥ 
 hs.hotkey.bind({ "cmd", "alt", "ctrl" }, "E", fn.exec("open ~")) -- Home folder [ ⌃ + ⌥ + ⌘ + E ]
 
 -- System control (windows management, sound)
+hs.hotkey.bind({ "cmd", "alt", "ctrl" }, "up", fn.maximizeWindow()) -- [ ⌃ + ⌥ + ⌘ + Up ]
 hs.hotkey.bind({ "alt" }, "F4", fn.closeWindow()) -- [ ⌥ + F4 ]
 hs.hotkey.bind({ "cmd", "alt", "ctrl" }, "H", fn.moveLeft()) -- [ ⌃ + ⌥ + ⌘ + H ]
 hs.hotkey.bind({ "cmd", "alt", "ctrl" }, "F11", fn.volumeChange(-10)) -- Decrease volume [ ⌃ + ⌥ + ⌘ + F11 ]
