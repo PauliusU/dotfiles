@@ -52,8 +52,8 @@ echo "**** Rectangle - must have window manager ****"
 brew install --cask rectangle
 
 echo "**** Dropbox sync ****"
-# brew install dropbox # official client (takes up device spot)
-brew install maestral
+brew install dropbox # official client (takes up device spot)
+# brew install maestral # does not take device spot, but slower sync
 
 echo "**** Hammerspoon ****"
 brew install --cask hammerspoon
