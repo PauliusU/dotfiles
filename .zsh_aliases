@@ -5,6 +5,17 @@ alias drb="cd ~/Dropbox/"
 alias dt="cd ~/Desktop/"
 alias dwn="cd ~/Downloads/"
 
+# Brew and software management
+alias bc="brew cleanup" # Remove old versions of installed software
+alias bi="brew install"
+alias bs="brew search"
+alias bu="brew update && brew upgrade && brew upgrade --cask && brew cleanup"
+alias bun="brew uninstall"
+alias bupc="brew upgrade --cask" # Upgrade all casks installed with homebrew
+alias bupd="brew update" # Update homebrew itself and the package lists
+alias bupg="brew upgrade" # Upgrade all software installed with homebrew
+alias sysu="softwareupdate -ai" # Run all macOS updates for Xcode, etc..
+
 # Other
 alias cls=clear # or user keyboard shortcut Command + K { # K }
 alias ee=exit
