@@ -1,5 +1,6 @@
 local fn = require("functions") -- Import functions module
 
+hs.hid.capslock.set(false) -- Disable capslockß
 hs.alert.show("Config loaded")
 
 ---------------------------- Keyboard shortcuts --------------------------------
