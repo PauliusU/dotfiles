@@ -28,6 +28,8 @@ brew install mongodb-compass
 echo "**** Python [Python 3] ****"
 brew install python # defaults to python3
 python3 --version
+brew install pipenv
+pipenv --version
 
 echo "**** Visual studio code [VSCode] ****"
 brew install visual-studio-code
