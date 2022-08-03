@@ -16,6 +16,10 @@ alias bupd="brew update" # Update homebrew itself and the package lists
 alias bupg="brew upgrade" # Upgrade all software installed with homebrew
 alias sysu="softwareupdate -ai" # Run all macOS updates for Xcode, etc..
 
+# Python and pip
+alias pip=pip3
+alias py=python3ß
+
 # Other
 alias cls=clear # or user keyboard shortcut Command + K { # K }
 alias ee=exit
