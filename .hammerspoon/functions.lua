@@ -77,6 +77,15 @@ function functions.closeWindow()
     end
 end
 
+-- Show window to restart macOS
+function functions.restartOSWindow()
+    return function()
+        -- terminal alternative: osascript -e 'tell app "loginwindow" to «event aevtrrst»'
+        hs.osascript.applescript([[tell app "loginwindow" to «event aevtrrst»]])
+        hs.hid.capslock.set(false) -- Disable capslock
+    end
+end
+
 -- Hide all windows and show desktop
 function functions.hideAllWindows()
     return function()
