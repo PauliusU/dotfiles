@@ -18,7 +18,8 @@ alias sysu="softwareupdate -ai" # Run all macOS updates for Xcode, etc..
 
 # Python and pip
 alias pip=pip3
-alias py=python3ß
+alias py=python3
+alias python=python3
 
 # Other
 alias cls=clear # or user keyboard shortcut Command + K { # K }
