@@ -23,7 +23,7 @@ hs.hotkey.bind({ "cmd", "alt", "ctrl" }, "E", fn.exec("open ~")) -- Home folder 
 -- System control (windows management, sound)
 hs.hotkey.bind({ "ctrl" }, "space", fn.toggleLayout()) -- Overrides system layout chooser [ ⌃ + Space ]
 hs.hotkey.bind({ "cmd", "alt", "ctrl" }, "up", fn.maximizeWindow()) -- [ ⌃ + ⌥ + ⌘ + Up ]
-hs.hotkey.bind({ "capslock", "shift" }, "R", fn.restartOSWindow()) -- [ CapsLock + ⇧ + R ]
+hs.hotkey.bind({ "cmd", "alt", "ctrl", "shift"}, "R", fn.restartOSWindow()) -- [ ⌃ + ⌥ + ⌘ + ⇧ + R ]
 hs.hotkey.bind({ "alt" }, "F4", fn.closeWindow()) -- [ ⌥ + F4 ]
 hs.hotkey.bind({ "cmd", "alt", "ctrl" }, "H", fn.hideAllWindows()) -- [ ⌃ + ⌥ + ⌘ + H ]
 hs.hotkey.bind({ "cmd", "alt", "ctrl" }, "J", fn.moveLeft()) -- [ ⌃ + ⌥ + ⌘ + J ]
