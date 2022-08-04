@@ -47,6 +47,20 @@ end
 
 ---------------- System settings (window management, sound --[[ ---------------------
 
+-- Toggle between LT and US keyboard layouts
+function functions.toggleLayout()
+    return function()
+        if (hs.keycodes.currentLayout() == "U.S." ) then
+            hs.keycodes.setLayout("Lithuanian")
+        else
+            hs.keycodes.setLayout("U.S.")
+        end
+        
+        hs.alert.closeAll() -- Closes all alerts currently open on the screen
+        hs.alert.show(hs.keycodes.currentLayout() .. " layout")
+    end
+end
+
 
 -- Maximize active window
 function functions.maximizeWindow()
