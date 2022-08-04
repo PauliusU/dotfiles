@@ -35,8 +35,22 @@ echo "**** Visual studio code [VSCode] ****"
 brew install visual-studio-code
 code -v
 
-echo "**** Volta ****"
+echo "**** TypeScript, JavaScript, Node, NPM, yarn, Volta ****"
+brew install volta
 volta -v
+
+volta install node@14
+volta which node
+node -v
+volta install yarn
+yarn -v
+volta install npm # update oudated version installed with Node v14
+npm -v
+npm install --global typescript
+tsc -v
+npm i -g ts-node
+ts-node -v
+volta list
 
 echo "=========================== OTHER PROGRAMS =============================="
 
