@@ -71,7 +71,8 @@ echo "**** Dropbox sync ****"
 brew install dropbox # official client (takes up device spot)
 # brew install maestral # does not take device spot, but slower sync
 
-echo "**** Hammerspoon ****"
+echo "**** Better shortcuts with Karabiner Elements and Hammerspoon ****"
+# brew install karabiner-elements # remap the keys on a Mac at the kernel level.
 brew install --cask hammerspoon
 
 echo "**** MPV ****"
