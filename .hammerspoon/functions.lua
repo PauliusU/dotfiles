@@ -124,12 +124,13 @@ function functions.volumeChange(difference)
     return function()
         local output = hs.audiodevice.defaultOutputDevice()
         local newSoundLevel = output:volume() + difference
-        output:setVolume(newSoundLevel)
-        hs.alert.closeAll() -- Closes all alerts currently open on the screen
+        output:setVolume(newSoundLevel) -- Set sound level
 
         -- Display alert with new and rounded sound level
+        hs.alert.closeAll() -- Closes all alerts currently open on the screen
         local roundedLevel = math.floor(output:volume() / 10 + 0.5) * 10
-        hs.alert.show("Volume: " .. roundedLevel)
+        -- hs.alert.show("Volume " .. new .. "%", {}, 0.5)
+        hs.alert.show("Volume: " .. roundedLevel .. "%")
     end
 end
 
