@@ -20,6 +20,7 @@ echo "**** GIT ****"
 brew install git
 git config --global user.name "PauliusU"
 git config --global user.email "48020370+PauliusU@users.noreply.github.com"
+git config --global core.autocrlf input  # line endings for OS compatability
 git --version
 
 echo "**** MongoDB compass ****"
@@ -78,6 +79,10 @@ brew install --cask hammerspoon
 echo "**** MPV ****"
 # brew install mpv # did not work for me
 sudo port install mpv
+
+echo "**** Images ****"
+# sudo port install nomacs
+brew install xnviewmp
 
 echo "================================ ZSH ===================================="
 
