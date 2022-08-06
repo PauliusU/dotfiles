@@ -23,6 +23,9 @@ git config --global user.email "48020370+PauliusU@users.noreply.github.com"
 git config --global core.autocrlf input  # line endings for OS compatability
 git --version
 
+echo "**** JetBrains Toolbox ****"
+brew install jetbrains-toolbox
+
 echo "**** MongoDB compass ****"
 brew install mongodb-compass
 
