@@ -1,6 +1,7 @@
 # Navgation
 alias cde="cd ~/code/"
 alias dev="cd ~/dev/"
+alias docs="cd ~/Documents/"
 alias drb="cd ~/Dropbox/"
 alias dt="cd ~/Desktop/"
 alias dwn="cd ~/Downloads/"
