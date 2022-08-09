@@ -5,6 +5,11 @@ alias docs="cd ~/Documents/"
 alias drb="cd ~/Dropbox/"
 alias dt="cd ~/Desktop/"
 alias dwn="cd ~/Downloads/"
+# Always list directory contents upon "cd"
+function cd() {
+	builtin cd "$@" || exit
+	ls
+}
 
 # Brew and software management
 alias bc="brew cleanup" # Remove old versions of installed software
