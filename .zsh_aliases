@@ -27,3 +27,4 @@ alias cls=clear # or user keyboard shortcut Command + K { # K }
 alias ee=exit
 alias rr="source ~/.zshrc" # ZSH settings reload 
 alias yy=yarn install --check-files
+alias zrc="$EDITOR ~/.zshrc"
