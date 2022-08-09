@@ -7,7 +7,7 @@ brew update --force --quiet
 chmod -R go-w "$(brew --prefix)/share/zsh"
 
 brew --version
-brew update # update brew itself
+brew update  # update brew itself
 brew upgrade # update packages (installed programs)
 
 echo "=============================== DEV TOOLS ==============================="
@@ -20,7 +20,7 @@ echo "**** GIT ****"
 brew install git
 git config --global user.name "PauliusU"
 git config --global user.email "48020370+PauliusU@users.noreply.github.com"
-git config --global core.autocrlf input  # line endings for OS compatability
+git config --global core.autocrlf input # line endings for OS compatability
 git --version
 
 echo "**** JetBrains Toolbox ****"
