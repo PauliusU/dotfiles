@@ -35,5 +35,6 @@ echo "============================ FILE SYSTEM ================================"
 echo "Add symlinks for common folders"
 ln -s ~/Dropbox/code ~/code
 ln -s ~/Dropbox/dev ~/dev
+ln -s ~/dev/config/.aws ~/.aws
 ln -s $(pwd)/.hammerspoon ~/.hammerspoon
 ln -s $(pwd)/.zsh_aliases ~/.zsh_aliases
