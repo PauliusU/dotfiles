@@ -13,12 +13,7 @@ hs.hotkey.bind({ "ctrl", "alt", "cmd" }, "W", fn.sayHello) -- [ ⌃ + ⌥ + ⌘ 
 -- Text manipulation
 hs.hotkey.bind({ "ctrl", "alt", "cmd" }, "D", fn.getDate) -- [ ⌃ + ⌥ + ⌘ + D ]
 
--- Quick open applications and paths
-hs.hotkey.bind({ "ctrl", "alt", "cmd" }, "C", fn.open("Google Chrome")) -- [ ⌃ + ⌥ + ⌘ + C ]
-hs.hotkey.bind({ "ctrl", "alt", "cmd" }, "T", fn.open("Terminal")) -- [ ⌃ + ⌥ + ⌘ + T ]
-hs.hotkey.bind({ "ctrl", "alt", "cmd" }, "V", fn.open("Visual Studio Code")) -- [ ⌃ + ⌥ + ⌘ + V ]
-hs.hotkey.bind({ "ctrl", "alt", "cmd" }, "F", fn.open("Finder")) -- [ ⌃ + ⌥ + ⌘ + F ]
-hs.hotkey.bind({ "ctrl", "alt", "cmd" }, "E", fn.exec("open ~/Downloads")) -- Home folder [ ⌃ + ⌥ + ⌘ + E ]
+hs.hotkey.bind("alt", "escape", fn.openTab()) -- Open Google Chrome tab [ ⌥ + ⎋ Escape (Esc) ]
 
 -- System control (windows management, sound)
 hs.hotkey.bind({ "ctrl" }, "space", fn.toggleLayout()) -- Overrides system layout chooser [ ⌃ + Space ]

@@ -24,7 +24,7 @@ function functions.getDate()
     hs.eventtap.keyStrokes(dateString)
 end
 
----------------------- Quick open applications and paths -----------------------
+------------------- Quick open applications, files and paths -------------------
 
 -- Open program
 -- A closure function (will not work without it)
@@ -42,6 +42,13 @@ end
 function functions.exec(command)
     return function()
         hs.execute(command)
+    end
+end
+
+-- Open Chrome tab
+function functions.openTab()
+    return function()
+        hs.osascript.applescriptFromFile("./AppleScripts/openNewChromeTab.applescript")
     end
 end
 
