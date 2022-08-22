@@ -1,3 +1,5 @@
+#!/bin/zsh
+
 echo "**** Anki ****"
 brew install --cask anki
 

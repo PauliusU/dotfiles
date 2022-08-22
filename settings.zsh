@@ -1,3 +1,5 @@
+#!/bin/zsh
+
 echo "========================== SYSTEM PREFERENCES ==========================="
 
 echo "**** Scroll direction ****"

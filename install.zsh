@@ -1,3 +1,5 @@
+#!/bin/zsh
+
 echo "=========================== BREW [NON ADMIN] ============================"
 mkdir -p ~/bin
 cd ~/bin
