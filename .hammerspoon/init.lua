@@ -35,8 +35,8 @@ hs.hotkey.bind(shift_hyper, "R", fn.restartOSWindow()) -- [ ⌃ + ⌥ + ⌘ + �
 hs.hotkey.bind("alt", "F4", fn.closeWindow()) -- [ ⌥ + F4 ]
 hs.hotkey.bind(hyper, "H", fn.hideAllWindows()) -- [ ⌃ + ⌥ + ⌘ + H ]
 hs.hotkey.bind(hyper, "J", fn.moveLeft()) -- [ ⌃ + ⌥ + ⌘ + J ]
-hs.hotkey.bind(opt_cmd, "up", fn.volumeChange(-10)) -- Decrease volume [ ⌥ + ⌘ + ↑ ]
-hs.hotkey.bind(opt_cmd, "down", fn.volumeChange(10)) -- Increase volume [ ⌥ + ⌘ + ↓ ]
+hs.hotkey.bind(opt_cmd, "up", fn.volumeChange(10)) -- Increase volume [ ⌥ + ⌘ + ↑ ]
+hs.hotkey.bind(opt_cmd, "down", fn.volumeChange(-10)) -- Decrease volume [ ⌥ + ⌘ + ↓ ]
 --  mac keyboard
 hs.hotkey.bind(hyper, "F11", fn.volumeChange(-10)) -- Decrease volume [ ⌃ + ⌥ + ⌘ + F11 ]
 hs.hotkey.bind(hyper, "F12", fn.volumeChange(10)) -- Increase volume [ ⌃ + ⌥ + ⌘ + F12 ]
