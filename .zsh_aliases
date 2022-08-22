@@ -27,9 +27,13 @@ alias pip=pip3
 alias py=python3
 alias python=python3
 
+# Run scripts
+alias fss="~/code/dotfiles-macOs/fs.zsh"
+
 # Other
 alias cls=clear # or user keyboard shortcut Command + K { # K }
 alias ee=exit
+alias rmmm="rm -rf" # ZSH settings reload
 alias rr="source ~/.zshrc" # ZSH settings reload
 alias yy=yarn install --check-files
 alias zrc="$EDITOR ~/.zshrc"
