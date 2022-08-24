@@ -10,6 +10,7 @@ hs.alert.show("Config loaded")
 local hyper       = { "ctrl", "alt", "cmd" }
 local shift_hyper = { "ctrl", "alt", "cmd", "shift" }
 local opt_cmd     = { "alt", "cmd" }
+local ctrl_opt    = { "ctrl", "alt" }
 
 -- HammerSpoon settings
 hs.hotkey.bind(hyper, "R", fn.reloadHs()) -- Reload HS config #1 [ ⌃ + ⌥ + ⌘ + R ]
@@ -22,6 +23,7 @@ hs.hotkey.bind(hyper, "D", fn.getDate) -- [ ⌃ + ⌥ + ⌘ + D ]
 -- Quick open applications, files and paths
 hs.hotkey.bind(hyper, "C", fn.open("Google Chrome")) -- [ ⌃ + ⌥ + ⌘ + C ]
 hs.hotkey.bind(hyper, "T", fn.open("Terminal")) -- [ ⌃ + ⌥ + ⌘ + T ]
+hs.hotkey.bind(ctrl_opt, "Z", fn.open("Terminal")) -- [ ⌃ + ⌥ + Z ]
 hs.hotkey.bind(hyper, "V", fn.open("Visual Studio Code")) -- [ ⌃ + ⌥ + ⌘ + V ]
 hs.hotkey.bind(hyper, "F", fn.open("Finder")) -- Finder (recent files) [ ⌃ + ⌥ + ⌘ + F ]
 hs.hotkey.bind(hyper, "E", fn.exec("open ~/Downloads")) -- Downloads folder [ ⌃ + ⌥ + ⌘ + E ]
