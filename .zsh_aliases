@@ -27,14 +27,32 @@ alias pip=pip3
 alias py=python3
 alias python=python3
 
-# Run scripts
+# Run scripts and functions
 alias fss="~/code/dotfiles-macOs/fs.zsh"
+function ytpl() {
+	#  Download youtube laylist or channel
+	builtin cd ~/Downloads
+	# Format for h264 and h265 codec:   -f "bestvideo[vcodec~='^((he|a)vc|h26[45])'][ext=mp4][height>=720][height<=1080][fps>=23]+bestaudio[ext=m4a]" \
+	# --restrict-filenames              Restrict filenames to only ASCII characters, and avoid "&" and spaces in filenames
+	# --add-metadata                    Alias for --embed-metadata but supports youtube-dl as well
+	# --embed-thumbnail                 yt-dlp: Embed thumbnail in the video as cover art || youtube-dl: Embed thumbnail in the audio as cover art
+	# -i                                alias for --ignore-errors
+	yt-dlp \
+		-f "bestvideo[ext=mp4][height>=720][height<=1080][fps>=23]+bestaudio[ext=m4a]" \
+		-o "%(upload_date)s %(title)s_%(height)sp_%(fps)sfps.%(ext)s" \
+		--playlist-reverse \
+		--restrict-filenames \
+		--add-metadata \
+		--embed-thumbnail \
+		-i \
+		"$@"
+}
 
 # Other
 alias cls=clear # or user keyboard shortcut Command + K { # K }
 alias ee=exit
-alias gll="git log" # "gl" is alias for "git pull" in git plugin
-alias rmmm="rm -rf" # ZSH settings reload
+alias gll="git log"        # "gl" is alias for "git pull" in git plugin
+alias rmmm="rm -rf"        # ZSH settings reload
 alias rr="source ~/.zshrc" # ZSH settings reload
 alias yy=yarn install --check-files
 alias zrc="$EDITOR ~/.zshrc"
