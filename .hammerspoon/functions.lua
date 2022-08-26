@@ -18,6 +18,21 @@ end
 
 ---------------------- Text manipulation (date, time, etc) ---------------------
 
+-- Send keystrokes text
+function functions.printText(text)
+    return function()
+        hs.eventtap.keyStrokes(text)
+    end
+end
+
+-- Send keystroke (imitate printint with keyboard)
+function functions.press(modifier, key)
+    return function()
+        local delayInMicroseconds = 0
+        hs.eventtap.keyStroke(modifier, key, delayInMicroseconds)
+    end
+end
+
 -- Get date in YYYY-MM-DD format
 function functions.getDate()
     local dateString = os.date("%Y-%m-%d")
@@ -69,7 +84,7 @@ function functions.maximizeWindow()
         -- ALternative (did the same in my tests)
         -- hs.layout.apply({ { nil, window, window:screen(), hs.layout.maximized, 0, 0 } })
         window:maximize()
-        
+
         local windowName = window:application():name()
         hs.alert.show(windowName .. " was maximized")
     end
