@@ -85,6 +85,9 @@ echo "**** MPV ****"
 # brew install mpv # did not work for me
 sudo port install mpv
 
+echo "**** OBS Studio ****"
+brew install --cask obs
+
 echo "**** Images ****"
 # sudo port install nomacs
 brew install xnviewmp
