@@ -37,6 +37,16 @@ hs.hotkey.bind(mash, "U", fn.press({ "alt" }, "left")) -- left one word
 hs.hotkey.bind(mash, "O", fn.press({ "alt" }, "end")) -- one word right
 hs.hotkey.bind(mash, "H", fn.press({}, "home")) -- start of the line
 hs.hotkey.bind(mash, ";", fn.press({}, "end")) -- end of the line
+-- Programming keys in any keyboard layout
+hs.hotkey.bind({ "alt" }, 18, fn.printText("!")) -- 1 Ą
+hs.hotkey.bind({ "alt" }, 19, fn.printText("@")) -- 2 Č
+hs.hotkey.bind({ "alt" }, 20, fn.printText("#")) -- 3 Ę
+hs.hotkey.bind({ "alt" }, 21, fn.printText("$")) -- 4 Ė
+hs.hotkey.bind({ "alt" }, 23, fn.printText("%")) -- 5 Į
+hs.hotkey.bind({ "alt" }, 22, fn.printText("^")) -- 6 Š
+hs.hotkey.bind({ "alt" }, 26, fn.printText("&")) -- 7 Ų
+hs.hotkey.bind({ "alt" }, 28, fn.printText("*")) -- 8 Ū
+hs.hotkey.bind({ "alt" }, 24, fn.printText("=")) -- =+ Ž
 
 -- Quick open applications, files and paths
 Hyper:bind({}, "V", nil, fn.open("Google Chrome"))
