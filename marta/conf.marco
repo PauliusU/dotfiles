@@ -1,0 +1,20 @@
+behavior {
+    theme "Kon"
+}
+
+keyBindings {
+    "Ctrl+D" "core.favorites"
+    "Shift+Ctrl+D" "core.favorites.add"
+    "F2" "core.rename"
+    "Delete" "core.trash"
+    "Left" { id "core.go.up" }
+    "Right" { id "core.open.folder" }
+    "Ctrl+U" "core.pane.swap"
+    "Opt+Shift+Return" "core.disk.usage"
+    "Ctrl+B" "core.flatten"
+    "Ctrl+H" "core.display.hidden"
+    "Alt+H" {
+        id "core.open.folder"
+        src "~"
+    }
+}
