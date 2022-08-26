@@ -98,6 +98,24 @@ function functions.hideAllWindows()
     end
 end
 
+--[[ function factory that takes the multipliers of screen width
+and height to produce the window's x pos, y pos, width, and height ]]
+function functions.baseMove(x, y, w, h)
+    return function()
+        local win = hs.window.focusedWindow()
+        local f = win:frame()
+        local screen = win:screen()
+        local max = screen:frame()
+
+        -- add max.x so it stays on the same screen, works with my second screen
+        f.x = max.w * x + max.x
+        f.y = max.h * y
+        f.w = max.w * w
+        f.h = max.h * h
+        win:setFrame(f, 0)
+    end
+end
+
 -- Move active window left
 function functions.moveLeft()
     return function()

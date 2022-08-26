@@ -65,6 +65,20 @@ hs.hotkey.bind(shift_mash, "F5", fn.exec("open ~/Dropbox/DropsyncFiles/audiob/no
 Hyper:bind({}, "S", nil, fn.open("Slack"))
 
 -- Window management
+-- feature spectacle/another window sizing apps
+hs.hotkey.bind(mash, 'pad4', fn.baseMove(0, 0, 0.5, 1))
+hs.hotkey.bind(mash, 'pad6', fn.baseMove(0.5, 0, 0.5, 1))
+hs.hotkey.bind(mash, 'pad2', fn.baseMove(0, 0.5, 1, 0.5))
+hs.hotkey.bind(mash, 'pad8', fn.baseMove(0, 0, 1, 0.5))
+hs.hotkey.bind(mash, 'pad7', fn.baseMove(0, 0, 0.5, 0.5))
+hs.hotkey.bind(mash, 'pad9', fn.baseMove(0.5, 0, 0.5, 0.5))
+hs.hotkey.bind(mash, 'pad1', fn.baseMove(0, 0.5, 0.5, 0.5))
+hs.hotkey.bind(mash, 'pad3', fn.baseMove(0.5, 0.5, 0.5, 0.5))
+hs.hotkey.bind(mash, 'pad5', hs.grid.maximizeWindow)
+hs.hotkey.bind(mash, 'padenter', function()
+    hs.window:setFullScreen(true)
+end)
+-- Other
 Hyper:bind({}, "return", nil, fn.maximizeWindow()) -- [ Hyper + ↩ ]
 hs.hotkey.bind(mash, "up", fn.maximizeWindow()) -- [ ⌃ + ⌥ + ⌘ + Up ]
 Hyper:bind({}, "F", nil, fn.toggleFullscreen()) -- [ Hyper + F ]
