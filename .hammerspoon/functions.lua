@@ -20,7 +20,7 @@ end
 
 -- Get date in YYYY-MM-DD format
 function functions.getDate()
-    local dateString = os.date('%Y-%m-%d')
+    local dateString = os.date("%Y-%m-%d")
     hs.eventtap.keyStrokes(dateString)
 end
 
@@ -31,7 +31,7 @@ end
 function functions.open(name)
     return function()
         hs.application.launchOrFocus(name)
-        if name == 'Finder' then
+        if name == "Finder" then
             hs.appfinder.appFromName(name):activate()
         end
     end
@@ -56,25 +56,22 @@ end
 
 -- Toggle fullscreen of a window
 function functions.toggleFullscreen()
-    local win = hs.window.frontmostWindow()
-    win:setFullscreen(not win:isFullscreen())
-end
-
--- Maximize active window
-function functions.maximizeWindow()
     return function()
-        local window = hs.window.focusedWindow()
-        local windowName = window:application():name()
-        window:maximize()
-
-        hs.alert.show(windowName .. " was maximized")
+        local window = hs.window.frontmostWindow()
+        window:setFullscreen(not window:isFullscreen())
     end
 end
 
-function functions.maximizeLayout()
+-- Maximize active window (a.k.a. maximize layout)
+function functions.maximizeWindow()
     return function()
-        local focused = hs.window.focusedWindow()
-        hs.layout.apply({ { nil, focused, focused:screen(), hs.layout.maximized, 0, 0 } })
+        local window = hs.window.focusedWindow()
+        -- ALternative
+        -- hs.layout.apply({ { nil, window, window:screen(), hs.layout.maximized, 0, 0 } })
+        window:maximize()
+        
+        local windowName = window:application():name()
+        hs.alert.show(windowName .. " was maximized")
     end
 end
 
@@ -89,11 +86,11 @@ end
 -- Move active window left
 function functions.moveLeft()
     return function()
-        local win = hs.window.focusedWindow()
-        local f = win:frame()
+        local window = hs.window.focusedWindow()
+        local f = window:frame()
 
         f.x = f.x - 10
-        win:setFrame(f)
+        window:setFrame(f)
     end
 end
 
@@ -117,17 +114,21 @@ end
 
 -- Move active windows to previous monitor (not previous space)
 function functions.prevMonitor()
-    local win = hs.window.focusedWindow()
-    local nextScreen = win:screen():previous()
-    win:moveToScreen(nextScreen)
+    return function()
+        local window = hs.window.focusedWindow()
+        local nextScreen = window:screen():previous()
+        window:moveToScreen(nextScreen)
+    end
 end
 
 -- Move active windows to next monitor (not previous space)
 function functions.nextMonitor()
-    local win = hs.window.focusedWindow()
-    hs.alert.show(win:screen())
-    local nextScreen = win:screen():next()
-    win:moveToScreen(nextScreen)
+    return function()
+        local window = hs.window.focusedWindow()
+        hs.alert.show(window:screen())
+        local nextScreen = window:screen():next()
+        window:moveToScreen(nextScreen)
+    end
 end
 
 ----------------- System settings (sound, keyboard layouts) --------------------

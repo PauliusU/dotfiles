@@ -14,4 +14,4 @@ Hyper.released = function()
 end
 
 -- Bind the Hyper key
-hs.hotkey.bind({}, 'F18', Hyper.pressed, Hyper.released)
+hs.hotkey.bind({}, "F18", Hyper.pressed, Hyper.released)
