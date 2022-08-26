@@ -1,5 +1,6 @@
 local fn = require("functions") -- Import functions module
 require "hyper"
+-- require "utils" -- debug and development utilites
 
 hs.hid.capslock.set(false) -- Disable capslock
 
