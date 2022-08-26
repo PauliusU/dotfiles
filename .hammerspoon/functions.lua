@@ -66,7 +66,7 @@ end
 function functions.maximizeWindow()
     return function()
         local window = hs.window.focusedWindow()
-        -- ALternative
+        -- ALternative (did the same in my tests)
         -- hs.layout.apply({ { nil, window, window:screen(), hs.layout.maximized, 0, 0 } })
         window:maximize()
         
