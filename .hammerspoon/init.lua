@@ -14,10 +14,10 @@ hs.alert.show("Config loaded")
 -- modifier keys: https://www.hammerspoon.org/docs/hs.hotkey.html#bind
 -- key codes: https://www.hammerspoon.org/docs/hs.keycodes.html#map
 -- Unicode Codes for Keyboard symbols https://www.acrobatfaq.com/atbref5/index/KeyboardShortcuts/UnicodeCodesforKeyboards.html%EF%A3%BF%EF%A3%BF%EF%A3%BF%EF%A3%BF%EF%A3%BF%EF%A3%BF%EF%A3%BF%EF%A3%BF%EF%A3%BF
-local hyper       = { "ctrl", "alt", "cmd" }
-local shift_hyper = { "ctrl", "alt", "cmd", "shift" }
-local opt_cmd     = { "alt", "cmd" }
-local ctrl_opt    = { "ctrl", "alt" }
+local mash       = { "ctrl", "alt", "cmd" }
+local shift_mash = { "ctrl", "alt", "cmd", "shift" }
+local opt_cmd    = { "alt", "cmd" }
+local ctrl_opt   = { "ctrl", "alt" }
 
 -- HammerSpoon settings
 hs.hotkey.bind(hyper, "R", fn.reloadHs()) -- Reload HS config #1 [ ⌃ + ⌥ + ⌘ + R ]
