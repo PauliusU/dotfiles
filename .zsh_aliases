@@ -22,7 +22,7 @@ alias bupd="brew update"         # Update homebrew itself and the package lists
 alias bupg="brew upgrade"        # Upgrade all software installed with homebrew
 alias sysu="softwareupdate -ai"  # Run all macOS updates for Xcode, etc..
 
-# Python and pip
+# Python and pip (python is python3)
 alias pip=pip3
 alias py=python3
 alias python=python3
@@ -33,6 +33,7 @@ alias fss="~/code/dotfiles-macOs/fs.zsh"
 # Other
 alias cls=clear # or user keyboard shortcut Command + K { # K }
 alias ee=exit
+alias gll="git log" # "gl" is alias for "git pull" in git plugin
 alias rmmm="rm -rf" # ZSH settings reload
 alias rr="source ~/.zshrc" # ZSH settings reload
 alias yy=yarn install --check-files
