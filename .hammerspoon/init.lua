@@ -48,6 +48,17 @@ hs.hotkey.bind({ "alt" }, 22, fn.printText("^")) -- 6 Š
 hs.hotkey.bind({ "alt" }, 26, fn.printText("&")) -- 7 Ų
 hs.hotkey.bind({ "alt" }, 28, fn.printText("*")) -- 8 Ū
 hs.hotkey.bind({ "alt" }, 24, fn.printText("=")) -- =+ Ž
+-- Numbers in any keyboard layout
+hs.hotkey.bind(ctrl_opt, 18, fn.printText("1")) -- 1 Ą
+hs.hotkey.bind(ctrl_opt, 19, fn.printText("2")) -- 2 Č
+hs.hotkey.bind(ctrl_opt, 20, fn.printText("3")) -- 3 Ę
+hs.hotkey.bind(ctrl_opt, 21, fn.printText("4")) -- 4 Ė
+hs.hotkey.bind(ctrl_opt, 23, fn.printText("5")) -- 5 Į
+hs.hotkey.bind(ctrl_opt, 22, fn.printText("6")) -- 6 Š
+hs.hotkey.bind(ctrl_opt, 26, fn.printText("7")) -- 7 Ų
+hs.hotkey.bind(ctrl_opt, 28, fn.printText("8")) -- 8 Ū
+hs.hotkey.bind(ctrl_opt, 25, fn.printText("9")) -- 9
+hs.hotkey.bind(ctrl_opt, 29, fn.printText("0")) -- 0
 
 -- Quick open applications, files and paths
 Hyper:bind({}, "V", nil, fn.open("Google Chrome"))
