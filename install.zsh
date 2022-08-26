@@ -38,7 +38,7 @@ brew install pipenv
 pipenv --version
 
 echo "**** Visual studio code [VSCode] ****"
-brew install visual-studio-code
+brew install --cask visual-studio-code
 code -v
 
 echo "**** TypeScript, JavaScript, Node, NPM, yarn, Volta ****"
@@ -91,6 +91,9 @@ brew install --cask obs
 echo "**** Images ****"
 # sudo port install nomacs
 brew install xnviewmp
+
+echo "**** yt-dlp ****"
+brew install yt-dlp
 
 echo "================================ ZSH ===================================="
 
