@@ -2,6 +2,12 @@ local fn = require("functions") -- Import functions module
 require "hyper"
 
 hs.hid.capslock.set(false) -- Disable capslock
+
+-----------------------------------------------
+-- Reload config on write
+-----------------------------------------------
+Hyper:bind({}, "R", fn.reloadHs())
+hs.pathwatcher.new(os.getenv("HOME") .. "/.hammerspoon/", fn.reloadHs()):start()
 hs.alert.show("Config loaded")
 
 ---------------------------- Keyboard shortcuts --------------------------------
