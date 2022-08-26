@@ -52,20 +52,12 @@ function functions.openTab()
     end
 end
 
----------------- System settings (window management, sound --[[ ---------------------
+-------- System settings (window management, spaces and monitors) --------------
 
--- Toggle between LT and US keyboard layouts
-function functions.toggleLayout()
-    return function()
-        if (hs.keycodes.currentLayout() == "U.S.") then
-            hs.keycodes.setLayout("Lithuanian")
-        else
-            hs.keycodes.setLayout("U.S.")
-        end
-
-        hs.alert.closeAll() -- Closes all alerts currently open on the screen
-        hs.alert.show(hs.keycodes.currentLayout() .. " layout")
-    end
+-- Toggle fullscreen of a window
+function functions.toggleFullscreen()
+    local win = hs.window.frontmostWindow()
+    win:setFullscreen(not win:isFullscreen())
 end
 
 -- Maximize active window
@@ -76,6 +68,32 @@ function functions.maximizeWindow()
         window:maximize()
 
         hs.alert.show(windowName .. " was maximized")
+    end
+end
+
+function functions.maximizeLayout()
+    return function()
+        local focused = hs.window.focusedWindow()
+        hs.layout.apply({ { nil, focused, focused:screen(), hs.layout.maximized, 0, 0 } })
+    end
+end
+
+-- Hide all windows and show desktop
+function functions.hideAllWindows()
+    return function()
+        hs.osascript.applescriptFromFile("./AppleScripts/hideWindows.applescript")
+        hs.osascript.applescript([[display dialog "Minimized"]])
+    end
+end
+
+-- Move active window left
+function functions.moveLeft()
+    return function()
+        local win = hs.window.focusedWindow()
+        local f = win:frame()
+
+        f.x = f.x - 10
+        win:setFrame(f)
     end
 end
 
@@ -97,6 +115,23 @@ function functions.closeWindow()
     end
 end
 
+-- Move active windows to previous monitor (not previous space)
+function functions.prevMonitor()
+    local win = hs.window.focusedWindow()
+    local nextScreen = win:screen():previous()
+    win:moveToScreen(nextScreen)
+end
+
+-- Move active windows to next monitor (not previous space)
+function functions.nextMonitor()
+    local win = hs.window.focusedWindow()
+    hs.alert.show(win:screen())
+    local nextScreen = win:screen():next()
+    win:moveToScreen(nextScreen)
+end
+
+----------------- System settings (sound, keyboard layouts) --------------------
+
 -- Show window to restart macOS
 function functions.restartOSWindow()
     return function()
@@ -106,22 +141,17 @@ function functions.restartOSWindow()
     end
 end
 
--- Hide all windows and show desktop
-function functions.hideAllWindows()
+-- Toggle between LT and US keyboard layouts
+function functions.toggleLayout()
     return function()
-        hs.osascript.applescriptFromFile("./AppleScripts/hideWindows.applescript")
-        hs.osascript.applescript([[display dialog "Minimized"]])
-    end
-end
+        if (hs.keycodes.currentLayout() == "U.S.") then
+            hs.keycodes.setLayout("Lithuanian")
+        else
+            hs.keycodes.setLayout("U.S.")
+        end
 
--- Move active window left
-function functions.moveLeft()
-    return function()
-        local win = hs.window.focusedWindow()
-        local f = win:frame()
-
-        f.x = f.x - 10
-        win:setFrame(f)
+        hs.alert.closeAll() -- Closes all alerts currently open on the screen
+        hs.alert.show(hs.keycodes.currentLayout() .. " layout")
     end
 end
 
