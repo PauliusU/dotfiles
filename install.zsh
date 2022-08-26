@@ -81,6 +81,9 @@ echo "**** Better shortcuts with Karabiner Elements and Hammerspoon ****"
 # brew install karabiner-elements # remap the keys on a Mac at the kernel level.
 brew install --cask hammerspoon
 
+echo "**** Marta File Manager for macOS. Native. Extensible. Fast. 🚀 ****"
+brew install --cask marta
+
 echo "**** MPV ****"
 # brew install mpv # did not work for me
 sudo port install mpv
