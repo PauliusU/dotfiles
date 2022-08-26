@@ -1,4 +1,5 @@
 local fn = require("functions") -- Import functions module
+require "hyper"
 
 hs.hid.capslock.set(false) -- Disable capslock
 hs.alert.show("Config loaded")
