@@ -18,6 +18,10 @@ echo "**** AWS CLI ****"
 brew install awscli
 aws --version
 
+echo "**** Docker ****"
+brew install --cask docker # Docker desktop
+docker -v
+
 echo "**** GIT ****"
 brew install git
 git config --global user.name "PauliusU"
