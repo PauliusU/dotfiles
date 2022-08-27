@@ -19,9 +19,3 @@ ScrollWather = hs.eventtap.new({ hs.eventtap.event.types.scrollWheel }, function
         hs.alert.show("Ctrl + Cmd scroll")
     end
 end):start()
-
-
--- Test keybinding to be falled
-Hyper:bind({}, "D", nil, function()
-    
-end)
