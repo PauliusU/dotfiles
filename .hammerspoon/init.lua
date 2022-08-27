@@ -1,6 +1,7 @@
 local fn = require("functions") -- Import functions module
+require "private" -- not commited to Git
 require "hyper"
--- require "utils" -- debug and development utilites
+-- require "utils" -- debug and development utilites (disabled by default)
 
 hs.hid.capslock.set(false) -- Disable capslock
 
