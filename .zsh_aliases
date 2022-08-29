@@ -52,13 +52,14 @@ function ytpl() {
 
 # Other
 alias bw="bwm-ng -d" # network speed with dynamic units like K, M or G
-alias cls=clear # or user keyboard shortcut Command + K { # K }
+alias cls=clear      # or user keyboard shortcut Command + K { # K }
 alias ee=exit
-alias gll="git log"        # "gl" is alias for "git pull" in git plugin
-alias rmmm="rm -rf"        # ZSH settings reload
-alias rr="source ~/.zshrc" # ZSH settings reload
-alias tl="tmux ls" # same as tmux list-sessions
-alias tm="tmux" # = tmux new = tmux new-session
-alias tt="tmux a" # = tmux at = tmux attach = tmux attach-session
+alias gcg="git config --global --list" # show global git config
+alias gll="git log"                    # "gl" is alias for "git pull" in git plugin
+alias rmmm="rm -rf"                    # ZSH settings reload
+alias rr="source ~/.zshrc"             # ZSH settings reload
+alias tl="tmux ls"                     # same as tmux list-sessions
+alias tm="tmux"                        # = tmux new = tmux new-session
+alias tt="tmux a"                      # = tmux at = tmux attach = tmux attach-session
 alias yy=yarn install --check-files
 alias zrc="$EDITOR ~/.zshrc"
