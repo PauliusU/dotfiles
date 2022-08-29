@@ -1,4 +1,6 @@
 .idea/
 .vscode/
 *.private*
+
+espanso/match/packages/*
 private.lua
