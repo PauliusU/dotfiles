@@ -10,6 +10,8 @@ keyBindings {
     "Cmd+Up" { id "core.go.up" }
     "Left" { id "core.go.up" }
     "Right" { id "core.open.folder" }
+    "Alt+Left" { id "core.back" }
+    "Alt+Right" "core.forward"
     "Ctrl+U" "core.pane.swap"
     "Opt+Shift+Return" "core.disk.usage"
     "Ctrl+B" "core.flatten"
@@ -21,4 +23,5 @@ keyBindings {
     "Alt+D" {src "~/Dropbox" id "core.open.folder"}
     "Alt+I" {src "~/Dropbox/DropsyncFiles" id "core.open.folder"}
     "Alt+L" {src "~/Dropbox/linked/shared_IL" id "core.open.folder"}
-}
+    "Alt+O" {src "~/Dropbox/code/dotfiles-macOs" id "core.open.folder"}
+ }
