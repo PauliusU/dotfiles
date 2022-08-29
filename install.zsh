@@ -94,9 +94,12 @@ echo "**** KEYBOARD automation (shortcuts, text expansion) ****"
 brew install karabiner-elements # remap the keys on a Mac at the kernel level.
 brew install --cask hammerspoon
 brew install keyboard-maestro
+
 brew tap espanso/espanso # Add espanso tap, because Espanso is hosted outside the core homebrew repository
 brew install espanso
 espanso path
+espanso install basic-emojis
+espanso --version
 
 
 echo "**** Marta File Manager for macOS. Native. Extensible. Fast. 🚀 ****"
