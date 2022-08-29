@@ -63,7 +63,7 @@ hs.hotkey.bind({"alt"}, 25, fn.printText("9")) -- 9
 hs.hotkey.bind({"alt"}, 29, fn.printText("0")) -- 0
 
 -- Quick open applications, files and paths
-Hyper:bind({}, "V", nil, fn.open("Google Chrome"))
+Hyper:bind({}, "Z", nil, fn.open("Google Chrome"))
 Hyper:bind({}, "G", nil, fn.exec("open 'https://gmail.com'"))
 Hyper:bind({}, "L", nil, fn.exec("open 'https://calendar.google.com'"))
 hs.hotkey.bind(mash, "V", fn.open("Google Chrome")) -- [ ⌃ + ⌥ + ⌘ + C ]
@@ -75,7 +75,7 @@ hs.hotkey.bind(mash, "T", fn.open("Terminal")) -- [ ⌃ + ⌥ + ⌘ + T ]
 hs.hotkey.bind(ctrl_opt, "Z", fn.open("Terminal")) -- [ ⌃ + ⌥ + Z ]
 Hyper:bind({}, "S", fn.open("Marta"))
 Hyper:bind({}, "D", fn.open("EasyFind"))
-Hyper:bind({}, "X", nil, fn.open("Visual Studio Code"))
+Hyper:bind({}, "Q", nil, fn.open("Visual Studio Code"))
 hs.hotkey.bind(mash, "C", fn.open("Visual Studio Code")) -- [ ⌃ + ⌥ + ⌘ + V ]
 Hyper:bind({}, "O", nil, fn.exec("code ~/Dropbox/code/dotfiles-macOs"))
 Hyper:bind({}, "B", nil, fn.open("MongoDB Compass"))
