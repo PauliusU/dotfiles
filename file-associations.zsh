@@ -5,6 +5,7 @@ duti -x sh
 duti -x jpg
 
 # TEXT FILES com.microsoft.VSCode
+duti -s com.microsoft.VSCode .json all
 duti -s com.microsoft.VSCode .md all
 duti -s com.microsoft.VSCode .sh all
 
