@@ -85,8 +85,10 @@ echo "**** Duti - file association manager ****"
 brew install duti
 duti -V # capital V
 
-echo "**** Better shortcuts with Karabiner Elements and Hammerspoon ****"
-# brew install karabiner-elements # remap the keys on a Mac at the kernel level.
+echo "**** File search (everything alternatives) ****"
+brew install easyfind
+# sudo port install recoll # cluncy design
+
 brew install --cask hammerspoon
 
 echo "**** Marta File Manager for macOS. Native. Extensible. Fast. 🚀 ****"
