@@ -51,6 +51,7 @@ function ytpl() {
 }
 
 # Other
+alias bw="bwm-ng -d" # network speed with dynamic units like K, M or G
 alias cls=clear # or user keyboard shortcut Command + K { # K }
 alias ee=exit
 alias gll="git log"        # "gl" is alias for "git pull" in git plugin
