@@ -99,6 +99,10 @@ echo "**** Images ****"
 # sudo port install nomacs
 brew install xnviewmp
 
+echo "**** tmux ****"
+brew install tmux
+tmux -V # Capital V
+
 echo "**** yt-dlp ****"
 brew install yt-dlp
 
