@@ -1,3 +1,5 @@
+# ~/.zsh_aliases
+
 # Navgation
 alias cde="cd ~/code/"
 alias dev="cd ~/dev/"
