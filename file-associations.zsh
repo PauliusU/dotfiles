@@ -1,3 +1,5 @@
+#!/bin/zsh
+
 # Get the default app id for .sh and .jpg files (without a dot)
 duti -x sh
 duti -x jpg
