@@ -39,6 +39,7 @@ ln -s ~/Dropbox/code ~/code
 ln -s ~/Dropbox/dev ~/dev
 ln -s ~/Dropbox/soft/mpv_portable/portable_config/* ~/.config/mpv
 ln -s $(pwd)/marta ~/Library/Application\ Support/org.yanex.marta
+ln -s $(pwd)/espanso ~/Library/Application\ Support/espanso
 ln -s ~/dev/config/.aws ~/.aws
 ln -s $(pwd)/.hammerspoon ~/.hammerspoon
 ln -s $(pwd)/.tmux.conf ~/.tmux.conf

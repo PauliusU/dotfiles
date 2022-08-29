@@ -89,7 +89,15 @@ echo "**** File search (everything alternatives) ****"
 brew install easyfind
 # sudo port install recoll # cluncy design
 
+echo "**** KEYBOARD automation (shortcuts, text expansion) ****"
+# Better shortcuts with Karabiner Elements and Hammerspoon
+brew install karabiner-elements # remap the keys on a Mac at the kernel level.
 brew install --cask hammerspoon
+brew install keyboard-maestro
+brew tap espanso/espanso # Add espanso tap, because Espanso is hosted outside the core homebrew repository
+brew install espanso
+espanso path
+
 
 echo "**** Marta File Manager for macOS. Native. Extensible. Fast. 🚀 ****"
 brew install --cask marta
