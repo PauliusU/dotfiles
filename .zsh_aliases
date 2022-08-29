@@ -56,5 +56,8 @@ alias ee=exit
 alias gll="git log"        # "gl" is alias for "git pull" in git plugin
 alias rmmm="rm -rf"        # ZSH settings reload
 alias rr="source ~/.zshrc" # ZSH settings reload
+alias tl="tmux ls" # same as tmux list-sessions
+alias tm="tmux" # = tmux new = tmux new-session
+alias tt="tmux a" # = tmux at = tmux attach = tmux attach-session
 alias yy=yarn install --check-files
 alias zrc="$EDITOR ~/.zshrc"
