@@ -21,6 +21,12 @@ alias bupc="brew upgrade --cask" # Upgrade all casks installed with homebrew
 alias bupd="brew update"         # Update homebrew itself and the package lists
 alias bupg="brew upgrade"        # Upgrade all software installed with homebrew
 alias sysu="softwareupdate -ai"  # Run all macOS updates for Xcode, etc..
+function updater() {
+	brew update
+	brew upgrade && brew upgrade --cask
+	brew cleanup
+	softwareupdate -ai
+}
 
 # Python and pip (python is python3)
 alias pip=pip3
