@@ -1,6 +1,6 @@
 local fn = require("functions") -- Import functions module
-require "private" -- not commited to Git
 require "hyper"
+require "private" -- not commited to Git
 -- require "utils" -- debug and development utilites (disabled by default)
 
 hs.hid.capslock.set(false) -- Disable capslock
@@ -27,8 +27,9 @@ hs.hotkey.bind(mash, "Y", function() hs.reload() end) -- Reload HS config #2 (in
 hs.hotkey.bind(mash, "W", fn.sayHello) -- [ ⌃ + ⌥ + ⌘ + W ]
 
 -- Text and key manipulation
-Hyper:bind({}, "J", nil, fn.getDate)
-hs.hotkey.bind(mash, "D", fn.getDate) -- [ ⌃ + ⌥ + ⌘ + D ]
+Hyper:bind({}, "H", nil, fn.getDate())
+Hyper:bind({}, "J", nil, fn.getDate())
+hs.hotkey.bind(mash, "D", fn.getDate()) -- [ ⌃ + ⌥ + ⌘ + D ]
 -- VIM like arrow keys
 hs.hotkey.bind(mash, "I", fn.press({}, "up")) -- ↑
 hs.hotkey.bind(mash, "K", fn.press({}, "down")) -- ↓
@@ -72,12 +73,14 @@ Hyper:bind({}, "A", nil, fn.open("Terminal"))
 Hyper:bind({}, "T", nil, fn.open("Terminal"))
 hs.hotkey.bind(mash, "T", fn.open("Terminal")) -- [ ⌃ + ⌥ + ⌘ + T ]
 hs.hotkey.bind(ctrl_opt, "Z", fn.open("Terminal")) -- [ ⌃ + ⌥ + Z ]
+Hyper:bind({}, "S", fn.open("Marta"))
+Hyper:bind({}, "D", fn.open("EasyFind"))
 Hyper:bind({}, "X", nil, fn.open("Visual Studio Code"))
 hs.hotkey.bind(mash, "C", fn.open("Visual Studio Code")) -- [ ⌃ + ⌥ + ⌘ + V ]
+Hyper:bind({}, "O", nil, fn.exec("code ~/Dropbox/code/dotfiles-macOs"))
 Hyper:bind({}, "B", nil, fn.open("MongoDB Compass"))
 Hyper:bind({}, "P", nil, fn.open("MPV"))
 hs.hotkey.bind(mash, "F", fn.open("Finder")) -- Finder (recent files) [ ⌃ + ⌥ + ⌘ + F ]
-Hyper:bind({}, "S", fn.open("Marta"))
 hs.hotkey.bind(mash, "E", fn.exec("open ~/Downloads")) -- Downloads folder [ ⌃ + ⌥ + ⌘ + E ]
 hs.hotkey.bind(shift_mash, "F5", fn.exec("open ~/Dropbox/DropsyncFiles/audiob/notes_PC.md")) -- notes_PC [ ⌃ + ⌥ + ⇧ + ⌘ + F5 ]
 Hyper:bind({}, "N", nil, fn.exec("open ~/Dropbox/DropsyncFiles/audiob/notes_PC.md"))

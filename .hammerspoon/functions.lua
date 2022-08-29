@@ -35,8 +35,10 @@ end
 
 -- Get date in YYYY-MM-DD format
 function functions.getDate()
-    local dateString = os.date("%Y-%m-%d")
-    hs.eventtap.keyStrokes(dateString)
+    return function()
+        local dateString = os.date("%Y-%m-%d")
+        hs.eventtap.keyStrokes(dateString)
+    end
 end
 
 ------------------- Quick open applications, files and paths -------------------
