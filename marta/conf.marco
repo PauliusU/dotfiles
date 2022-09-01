@@ -16,6 +16,19 @@ keyBindings {
     "Opt+Shift+Return" "core.disk.usage"
     "Ctrl+B" "core.flatten"
     "Ctrl+H" "core.display.hidden"
+     "Ctrl+1" {
+         id "core.ordering"
+         ordering "name"
+     }
+     "Ctrl+2" {
+         id "core.ordering"
+         ordering "size"
+     }
+     "Ctrl+3" {
+         id "core.ordering"
+         ordering "modified"
+     }
+     
     "Alt+H" {src "~" id "core.open.folder"}
     "Alt+J" {src "~/Downloads" id "core.open.folder"}
     "Alt+E" {src "~/code" id "core.open.folder"}
