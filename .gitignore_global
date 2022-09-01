@@ -1,0 +1,5 @@
+# Example:
+# https://gist.github.com/jacobtomlinson/aace65a6920e44348d501da5e13a5a17
+
+# Operating system generated files
+.DS_Store
