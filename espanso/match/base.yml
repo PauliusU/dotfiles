@@ -43,7 +43,7 @@ matches:
 
   # Mongo document ID
   - triggers: [":mgi", "mngi"]
-    replace: "{_id: ObjectId($|$)}"
+    replace: "{_id: ObjectId('$|$')}"
 
   # Mongo email
   - triggers: [":mge", "mnge"]
