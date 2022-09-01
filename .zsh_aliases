@@ -2,6 +2,7 @@
 
 # Navgation
 alias cde="cd ~/code/"
+alias desk="cd ~/Desktop/"
 alias dev="cd ~/dev/"
 alias docs="cd ~/Documents/"
 alias drb="cd ~/Dropbox/"
@@ -29,6 +30,22 @@ function updater() {
 	brew cleanup
 	softwareupdate -ai
 }
+
+# Time and Date
+alias fulldate="date +%F"
+#  Get week number
+alias week="date +%V"
+# Stopwatch
+alias timer="echo 'Timer started. <crtl+d> to break.' && date && time cat && date"
+
+# Network
+# IP addresses
+alias ip="dig +short myip.opendns.com @resolver1.opendns.com" # External IP
+alias ips="ifconfig | grep inet | grep -v inet6 | awk '{print $2}'"
+
+# Sensible defaults
+alias df="df -h" # human readable
+alias du="du -h" # human readable
 
 # Python and pip (python is python3)
 alias pip=pip3
@@ -62,12 +79,13 @@ function ytpl() {
 alias bw="bwm-ng -d" # network speed with dynamic units like K, M or G
 alias cls=clear      # or user keyboard shortcut Command + K { # K }
 alias ee=exit
-alias gcg="git config --global --list" # show global git config
-alias gll="git log"                    # "gl" is alias for "git pull" in git plugin
-alias rmmm="rm -rf"                    # ZSH settings reload
-alias rr="source ~/.zshrc"             # ZSH settings reload
-alias tl="tmux ls"                     # same as tmux list-sessions
-alias tm="tmux"                        # = tmux new = tmux new-session
-alias tt="tmux a"                      # = tmux at = tmux attach = tmux attach-session
+alias gcg="git config --global --list"   # show global git config
+alias gll="git log"                      # "gl" is alias for "git pull" in git plugin
+alias rmmm="rm -rf"                      # ZSH settings reload
+alias rr="source ~/.zshrc"               # ZSH settings reload
+alias reload="clear && exec ${SHELL} -l" # Reload Config
+alias tl="tmux ls"                       # same as tmux list-sessions
+alias tm="tmux"                          # = tmux new = tmux new-session
+alias tt="tmux a"                        # = tmux at = tmux attach = tmux attach-session
 alias yy="yarn install --check-files"
 alias zrc="$EDITOR ~/.zshrc"
