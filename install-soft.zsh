@@ -100,7 +100,8 @@ brew install --cask hammerspoon # free, open source, mac
 brew tap espanso/espanso # Add espanso tap, because Espanso is hosted outside the core homebrew repository
 brew install espanso
 espanso path
-espanso install basic-emojis
+# espanso edit # open espanso configuration file in editor
+# espanso install basic-emojis
 espanso --version
 
 # ### macOS built-in options ####

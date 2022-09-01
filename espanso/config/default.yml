@@ -40,4 +40,5 @@
 # For a list of all the available options, visit the official docs at: https://espanso.org/docs/
 
 # CUSTOM #######################################################################
+# TIP: immediately pressing BACKSPACE key after the expansion, reverts the action and trigger is recovered.
 search_shortcut: "CTRL+ALT+SPACE" # default search_shortcut: "ALT+SPACE"
