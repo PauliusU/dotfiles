@@ -89,18 +89,27 @@ echo "**** File search (everything alternatives) ****"
 brew install easyfind
 # sudo port install recoll # cluncy design
 
-echo "**** KEYBOARD automation (shortcuts, text expansion) ****"
+echo "**** Keyboard and automation (shortcuts, text expansion) ****"
 # Better shortcuts with Karabiner Elements and Hammerspoon
-brew install karabiner-elements # remap the keys on a Mac at the kernel level.
-brew install --cask hammerspoon
-brew install keyboard-maestro
+brew install karabiner-elements # free, open source, mac. Remap the keys on a Mac at the kernel level. Ex KeyRemap4MacBook
+brew install --cask hammerspoon # free, open source, mac
 
+# Espanso. Free, open source, cross-platform
 brew tap espanso/espanso # Add espanso tap, because Espanso is hosted outside the core homebrew repository
 brew install espanso
 espanso path
 espanso install basic-emojis
 espanso --version
 
+# ### macOS built-in options ####
+# Script Editor (called AppleScript Editor from 2009 to 2014) for the AppleScript and Javascript
+#       plain text (.applescript), as a compiled script (.scpt), as a script bundle (.scptd), or as an application (.app).
+# Automator # built-in in macOS since 10.4
+# Shortcuts / apple shortcuts / siri shortcuts (formerly Workflow). Syncs with iPhone.
+
+# Other autmation options
+brew install keyboard-maestro # paid, mac only
+brew install textexpander # paid, cross-platform
 
 echo "**** Marta File Manager for macOS. Native. Extensible. Fast. 🚀 ****"
 brew install --cask marta
