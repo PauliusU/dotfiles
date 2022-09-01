@@ -5,9 +5,9 @@ require "private" -- not commited to Git
 
 hs.hid.capslock.set(false) -- Disable capslock
 
------------------------------------------------
+--------------------------------------------------------------------------------
 -- Reload config on write
------------------------------------------------
+--------------------------------------------------------------------------------
 hs.pathwatcher.new(os.getenv("HOME") .. "/.hammerspoon/", fn.reloadHs()):start()
 hs.alert.show("Config loaded")
 
@@ -90,7 +90,7 @@ Hyper:bind({}, "K", nil, fn.open("Ferdi"))
 Hyper:bind("Shift", "K", nil, fn.open("Slack"))
 
 -- Window management
--- feature spectacle/another window sizing apps
+-- -- Seature spectacle/another window sizing apps
 hs.hotkey.bind(mash, "pad4", fn.baseMove(0, 0, 0.5, 1))
 hs.hotkey.bind(mash, "pad6", fn.baseMove(0.5, 0, 0.5, 1))
 hs.hotkey.bind(mash, "pad2", fn.baseMove(0, 0.5, 1, 0.5))
@@ -103,8 +103,12 @@ hs.hotkey.bind(mash, "pad5", hs.grid.maximizeWindow)
 hs.hotkey.bind(mash, "padenter", function()
     hs.window:setFullScreen(true)
 end)
--- Other
-Hyper:bind({}, "return", nil, fn.maximizeWindow()) -- [ Hyper + ↩ ]
+-- -- Other window management options
+Hyper:bind({}, "up", nil, fn.maximizeWindow())
+Hyper:bind({}, "down", nil, fn.minimizeWindow())
+Hyper:bind({}, "right", nil, fn.baseMove(0.5, 0, 0.5, 1))
+Hyper:bind({}, "left", nil, fn.baseMove(0, 0, 0.5, 1))
+Hyper:bind({}, "return", nil, fn.toggleMax()) -- [ Hyper + ↩ ]
 hs.hotkey.bind(mash, "up", fn.maximizeWindow()) -- [ ⌃ + ⌥ + ⌘ + Up ]
 Hyper:bind({}, "F", nil, fn.toggleFullscreen()) -- [ Hyper + F ]
 hs.hotkey.bind("alt", "F4", fn.closeWindow()) -- [ ⌥ + F4 ]
@@ -121,6 +125,6 @@ hs.hotkey.bind("ctrl", "space", fn.toggleLayout()) -- Overrides system layout ch
 hs.hotkey.bind(opt_cmd, "up", fn.volumeChange(10)) -- Increase volume [ ⌥ + ⌘ + ↑ ]
 hs.hotkey.bind(opt_cmd, "down", fn.volumeChange(-10)) -- Decrease volume [ ⌥ + ⌘ + ↓ ]
 
---  mac keyboard
+--  Mac keyboard
 hs.hotkey.bind(mash, "F11", fn.volumeChange(-10)) -- Decrease volume [ ⌃ + ⌥ + ⌘ + F11 ]
 hs.hotkey.bind(mash, "F12", fn.volumeChange(10)) -- Increase volume [ ⌃ + ⌥ + ⌘ + F12 ]
