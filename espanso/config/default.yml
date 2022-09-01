@@ -38,3 +38,6 @@
 # clipboard_threshold: 100
 
 # For a list of all the available options, visit the official docs at: https://espanso.org/docs/
+
+# CUSTOM #######################################################################
+search_shortcut: "CTRL+ALT+SPACE" # default search_shortcut: "ALT+SPACE"
