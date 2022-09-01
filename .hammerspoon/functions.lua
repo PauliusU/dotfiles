@@ -1,6 +1,7 @@
 -- @module Hammerspoon functions
 
 local functions = {}
+local frameCache = {}
 
 ----------------- Hammerspoon utilities (reload configuration) -----------------
 
@@ -88,7 +89,32 @@ function functions.maximizeWindow()
         window:maximize()
 
         local windowName = window:application():name()
-        hs.alert.show(windowName .. " was maximized")
+        hs.alert.show(windowName .. " maximized")
+    end
+end
+
+-- Minimize active window
+function functions.minimizeWindow()
+    return function()
+        local window = hs.window.focusedWindow()
+        window:minimize()
+
+        local windowName = window:application():name()
+        hs.alert.show(windowName .. " minimized")
+    end
+end
+
+-- Toggle a window between its normal size, and being maximized
+function functions.toggleMax()
+    return function()
+        local window = hs.window.focusedWindow()
+        if frameCache[window:id()] then
+            window:setFrame(frameCache[window:id()])
+            frameCache[window:id()] = nil
+        else
+            frameCache[window:id()] = window:frame()
+            window:maximize()
+        end
     end
 end
 
