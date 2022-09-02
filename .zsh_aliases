@@ -74,6 +74,17 @@ function ytpl() {
 		-i \
 		"$@"
 }
+function convert_to_mp3s() {
+	# Convert all files of the same format in the folder to MP3s
+
+	if [ -z "$1" ]; then
+		echo 'FILE FILTER ARGUMENT IS MISSING. E.g. "*.opus"'
+		# non-zero decimal number in the 1 - 255 range for failure
+		return 1 
+	fi
+	
+	for f in "$1"; do ffmpeg -i "$f" "${f%.*}.mp3"; done
+}
 
 # Other
 alias bw="bwm-ng -d" # network speed with dynamic units like K, M or G
