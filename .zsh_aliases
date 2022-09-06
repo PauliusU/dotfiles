@@ -81,7 +81,7 @@ function ytpl() {
 		"$@"
 }
 function convert_to_hevc() {
-	# Convert video to HEVC /  H.265
+	# Convert video to High Efficiency Video Coding (HEVC) / H.265
 
 	if [ -z "$1" ]; then
 		echo 'Input file is missing. E.g. "video.webm"'
@@ -89,7 +89,22 @@ function convert_to_hevc() {
 		return 1
 	fi
 
-	ffmpeg -i $1 -c:v libx265 -vtag hvc1 "${1%.*}".mp4
+	# -preset medium    (default)
+	# -c:a copy			stream copy audio instead of re-encoding
+	ffmpeg -i $1 -c:v libx265 -preset ultrafast -vtag hvc1 -c:a copy "${1%.*}".hevc.mp4
+}
+function convert_to_avc() {
+	# Convert video to Advanced Video Coding (AVC) / H.264
+
+	if [ -z "$1" ]; then
+		echo 'Input file is missing. E.g. "video.webm"'
+		# non-zero decimal number in the 1 - 255 range for failure
+		return 1
+	fi
+
+	# -c:a copy			stream copy audio instead of re-encoding
+	# -preset medium    (default)
+	ffmpeg -i $1 -c:v libx264 -c:a copy "${1%.*}".avc.mp4
 }
 function convert_to_mp3s() {
 	# Convert all files of the same format in the folder to MP3s
