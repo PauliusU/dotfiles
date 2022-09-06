@@ -51,7 +51,9 @@ echo "**** TypeScript, JavaScript, Node, NPM, yarn, Volta ****"
 brew install volta
 volta -v
 
-volta install node@14
+volta install node@16
+# volta pin node@16
+volta list node
 volta which node
 node -v
 volta install yarn
