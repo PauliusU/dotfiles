@@ -1,0 +1,30 @@
+name: date-time
+matches:
+  # Print the current date
+  - trigger: ':date'
+    replace: '{{mydate}}'
+    vars:
+      - name: mydate
+        type: date
+        params:
+          # Custom date format YYYY-MM-DD
+          format: '%Y-%m-%d'
+
+  # Current week number in a year
+  - triggers:
+      - ':wk'
+      - ':week'
+    replace: '{{myweek}}'
+    vars:
+      - name: myweek
+        type: date
+        params:
+          format: '%W'
+
+  - trigger: ':now'
+    replace: '{{hhmm}}'
+    vars:
+      - name: hhmm
+        type: date
+        params:
+          format: '%H:%M'

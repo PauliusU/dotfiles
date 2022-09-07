@@ -16,16 +16,6 @@ matches:
 
   # But matches can also be dynamic:
 
-  # Print the current date
-  - trigger: ":date"
-    replace: "{{mydate}}"
-    vars:
-      - name: mydate
-        type: date
-        params:
-        # Custom date format YYYY-MM-DD
-          format: "%Y-%m-%d"
-
   # Print the output of a shell command
   - trigger: ":shell"
     replace: "{{output}}"
