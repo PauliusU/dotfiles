@@ -1,0 +1,4 @@
+filter_class: "VSCode"
+
+extra_includes:
+  - "../match/_code_snippets.yml"
