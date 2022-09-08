@@ -104,6 +104,8 @@ brew install espanso
 espanso path
 # espanso edit # open espanso configuration file in editor
 # espanso install basic-emojis
+espanso package list # List installed espanso packages
+espanso package update all # Update all packages
 espanso --version
 
 # ### macOS built-in options ####
@@ -116,8 +118,10 @@ espanso --version
 brew install keyboard-maestro # paid, mac only
 brew install textexpander # paid, cross-platform
 
-echo "**** Marta File Manager for macOS. Native. Extensible. Fast. 🚀 ****"
-brew install --cask marta
+echo "**** File management ****"
+brew install --cask marta # Marta File Manager for macOS. Native. Extensible. Fast. 🚀
+brew install --cask double-commander
+brew install midnight-commander
 
 echo "**** MPV ****"
 # brew install mpv # did not work for me
