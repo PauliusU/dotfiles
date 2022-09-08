@@ -41,4 +41,4 @@
 
 # CUSTOM #######################################################################
 # TIP: immediately pressing BACKSPACE key after the expansion, reverts the action and trigger is recovered.
-search_shortcut: "CTRL+ALT+SPACE" # default search_shortcut: "ALT+SPACE"
+search_shortcut: "CTRL+ALT+SPACE" # default: "ALT+SPACE"
