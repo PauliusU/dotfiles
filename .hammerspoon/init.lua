@@ -82,12 +82,14 @@ Hyper:bind({}, "O", nil, fn.exec("code ~/Dropbox/code/dotfiles-macOs"))
 Hyper:bind({}, "B", nil, fn.open("MongoDB Compass"))
 Hyper:bind({}, "P", nil, fn.open("MPV"))
 Hyper:bind("Shift", "P", nil, fn.open("Spotify"))
+Hyper:bind({}, "E", fn.open("Finder"))
 hs.hotkey.bind(mash, "F", fn.open("Finder")) -- Finder (recent files) [ ⌃ + ⌥ + ⌘ + F ]
 hs.hotkey.bind(mash, "E", fn.exec("open ~/Downloads")) -- Downloads folder [ ⌃ + ⌥ + ⌘ + E ]
 hs.hotkey.bind(shift_mash, "F5", fn.exec("open ~/Dropbox/DropsyncFiles/audiob/notes_PC.md")) -- notes_PC [ ⌃ + ⌥ + ⇧ + ⌘ + F5 ]
 Hyper:bind({}, "N", nil, fn.exec("open ~/Dropbox/DropsyncFiles/audiob/notes_PC.md"))
 Hyper:bind({}, "K", nil, fn.open("Ferdi"))
 Hyper:bind("Shift", "K", nil, fn.open("Slack"))
+Hyper:bind({}, "I", nil, fn.open("Preview"))
 
 -- Window management
 -- -- Seature spectacle/another window sizing apps
