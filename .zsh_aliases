@@ -140,15 +140,21 @@ function merge_mp3s() {
 	mv merged.mp3 "${PWD##*/}".mp3
 }
 
-# Other
-alias bw="bwm-ng -d" # network speed with dynamic units like K, M or G
-alias cls=clear      # or user keyboard shortcut Command + K { # K }
+# Shell related aliases
+alias cls=clear # or user keyboard shortcut Command + K { # K }
 alias ee=exit
-alias reload="clear && exec ${SHELL} -l"  # Reload Config
+alias reload="clear && exec ${SHELL} -l" # Reload Config
+alias rr="source ~/.zshrc"               # ZSH settings reload
+alias zrc="$EDITOR ~/.zshrc"
+
+# Other settings
+alias bw="bwm-ng -d" # network speed with dynamic units like K, M or G
+alias nv="nvim"
+# alias nvrc ="$EDITOR ~/.config/nvim/init.vim"
 alias rmmm="rm -rf"                       # ZSH settings reload
-alias rr="source ~/.zshrc"                # ZSH settings reload
 alias space="du -h | awk 'END{print $1}'" # space used by current folder (and subfolders)
 alias tl="tmux ls"                        # same as tmux list-sessions
 alias tm="tmux"                           # = tmux new = tmux new-session
 alias tt="tmux a"                         # = tmux at = tmux attach = tmux attach-session
-alias zrc="$EDITOR ~/.zshrc"
+alias vi="$BREW_HOME/bin/vi"
+alias vim="nvim"
