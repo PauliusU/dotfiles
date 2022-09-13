@@ -35,6 +35,7 @@ echo "**** JetBrains Toolbox ****"
 brew install jetbrains-toolbox
 
 echo "**** MongoDB compass ****"
+brew install --cask mongodb-compass
 
 echo "**** Neovim / Vim ****"
 brew install neovim
@@ -63,6 +64,7 @@ volta -v
 
 volta install node@16
 # volta pin node@16
+# volta uninstall node is not supported. Remove node version from ~/.volta/tools/image/node/ istead
 volta list node
 volta which node
 node -v
@@ -158,16 +160,28 @@ tmux -V # Capital V
 
 echo "================================ ZSH ===================================="
 
-echo "**** oh-my-zsh ****"
-sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-echo "**** zsh-completions ****"
-brew install zsh-completions
+# echo "**** oh-my-zsh ****"
+# sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+# echo "**** zsh-completions ****"
+# brew install zsh-completions
+
+echo "**** Spaceship Prompt (and fira-code font) ****"
+brew tap homebrew/cask-fonts
+brew install --cask font-fira-code
+brew install --cask font-cascadia-code-pl
+# brew install spaceship
+# echo "source $(brew --prefix)/opt/spaceship/spaceship.zsh" >>! ~/.zshrc
+git clone https://github.com/spaceship-prompt/spaceship-prompt.git "$ZSH_CUSTOM/themes/spaceship-prompt" --depth=1
+ln -s "$ZSH_CUSTOM/themes/spaceship-prompt/spaceship.zsh-theme" "$ZSH_CUSTOM/themes/spaceship.zsh-theme"
+# Set ZSH_THEME="spaceship" in your .zshrc.
+
 
 # Copy ZSH aliases file to home
 rm -f ~/.zsh_aliases
 cp .zsh_aliases ~/
 
 echo "
+# CUSTOM
 export BREW_HOME="$HOME/bin/homebrew"
 export VOLTA_HOME="$HOME/.volta"
 export PATH="$BREW_HOME/bin:$VOLTA_HOME/bin:$PATH"
