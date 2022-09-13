@@ -3,6 +3,25 @@ highlight ColorColumn ctermbg=0 guibg=lightgrey " Use more gentle column highlig
 set number " show line numbers
 set relativenumber " show relative line numbers
 
+" PLUGINS
+" Specify a directory for plugins
+call plug#begin('~/.vim/plugged')
+
+" Navigation - have a folder structure and to view or jump to different files
+Plug 'preservim/nerdtree'
+
+" Fuzzy find files
+Plug 'ctrlpvim/ctrlp.vim'
+
+" Code completion - conquer of completion (coc)
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+" Themes / color scheme
+Plug 'joshdick/onedark.vim'
+
+" Initialize plugin system
+call plug#end()
+
 " Move lines with Ctrl+J/K
 nnoremap <C-j> :m .+1<CR>==
 nnoremap <C-k> :m .-2<CR>==
