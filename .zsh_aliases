@@ -17,6 +17,7 @@ function cd() {
 # Brew and software management
 alias bc="brew cleanup" # Remove old versions of installed software
 alias bi="brew install"
+alias br="brew reinstall"
 alias bs="brew search"
 alias bu="brew update && brew upgrade && brew upgrade --cask && brew cleanup"
 alias bun="brew uninstall"
