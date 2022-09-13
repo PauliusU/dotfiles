@@ -144,12 +144,17 @@ echo "**** Images ****"
 # sudo port install nomacs
 brew install xnviewmp
 
+echo "**** yt-dlp ****"
+brew install yt-dlp
+
+echo "=============================== TERMINAL ================================"
+
+echo "**** iterm2 - Terminal.app replacement ****"
+brew cask install iterm2
+
 echo "**** tmux ****"
 brew install tmux
 tmux -V # Capital V
-
-echo "**** yt-dlp ****"
-brew install yt-dlp
 
 echo "================================ ZSH ===================================="
 
