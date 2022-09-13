@@ -57,6 +57,16 @@ alias yy="yarn install --check-files"
 alias pip=pip3
 alias py=python3
 alias python=python3
+# Pipenv
+alias peg="pipenv graph"      # dependency graph
+alias peh="pipenv --where"    # project home path
+alias pei="pipenv install"    # install dependencies
+alias per="pipenv run"        # run a command in the virtual environment without launching a shell
+alias perm="pipenv --rm"      # remove virtual environment
+alias pes="pipenv shell"      # activate virtual environment
+alias peu="pipenv update"     # update all or specified dependencies
+alias peun="pipenv uninstall" # uninstall dependency
+alias pew="pipenv --venv"     # check location of the environment
 
 # Run scripts and functions
 alias fss="~/code/dotfiles-macOs/fs.zsh"
