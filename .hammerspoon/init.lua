@@ -70,7 +70,7 @@ Hyper:bind({"Shift"}, "L", nil, fn.open("Calendar"))
 hs.hotkey.bind(mash, "V", fn.open("Google Chrome")) -- [ ⌃ + ⌥ + ⌘ + C ]
 hs.hotkey.bind("ctrl", "escape", fn.openTab()) -- Open Google Chrome tab [ ⌃ + ⎋ Escape (Esc) ]
 hs.hotkey.bind("alt", "escape", fn.openTab()) -- Open Google Chrome tab [ ⌥ + ⎋ Escape (Esc) ]
-Hyper:bind({}, "A", nil, fn.open("Terminal"))
+Hyper:bind({}, "A", nil, fn.open("iTerm"))
 Hyper:bind({}, "T", nil, fn.open("Terminal"))
 hs.hotkey.bind(mash, "T", fn.open("Terminal")) -- [ ⌃ + ⌥ + ⌘ + T ]
 hs.hotkey.bind(ctrl_opt, "Z", fn.open("Terminal")) -- [ ⌃ + ⌥ + Z ]
@@ -82,7 +82,7 @@ Hyper:bind({}, "O", nil, fn.exec("code ~/Dropbox/code/dotfiles-macOs"))
 Hyper:bind({}, "B", nil, fn.open("MongoDB Compass"))
 Hyper:bind({}, "P", nil, fn.open("MPV"))
 Hyper:bind("Shift", "P", nil, fn.open("Spotify"))
-Hyper:bind({}, "E", fn.open("Finder"))
+Hyper:bind({}, "E", fn.exec("open ~/Downloads"))
 hs.hotkey.bind(mash, "F", fn.open("Finder")) -- Finder (recent files) [ ⌃ + ⌥ + ⌘ + F ]
 hs.hotkey.bind(mash, "E", fn.exec("open ~/Downloads")) -- Downloads folder [ ⌃ + ⌥ + ⌘ + E ]
 hs.hotkey.bind(shift_mash, "F5", fn.exec("open ~/Dropbox/DropsyncFiles/audiob/notes_PC.md")) -- notes_PC [ ⌃ + ⌥ + ⇧ + ⌘ + F5 ]
