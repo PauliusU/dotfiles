@@ -35,7 +35,17 @@ echo "**** JetBrains Toolbox ****"
 brew install jetbrains-toolbox
 
 echo "**** MongoDB compass ****"
-brew install mongodb-compass
+
+echo "**** Neovim / Vim ****"
+brew install neovim
+# Install vim-plug for neovim
+sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
+       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+
+brew install vim
+# Install vim-plug for vim
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 echo "**** Python [Python 3] ****"
 brew install python # defaults to python3
