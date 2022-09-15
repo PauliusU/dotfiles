@@ -1,9 +1,12 @@
-set colorcolumn=80 " Show at 80 column a border for good code style
-highlight ColorColumn ctermbg=0 guibg=lightgrey " Use more gentle column highlight
-set number " show line numbers
-set relativenumber " show relative line numbers
+" Lines and columns
+set colorcolumn=80 " Show at 80 column a border for good code style 
+set number " Show line numbers
+set relativenumber " Show relative line numbers
+" Search
+set ignorecase " Ignore case in search patterns
+set smartcase " Override the 'ignorecase' option if the search pattern contains upper case characters
 
-" PLUGINS
+""" PLUGINS
 " Specify a directory for plugins
 call plug#begin('~/.vim/plugged')
 
