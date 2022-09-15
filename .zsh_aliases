@@ -149,7 +149,7 @@ alias reload="clear && exec ${SHELL} -l" # Reload Config
 alias rr="source ~/.zshrc"               # ZSH settings reload
 alias zrc="$EDITOR ~/.zshrc"
 
-# Other settings
+# Program access
 alias bw="bwm-ng -d" # network speed with dynamic units like K, M or G
 alias nv="nvim"
 # alias nvrc ="$EDITOR ~/.config/nvim/init.vim"
@@ -160,3 +160,6 @@ alias tm="tmux"                           # = tmux new = tmux new-session
 alias tt="tmux a"                         # = tmux at = tmux attach = tmux attach-session
 alias vi="$BREW_HOME/bin/vi"
 alias vim="nvim"
+
+# Files and directories
+alias npc="nvim ~/Dropbox/DropsyncFiles/audiob/notes_PC.md"
