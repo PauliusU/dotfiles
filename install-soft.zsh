@@ -48,11 +48,28 @@ brew install vim
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
-echo "**** Python [Python 3] ****"
+echo "**** Python [Python 3] and artificial intelligence ****"
 brew install python # defaults to python3
 python3 --version
+python3 -m pip install --upgrade pip
+
 brew install pipenv
 pipenv --version
+
+brew install --cask miniconda
+# Update conda itself
+conda --version
+conda update conda
+conda --version
+# Clean previous environments (if any)
+conda install anaconda-clean
+anaconda-clean --yes
+# Create commonly used environments
+conda create --name ml python=3.9 jupyter numpy pandas tensorflow tensorflow_datasets
+conda create --name ml-mac python=3.9 jupyter numpy pandas tesnsorflow-macos tensorflow-metal tensorflow_datasets
+conda create -n tf tensorflow tensorflow_datasets
+conda create -n tf-gpu tensorflow-gpu tensorflow_datasets
+conda create -n tf-mac tesnsorflow-macos tensorflow-metal
 
 echo "**** Visual studio code [VSCode] ****"
 brew install --cask visual-studio-code
