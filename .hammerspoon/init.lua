@@ -63,7 +63,8 @@ hs.hotkey.bind({"alt"}, 25, fn.printText("9")) -- 9
 hs.hotkey.bind({"alt"}, 29, fn.printText("0")) -- 0
 
 -- Quick open applications, files and paths
-Hyper:bind({}, "Z", nil, fn.open("Google Chrome"))
+Hyper:bind({}, "F", nil, fn.open("Google Chrome"))
+Hyper:bind({}, "V", nil, fn.open("Safari"))
 Hyper:bind({}, "G", nil, fn.exec("open 'https://gmail.com'"))
 Hyper:bind({}, "L", nil, fn.exec("open 'https://calendar.google.com'"))
 Hyper:bind({"Shift"}, "L", nil, fn.open("Calendar"))
@@ -75,13 +76,13 @@ Hyper:bind({}, "T", nil, fn.open("Terminal"))
 hs.hotkey.bind(mash, "T", fn.open("Terminal")) -- [ ⌃ + ⌥ + ⌘ + T ]
 hs.hotkey.bind(ctrl_opt, "Z", fn.open("Terminal")) -- [ ⌃ + ⌥ + Z ]
 Hyper:bind({}, "S", fn.open("Marta"))
-Hyper:bind({}, "D", fn.open("EasyFind"))
-Hyper:bind({}, "Q", nil, fn.open("Visual Studio Code"))
+Hyper:bind({}, "Z", fn.open("EasyFind"))
+Hyper:bind({}, "D", nil, fn.open("Visual Studio Code"))
 hs.hotkey.bind(mash, "C", fn.open("Visual Studio Code")) -- [ ⌃ + ⌥ + ⌘ + V ]
 Hyper:bind({}, "O", nil, fn.exec("code ~/Dropbox/code/dotfiles-macOs"))
 Hyper:bind({}, "B", nil, fn.open("MongoDB Compass"))
-Hyper:bind({}, "P", nil, fn.open("MPV"))
-Hyper:bind("Shift", "P", nil, fn.open("Spotify"))
+Hyper:bind({}, "P", nil, fn.open("Spotify"))
+Hyper:bind("Shift", "P", nil, fn.open("MPV"))
 Hyper:bind({}, "E", fn.exec("open ~/Downloads"))
 hs.hotkey.bind(mash, "F", fn.open("Finder")) -- Finder (recent files) [ ⌃ + ⌥ + ⌘ + F ]
 hs.hotkey.bind(mash, "E", fn.exec("open ~/Downloads")) -- Downloads folder [ ⌃ + ⌥ + ⌘ + E ]
@@ -112,7 +113,7 @@ Hyper:bind({}, "right", nil, fn.baseMove(0.5, 0, 0.5, 1))
 Hyper:bind({}, "left", nil, fn.baseMove(0, 0, 0.5, 1))
 Hyper:bind({}, "return", nil, fn.toggleMax()) -- [ Hyper + ↩ ]
 hs.hotkey.bind(mash, "up", fn.maximizeWindow()) -- [ ⌃ + ⌥ + ⌘ + Up ]
-Hyper:bind({}, "F", nil, fn.toggleFullscreen()) -- [ Hyper + F ]
+Hyper:bind("Shift", "F", nil, fn.toggleFullscreen()) -- [ Hyper + F ]
 hs.hotkey.bind("alt", "F4", fn.closeWindow()) -- [ ⌥ + F4 ]
 Hyper:bind({}, "M", nil, fn.hideAllWindows()) -- [ Hyper + M ]
 hs.hotkey.bind(mash, "M", fn.hideAllWindows()) -- [ ⌃ + ⌥ + ⌘ + H ]
