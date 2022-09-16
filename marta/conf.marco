@@ -1,7 +1,12 @@
-behavior {
-    theme "Kon"
+environment {
+    terminal "iTerm"
+    textEditor "Visual Studio Code"
 }
-
+behavior {
+    dateFormat {
+        normal "%Y-%m-%d"
+    }
+}
 keyBindings {
     "Ctrl+D" "core.favorites"
     "Shift+Ctrl+D" "core.favorites.add"
