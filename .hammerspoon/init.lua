@@ -111,9 +111,10 @@ Hyper:bind({}, "up", nil, fn.maximizeWindow())
 Hyper:bind({}, "down", nil, fn.minimizeWindow())
 Hyper:bind({}, "right", nil, fn.baseMove(0.5, 0, 0.5, 1))
 Hyper:bind({}, "left", nil, fn.baseMove(0, 0, 0.5, 1))
-Hyper:bind({}, "return", nil, fn.toggleMax()) -- [ Hyper + ↩ ]
+Hyper:bind({}, "Return", nil, fn.toggleMax()) -- [ Hyper + ↩ ]
 hs.hotkey.bind(mash, "up", fn.maximizeWindow()) -- [ ⌃ + ⌥ + ⌘ + Up ]
-Hyper:bind("Shift", "F", nil, fn.toggleFullscreen()) -- [ Hyper + F ]
+Hyper:bind("Shift", "Return", nil, fn.toggleFullscreen()) -- [ Hyper + F ]
+Hyper:bind("Shift", "F", nil, fn.toggleFullscreen()) -- [ Hyper + Shift + F ]
 hs.hotkey.bind("alt", "F4", fn.closeWindow()) -- [ ⌥ + F4 ]
 Hyper:bind({}, "M", nil, fn.hideAllWindows()) -- [ Hyper + M ]
 hs.hotkey.bind(mash, "M", fn.hideAllWindows()) -- [ ⌃ + ⌥ + ⌘ + H ]
