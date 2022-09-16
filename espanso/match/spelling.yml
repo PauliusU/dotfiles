@@ -1,0 +1,4 @@
+name: spelling
+matches:
+  - trigger: 'didnt'
+    replace: "didn't"
