@@ -95,6 +95,10 @@ npm i -g ts-node
 ts-node -v
 volta list
 
+echo "**** xcode ****"
+/usr/bin/xcodebuild -version
+clang --version
+
 echo "=========================== OTHER PROGRAMS =============================="
 
 echo "**** 7zip ****"
