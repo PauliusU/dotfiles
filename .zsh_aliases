@@ -148,11 +148,12 @@ alias ee=exit
 alias reload="clear && exec ${SHELL} -l" # Reload Config
 alias rr="source ~/.zshrc"               # ZSH settings reload
 alias zrc="$EDITOR ~/.zshrc"
+alias zshrc="${EDITOR} ${HOME}/.zshrc"
 
 # Program access
 alias bw="bwm-ng -d" # network speed with dynamic units like K, M or G
 alias nv="nvim"
-# alias nvrc ="$EDITOR ~/.config/nvim/init.vim"
+alias nvrc="${EDITOR} ${HOME}/.config/nvim/init.vim"
 alias rmmm="rm -rf"                       # ZSH settings reload
 alias space="du -h | awk 'END{print $1}'" # space used by current folder (and subfolders)
 alias tl="tmux ls"                        # same as tmux list-sessions
@@ -160,6 +161,7 @@ alias tm="tmux"                           # = tmux new = tmux new-session
 alias tt="tmux a"                         # = tmux at = tmux attach = tmux attach-session
 alias vi="$BREW_HOME/bin/vi"
 alias vim="nvim"
+alias vimrc="${EDITOR} ${HOME}/.vimrc"
 
 # Files and directories
 alias npc="nvim ~/Dropbox/DropsyncFiles/audiob/notes_PC.md"
