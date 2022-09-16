@@ -43,4 +43,14 @@ keyBindings {
     "Alt+L" {src "~/Dropbox/linked/shared_IL" id "core.open.folder"}
     "Alt+O" {src "~/Dropbox/code/dotfiles-macOs" id "core.open.folder"}
     "Alt+Y" {src "~/Library" id "core.open.folder"}
+    "Ctrl+X" "gadget.vscode"
  }
+ gadgets [
+     {
+         id "gadget.vscode"
+         name "Open folder in VSCode"
+         type "application"
+         application "Visual Studio Code"
+         files [ "${active.folder.path}" ]
+     }
+ ]
