@@ -36,6 +36,10 @@ call plug#end()
 source $BASE/common.vim
 source $BASE/plugins.vim
 
+""" THEME AND COLORS
+
+colorscheme onedark
+
 " Move lines with Ctrl+J/K
 nnoremap <C-j> :m .+1<CR>==
 nnoremap <C-k> :m .-2<CR>==
