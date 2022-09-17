@@ -95,3 +95,5 @@ ln -s $(pwd)/.zsh_aliases ~/.zsh_aliases
 ln -s $(pwd)/espanso ~/Library/Application\ Support/espanso
 ln -s $(pwd)/marta ~/Library/Application\ Support/org.yanex.marta
 ln -s $(pwd)/nvim ~/.config/nvim
+ln -s $(pwd)/nvim ~/.vim 
+ln -s $(pwd)/nvim/init.vim ~/.vimrc 
