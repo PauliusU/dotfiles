@@ -40,6 +40,36 @@ source $BASE/plugins.vim
 
 colorscheme onedark
 
+""" KEYBINDS
+
+" Change the leader key from "\" to space (";" and "," are also popular)
+let mapleader=" "
+
+" Reload config
+nnoremap <silent> <leader>r :source $MYVIMRC<cr>
+"  nnoremap <silent> <leader><leader> :source $MYVIMRC<cr>
+" Edit THIS configuration file: (e)dit (c)onfiguration
+nnoremap <silent> <leader>ec :edit $MYVIMRC<CR>
+
+" Use two semicolons ;; for escape
+" ref: http://vim.wikia.com/wiki/Avoid_the_escape_key
+:imap ;; <Esc>
+:imap ii <Esc>
+:imap jk <Esc>
+
+" Save with Ctrl+S
+nnoremap <C-s> :w<CR>
+
+" Quit without saving with Ctrl+Q
+nnoremap <C-q> :q<CR>
+
+" Select all
+map <silent> <C-a> <esc>ggVG<CR>
+
+" Insert a newline without entering in insert mode
+nmap oo o<Esc>k " new line below 
+nmap OO O<Esc>j " new line above
+
 " Move lines with Ctrl+J/K
 nnoremap <C-j> :m .+1<CR>==
 nnoremap <C-k> :m .-2<CR>==
