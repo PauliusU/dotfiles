@@ -4,3 +4,6 @@
 
 espanso/match/packages/*
 private.lua
+
+nvim/autoload/
+nvim/plugged/
