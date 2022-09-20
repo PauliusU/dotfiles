@@ -2,7 +2,7 @@
 
 """ Nerd tree 
 " Open with Ctrl+R
-nnoremap <C-r> :NERDTreeToggle<CR>
+nnoremap <C-e> :NERDTreeToggle<CR>
 
 " Find files using Telescope command-line sugar.
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
