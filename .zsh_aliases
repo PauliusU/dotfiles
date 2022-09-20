@@ -146,6 +146,7 @@ function merge_mp3s() {
 }
 
 # Shell related aliases
+alias c=clear
 alias cls=clear # or user keyboard shortcut Command + K { # K }
 alias ee=exit
 alias reload="clear && exec ${SHELL} -l" # Reload Config
