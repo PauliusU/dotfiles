@@ -15,7 +15,7 @@ set number             " Show line numbers
 set relativenumber     " Show relative line numbers
 " Search
 set ignorecase         " Ignore case in search patterns
-set smartcase          " Override the 'ignorecase' option if the search pattern contains upper case characters
+set smartcase          " Override the 'ignorecase' if search contains an uppercase characters
 
 """ PLUGINS
 " Specify a directory for plugins
@@ -24,17 +24,26 @@ call plug#begin($BASE.'/plugged')
     " Navigation - have a folder structure and to view or jump to different files
     Plug 'preservim/nerdtree'
 
-    " Fuzzy find files
-    Plug 'ctrlpvim/ctrlp.vim'
-
     " Themes / color scheme
     Plug 'joshdick/onedark.vim'
+    
+    if is_nvim
+        " Nvim-only plugins
+        
+        " Better syntax highlighting and syntax support for languages
+        Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
+        " Telescope - fuzzy find files
+        Plug 'nvim-lua/plenary.nvim' " required depencency for Telescope
+        Plug 'nvim-telescope/telescope.nvim'
+    else
+        " Vim-only plugins
+
+        " Fuzzy find files
+        Plug 'ctrlpvim/ctrlp.vim'
+    endif
 " Initialize plugin system
 call plug#end()
-
-source $BASE/common.vim
-source $BASE/plugins.vim
 
 """ THEME AND COLORS
 
@@ -67,8 +76,8 @@ nnoremap <C-q> :q<CR>
 map <silent> <C-a> <esc>ggVG<CR>
 
 " Insert a newline without entering in insert mode
-nmap oo o<Esc>k " new line below 
-nmap OO O<Esc>j " new line above
+nmap <silent> <leader>o o<Esc>k " new line below 
+nmap <silent> <leader>O O<Esc>j " new line above
 
 " Move lines with Ctrl+J/K
 nnoremap <C-j> :m .+1<CR>==
@@ -85,3 +94,8 @@ inoremap <A-j> <Esc>:m .+1<CR>==gi
 inoremap <A-k> <Esc>:m .-2<CR>==gi
 vnoremap <A-j> :m '>+1<CR>gv=gv
 vnoremap <A-k> :m '<-2<CR>gv=v
+
+" Load other configuration files
+source $BASE/common.vim
+source $BASE/plugins.vim
+
