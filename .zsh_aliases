@@ -54,6 +54,9 @@ alias htop="htop -t" # processes in an indented tree - control+C to stop.
 alias gcg="git config --global --list" # show global git config
 alias gll="git log"                    # "gl" is alias for "git pull" in git plugin
 # JS/TS, npm, yarn
+alias yb="yarn build"
+alias yd="yarn dev"
+alias ys="yarn start"
 alias yy="yarn install --check-files"
 # Python and pip (python is python3)
 alias pip=pip3
