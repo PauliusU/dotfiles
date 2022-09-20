@@ -82,6 +82,10 @@ defaults read com.apple.finder | grep DisableAllAnimations
 defaults write com.apple.dock expose-animation-duration -float 0.1
 defaults read com.apple.dock expose-animation-duration
 
+# Accessibility => Display => Reduce motion
+defaults write com.apple.universalaccess reduceMotion -bool true
+defaults read com.apple.universalaccess reduceMotion
+
 echo "============================ FILE SYSTEM ================================"
 
 echo "Add symlinks for common folders"
