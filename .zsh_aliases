@@ -22,6 +22,7 @@ alias br="brew reinstall"
 alias bs="brew search"
 alias bu="brew update && brew upgrade && brew upgrade --cask && brew cleanup"
 alias bun="brew uninstall"
+alias bunn="brew uninstall --ignore-dependencies"
 alias bupc="brew upgrade --cask" # Upgrade all casks installed with homebrew
 alias bupd="brew update"         # Update homebrew itself and the package lists
 alias bupg="brew upgrade"        # Upgrade all software installed with homebrew
