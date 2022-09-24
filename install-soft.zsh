@@ -31,6 +31,10 @@ ln -s $(pwd)/.gitignore_global ~/.gitignore_global
 git config --global core.excludesfile ~/.gitignore_global
 git --version
 
+echo "**** GitHub CLI ****"
+brew install gh
+gh --version
+
 echo "**** JetBrains Toolbox ****"
 brew install jetbrains-toolbox
 
