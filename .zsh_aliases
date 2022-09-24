@@ -162,12 +162,12 @@ alias zshrc="${EDITOR} ${HOME}/.zshrc"
 alias bw="bwm-ng -d" # network speed with dynamic units like K, M or G
 alias nv="nvim"
 alias nvrc="${EDITOR} ${HOME}/.config/nvim/init.vim"
-alias rmm="rm -rf"                            # Remove non-empty folder
-alias space="du -h | awk 'END{print $1}'"     # Space used by current folder (and subfolders)
-alias td="tmux detach"                        # Exit the tmux window to come back to later
-alias tl="tmux ls"                            # = tmux list-sessions
-alias tm="tmux"                               # = tmux new = tmux new-session
-alias tt="tmux a -t main || tmux new -s main" # = tmux at = tmux attach = tmux attach-session. Attach to (or create if needed) main session
+alias rmm="rm -rf"                        # Remove non-empty folder
+alias space="du -h | awk 'END{print $1}'" # Space used by current folder (and subfolders)
+alias td="tmux detach"                    # Exit the tmux window to come back to later
+alias tl="tmux ls"                        # = tmux list-sessions
+alias tm="tmux"                           # = tmux new = tmux new-session
+alias tt="tmux new -As main"              # Attach to (or create if needed) "main" session
 alias vi="$BREW_HOME/bin/vi"
 alias vim="nvim"
 alias vimrc="${EDITOR} ${HOME}/.vimrc"
