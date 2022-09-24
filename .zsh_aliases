@@ -162,6 +162,8 @@ alias zshrc="${EDITOR} ${HOME}/.zshrc"
 alias bw="bwm-ng -d" # network speed with dynamic units like K, M or G
 alias nv="nvim"
 alias nvrc="${EDITOR} ${HOME}/.config/nvim/init.vim"
+alias rmm="rm -rf"                            # Remove non-empty folder
+alias space="du -h | awk 'END{print $1}'"     # Space used by current folder (and subfolders)
 alias td="tmux detach"                        # Exit the tmux window to come back to later
 alias tl="tmux ls"                            # = tmux list-sessions
 alias tm="tmux"                               # = tmux new = tmux new-session
