@@ -155,8 +155,7 @@ brew install --cask double-commander
 brew install midnight-commander
 
 echo "**** MPV ****"
-# brew install mpv # did not work for me
-sudo port install mpv
+brew install --cask mpv
 
 echo "**** OBS Studio ****"
 brew install --cask obs
