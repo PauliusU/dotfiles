@@ -18,7 +18,10 @@ call plug#begin($BASE.'/plugged')
 
     " Themes / color scheme
     Plug 'joshdick/onedark.vim'
-    
+
+    " Git
+    Plug 'airblade/vim-gitgutter'
+
     " ESlint
     Plug 'w0rp/ale'
     
