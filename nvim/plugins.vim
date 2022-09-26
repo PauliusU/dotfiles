@@ -1,5 +1,14 @@
 " Neovim and Vim plug-in configuration used in both
 
+" Automatically install missing plugins on startup
+autocmd VimEnter *
+  \  if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
+  \|   PlugInstall --sync | q
+  \| endif
+
+" Themes and colors
+colorscheme onedark
+
 """ Nerd tree 
 " Open with Ctrl+R
 nnoremap <C-e> :NERDTreeToggle<CR>
