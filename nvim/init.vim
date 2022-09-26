@@ -43,10 +43,6 @@ call plug#begin($BASE.'/plugged')
 " Initialize plugin system
 call plug#end()
 
-""" THEME AND COLORS
-
-colorscheme onedark
-
 " Load other configuration files
 source $BASE/common.vim
 source $BASE/plugins.vim
