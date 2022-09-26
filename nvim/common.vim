@@ -1,5 +1,8 @@
 " Neovim and Vim common config
 
+" General
+"  syntax enable           " Enables syntax processing
+
 " Lines and columns
 set colorcolumn=80      " Show at 80 column a border for good code style 
 set number              " Show line numbers
@@ -128,3 +131,12 @@ nmap <silent> <leader>8 :tabn 8<CR>
 
 " Leader-9 goes to the last tab
 nmap <leader>9 :tablast<CR>
+
+" Errors (quickfix) and issues
+nnoremap <leader>] :cnext<CR>
+nnoremap <leader>[ :cprev<CR>
+"  nnoremap <leader>cc :cclose<CR>
+nnoremap <leader>} :lnext<CR>
+nnoremap <leader>{ :lprev<CR>
+"  nnoremap <leader>cc :lclose<CR>
+nnoremap <leader>cc :cclose :lclose<CR>
