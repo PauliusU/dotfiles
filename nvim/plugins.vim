@@ -19,3 +19,12 @@ nnoremap <leader>ff <cmd>Telescope find_files<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+
+""" ALE (ESlint)
+"  Set ESLint as plugging manager
+let g:ale_fixers = {
+ \ 'javascript': ['eslint']
+ \ }
+" Pimp linter symbols
+let g:ale_sign_error = '❌'
+let g:ale_sign_warning = '⚠️'

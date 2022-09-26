@@ -19,6 +19,9 @@ call plug#begin($BASE.'/plugged')
     " Themes / color scheme
     Plug 'joshdick/onedark.vim'
     
+    " ESlint
+    Plug 'w0rp/ale'
+    
     if is_nvim
         " Nvim-only plugins
         
