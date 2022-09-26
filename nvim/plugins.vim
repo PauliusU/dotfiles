@@ -28,3 +28,5 @@ let g:ale_fixers = {
 " Pimp linter symbols
 let g:ale_sign_error = '❌'
 let g:ale_sign_warning = '⚠️'
+" Fix the file your are working on on save
+let g:ale_fix_on_save = 1
