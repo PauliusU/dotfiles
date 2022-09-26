@@ -6,6 +6,15 @@ set number              " Show line numbers
 set relativenumber      " Show relative line numbers
 set cursorline          " Highlight the screen line of the cursor
 
+" Tabs and indent
+set tabstop=4           " Number of visual spaces per TAB
+set softtabstop=4       " Number of spaces in tab when editing
+set expandtab           " Tabs are spaces i.e. use spaces instead of tabs    
+set smarttab            " Inserts as many spaces as needed to tab
+set shiftwidth=4
+set smartindent         " Do smart autoindenting when starting a new line
+set autoindent          " Copy the indent when starting a new line
+
 " Search
 set ignorecase          " Ignore case in search patterns
 set smartcase           " Override the 'ignorecase' if search contains an uppercase characters
