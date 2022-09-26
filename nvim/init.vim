@@ -50,3 +50,6 @@ colorscheme onedark
 " Load other configuration files
 source $BASE/common.vim
 source $BASE/plugins.vim
+
+" Language specific settings
+source $BASE/languages/javascript.vim
