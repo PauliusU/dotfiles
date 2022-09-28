@@ -30,6 +30,7 @@ git config --global core.autocrlf input # line endings for OS compatability
 ln -s $(pwd)/.gitignore_global ~/.gitignore_global
 git config --global core.excludesfile ~/.gitignore_global
 git --version
+brew install --cask fork # git-fork git client
 
 echo "**** GitHub CLI ****"
 brew install gh
