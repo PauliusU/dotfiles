@@ -13,7 +13,7 @@ echo "**** Anki ****"
 brew install --cask anki
 
 echo "**** Keepassxc - Keepass port for macOs ****"
-brew install keepassxc
+brew install --cask keepassxc
 keepassxc-cli -v
 
 echo "**** Microsoft Teams ****"
@@ -23,4 +23,4 @@ echo "**** PDFs ****"
 brew install --cask adobe-acrobat-reader
 
 echo "**** Postman ****"
-brew install postman
+brew install --cask postman
