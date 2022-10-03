@@ -41,3 +41,4 @@ let g:ale_fix_on_save = 1
 nmap ]h <Plug>(GitGutterNextHunk)
 nmap [h <Plug>(GitGutterPrevHunk)
 
+nnoremap <silent><C-f> :silent !tmux neww /Users/pauliusu/code/dotfiles-macOs/scripts/tmux-sessionizer.sh<CR>
