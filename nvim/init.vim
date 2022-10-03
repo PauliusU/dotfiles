@@ -13,6 +13,10 @@ endif
 " Specify a directory for plugins
 call plug#begin($BASE.'/plugged')
 
+    " fzf - fuzzy find files
+    Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+    Plug 'junegunn/fzf.vim'
+
     " Navigation - have a folder structure and to view or jump to different files
     Plug 'preservim/nerdtree'
 
