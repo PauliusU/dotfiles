@@ -19,6 +19,12 @@ nnoremap <leader>ff <cmd>Telescope find_files<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+nnoremap <leader>fd <cmd>Telescope git_files<cr>
+
+""" fzf
+" Git files
+nnoremap <C-p> :GFiles<cr> 
+nnoremap <leager>pf :Files<cr> " Project files
 
 """ ALE (ESlint)
 "  Set ESLint as plugging manager
