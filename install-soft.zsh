@@ -104,6 +104,14 @@ echo "**** xcode ****"
 /usr/bin/xcodebuild -version
 clang --version
 
+echo "**** Go Goland ****"
+brew install go
+go version
+
+echo "**** Rust ****"
+brew install rust
+rustc --version
+
 echo "=========================== OTHER PROGRAMS =============================="
 
 echo "**** 7zip ****"
