@@ -184,6 +184,11 @@ tmux -V # Capital V
 
 echo "================================ ZSH ===================================="
 
+if [[ `uname` -eq "Linux" ]]; then
+    sudo apt-get install zsh
+    chsh -s $(which zsh)
+fi
+
 # echo "**** oh-my-zsh ****"
 # sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 # echo "**** zsh-completions ****"
@@ -198,7 +203,6 @@ brew install --cask font-cascadia-code-pl
 git clone https://github.com/spaceship-prompt/spaceship-prompt.git "$ZSH_CUSTOM/themes/spaceship-prompt" --depth=1
 ln -s "$ZSH_CUSTOM/themes/spaceship-prompt/spaceship.zsh-theme" "$ZSH_CUSTOM/themes/spaceship.zsh-theme"
 # Set ZSH_THEME="spaceship" in your .zshrc.
-
 
 # Copy ZSH aliases file to home
 rm -f ~/.zsh_aliases
