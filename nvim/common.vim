@@ -1,10 +1,10 @@
 " Neovim and Vim common config
 
 " General
-"  syntax enable           " Enables syntax processing
+set scrolloff=8         " Scrooll with leaving some space below (avoid pressing zz)
 
 " Lines and columns
-set colorcolumn=80      " Show at 80 column a border for good code style 
+set colorcolumn=81      " Show after 80 column a border for good code style
 set number              " Show line numbers
 set relativenumber      " Show relative line numbers
 set cursorline          " Highlight the screen line of the cursor
@@ -22,13 +22,14 @@ set autoindent          " Copy the indent when starting a new line
 set ignorecase          " Ignore case in search patterns
 set smartcase           " Override the 'ignorecase' if search contains an uppercase characters
 
-""" KEYBINDS
+""" REMAPS
 
 " Change the leader key from "\" to space (";" and "," are also popular)
 let mapleader=" "
 
 " Reload config
 nnoremap <silent> <leader>r :source $MYVIMRC<cr>
+nnoremap <leader><CR> :so ~/.config/nvim/init.vim<cr>
 "  nnoremap <silent> <leader><leader> :source $MYVIMRC<cr>
 " Edit THIS configuration file: (e)dit (c)onfiguration
 nnoremap <silent> <leader>ec :edit $MYVIMRC<CR>
@@ -63,6 +64,8 @@ map! <silent> <C-y> <esc><C-r>i
 map <silent> <C-z> u
 map! <silent> <C-z> <esc>ui
 
+nnoremap <leader>x :!chmod +x %<CR>
+
 """ Lines
 
 " Insert a newline without entering in insert mode
@@ -90,6 +93,7 @@ vnoremap <A-k> :m '<-2<CR>gv=v
 " Split screen
 map <leader>d :vs<CR>
 map <leader>D :split<CR>
+nnoremap <leader>pv :Vex<CR>
 
 " Pane navigation
 nmap <silent> <C-Up> :wincmd k<CR>
