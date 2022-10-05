@@ -216,9 +216,18 @@ tmux -V # Capital V
 
 echo "================================ ZSH ===================================="
 
-if [[ `uname` -eq "Linux" ]]; then
+if [[ $(uname) -eq "Linux" ]]; then
+    sudo apt-get update
     sudo apt-get install zsh
+    # Set ZSH as  default shell
     chsh -s $(which zsh)
+    sudo apt-get install curl
+    # Oh My Zsh is an extension to Zsh that will allow you to easily customise your prompt to add themes, plugins and shortcuts
+    sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+    # The easiest way to install and manage Oh My Zsh plugins is via a package manage
+    curl -L git.io/antigen >~/antigen.zsh
+    # source ~/antigen.zsh
 fi
 
 # echo "**** oh-my-zsh ****"
@@ -226,15 +235,17 @@ fi
 # echo "**** zsh-completions ****"
 # brew install zsh-completions
 
-echo "**** Spaceship Prompt (and fira-code font) ****"
-brew tap homebrew/cask-fonts
-brew install --cask font-fira-code
-brew install --cask font-cascadia-code-pl
-# brew install spaceship
-# echo "source $(brew --prefix)/opt/spaceship/spaceship.zsh" >>! ~/.zshrc
-git clone https://github.com/spaceship-prompt/spaceship-prompt.git "$ZSH_CUSTOM/themes/spaceship-prompt" --depth=1
-ln -s "$ZSH_CUSTOM/themes/spaceship-prompt/spaceship.zsh-theme" "$ZSH_CUSTOM/themes/spaceship.zsh-theme"
-# Set ZSH_THEME="spaceship" in your .zshrc.
+if [[ $(uname) -eq "Darwin" ]]; then
+    echo "**** Spaceship Prompt (and fira-code font) ****"
+    brew tap homebrew/cask-fonts
+    brew install --cask font-fira-code
+    brew install --cask font-cascadia-code-pl
+    # brew install spaceship
+    # echo "source $(brew --prefix)/opt/spaceship/spaceship.zsh" >>! ~/.zshrc
+    git clone https://github.com/spaceship-prompt/spaceship-prompt.git "$ZSH_CUSTOM/themes/spaceship-prompt" --depth=1
+    ln -s "$ZSH_CUSTOM/themes/spaceship-prompt/spaceship.zsh-theme" "$ZSH_CUSTOM/themes/spaceship.zsh-theme"
+    # Set ZSH_THEME="spaceship" in your .zshrc.
+fi
 
 # Copy ZSH aliases file to home
 rm -f ~/.zsh_aliases
