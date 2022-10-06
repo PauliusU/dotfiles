@@ -1,21 +1,24 @@
 # ~/.zsh_aliases
 
-# Navgation
+# Navigation and file listing
+# alias ....="cd ../../.."
+# alias ...="cd ../.."
+# alias ..="cd .."
 alias cde="cd ~/code/"
 alias desk="cd ~/Desktop/"
 alias dev="cd ~/dev/"
 alias docs="cd ~/Documents/"
 alias drb="cd ~/Dropbox/"
-alias dt="cd ~/Desktop/"
+alias dt="cd ~/Desktop/" # "dt" is also a command line tool to display information about your domain on Linux or Unix system
 alias dwn="cd ~/Downloads/"
 # Always list directory contents upon "cd"
 function cd() {
 	builtin cd "$@" || exit
-	ls
+	ls -A # List entries starting with ., but do not list implied . and ..
 }
 
-# Brew and software management
-alias bc="brew cleanup"          # Remove old versions of installed software
+# Software management
+alias bc="brew cleanup" # Remove old versions of installed software
 alias bi="brew install"
 alias bl="brew list"
 alias br="brew reinstall"
@@ -36,8 +39,8 @@ if [[ $(uname) == "Linux" ]]; then
 	alias arr="sudo apt autoremove" # remove packages are no longer needed as dependencies
 	alias as="sudo apt search"
 	alias acs="apt-cache search"
-	alias au="sudo apt update"      # updates repositories
-	alias ag="sudo apt upgrade -y"  # updates software (packages)
+	alias au="sudo apt update"     # updates repositories
+	alias ag="sudo apt upgrade -y" # updates software (packages)
 	alias auu="sudo apt update && sudo apt upgrade -y"
 	echo "Linux aliases loaded"
 fi
@@ -47,6 +50,17 @@ function updater() {
 	brew cleanup
 	softwareupdate -ai
 }
+function apt-updater {
+	sudo apt update
+	sudo apt upgrade -y
+	sudo apt autoremove -y
+	sudo apt autoclean
+}
+
+# Sensible defaults
+alias df="df -h"     # human readable
+alias du="du -h"     # human readable
+alias htop="htop -t" # processes in an indented tree - control+C to stop.
 
 # Time and Date
 alias fulldate="date +%F"
@@ -57,13 +71,8 @@ alias timer="echo 'Timer started. <crtl+d> to break.' && date && time cat && dat
 
 # Network
 # IP addresses
-alias ip="dig +short myip.opendns.com @resolver1.opendns.com" # External IP
+alias ip="echo 'External IP:\n\n$(dig +short myip.opendns.com @resolver1.opendns.com)'" # External IP
 alias ips="ifconfig | grep inet | grep -v inet6 | awk '{print $2}'"
-
-# Sensible defaults
-alias df="df -h"     # human readable
-alias du="du -h"     # human readable
-alias htop="htop -t" # processes in an indented tree - control+C to stop.
 
 # Git
 alias gcg="git config --global --list" # show global git config
@@ -161,17 +170,25 @@ function merge_mp3s() {
 	mv merged.mp3 "${PWD##*/}".mp3
 }
 
-# Shell related aliases
-alias c=clear
-alias cls=clear # or user keyboard shortcut Command + K { # K }
-alias ee=exit
-alias reload="clear && exec ${SHELL} -l" # Reload Config
+# Shell control
+alias brc="$EDITOR ~/.bashrc"
+alias c="clear"
+alias cls="clear" # or user keyboard shortcut Command + K { # K }
+alias ee="exit"
+alias reload="clear && exec ${SHELL} -l" # Reload the shell
 alias rr="source ~/.zshrc"               # ZSH settings reload
 alias zrc="$EDITOR ~/.zshrc"
 alias zshrc="${EDITOR} ${HOME}/.zshrc"
 
+# System control (startup, restart, shutdown, cron jobs)
+alias crn="crontab -e"                # edit current crontab
+alias restart="sudo shutdown -r now"  # requires root password, disable it by sudo chmod u+s /sbin/shutdown
+alias shutdown="sudo shutdown -h now" # requires root password, disable it by sudo chmod u+s /sbin/shutdown
+alias startup="gnome-session-properties"
+
 # Program access
-alias bw="bwm-ng -d" # network speed with dynamic units like K, M or G
+alias bw="bwm-ng -d"     # network speed with dynamic units like K, M or G
+alias deb="sudo dpkg -i" # install deb package (for Ubuntu, Debian, Raspbian)
 alias nv="nvim"
 alias nvrc="${EDITOR} ${HOME}/.config/nvim/init.vim"
 alias rmm="rm -rf"                        # Remove non-empty folder
@@ -183,6 +200,7 @@ alias tt="tmux new -As main"              # Attach to (or create if needed) "mai
 alias vi="$BREW_HOME/bin/vi"
 alias vim="nvim"
 alias vimrc="${EDITOR} ${HOME}/.vimrc"
+alias tarx="tar -xvf"
 
 # Files and directories
 alias npc="nvim ~/Dropbox/DropsyncFiles/audiob/notes_PC.md"
