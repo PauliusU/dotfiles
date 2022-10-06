@@ -15,7 +15,7 @@ function cd() {
 }
 
 # Brew and software management
-alias bc="brew cleanup" # Remove old versions of installed software
+alias bc="brew cleanup"          # Remove old versions of installed software
 alias bi="brew install"
 alias bl="brew list"
 alias br="brew reinstall"
@@ -29,6 +29,18 @@ alias bupc="brew upgrade --cask" # Upgrade all casks installed with homebrew
 alias bupd="brew update"         # Update homebrew itself and the package lists
 alias bupg="brew upgrade"        # Upgrade all software installed with homebrew
 alias sysu="softwareupdate -ai"  # Run all macOS updates for Xcode, etc..
+if [[ $(uname) == "Linux" ]]; then
+	alias ai="sudo apt install"
+	alias ar="sudo apt remove"
+	alias aun="sudo apt remove"     # apt (un)install
+	alias arr="sudo apt autoremove" # remove packages are no longer needed as dependencies
+	alias as="sudo apt search"
+	alias acs="apt-cache search"
+	alias au="sudo apt update"      # updates repositories
+	alias ag="sudo apt upgrade -y"  # updates software (packages)
+	alias auu="sudo apt update && sudo apt upgrade -y"
+	echo "Linux aliases loaded"
+fi
 function updater() {
 	brew update
 	brew upgrade && brew upgrade --cask
