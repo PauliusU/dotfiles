@@ -24,7 +24,8 @@ call plug#begin($BASE.'/plugged')
     Plug 'joshdick/onedark.vim'
 
     " Git
-    Plug 'airblade/vim-gitgutter'
+    Plug 'tpope/vim-fugitive' " Control commits
+    Plug 'airblade/vim-gitgutter' " Show a git diff in the sign column
 
     " ESlint
     Plug 'w0rp/ale'
