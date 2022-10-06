@@ -7,6 +7,7 @@ ln -s ~/Dropbox/soft/mpv_portable/portable_config/* ~/.config/mpv
 ln -s ~/dev/config/.aws ~/.aws
 ln -s $(pwd)/.hammerspoon ~/.hammerspoon
 ln -s $(pwd)/.tmux.conf ~/.tmux.conf
+ln -s $(pwd)/.zsh_aliases ~/.bash_aliases # Zsh aliases in Bash
 ln -s $(pwd)/.zsh_aliases ~/.zsh_aliases
 ln -s $(pwd)/nvim ~/.config/nvim
 ln -s $(pwd)/nvim ~/.vim

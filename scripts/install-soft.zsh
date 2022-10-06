@@ -19,6 +19,7 @@ brew install awscli
 aws --version
 
 echo "**** GIT ****"
+# sudo apt install -y git
 brew install git
 git config --global user.name "PauliusU"
 git config --global user.email "48020370+PauliusU@users.noreply.github.com"
@@ -26,7 +27,6 @@ git config --global core.autocrlf input # line endings for OS compatability
 ln -s $(pwd)/.gitignore_global ~/.gitignore_global
 git config --global core.excludesfile ~/.gitignore_global
 git --version
-brew install --cask fork # git-fork git client
 
 echo "**** GitHub CLI ****"
 brew install gh
@@ -38,19 +38,32 @@ brew install neovim
 sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 
+# sudo apt install -y vim
 brew install vim
 # Install vim-plug for vim
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 echo "**** Python [Python 3] and artificial intelligence ****"
-brew install python # defaults to python3
-python3 --version
-python3 -m pip install --upgrade pip
 
+# sudo apt install -y python3
+brew install python                   # defaults to python3
+sudo apt install -y python-is-python3 # minimum Debian 11 and Ubuntu 20.04
+python3 --version
+python --version
+
+# pip
+# sudo apt install -y python3-pip
+python3 -m pip install --upgrade pip
+pip3 --version
+pip --version
+
+# pipenv
+# sudo apt install -y pipenv
 brew install pipenv
 pipenv --version
 
+# conda
 brew install --cask miniconda
 # Update conda itself
 conda --version
@@ -66,7 +79,9 @@ conda create -n tf tensorflow tensorflow_datasets
 conda create -n tf-gpu tensorflow-gpu tensorflow_datasets
 conda create -n tf-mac tesnsorflow-macos tensorflow-metal
 
-echo "**** TypeScript, JavaScript, Node, NPM, yarn, Volta ****"
+pip3 install subliminal # for subs script in MPV
+
+echo "**** TypeScript, JavaScript, Node.js, NPM, yarn, Volta ****"
 brew install volta
 volta -v
 
@@ -99,6 +114,9 @@ if [[ $(uname) -eq "Darwin" ]]; then
     brew install --cask docker # Docker desktop
     docker -v
 
+    echo "**** Git client git-fork ****"
+    brew install --cask fork
+
     echo "**** JetBrains Toolbox ****"
     brew install --cask jetbrains-toolbox
 
@@ -109,6 +127,9 @@ if [[ $(uname) -eq "Darwin" ]]; then
     brew install --cask postman
 
     echo "**** Visual studio code [VSCode] ****"
+    # sudo apt install -y code          # VSCode for Debian 10
+    # sudo apt install -y gnome-keyring # required to authorize Visual Studio Code to access GitHub
+    # gnome-keyring version
     brew install --cask visual-studio-code
     code -v
 
@@ -127,10 +148,15 @@ brew install 7zip # Latest version. Acessible using "7zz"
 7zz -version
 
 echo "**** File management ****"
+# sudo apt install -y mc            # Midnight Commander
 brew install midnight-commander
 
 echo "**** Fuzzy finder ****"
 brew install fzf
+
+echo "**** Network ****"
+# sudo apt install -y bwm-ng        # bandwidth meter
+brew install bwm-ng
 
 if [[ $(uname) -eq "Darwin" ]]; then
     echo "**** Anki ****"
@@ -146,11 +172,13 @@ if [[ $(uname) -eq "Darwin" ]]; then
 
     echo "**** File management ****"
     brew install --cask marta # Marta File Manager for macOS. Native. Extensible. Fast. 🚀
+    # sudo apt install -y doublecmd-gtk # GUI file manager
     brew install --cask double-commander
 
     echo "**** File search (everything alternatives) ****"
     brew install --cask easyfind
     # sudo port install recoll # cluncy design
+    # fsearch - everything alternative for Linux only
 
     echo "**** Keyboard and automation (shortcuts, text expansion) ****"
     # Better shortcuts with Karabiner Elements and Hammerspoon
@@ -185,6 +213,7 @@ if [[ $(uname) -eq "Darwin" ]]; then
     brew install --cask microsoft-teams
 
     echo "**** MPV ****"
+    # sudo apt install -y mpv
     brew install --cask mpv
 
     echo "**** OBS Studio ****"
