@@ -51,10 +51,13 @@ function updater() {
 	softwareupdate -ai
 }
 function apt-updater {
-	sudo apt update
+	sudo apt update # Update list of available packages
 	sudo apt upgrade -y
 	sudo apt autoremove -y
 	sudo apt autoclean
+	# sudo apt full-upgrade
+	# sudo apt-get dist-upgrade
+	# sudo do-release-upgrade
 }
 
 # Sensible defaults
