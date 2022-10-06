@@ -3,9 +3,8 @@
 
 private/
 *.private*
-
-espanso/match/packages/*
 private.lua
 
+espanso/match/packages/*
 nvim/autoload/
 nvim/plugged/
