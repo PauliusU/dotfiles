@@ -71,7 +71,7 @@
                 "startingDirectory": "%USERPROFILE%\\Downloads"
             },
             {
-                "commandline": "cmd.exe /K @echo off & d: & d:\\Dropbox\\code\\dotfiles\\WindowsTerminal\\cmdrc.cmd & c: & @echo on",
+                "commandline": "cmd.exe /K @echo off & d: & d:\\Dropbox\\code\\dotfiles\\terminal\\cmdrc.cmd & c: & @echo on",
                 "guid": "{00000000-0000-0000-0000-000000000001}",
                 "hidden": false,
                 "name": "Command Prompt CUSTOM"

@@ -10,4 +10,4 @@ private.lua
 espanso/match/packages/*
 nvim/autoload/
 nvim/plugged/
-WindowsTerminal/state.json
+terminal/WindowsTerminal/state.json
