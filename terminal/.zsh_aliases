@@ -186,6 +186,7 @@ alias zshrc="${EDITOR} ${HOME}/.zshrc"
 # System control (startup, restart, shutdown, cron jobs)
 alias crn="crontab -e"                # edit current crontab
 alias restart="sudo shutdown -r now"  # requires root password, disable it by sudo chmod u+s /sbin/shutdown
+alias services="systemctl list-unit-files | grep enabled" # List enabled services (Linux, WSL)
 alias shutdown="sudo shutdown -h now" # requires root password, disable it by sudo chmod u+s /sbin/shutdown
 alias startup="gnome-session-properties"
 
