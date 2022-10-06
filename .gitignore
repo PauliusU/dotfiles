@@ -5,6 +5,9 @@ private/
 *.private*
 private.lua
 
+*.lnk
+
 espanso/match/packages/*
 nvim/autoload/
 nvim/plugged/
+WindowsTerminal/state.json
