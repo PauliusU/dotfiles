@@ -9,10 +9,10 @@ mv ~/.hammerspoon ~/.hammerspoon.bak
 ln -s $(pwd)/.hammerspoon ~/.hammerspoon
 mv ~/.tmux.conf ~/.tmux.conf.bak
 ln -s $(pwd)/terminal/.tmux.conf ~/.tmux.conf
-mv ~/.shellrc ~/.shellrc.bak
-ln -s $(pwd)/terminal/.shellrc ~/.shellrc
 mv ~/.aliases ~/.aliases.bak
 ln -s $(pwd)/terminal/.aliases ~/.aliases
+mv ~/.shellrc ~/.shellrc.bak
+ln -s $(pwd)/terminal/.shellrc ~/.shellrc
 mv ~/.config/nvim ~/.config/nvim.bak
 ln -s $(pwd)/nvim ~/.config/nvim
 mv ~/.vim ~/.vim.bak

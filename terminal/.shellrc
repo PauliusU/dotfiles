@@ -29,30 +29,60 @@ CYGWIN* | MINGW* | MINGW32* | MSYS*)
     ;;
 esac
 
-# --------------------------- ENV VARIABLES AND PATH  --------------------------
+# -------------------------- ENV VARIABLES AND PATH  ---------------------------
 
-# Editors
+# Defaults
 export EDITOR="nvim"
 export VISUAL="code -w"
+export LANG="en_US.UTF-8"
 
 prepend_path() {
     # Prepend directory to PATH
     # Skipped if directory does not exist
     # Argument should be /absolute/path or ~/user/path
     if [ -d "$1" ]; then
+        # Export to sub-processes (make it inherited by child processes)
         export PATH="$1:$PATH"
     fi
 }
 
 export BREW_HOME="$HOME/bin/homebrew"
+export CONDA_HOME="$HOME/bin/homebrew/anaconda3"
 export VOLTA_HOME="$HOME/.volta"
-# export PATH="$BREW_HOME/bin:$VOLTA_HOME/bin:$PATH"
-
-prepend_path ~/bin
-
-source ~/.aliases
+# Order matters, first entry in PATH will take priority over later ones
+prepend_path "$BREW_HOME/bin"
+prepend_path "$CONDA_HOM/bin"
+prepend_path "$VOLTA_HOME/bin"
 
 # Clean-up
 unset -f prepend_path
+
+# ----------------------------------- TMUX -------------------------------------
+bindkey -s ^f "$HOME/code/dotfiles/terminal/tmux-sessionizer.sh\n"
+# Run TMUX if not in active session
+if command -v tmux &>/dev/null && [ -z "$TMUX" ]; then
+    # "command -v" pathname  or  command  that  will be used by the shell
+    # "-z" returns true if the string is empty, false if it contains something
+    # "$TMUX" used to check if a tmux session is active
+    tmux attach -t default || tmux new -s default
+fi
+
+# ---------------------------------- PLUGINS -----------------------------------
+# source $(brew --prefix)/opt/spaceship/spaceship.zsh
+ZSH_THEME="spaceship"
+source ~/.oh-my-zsh/custom/themes/spaceship-prompt/spaceship.zsh
+
+source ~/antigen.zsh
+antigen bundle git
+antigen bundle zsh-users/zsh-autosuggestions
+# antigen bundle z-shell/fast-syntax-highlighting # Stopped working
+antigen bundle z-shell/F-Sy-H --branch=main
+antigen bundle zsh-users/zsh-syntax-highlighting
+antigen apply
+
+autoload -U compinit
+
+# Load aliases (and other custom settings)
+source ~/.aliases
 
 echo ".shellrc loaded for $OSFOUND"
