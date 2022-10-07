@@ -1,0 +1,58 @@
+# Common settings for ~/.zshrc or ~/.bashrc files
+
+# ---------------------------------- OS CHECK  ---------------------------------
+IS_LINUX=false
+IS_MAC=false
+IS_WINDOWS=false
+IS_WSL=false
+
+# Determine OS by OS name (-s) and OS release (-r) like "Darwin 21.6.0"
+case "$(uname -sr)" in #
+Darwin*)
+    OSFOUND="macOs"
+    IS_MAC=true
+    ;;
+Linux*microsoft*)
+    OSFOUND="WSL" # Windows Subsystem for Linux
+    IS_WSL=true
+    ;;
+Linux*)
+    OSFOUND="Linux"
+    IS_LINUX=true
+    ;;
+CYGWIN* | MINGW* | MINGW32* | MSYS*)
+    OSFOUND="Windows"
+    IS_WINDOWS=true
+    ;;
+*)
+    OSFOUND="Other OS"
+    ;;
+esac
+
+# --------------------------- ENV VARIABLES AND PATH  --------------------------
+
+# Editors
+export EDITOR="nvim"
+export VISUAL="code -w"
+
+prepend_path() {
+    # Prepend directory to PATH
+    # Skipped if directory does not exist
+    # Argument should be /absolute/path or ~/user/path
+    if [ -d "$1" ]; then
+        export PATH="$1:$PATH"
+    fi
+}
+
+export BREW_HOME="$HOME/bin/homebrew"
+export VOLTA_HOME="$HOME/.volta"
+# export PATH="$BREW_HOME/bin:$VOLTA_HOME/bin:$PATH"
+
+prepend_path ~/bin
+
+source ~/.aliases
+
+# Clean-up
+unset -f prepend_path
+
+echo ".shellrc loaded for $OSFOUND"

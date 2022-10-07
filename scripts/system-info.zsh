@@ -2,27 +2,9 @@
 
 # os-check - get basic info about OS running the script, OS version, build.
 
-echo "uname: $(uname)" # Linux, Darwin, mysu
-echo "OSTYPE: $OSTYPE" # Linux, darwin21, msys
+echo "uname: $(uname)" # Linux, Darwin, MINGW64_NT-10.0-25211
+echo "OSTYPE: $OSTYPE" # linux-gnu, darwin21, msys
 uname -a
-
-case "$(uname -sr)" in # # -s OS name -r OS release. E.g. "Darwin 21.6.0"
-Darwin*)
-    echo 'macOs / Mac OS X'
-    ;;
-Linux*Microsoft*)
-    echo 'WSL1' # Windows Subsystem for Linux
-    ;;
-Linux*)
-    echo 'Linux'
-    ;;
-CYGWIN* | MINGW* | MINGW32* | MSYS*)
-    echo 'MS Windows'
-    ;;
-*)
-    echo 'Other OS'
-    ;;
-esac
 
 if [[ "$(uname)" == "Darwin" ]]; then
     sw_vers                            # macOs and build version

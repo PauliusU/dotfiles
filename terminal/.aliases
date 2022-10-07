@@ -1,9 +1,6 @@
-# ~/.zsh_aliases
+# ~/.aliases
 
 # Navigation and file listing
-# alias ....="cd ../../.."
-# alias ...="cd ../.."
-# alias ..="cd .."
 alias cde="cd ~/code/"
 alias desk="cd ~/Desktop/"
 alias dev="cd ~/dev/"
@@ -11,6 +8,10 @@ alias docs="cd ~/Documents/"
 alias drb="cd ~/Dropbox/"
 alias dt="cd ~/Desktop/" # "dt" is also a command line tool to display information about your domain on Linux or Unix system
 alias dwn="cd ~/Downloads/"
+# Save and then change the current directory. With no arguments, pushd exchanges the top two directories.
+alias pu="pushd"
+# Remove the top entry from the directory stack, and cd to the new top directory.
+alias po="popd"
 # Always list directory contents upon "cd"
 function cd() {
 	builtin cd "$@" || exit
@@ -42,7 +43,6 @@ if [[ $(uname) == "Linux" ]]; then
 	alias au="sudo apt update"     # updates repositories
 	alias ag="sudo apt upgrade -y" # updates software (packages)
 	alias auu="sudo apt update && sudo apt upgrade -y"
-	echo "Linux aliases loaded"
 fi
 function updater() {
 	brew update
@@ -63,7 +63,10 @@ function apt-updater {
 # Sensible defaults
 alias df="df -h"     # human readable
 alias du="du -h"     # human readable
-alias htop="htop -t" # processes in an indented tree - control+C to stop.
+alias htop="htop -t" # processes in an indented tree - control+C to stop
+alias rm='rm -i'     # prompt before every removal
+alias cp='cp -i'     # prompt before overwrite
+alias mv='mv -i'     # prompt before overwrite
 
 # Time and Date
 alias fulldate="date +%F"
@@ -174,20 +177,26 @@ function merge_mp3s() {
 }
 
 # Shell control
+alias ag="alias | grep"
 alias brc="$EDITOR ~/.bashrc"
 alias c="clear"
 alias cls="clear" # or user keyboard shortcut Command + K { # K }
 alias ee="exit"
-alias reload="clear && exec ${SHELL} -l" # Reload the shell
-alias rr="source ~/.zshrc"               # ZSH settings reload
+alias fn='find . -name'              # Find by given NAME
+alias fnd='find . -type d -name'     # Find by given NAME
+alias fnf='find . -type f -name'    # Find by given NAME
+alias reload="source ~/.zshrc"       # ZSH settings reload
+alias rr="clear && exec ${SHELL} -l" # Reload the shell
+alias s="sudo"
+alias split_path='echo "$PATH" | sed "s/:/\n/g"' # Display PATH over multiple lines.
 alias zrc="$EDITOR ~/.zshrc"
 alias zshrc="${EDITOR} ${HOME}/.zshrc"
 
 # System control (startup, restart, shutdown, cron jobs)
-alias crn="crontab -e"                # edit current crontab
-alias restart="sudo shutdown -r now"  # requires root password, disable it by sudo chmod u+s /sbin/shutdown
+alias crn="crontab -e"                                    # edit current crontab
+alias restart="sudo shutdown -r now"                      # requires root password, disable it by sudo chmod u+s /sbin/shutdown
 alias services="systemctl list-unit-files | grep enabled" # List enabled services (Linux, WSL)
-alias shutdown="sudo shutdown -h now" # requires root password, disable it by sudo chmod u+s /sbin/shutdown
+alias shutdown="sudo shutdown -h now"                     # requires root password, disable it by sudo chmod u+s /sbin/shutdown
 alias startup="gnome-session-properties"
 
 # Program access
@@ -204,7 +213,9 @@ alias tt="tmux new -As main"              # Attach to (or create if needed) "mai
 alias vi="$BREW_HOME/bin/vi"
 alias vim="nvim"
 alias vimrc="${EDITOR} ${HOME}/.vimrc"
-alias tarx="tar -xvf"
+alias tarx="tar -xvf" # unzip
+alias tarz='tar czvf' # zip
+alias taru='tar xzvf' # unzip
 
 # Files and directories
 alias npc="nvim ~/Dropbox/DropsyncFiles/audiob/notes_PC.md"
