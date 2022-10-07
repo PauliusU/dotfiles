@@ -87,7 +87,10 @@ alias gs="git status"
 # JS/TS, npm, yarn
 alias yb="yarn build"
 alias yd="yarn dev"
+alias yl="yarn lint"
 alias ys="yarn start"
+alias yt="yarn test"
+alias yu="yarn lint && yarn test"
 alias yy="yarn install --check-files"
 # Python and pip (python is python3)
 alias pip=pip3
