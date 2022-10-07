@@ -8,6 +8,7 @@ behavior {
     }
 }
 keyBindings {
+    "Ctrl+Shift+P" "core.actions"
     "Ctrl+D" "core.favorites"
     "Shift+Ctrl+D" "core.favorites.add"
     "F2" "core.rename"
@@ -23,10 +24,12 @@ keyBindings {
     "Ctrl+L" "core.open.folder"
     "Ctrl+U" "core.pane.swap"
     "Ctrl+O" "core.queue"
-    "Opt+Shift+Return" "core.disk.usage"
     "Ctrl+B" "core.flatten"
     "Alt+Cmd+H" "core.display.hidden"
     "Ctrl+R" "core.refresh"
+    "Ctrl+Shift+F4" "core.symlink"
+    "Opt+Shift+Return" "core.disk.usage"
+    "Cmd+F11" "core.ext.terminal.open"
      "Ctrl+1" {
          id "core.ordering"
          ordering "name"
