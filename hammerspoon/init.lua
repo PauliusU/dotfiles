@@ -80,7 +80,7 @@ Hyper:bind({}, "S", fn.open("Marta"))
 Hyper:bind({}, "Z", fn.open("EasyFind"))
 Hyper:bind({}, "D", nil, fn.open("Visual Studio Code"))
 hs.hotkey.bind(mash, "C", fn.open("Visual Studio Code")) -- [ ⌃ + ⌥ + ⌘ + V ]
-Hyper:bind({}, "O", nil, fn.exec("code ~/Dropbox/code/dotfiles-macOs"))
+Hyper:bind({}, "O", nil, fn.exec("$HOME/bin/homebrew/bin/code $HOME/code/dotfiles"))
 Hyper:bind({}, "B", nil, fn.open("MongoDB Compass"))
 Hyper:bind({}, "P", nil, fn.open("Spotify"))
 Hyper:bind("Shift", "P", nil, fn.open("MPV"))
