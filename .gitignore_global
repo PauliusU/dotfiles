@@ -1,3 +1,5 @@
+# This is a user-level ignore file which applies even if a repo does not have a .gitgnore file
+# Make sure to setup excludesfile in your gitconfig file so that this ignore file is referenced
 # Example:
 # https://gist.github.com/jacobtomlinson/aace65a6920e44348d501da5e13a5a17
 
