@@ -162,6 +162,10 @@ if [[ $(uname) -eq "Darwin" ]]; then
     echo "**** Anki ****"
     brew install --cask anki
 
+    echo "**** DisplayLink Manager - control external displays ****"
+    brew tap homebrew/cask-drivers
+    brew install --cask displaylink
+
     echo "**** Dropbox sync ****"
     brew install --cask dropbox # official client (takes up device spot)
     # brew install maestral # does not take device spot, but slower sync
