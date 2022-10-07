@@ -5,8 +5,8 @@ ln -s ~/Dropbox/code ~/code
 ln -s ~/Dropbox/dev ~/dev
 ln -s ~/Dropbox/soft/mpv_portable/portable_config/* ~/.config/mpv
 ln -s ~/dev/config/.aws ~/.aws
-mv ~/.hammerspoon ~/.hammerspoon.bak
-ln -s $(pwd)/.hammerspoon ~/.hammerspoon
+mv ~/hammerspoon ~/.hammerspoon.bak
+ln -s $(pwd)/hammerspoon ~/.hammerspoon
 mv ~/.tmux.conf ~/.tmux.conf.bak
 ln -s $(pwd)/terminal/.tmux.conf ~/.tmux.conf
 mv ~/.aliases ~/.aliases.bak
