@@ -4,6 +4,8 @@
 
 # Reset all accesability settings
 sudo tccutil reset Accessibility
+# Reset macOS permissions for Alfred
+ reset All com.runningwithcrayons.Alfred
 
 # Uninstall all apps from macports
 sudo port -fp uninstall installed
