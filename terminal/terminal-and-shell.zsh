@@ -1,6 +1,6 @@
 #!/bin/zsh
 
-# check default shell
+# Check default shell
 which $SHELL
 
 echo "=============================== TERMINAL ================================"
@@ -50,18 +50,7 @@ if [[ $(uname) -eq "Darwin" ]]; then
     # Set ZSH_THEME="spaceship" in your .zshrc.
 fi
 
-# Copy ZSH aliases file to home
-rm -f ~/.zsh_aliases
-cp .zsh_aliases ~/
-
-echo "
-# CUSTOM
-export BREW_HOME="$HOME/bin/homebrew"
-export VOLTA_HOME="$HOME/.volta"
-export PATH="$BREW_HOME/bin:$VOLTA_HOME/bin:$PATH"
-
-# Load aliases
-. ~/.zsh_aliases
-" >>~/.zshrc
+echo "source ~/.shellrc" >>~/.zshrc
+echo "source ~/.shellrc" >>~/.bashrc
 
 source ~/.zshrc
