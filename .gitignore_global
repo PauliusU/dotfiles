@@ -5,3 +5,6 @@
 
 # Operating system generated files
 .DS_Store
+
+# Code Runner (VSCode extension) files
+tempCodeRunnerFile.*
