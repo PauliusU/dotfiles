@@ -82,7 +82,7 @@
                 "hidden": false,
                 "icon": "%PROGRAMFILES%\\Git\\mingw64\\share\\git\\git-for-windows.ico",
                 "name": "Git Bash",
-                "opacity": 5,
+                "opacity": 85,
                 "padding": "20, 20, 20, 20",
                 "startingDirectory": "%USERPROFILE%\\Downloads",
                 "useAcrylic": true
@@ -93,15 +93,16 @@
                 "commandline": "wsl.exe -d Ubuntu",
                 "cursorColor": "#FFFFFF",
                 "cursorShape": "bar",
-                "font": {
-                    "face": "Consolas",
+                "font": 
+                {
+                    "face": "Cascadia Code PL",
                     "size": 16
                 },
                 "guid": "{00000000-0000-0000-0000-000000000003}",
                 "historySize": 9001,
                 "icon": "ms-appx:///ProfileIcons/{9acb9455-ca41-5af7-950f-6bca1bc9722f}.png",
                 "name": "Ubuntu",
-                "opacity": 10,
+                "opacity": 85,
                 "padding": "0, 0, 0, 0",
                 "snapOnInput": true,
                 "startingDirectory": "%USERPROFILE%\\Downloads",
