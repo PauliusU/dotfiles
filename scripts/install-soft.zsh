@@ -23,9 +23,21 @@ echo "**** GIT ****"
 brew install git
 git config --global user.name "PauliusU"
 git config --global user.email "48020370+PauliusU@users.noreply.github.com"
-git config --global core.autocrlf input # line endings for OS compatability
-ln -s $(pwd)/.gitignore_global ~/.gitignore_global
+git config --global core.autocrlf input # Line endings for OS compatability
+git config --global core.editor "nvim"
+ln -sf $(pwd)/.gitignore_global ~/.gitignore_global
 git config --global core.excludesfile ~/.gitignore_global
+git config --global core.editor "nvim"
+# Git global aliases
+# ref: https://dev.to/michaelcurrin/dotfiles-git-config-348o
+# More useful branch list -a all branches, -v verbose
+git config --global alias.br "branch -a -v"
+# Cleaner status output 
+git config --global alias.st = "status -s -b"
+# View tags sorted by version number - newest first
+git config --global alias.tags = "! git tag | sort -V -r"
+# Show git info
+git config --global --list --show-origin # Show git global file and it's contents
 git --version
 
 echo "**** GitHub CLI ****"
