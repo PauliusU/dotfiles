@@ -48,6 +48,7 @@ map! <C-s> <esc>:update<CR><esc>i
 
 " Quit without saving with Ctrl+Q
 nnoremap <C-q> :q<CR>
+command QQ :q!
 
 " Select all with Ctrl+A
 map <silent> <C-a> <esc>ggVG<CR>
