@@ -210,13 +210,15 @@ alias bw="bwm-ng -d"     # network speed with dynamic units like K, M or G
 alias deb="sudo dpkg -i" # install deb package (for Ubuntu, Debian, Raspbian)
 alias nv="nvim"
 alias nvrc="${EDITOR} ${HOME}/.config/nvim/init.vim"
-alias rmm="rm -rf"                        # Remove non-empty folder
-alias space="du -h | awk 'END{print $1}'" # Space used by current folder (and subfolders)
-alias td="tmux detach"                    # Exit the tmux window to come back to later
-alias tl="tmux ls"                        # = tmux list-sessions
-alias tm="tmux"                           # = tmux new = tmux new-session
-alias tt="tmux new -As default"           # Attach to (or create if needed) "default" session
-alias vi="$BREW_HOME/bin/vi"
+alias rmm="rm -rf"                                        # Remove non-empty folder
+alias space="du -h | awk 'END{print $1}'"                 # Space used by current folder (and subfolders)
+alias td="tmux detach"                                    # Exit the tmux window to come back to later
+alias tl="tmux ls"                                        # = tmux list-sessions
+alias tm="tmux"                                           # = tmux new = tmux new-session
+alias tmks="tmux kill-server"                             # Cleanly and gracefully kill all tmux open sessions (and server)
+alias tmm="echo tmux: $TMUX"                              # = tmux new = tmux new-session
+alias tt="tmux switch -t default || tmux new -As default" # Switch to "default" session or create it if needed
+alias vi="$BREW_HOME/bin/vim"
 alias vim="nvim"
 alias vimrc="${EDITOR} ${HOME}/.vimrc"
 alias tarx="tar -xvf" # unzip
