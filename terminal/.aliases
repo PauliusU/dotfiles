@@ -37,11 +37,11 @@ if [[ $(uname) == "Linux" ]]; then
 	alias ai="sudo apt install"
 	alias ar="sudo apt remove"
 	alias aun="sudo apt remove"     # apt (un)install
-	alias arr="sudo apt autoremove" # remove packages are no longer needed as dependencies
+	alias arr="sudo apt autoremove" # Remove packages are no longer needed as dependencies
 	alias as="sudo apt search"
 	alias acs="apt-cache search"
-	alias au="sudo apt update"     # updates repositories
-	alias ag="sudo apt upgrade -y" # updates software (packages)
+	alias au="sudo apt update"     # Update repositories
+	alias ag="sudo apt upgrade -y" # Update software (packages)
 	alias auu="sudo apt update && sudo apt upgrade -y"
 fi
 function updater() {
@@ -186,7 +186,7 @@ function merge_mp3s() {
 alias ag="alias | grep"
 alias brc="$EDITOR ~/.bashrc"
 alias c="clear"
-alias cls="clear" # or user keyboard shortcut Command + K { # K }
+alias cls="clear" # Or user keyboard shortcut Command + K { # K }
 alias ee="exit"
 alias fn='find . -name'              # Find by given NAME
 alias fnd='find . -type d -name'     # Find by given NAME
@@ -199,15 +199,15 @@ alias zrc="$EDITOR ~/.zshrc"
 alias zshrc="${EDITOR} ${HOME}/.zshrc"
 
 # System control (startup, restart, shutdown, cron jobs)
-alias crn="crontab -e"                                    # edit current crontab
-alias restart="sudo shutdown -r now"                      # requires root password, disable it by sudo chmod u+s /sbin/shutdown
+alias crn="crontab -e"                                    # Edit current crontab
+alias restart="sudo shutdown -r now"                      # Requires root password, disable it by sudo chmod u+s /sbin/shutdown
 alias services="systemctl list-unit-files | grep enabled" # List enabled services (Linux, WSL)
-alias shutdown="sudo shutdown -h now"                     # requires root password, disable it by sudo chmod u+s /sbin/shutdown
+alias shutdown="sudo shutdown -h now"                     # Requires root password, disable it by sudo chmod u+s /sbin/shutdown
 alias startup="gnome-session-properties"
 
 # Program access
-alias bw="bwm-ng -d"     # network speed with dynamic units like K, M or G
-alias deb="sudo dpkg -i" # install deb package (for Ubuntu, Debian, Raspbian)
+alias bw="bwm-ng -d"     # Network speed with dynamic units like K, M or G
+alias deb="sudo dpkg -i" # Install deb package (for Ubuntu, Debian, Raspbian)
 alias nv="nvim"
 alias nvrc="${EDITOR} ${HOME}/.config/nvim/init.vim"
 alias rmm="rm -rf"                                        # Remove non-empty folder
@@ -221,9 +221,9 @@ alias tt="tmux switch -t default || tmux new -As default" # Switch to "default" 
 alias vi="$BREW_HOME/bin/vim"
 alias vim="nvim"
 alias vimrc="${EDITOR} ${HOME}/.vimrc"
-alias tarx="tar -xvf" # unzip
-alias tarz='tar czvf' # zip
-alias taru='tar xzvf' # unzip
+alias tarx="tar -xvf" # Unzip
+alias tarz='tar czvf' # Zip
+alias taru='tar xzvf' # Unzip
 
 # Files and directories
 alias npc="nvim ~/Dropbox/DropsyncFiles/audiob/notes_PC.md"
