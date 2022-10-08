@@ -81,9 +81,12 @@ alias ip="echo 'External IP:\n\n$(dig +short myip.opendns.com @resolver1.opendns
 alias ips="ifconfig | grep inet | grep -v inet6 | awk '{print $2}'"
 
 # Git
-alias gcg="git config --global --list" # show global git config
-alias gll="git log"                    # "gl" is alias for "git pull" in git plugin
-alias gs="git status"
+alias gcca="git config --list"                                                          # Show git config
+alias gccg="git config --list --global"                                                 # Show global git config
+alias gccl="git config --list --local"                                                  # Show local git config
+alias gw="git config --get core.isWork || echo false"                                   # Check if work config is applied
+alias gll="git log --pretty='%C(yellow)%h %Creset%C(cyan)%ar %C(green)%an %C(reset)%s'" # Prettier git log. "gl" is alias for "git pull" in git plugin
+alias gs="git status -s -b"                                                             # Cleaner git status
 # JS/TS, npm, yarn
 alias yb="yarn build"
 alias yd="yarn dev"
