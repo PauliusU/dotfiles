@@ -1,5 +1,8 @@
-﻿; AHK main entry point
-
+﻿/*
+AHK main entry point
+Used to import other modules and set keyboar shortcuts in single place
+Syntax: AutoHotkey v1.1 (originally called AutoHotkey_L)
+*/
 #NoEnv
 #SingleInstance, Force ; Replace the old instance
 SendMode, Input
@@ -13,4 +16,11 @@ MsgBox, , , AHK, 0.4 ; Nofity that script has loaded
 #Include, %A_ScriptDir%\private\MAIN.ahk
 
 ; Keyboard shortcuts
+; Window management
 CapsLock & Enter:: MaximizeActiveWindow()
+![:: PreviousWindow()
+!]:: NextWindow()
+^#,:: NextWindow()
+^#.:: PreviousWindow()
+^#WheelDown:: PreviousWindow()
+^#WheelUp:: NextWindow()
