@@ -218,6 +218,7 @@ alias tm="tmux"                                           # = tmux new = tmux ne
 alias tmks="tmux kill-server"                             # Cleanly and gracefully kill all tmux open sessions (and server)
 alias tmm="echo tmux: $TMUX"                              # = tmux new = tmux new-session
 alias tt="tmux switch -t default || tmux new -As default" # Switch to "default" session or create it if needed
+alias tmx="tmux new-session -ADs default"
 alias vi="$BREW_HOME/bin/vim"
 alias vim="nvim"
 alias vimrc="${EDITOR} ${HOME}/.vimrc"
