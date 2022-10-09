@@ -82,10 +82,10 @@
                 "hidden": false,
                 "icon": "%PROGRAMFILES%\\Git\\mingw64\\share\\git\\git-for-windows.ico",
                 "name": "Git Bash",
-                "opacity": 85,
+                "opacity": 80,
                 "padding": "20, 20, 20, 20",
                 "startingDirectory": "%USERPROFILE%\\Downloads",
-                "useAcrylic": true
+                "useAcrylic": false
             },
             { // Ubuntu
                 "closeOnExit": true,
