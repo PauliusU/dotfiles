@@ -109,6 +109,11 @@ alias pes="pipenv shell"      # activate virtual environment
 alias peu="pipenv update"     # update all or specified dependencies
 alias peun="pipenv uninstall" # uninstall dependency
 alias pew="pipenv --venv"     # check location of the environment
+# Docker
+alias doa="docker attach"  # Get back to running container
+alias dops="docker ps"     # See running containers = docker container ls
+alias dopss="docker ps- a" # See all containers (not only those that run) = docker container ls -a
+alias dols="docker images" # See downloaded images = docker image ls
 
 # Run scripts and functions
 alias fss="~/code/dotfiles-macOs/fs.zsh"
