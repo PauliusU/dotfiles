@@ -125,7 +125,7 @@ if [[ $(uname) -eq "Darwin" ]]; then
     echo "**** Docker ****"
     brew install --cask docker # Docker desktop
     docker -v                  # = docker --version
-    docker version             # More info hant docker -v
+    docker version             # More info than docker -v
     docker-compose --version
 
     echo "**** Git client git-fork ****"
