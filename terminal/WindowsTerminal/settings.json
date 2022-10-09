@@ -57,26 +57,29 @@
         },
         "list": 
         [
-            { // PowerShell
+            {
+                // PowerShell
                 "commandline": "%SystemRoot%\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
                 "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
                 "hidden": false,
                 "name": "Windows PowerShell"
             },
-            { // default CMD
+            {
+                // default CMD
                 "commandline": "%SystemRoot%\\System32\\cmd.exe",
                 "guid": "{0caa0dad-35be-5f56-a8ff-afceeeaa6101}",
                 "hidden": true,
                 "name": "Command Prompt",
                 "startingDirectory": "%USERPROFILE%\\Downloads"
             },
-            { // custom CMD
+            {   // custom CMD
                 "commandline": "cmd.exe /K @echo off & d: & d:\\Dropbox\\code\\dotfiles\\terminal\\cmdrc.cmd & c: & @echo on",
                 "guid": "{00000000-0000-0000-0000-000000000001}",
                 "hidden": false,
                 "name": "Command Prompt CUSTOM"
             },
-            { // Git Bah
+            {
+                 // Git Bash
                 "commandline": "%PROGRAMFILES%\\Git\\bin\\bash.exe",
                 "guid": "{00000000-0000-0000-0000-000000000002}",
                 "hidden": false,
@@ -87,8 +90,8 @@
                 "startingDirectory": "%USERPROFILE%\\Downloads",
                 "useAcrylic": false
             },
-            { // Ubuntu
-                "closeOnExit": true,
+            {
+                // Ubuntu
                 "colorScheme": "Campbell",
                 "commandline": "wsl.exe -d Ubuntu",
                 "cursorColor": "#FFFFFF",
@@ -108,13 +111,15 @@
                 "startingDirectory": "%USERPROFILE%\\Downloads",
                 "useAcrylic": true
             },
-            { // Debian
+            {
+                // Debian
                 "guid": "{58ad8b0c-3ef8-5f4d-bc6f-13e4c00f2530}",
                 "hidden": true,
                 "name": "Debian",
                 "source": "Windows.Terminal.Wsl"
             },
-            { // Azure Cloud Shell
+            {
+                // Azure Cloud Shell
                 "guid": "{b453ae62-4e3d-5e58-b989-0a998ec441b8}",
                 "hidden": true,
                 "name": "Azure Cloud Shell",
