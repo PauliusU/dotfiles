@@ -32,7 +32,7 @@ git config --global core.editor "nvim"
 # ref: https://dev.to/michaelcurrin/dotfiles-git-config-348o
 # More useful branch list -a all branches, -v verbose
 git config --global alias.br "branch -a -v"
-# Cleaner status output 
+# Cleaner status output
 git config --global alias.st = "status -s -b"
 # View tags sorted by version number - newest first
 git config --global alias.tags = "! git tag | sort -V -r"
@@ -124,7 +124,9 @@ rustc --version
 if [[ $(uname) -eq "Darwin" ]]; then
     echo "**** Docker ****"
     brew install --cask docker # Docker desktop
-    docker -v
+    docker -v                  # = docker --version
+    docker version             # More info hant docker -v
+    docker-compose --version
 
     echo "**** Git client git-fork ****"
     brew install --cask fork
