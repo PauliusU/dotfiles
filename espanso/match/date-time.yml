@@ -1,7 +1,9 @@
 name: date-time
 matches:
   # Print the current date
-  - trigger: ':date'
+  - triggers:
+    - ':date'
+    - 'date;'
     replace: '{{mydate}}'
     vars:
       - name: mydate
@@ -12,16 +14,19 @@ matches:
 
   # Current week number in a year
   - triggers:
-      - ':wk'
       - ':week'
-    replace: '{{myweek}}'
+      - ':wk'
+      - 'wk;'
+    replace: 'W{{myweek}}'
     vars:
       - name: myweek
         type: date
         params:
           format: '%W'
 
-  - trigger: ':now'
+  - triggers:
+    - ':now'
+    - 'now;'
     replace: '{{hhmm}}'
     vars:
       - name: hhmm
