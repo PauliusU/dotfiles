@@ -62,26 +62,6 @@ function apt-updater {
 	# sudo do-release-upgrade
 }
 
-# Sensible defaults
-alias df="df -h"     # Human readable
-alias du="du -h"     # Human readable
-alias htop="htop -t" # Processes in an indented tree - control+C to stop
-alias rm='rm -i'     # Prompt before every removal
-alias cp='cp -i'     # Prompt before overwrite
-alias mv='mv -i'     # Prompt before overwrite
-
-# Time and Date
-alias fulldate="date +%F"
-#  Get week number
-alias week="date +%V"
-# Stopwatch
-alias timer="echo 'Timer started. <crtl+d> to break.' && date && time cat && date"
-
-# Network
-# IP addresses
-alias ip="echo 'External IP:\n\n$(dig +short myip.opendns.com @resolver1.opendns.com)'" # External IP
-alias ips="ifconfig | grep inet | grep -v inet6 | awk '{print $2}'" # Internal IPs
-
 # Git
 alias gcca="git config --list"                                                          # Show git config
 alias gccg="git config --list --global"                                                 # Show global git config
@@ -118,7 +98,73 @@ alias dops="docker ps"     # See running containers = docker container ls
 alias dopss="docker ps- a" # See all containers (not only those that run) = docker container ls -a
 alias dols="docker images" # See downloaded images = docker image ls
 
-# Run scripts and functions
+# Shell control
+alias ag="alias | grep"                          # Quick search in aliases
+alias brc="$EDITOR ~/.bashrc"                    # Bash config
+alias c="clear"                                  # Clear shell screen
+alias cls="clear"                                # Or user keyboard shortcut Command + K { # K }
+alias ee="exit"                                  # Quit shell (one of alternative aliased)
+alias fn='find . -name'                          # Find by given NAME
+alias fnd='find . -type d -name'                 # Find by given NAME
+alias fnf='find . -type f -name'                 # Find by given NAME
+alias p="pwd"                                    # Print working directory
+alias reload="source ~/.zshrc"                   # ZSH settings reload
+alias rr="clear && exec ${SHELL} -l"             # Reload the shell
+alias s="sudo"                                   # Sudo shorthand
+alias split_path='echo "$PATH" | sed "s/:/\n/g"' # Display PATH over multiple lines.
+alias x='exit'                                   # Quit shell (one of alternative aliased)
+alias zrc="$EDITOR ~/.zshrc"                     # ZSH config
+alias zshrc="${EDITOR} ${HOME}/.zshrc"           # Alternative alias for ZSH config
+
+# Sensible defaults (same command but with differrent default value)
+alias df="df -h"     # Human readable
+alias du="du -h"     # Human readable
+alias htop="htop -t" # Processes in an indented tree - control+C to stop
+alias rm='rm -i'     # Prompt before every removal
+alias cp='cp -i'     # Prompt before overwrite
+alias mv='mv -i'     # Prompt before overwrite
+
+# System control (startup, restart, shutdown, cron jobs)
+alias crn="crontab -e"                                    # Edit current crontab
+alias restart="sudo shutdown -r now"                      # Requires root password, disable it by sudo chmod u+s /sbin/shutdown
+alias services="systemctl list-unit-files | grep enabled" # List enabled services (Linux, WSL)
+alias shutdown="sudo shutdown -h now"                     # Requires root password, disable it by sudo chmod u+s /sbin/shutdown
+alias startup="gnome-session-properties"
+
+# Program access
+alias bw="bwm-ng -d"                                      # Network speed with dynamic units like K, M or G
+alias deb="sudo dpkg -i"                                  # Install deb package (for Ubuntu, Debian, Raspbian)
+alias nv="nvim"                                           # Neovim
+alias nvrc="${EDITOR} ${HOME}/.config/nvim/init.vim"      # Neovim config
+alias rmm="rm -rf"                                        # Remove non-empty folder
+alias space="du -h | awk 'END{print $1}'"                 # Space used by current folder (and subfolders)
+alias td="tmux detach"                                    # Exit the tmux window to come back to later
+alias tl="tmux ls"                                        # = tmux list-sessions
+alias tm="tmux"                                           # = tmux new = tmux new-session
+alias tmks="tmux kill-server"                             # Cleanly and gracefully kill all tmux open sessions (and server)
+alias tmm="echo tmux: $TMUX"                              # = tmux new = tmux new-session
+alias tt="tmux switch -t default || tmux new -As default" # Switch to "default" session or create it if needed
+alias tmx="tmux new-session -ADs default"                 # Create "default" session or attach to it (if exists)
+alias vi="$BREW_HOME/bin/vim"                             # Shothand for vim
+alias vim="nvim"                                          # Replace vim with neovim
+alias vimrc="${EDITOR} ${HOME}/.vimrc"                    # Vim config
+alias tarx="tar -xvf"                                     # Unzip
+alias tarz='tar czvf'                                     # Zip
+alias taru='tar xzvf'                                     # Unzip
+
+# Time and Date
+alias fulldate="date +%F"
+#  Get week number
+alias week="date +%V"
+# Stopwatch
+alias timer="echo 'Timer started. <crtl+d> to break.' && date && time cat && date"
+
+# Network
+# IP addresses
+alias ip="echo 'External IP:\n\n$(dig +short myip.opendns.com @resolver1.opendns.com)'" # External IP
+alias ips="ifconfig | grep inet | grep -v inet6 | awk '{print $2}'"                     # Internal IPs
+
+# Scripts and functions
 alias fss="$SCRIPTS_PATH/fs.sh"
 function ytpl() {
 	#  Download youtube laylist or channel
@@ -189,50 +235,6 @@ function merge_mp3s() {
 	rm list.txt
 	mv merged.mp3 "${PWD##*/}".mp3
 }
-
-# Shell control
-alias ag="alias | grep"                          # Quick search in aliases
-alias brc="$EDITOR ~/.bashrc"                    # Bash config
-alias c="clear"                                  # Clear shell screen
-alias cls="clear"                                # Or user keyboard shortcut Command + K { # K }
-alias ee="exit"                                  # Quit shell
-alias fn='find . -name'                          # Find by given NAME
-alias fnd='find . -type d -name'                 # Find by given NAME
-alias fnf='find . -type f -name'                 # Find by given NAME
-alias reload="source ~/.zshrc"                   # ZSH settings reload
-alias rr="clear && exec ${SHELL} -l"             # Reload the shell
-alias s="sudo"                                   # Sudo shorthand
-alias split_path='echo "$PATH" | sed "s/:/\n/g"' # Display PATH over multiple lines.
-alias zrc="$EDITOR ~/.zshrc"                     # ZSH config
-alias zshrc="${EDITOR} ${HOME}/.zshrc"           # Alternative alias for ZSH config
-
-# System control (startup, restart, shutdown, cron jobs)
-alias crn="crontab -e"                                    # Edit current crontab
-alias restart="sudo shutdown -r now"                      # Requires root password, disable it by sudo chmod u+s /sbin/shutdown
-alias services="systemctl list-unit-files | grep enabled" # List enabled services (Linux, WSL)
-alias shutdown="sudo shutdown -h now"                     # Requires root password, disable it by sudo chmod u+s /sbin/shutdown
-alias startup="gnome-session-properties"
-
-# Program access
-alias bw="bwm-ng -d"                                      # Network speed with dynamic units like K, M or G
-alias deb="sudo dpkg -i"                                  # Install deb package (for Ubuntu, Debian, Raspbian)
-alias nv="nvim"                                           # Neovim
-alias nvrc="${EDITOR} ${HOME}/.config/nvim/init.vim"      # Neovim config
-alias rmm="rm -rf"                                        # Remove non-empty folder
-alias space="du -h | awk 'END{print $1}'"                 # Space used by current folder (and subfolders)
-alias td="tmux detach"                                    # Exit the tmux window to come back to later
-alias tl="tmux ls"                                        # = tmux list-sessions
-alias tm="tmux"                                           # = tmux new = tmux new-session
-alias tmks="tmux kill-server"                             # Cleanly and gracefully kill all tmux open sessions (and server)
-alias tmm="echo tmux: $TMUX"                              # = tmux new = tmux new-session
-alias tt="tmux switch -t default || tmux new -As default" # Switch to "default" session or create it if needed
-alias tmx="tmux new-session -ADs default"                 # Create "default" session or attach to it (if exists)
-alias vi="$BREW_HOME/bin/vim"                             # Shothand for vim
-alias vim="nvim"                                          # Replace vim with neovim
-alias vimrc="${EDITOR} ${HOME}/.vimrc"                    # Vim config
-alias tarx="tar -xvf"                                     # Unzip
-alias tarz='tar czvf'                                     # Zip
-alias taru='tar xzvf'                                     # Unzip
 
 # Files and directories
 alias npc="nvim ~/Dropbox/DropsyncFiles/audiob/notes_PC.md"
