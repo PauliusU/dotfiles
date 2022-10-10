@@ -16,11 +16,14 @@ MsgBox, , , AHK, 0.4 ; Nofity that script has loaded
 #Include, %A_ScriptDir%\private\MAIN.ahk
 
 ; Keyboard shortcuts
-; Window management
+
+; AHK Control
+^!+F5:: Reload ; Reload AHK scriptA
+
+; Window management (Alt-Win based)
+!#Enter:: MaximizeActiveWindow()
 CapsLock & Enter:: MaximizeActiveWindow()
-![:: PreviousWindow()
-!]:: NextWindow()
-^#,:: NextWindow()
-^#.:: PreviousWindow()
-^#WheelDown:: PreviousWindow()
-^#WheelUp:: NextWindow()
+!#[:: PreviousWindow()
+!#]:: NextWindow()
+!#WheelDown:: PreviousWindow()
+!#WheelUp:: NextWindow()
