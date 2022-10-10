@@ -10,7 +10,7 @@ autocmd VimEnter *
 colorscheme onedark
 
 """ Nerd tree 
-" Open with Ctrl+R
+" Open with Ctrl-E
 nnoremap <C-e> :NERDTreeToggle<CR>
 
 """ Telescope
@@ -24,7 +24,8 @@ nnoremap <leader>fd <cmd>Telescope git_files<cr>
 """ fzf
 " Git files
 nnoremap <C-p> :GFiles<cr> 
-nnoremap <leager>pf :Files<cr> " Project files
+" Project files
+nnoremap <leader>pf :Files<cr> 
 
 """ ALE (ESlint)
 "  Set ESLint as plugging manager
