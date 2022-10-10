@@ -9,7 +9,7 @@ IS_WSL=false
 # Determine OS by OS name (-s) and OS release (-r) like "Darwin 21.6.0"
 case "$(uname -sr)" in #
 Darwin*)
-    OSFOUND="macOs"
+    OSFOUND="macOS"
     IS_MAC=true
     ;;
 Linux*microsoft*)
