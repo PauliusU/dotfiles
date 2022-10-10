@@ -39,9 +39,9 @@ git config --global core.editor "nvim"
 # More useful branch list -a all branches, -v verbose
 git config --global alias.br "branch -a -v"
 # Cleaner status output
-git config --global alias.st = "status -s -b"
-# View tags sorted by version number - newest first
-git config --global alias.tags = "! git tag | sort -V -r"
+git config --global alias.st "status -s -b"
+# View tags sorted by version number oldest first (use -r for newest first)
+git config --global alias.tags "! git tag | sort -V"
 # Show git info
 # git config --global --list --show-origin # Show git global file and it's contents
 git --version
