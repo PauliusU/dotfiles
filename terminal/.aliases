@@ -1,5 +1,7 @@
 # ~/.aliases
 
+SCRIPTS_PATH="~/Dropbox/code/dotfiles/scripts"
+
 # Navigation and file listing
 alias cde="cd ~/code/"
 alias desk="cd ~/Desktop/"
@@ -117,7 +119,7 @@ alias dopss="docker ps- a" # See all containers (not only those that run) = dock
 alias dols="docker images" # See downloaded images = docker image ls
 
 # Run scripts and functions
-alias fss="~/code/dotfiles-macOS/fs.zsh"
+alias fss="$SCRIPTS_PATH/fs.sh"
 function ytpl() {
 	#  Download youtube laylist or channel
 
