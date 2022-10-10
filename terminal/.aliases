@@ -38,7 +38,7 @@ alias sysu="softwareupdate -ai"  # Run all macOS updates for Xcode, etc..
 if [[ $(uname) == "Linux" ]]; then
 	alias ai="sudo apt install"
 	alias ar="sudo apt remove"
-	alias aun="sudo apt remove"     # apt (un)install
+	alias aun="sudo apt remove"     # (a)pt (un)install
 	alias arr="sudo apt autoremove" # Remove packages are no longer needed as dependencies
 	alias as="sudo apt search"
 	alias acs="apt-cache search"
@@ -63,12 +63,12 @@ function apt-updater {
 }
 
 # Sensible defaults
-alias df="df -h"     # human readable
-alias du="du -h"     # human readable
-alias htop="htop -t" # processes in an indented tree - control+C to stop
-alias rm='rm -i'     # prompt before every removal
-alias cp='cp -i'     # prompt before overwrite
-alias mv='mv -i'     # prompt before overwrite
+alias df="df -h"     # Human readable
+alias du="du -h"     # Human readable
+alias htop="htop -t" # Processes in an indented tree - control+C to stop
+alias rm='rm -i'     # Prompt before every removal
+alias cp='cp -i'     # Prompt before overwrite
+alias mv='mv -i'     # Prompt before overwrite
 
 # Time and Date
 alias fulldate="date +%F"
@@ -80,7 +80,7 @@ alias timer="echo 'Timer started. <crtl+d> to break.' && date && time cat && dat
 # Network
 # IP addresses
 alias ip="echo 'External IP:\n\n$(dig +short myip.opendns.com @resolver1.opendns.com)'" # External IP
-alias ips="ifconfig | grep inet | grep -v inet6 | awk '{print $2}'"
+alias ips="ifconfig | grep inet | grep -v inet6 | awk '{print $2}'" # Internal IPs
 
 # Git
 alias gcca="git config --list"                                                          # Show git config
@@ -191,20 +191,20 @@ function merge_mp3s() {
 }
 
 # Shell control
-alias ag="alias | grep"
-alias brc="$EDITOR ~/.bashrc"
-alias c="clear"
-alias cls="clear" # Or user keyboard shortcut Command + K { # K }
-alias ee="exit"
-alias fn='find . -name'              # Find by given NAME
-alias fnd='find . -type d -name'     # Find by given NAME
-alias fnf='find . -type f -name'     # Find by given NAME
-alias reload="source ~/.zshrc"       # ZSH settings reload
-alias rr="clear && exec ${SHELL} -l" # Reload the shell
-alias s="sudo"
+alias ag="alias | grep"                          # Quick search in aliases
+alias brc="$EDITOR ~/.bashrc"                    # Bash config
+alias c="clear"                                  # Clear shell screen
+alias cls="clear"                                # Or user keyboard shortcut Command + K { # K }
+alias ee="exit"                                  # Quit shell
+alias fn='find . -name'                          # Find by given NAME
+alias fnd='find . -type d -name'                 # Find by given NAME
+alias fnf='find . -type f -name'                 # Find by given NAME
+alias reload="source ~/.zshrc"                   # ZSH settings reload
+alias rr="clear && exec ${SHELL} -l"             # Reload the shell
+alias s="sudo"                                   # Sudo shorthand
 alias split_path='echo "$PATH" | sed "s/:/\n/g"' # Display PATH over multiple lines.
-alias zrc="$EDITOR ~/.zshrc"
-alias zshrc="${EDITOR} ${HOME}/.zshrc"
+alias zrc="$EDITOR ~/.zshrc"                     # ZSH config
+alias zshrc="${EDITOR} ${HOME}/.zshrc"           # Alternative alias for ZSH config
 
 # System control (startup, restart, shutdown, cron jobs)
 alias crn="crontab -e"                                    # Edit current crontab
@@ -214,10 +214,10 @@ alias shutdown="sudo shutdown -h now"                     # Requires root passwo
 alias startup="gnome-session-properties"
 
 # Program access
-alias bw="bwm-ng -d"     # Network speed with dynamic units like K, M or G
-alias deb="sudo dpkg -i" # Install deb package (for Ubuntu, Debian, Raspbian)
-alias nv="nvim"
-alias nvrc="${EDITOR} ${HOME}/.config/nvim/init.vim"
+alias bw="bwm-ng -d"                                      # Network speed with dynamic units like K, M or G
+alias deb="sudo dpkg -i"                                  # Install deb package (for Ubuntu, Debian, Raspbian)
+alias nv="nvim"                                           # Neovim
+alias nvrc="${EDITOR} ${HOME}/.config/nvim/init.vim"      # Neovim config
 alias rmm="rm -rf"                                        # Remove non-empty folder
 alias space="du -h | awk 'END{print $1}'"                 # Space used by current folder (and subfolders)
 alias td="tmux detach"                                    # Exit the tmux window to come back to later
@@ -226,13 +226,13 @@ alias tm="tmux"                                           # = tmux new = tmux ne
 alias tmks="tmux kill-server"                             # Cleanly and gracefully kill all tmux open sessions (and server)
 alias tmm="echo tmux: $TMUX"                              # = tmux new = tmux new-session
 alias tt="tmux switch -t default || tmux new -As default" # Switch to "default" session or create it if needed
-alias tmx="tmux new-session -ADs default"
-alias vi="$BREW_HOME/bin/vim"
-alias vim="nvim"
-alias vimrc="${EDITOR} ${HOME}/.vimrc"
-alias tarx="tar -xvf" # Unzip
-alias tarz='tar czvf' # Zip
-alias taru='tar xzvf' # Unzip
+alias tmx="tmux new-session -ADs default"                 # Create "default" session or attach to it (if exists)
+alias vi="$BREW_HOME/bin/vim"                             # Shothand for vim
+alias vim="nvim"                                          # Replace vim with neovim
+alias vimrc="${EDITOR} ${HOME}/.vimrc"                    # Vim config
+alias tarx="tar -xvf"                                     # Unzip
+alias tarz='tar czvf'                                     # Zip
+alias taru='tar xzvf'                                     # Unzip
 
 # Files and directories
 alias npc="nvim ~/Dropbox/DropsyncFiles/audiob/notes_PC.md"
