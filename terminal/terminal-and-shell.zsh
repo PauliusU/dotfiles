@@ -13,6 +13,7 @@ fi
 echo "**** tmux ****"
 brew install tmux
 tmux -V # Capital V
+ln -sf $(pwd)/terminal/.tmux.conf ~/.tmux.conf
 
 echo "================================ ZSH ===================================="
 
@@ -50,6 +51,8 @@ if [[ $(uname) -eq "Darwin" ]]; then
     # Set ZSH_THEME="spaceship" in your .zshrc.
 fi
 
+ln -sf $(pwd)/terminal/.aliases ~/.aliases
+ln -sf $(pwd)/terminal/.shellrc ~/.shellrc
 echo "source ~/.shellrc" >>~/.zshrc
 echo "source ~/.shellrc" >>~/.bashrc
 

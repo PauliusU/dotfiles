@@ -1,5 +1,7 @@
 #!/bin/zsh
 
+# Install software and setup symlinks
+
 echo "=========================== BREW [NON ADMIN] ============================"
 mkdir -p ~/bin
 cd ~/bin
@@ -9,14 +11,15 @@ brew update --force --quiet
 chmod -R go-w "$(brew --prefix)/share/zsh"
 
 brew --version
-brew update  # update brew itself
-brew upgrade # update packages (installed programs)
+brew update  # Update brew itself
+brew upgrade # Update packages (installed programs)
 
 echo "=============================== DEV TOOLS ==============================="
 
 echo "**** AWS CLI ****"
 brew install awscli
 aws --version
+ln -sf ~/Dropbox/dev/config/.aws ~/.aws
 
 echo "**** GIT ****"
 # sudo apt install -y git
@@ -37,7 +40,7 @@ git config --global alias.st = "status -s -b"
 # View tags sorted by version number - newest first
 git config --global alias.tags = "! git tag | sort -V -r"
 # Show git info
-git config --global --list --show-origin # Show git global file and it's contents
+# git config --global --list --show-origin # Show git global file and it's contents
 git --version
 
 echo "**** GitHub CLI ****"
@@ -55,6 +58,10 @@ brew install vim
 # Install vim-plug for vim
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
+ln -sf $(pwd)/nvim ~/.config/nvim
+ln -sf $(pwd)/nvim ~/.vim
+ln -sf $(pwd)/nvim/init.vim ~/.vimrc
 
 echo "**** Python [Python 3] and artificial intelligence ****"
 
@@ -190,6 +197,7 @@ if [[ $(uname) -eq "Darwin" ]]; then
 
     echo "**** File management ****"
     brew install --cask marta # Marta File Manager for macOS. Native. Extensible. Fast. 🚀
+    ln -sf $(pwd)/marta ~/Library/Application\ Support/org.yanex.marta
     # sudo apt install -y doublecmd-gtk # GUI file manager
     brew install --cask double-commander
 
@@ -200,8 +208,9 @@ if [[ $(uname) -eq "Darwin" ]]; then
 
     echo "**** Keyboard and automation (shortcuts, text expansion) ****"
     # Better shortcuts with Karabiner Elements and Hammerspoon
-    brew install --cask karabiner-elements # free, open source, mac. Remap the keys on a Mac at the kernel level. Ex KeyRemap4MacBook
-    brew install --cask hammerspoon        # free, open source, mac
+    brew install --cask karabiner-elements # Free, open source, mac. Remap the keys on a Mac at the kernel level. Ex KeyRemap4MacBook
+    brew install --cask hammerspoon        # Free, open source, mac
+    ln -sf $(pwd)/hammerspoon ~/.hammerspoon
 
     # Espanso. Free, open source, cross-platform
     brew tap espanso/espanso # Add espanso tap, because Espanso is hosted outside the core homebrew repository
@@ -212,6 +221,7 @@ if [[ $(uname) -eq "Darwin" ]]; then
     espanso package list       # List installed espanso packages
     espanso package update all # Update all packages
     espanso --version
+    ln -sf $(pwd)/espanso ~/Library/Application\ Support/espanso
 
     # ### macOS built-in options ####
     # Script Editor (called AppleScript Editor from 2009 to 2014) for the AppleScript and Javascript
@@ -220,8 +230,8 @@ if [[ $(uname) -eq "Darwin" ]]; then
     # Shortcuts / apple shortcuts / siri shortcuts (formerly Workflow). Syncs with iPhone.
 
     # Other autmation options
-    brew install --cask keyboard-maestro # paid, mac only
-    brew install --cask textexpander     # paid, cross-platform
+    brew install --cask keyboard-maestro # Paid, mac only
+    brew install --cask textexpander     # Paid, cross-platform
 
     echo "**** Keepassxc - Keepass port for macOs ****"
     brew install --cask keepassxc
@@ -233,6 +243,8 @@ if [[ $(uname) -eq "Darwin" ]]; then
     echo "**** MPV ****"
     # sudo apt install -y mpv
     brew install --cask mpv
+    mpv --version
+    ln -sf ~/Dropbox/soft/mpv_portable/portable_config/* ~/.config/mpv
 
     echo "**** OBS Studio ****"
     brew install --cask obs
