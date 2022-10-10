@@ -7,7 +7,7 @@ echo "OSTYPE: $OSTYPE" # linux-gnu, darwin21, msys (Windows in Git Bash)
 uname -a
 
 if [[ "$(uname)" == "Darwin" ]]; then
-    sw_vers                            # macOs and build version
-    sw_vers -productVersion            # macOs version only
+    sw_vers                            # macOS and build version
+    sw_vers -productVersion            # macOS version only
     system_profiler SPSoftwareDataType # OS version, computer name, user name, etc.
 fi

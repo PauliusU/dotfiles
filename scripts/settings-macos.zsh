@@ -1,6 +1,6 @@
 #!/bin/zsh
 
-# macOs specific system preferences
+# macOS specific system preferences
 
 echo "**** Scroll direction - Disable “natural” (Lion-style) scrolling ****"
 # defaults write NSGlobalDomain com.apple.swipescrolldirection -bool false

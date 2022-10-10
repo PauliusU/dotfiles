@@ -194,7 +194,7 @@ if [[ $(uname) -eq "Darwin" ]]; then
     brew install --cask dropbox # official client (takes up device spot)
     # brew install maestral # does not take device spot, but slower sync
 
-    echo "**** Duti - file association manager (macOs only) ****"
+    echo "**** Duti - file association manager (macOS only) ****"
     brew install duti
     duti -V # capital V
 
@@ -236,7 +236,7 @@ if [[ $(uname) -eq "Darwin" ]]; then
     brew install --cask keyboard-maestro # Paid, mac only
     brew install --cask textexpander     # Paid, cross-platform
 
-    echo "**** Keepassxc - Keepass port for macOs ****"
+    echo "**** Keepassxc - Keepass port for macOS ****"
     brew install --cask keepassxc
     keepassxc-cli -v
 
