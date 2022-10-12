@@ -145,3 +145,12 @@ nnoremap <leader>} :lnext<CR>
 nnoremap <leader>{ :lprev<CR>
 "  nnoremap <leader>cc :lclose<CR>
 nnoremap <leader>cc :cclose :lclose<CR>
+
+fun! TrimWhiteSpace()
+    " Strip trailing whitespace from all lines in a file
+    " ref: https://vi.stackexchange.com/questions/454/whats-the-simplest-way-to-strip-trailing-whitespace-from-all-lines-in-a-file/456#456
+    let l:save = winsaveview()
+    keeppatterns %s/\s\+$//e
+    call winrestview(l:save)
+endfun
+
