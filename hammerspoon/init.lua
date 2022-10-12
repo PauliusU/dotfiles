@@ -92,6 +92,7 @@ Hyper:bind({}, "N", nil, fn.exec("open ~/Dropbox/DropsyncFiles/audiob/notes_PC.m
 Hyper:bind({}, "K", nil, fn.open("Ferdi"))
 Hyper:bind("Shift", "K", nil, fn.open("Slack"))
 Hyper:bind({}, "I", nil, fn.open("Preview"))
+Hyper:bind("Shift", "I", nil, fn.open("Foxit PDF Reader"))
 
 -- Window management
 -- -- Seature spectacle/another window sizing apps
