@@ -154,3 +154,9 @@ fun! TrimWhiteSpace()
     call winrestview(l:save)
 endfun
 
+augroup formatGroup
+    autocmd!
+    " BufWritePre   before writing buffer
+    " *             apply to all file types
+    autocmd BufWritePre * :call TrimWhiteSpace()
+augroup END
