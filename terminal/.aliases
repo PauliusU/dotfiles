@@ -70,6 +70,7 @@ alias gw="git config --get core.isWork || echo false"                           
 alias gll="git log --pretty='%C(yellow)%h %Creset%C(cyan)%ar %C(green)%an %C(reset)%s'" # Prettier git log. "gl" is alias for "git pull" in git plugin
 alias gs="git status -s -b"                                                             # Cleaner git status
 # JS/TS, npm, yarn
+alias ncuu="ncu --upgrade --target minor" # Upgrade to non breaking dependency versions (minor and bugfixes) in package.json
 alias yb="yarn build"
 alias yd="yarn dev"
 alias yl="yarn lint"
@@ -77,21 +78,21 @@ alias ys="yarn start"
 alias yt="yarn test"
 alias yu="yarn lint && yarn test"
 alias yy="yarn install --check-files"
-# Python and pip (python is python3)
+# Python and pip (act like python-is-python3)
 alias pip=pip3
 alias py=python3
 alias python=python3
 # Pipenv
-alias peg="pipenv graph"             # Dependency graph
-alias peh="pipenv --where"           # Project home path
-alias pei="pipenv install"           # Install dependencies
-alias per="pipenv run"               # Run a command in the virtual environment without launching a shell
-alias perm="pipenv --rm"             # Remove virtual environment
-alias pes="pipenv shell"             # Activate virtual environment
-alias pess="echo \"$PIPENV_ACTIVE\"" # Check if pipenv environment is activated
-alias peu="pipenv update"            # Update all or specified dependencies
-alias peun="pipenv uninstall"        # Uninstall dependency
-alias pew="pipenv --venv"            # Check location of the environment
+alias peg="pipenv graph"                                 # Dependency graph
+alias peh="pipenv --where"                               # Project home path
+alias pei="pipenv install"                               # Install dependencies
+alias per="pipenv run"                                   # Run a command in the virtual environment without launching a shell
+alias perm="pipenv --rm"                                 # Remove virtual environment
+alias pes="pipenv shell"                                 # Activate virtual environment
+alias pess="[ -z \"$PIPENV_ACTIVE\" ] && echo \"false\"" # Check if pipenv environment is activated
+alias peu="pipenv update"                                # Update all or specified dependencies
+alias peun="pipenv uninstall"                            # Uninstall dependency
+alias pew="pipenv --venv"                                # Check location of the environment
 # Docker
 alias doa="docker attach"  # Get back to running container
 alias dops="docker ps"     # See running containers = docker container ls
