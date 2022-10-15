@@ -90,3 +90,9 @@ defaults read com.apple.dock expose-animation-duration
 # Accessibility => Display => Reduce motion
 defaults write com.apple.universalaccess reduceMotion -bool true
 defaults read com.apple.universalaccess reduceMotion
+
+# Hide single external drive from desktop
+sudo chflags hidden /Volumes/SSD4
+killall Finder
+# # Unhide
+# sudo chflags nohidden /Volumes/SSD4
