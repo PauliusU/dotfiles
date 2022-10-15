@@ -269,3 +269,5 @@ function git_change_origin() {
 
 # Files and directories
 alias npc="nvim ~/Dropbox/DropsyncFiles/audiob/notes_PC.md"
+
+echo ".aliases loaded"
