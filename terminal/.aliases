@@ -19,6 +19,17 @@ function cd() {
 	builtin cd "$@" || exit
 	ls -A # List entries starting with ., but do not list implied . and ..
 }
+# If running bash
+if [ -n "$BASH_VERSION" ]; then
+	# Include .bashrc if it exists
+	if [ -f "$HOME/.bashrc" ]; then
+		. "$HOME/.bashrc"
+	fi
+	alias ....="cd ../../.."
+	alias ...="cd ../.."
+	alias ..="cd .."
+	echo "BASH settings and aliases loaded"
+fi
 
 # Software management
 alias bc="brew cleanup" # Remove old versions of installed software
