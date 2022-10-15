@@ -82,6 +82,7 @@ alias gll="git log --pretty='%C(yellow)%h %Creset%C(cyan)%ar %C(green)%an %C(res
 alias gs="git status -s -b"                                                             # Cleaner git status
 # JS/TS, npm, yarn
 alias ncuu="ncu --upgrade --target minor" # Upgrade to non breaking dependency versions (minor and bugfixes) in package.json
+alias ncul="ncu --target lastest"         # Show available depenecy updates with breaking changes
 alias yb="yarn build"
 alias yd="yarn dev"
 alias yl="yarn lint"
@@ -90,9 +91,13 @@ alias yt="yarn test"
 alias yu="yarn lint && yarn test"
 alias yy="yarn install --check-files"
 # Python and pip (act like python-is-python3)
-alias pip=pip3
-alias py=python3
-alias python=python3
+alias pip="pip3"                                                          # Python-is-python3
+alias py="python3"                                                        # Python-is-python3
+alias python="python3"                                                    # Python-is-python3
+alias pipi="PIP_REQUIRE_VIRTUALENV=false && pip install --upgrade --user" # Install package in user scope
+alias pipl="pip list --user"                                              # List user packages
+alias pipll="pip list"                                                    # List global packages
+alias jn="jupyter notebook"                                               # Run Jupyter notebook
 # Pipenv
 alias peg="pipenv graph"                                 # Dependency graph
 alias peh="pipenv --where"                               # Project home path
