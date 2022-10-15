@@ -80,12 +80,16 @@ python3 -m pip install --upgrade pip
 pip3 --version
 pip --version
 
+# pip global user packages
+pip3 install --upgrade --user notebook   # Run using "jupyter notebook"
+pip3 install --upgrade --user subliminal # For subs script in MPV
+
 # pipenv
 # sudo apt install -y pipenv
 brew install pipenv
 pipenv --version
 
-# conda
+# Conda
 brew install --cask miniconda
 # Update conda itself
 conda --version
@@ -100,8 +104,6 @@ conda create --name ml-mac python=3.9 jupyter numpy pandas tesnsorflow-macos ten
 conda create -n tf tensorflow tensorflow_datasets
 conda create -n tf-gpu tensorflow-gpu tensorflow_datasets
 conda create -n tf-mac tesnsorflow-macos tensorflow-metal
-
-pip3 install subliminal # for subs script in MPV
 
 echo "**** TypeScript, JavaScript, Node.js, NPM, yarn, Volta ****"
 brew install volta
