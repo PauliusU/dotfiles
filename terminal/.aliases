@@ -248,5 +248,22 @@ function merge_mp3s() {
 	mv merged.mp3 "${PWD##*/}".mp3
 }
 
+function git_change_origin() {
+	# Change old git repo remote origin to new
+
+	if [ -z "$1" ]; then
+		echo 'ERROR: new remote is missing'
+		# non-zero decimal number in the 1 - 255 range for failure
+		return 1
+	fi
+
+	# Remove old remote
+	git remote rm origin
+	# Add new remote
+	git remote add origin $1
+	git push --set-upstream origin master
+	git push -u origin master
+}
+
 # Files and directories
 alias npc="nvim ~/Dropbox/DropsyncFiles/audiob/notes_PC.md"
