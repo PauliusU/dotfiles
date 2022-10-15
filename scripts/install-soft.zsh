@@ -69,8 +69,8 @@ ln -sf $(pwd)/nvim/init.vim ~/.vimrc
 echo "**** Python [Python 3] and artificial intelligence ****"
 
 # sudo apt install -y python3
-brew install python                   # defaults to python3
-sudo apt install -y python-is-python3 # minimum Debian 11 and Ubuntu 20.04
+brew install python                   # Defaults to python3
+sudo apt install -y python-is-python3 # Minimum Debian 11 and Ubuntu 20.04
 python3 --version
 python --version
 
