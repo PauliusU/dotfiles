@@ -165,14 +165,11 @@ alias tarz='tar czvf'                                     # Zip
 alias taru='tar xzvf'                                     # Unzip
 
 # Time and Date
-alias fulldate="date +%F"
-#  Get week number
-alias week="date +%V"
-# Stopwatch
-alias timer="echo 'Timer started. <crtl+d> to break.' && date && time cat && date"
+alias fulldate="date +%F"                                                          # Date in YYYY-MM-DD format
+alias week="date +%V"                                                              # Get week number
+alias timer="echo 'Timer started. <crtl+d> to break.' && date && time cat && date" # Stopwatch
 
 # Network
-# IP addresses
 alias ip="echo 'External IP:\n\n$(dig +short myip.opendns.com @resolver1.opendns.com)'" # External IP
 alias ips="ifconfig | grep inet | grep -v inet6 | awk '{print $2}'"                     # Internal IPs
 
