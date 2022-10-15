@@ -55,23 +55,28 @@ defaults write com.apple.dock "expose-group-by-app" -bool true
 chflags nohidden ~/Library
 
 echo "**** Hot corners ****"
-# >> Settings => Mission Control => Hot corners
+# => Settings => Mission Control => Hot corners
+# Possible values:
+#     0: no-op
+#     2: Mission Control
+#     3: Show application windows
+#     4: Desktop
+#     5: Start screen saver
+#     6: Disable screen saver
+#     7: Dashboard
+#    10: Put display to sleep
+#    11: Launchpad
+#    12: Notification Center
+#    14: Quick Note
 # Top left screen corner → Quick Note [14]
 defaults write com.apple.dock wvous-tl-corner -int 14
-# defaults write com.apple.dock wvous-tl-modifier -int 0
-defaults read com.apple.dock wvous-tl-corner
 # Top right screen corner → Notification Centre [12]
 defaults write com.apple.dock wvous-tr-corner -int 12
-# defaults write com.apple.dock wvous-tr-modifier -int 0
-defaults read com.apple.dock wvous-tr-corner
 # Bottom left screen corner → Launchpad [11]
 defaults write com.apple.dock wvous-bl-corner -int 11
-# defaults write com.apple.dock wvous-bl-modifier -int 0
-defaults read com.apple.dock wvous-bl-corner
-# defaults read com.apple.dock wvous-bl-modifier
 # Bottom right screen corner → Show desktop [4]
 defaults write com.apple.dock wvous-bl-corner -int 4
-defaults read com.apple.dock wvous-br-corner
+defaults read com.apple.dock | grep wvous
 
 echo "**** Animations ****"
 # Finder: disable window animations and Get Info animations
