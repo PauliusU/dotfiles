@@ -43,6 +43,7 @@ keyBindings {
          ordering "modified"
      }
     "Alt+H" {src "~" id "core.open.folder"}
+    "Alt+U" {src "~" id "core.open.folder"}
     "Alt+J" {src "~/Downloads" id "core.open.folder"}
     "Alt+E" {src "~/code" id "core.open.folder"}
     "Alt+V" {src "~/dev" id "core.open.folder"}
