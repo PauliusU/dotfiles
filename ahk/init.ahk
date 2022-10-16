@@ -1,4 +1,4 @@
-/*
+﻿/*
 AHK main entry point
 Used to import other modules and set keyboar shortcuts in single place
 Syntax: AutoHotkey v1.1 (originally called AutoHotkey_L)
@@ -9,7 +9,8 @@ SendMode, Input
 SetBatchLines, -1
 SetWorkingDir, %A_ScriptDir%
 
-MsgBox, , , AHK, 0.4 ; Nofity that script has loaded
+; Nofity that script has loaded
+MsgBox, , , AHK, 0.4 
 
 ; Imports
 #Include, %A_ScriptDir%\sound.ahk

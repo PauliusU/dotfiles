@@ -9,7 +9,7 @@ SetWorkingDir, %A_ScriptDir%
 
 ; Variables
 CLI_TOOL_NIR_CMD := "d:\Dropbox\soft\CLI-tools\nircmd-x64\nircmd.exe"
-soundToggle = true
+soundToggle := true
 
 ; Sound playback device functions
 
@@ -22,7 +22,7 @@ setSoundDevice(device) {
 }
 
 toggleSoundDevice(device1, device2) {
-    global soundToggle =!soundToggle ; toggle the variable between true/false
+    global soundToggle := !soundToggle ; toggle the variable between true/false
     if soundToggle {
         setSoundDevice(device1)
     } else {
@@ -30,4 +30,3 @@ toggleSoundDevice(device1, device2) {
     }
     return
 }
-
