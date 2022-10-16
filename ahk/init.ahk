@@ -22,6 +22,7 @@ MsgBox, , , AHK, 0.4 ; Nofity that script has loaded
 ^!+F5:: Reload ; Reload AHK script
 
 ; Window management (Alt-Win based)
+#!T:: TaskbarToggle(hide := !hide)
 !#Enter:: MaximizeActiveWindow()
 CapsLock & Enter:: FullScreen()
 !#[:: PreviousWindow()
