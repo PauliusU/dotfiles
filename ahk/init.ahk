@@ -1,4 +1,4 @@
-﻿/*
+/*
 AHK main entry point
 Used to import other modules and set keyboar shortcuts in single place
 Syntax: AutoHotkey v1.1 (originally called AutoHotkey_L)
@@ -23,7 +23,7 @@ MsgBox, , , AHK, 0.4 ; Nofity that script has loaded
 
 ; Window management (Alt-Win based)
 !#Enter:: MaximizeActiveWindow()
-CapsLock & Enter:: MaximizeActiveWindow()
+CapsLock & Enter:: FullScreen()
 !#[:: PreviousWindow()
 !#]:: NextWindow()
 !#WheelDown:: PreviousWindow()

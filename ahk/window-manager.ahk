@@ -1,4 +1,4 @@
-﻿/*
+/*
 Window management (wm) functions
 */
 #NoEnv
@@ -7,7 +7,17 @@ SendMode, Input
 SetBatchLines, -1
 SetWorkingDir, %A_ScriptDir%
 
+; Window tiling
+
+FullScreen() {
+    ; Maximizes window even over taskbar (taskbar is not visible)
+    WinRestore, A
+    WinMove, A, , 0, 0, A_ScreenWidth, A_ScreenHeight
+    return
+}
+
 MaximizeActiveWindow() {
+    ; Maximizes windows but keeps taksbar visible
     WinMaximize, A ; A stands for active window
     return
 }
@@ -22,6 +32,6 @@ NextWindow() {
 
 PreviousWindow() {
     ; Switch to previous window by sending Alt-Shift-Esc
-    Send !+{Esc} 
+    Send !+{Esc}
     return
 }
