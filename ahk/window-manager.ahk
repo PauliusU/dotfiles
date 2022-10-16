@@ -1,4 +1,4 @@
-/*
+﻿/*
 Window management (wm) functions
 */
 #NoEnv
