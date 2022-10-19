@@ -11,6 +11,7 @@ duti -s com.microsoft.VSCode .md all
 duti -s com.microsoft.VSCode .sh all
 
 # AUDIO io.mpv
+duti -s io.mpv .aac all
 duti -s io.mpv .m4a all
 duti -s io.mpv .opus all
 
