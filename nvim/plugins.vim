@@ -45,3 +45,5 @@ nmap ]h <Plug>(GitGutterNextHunk)
 nmap [h <Plug>(GitGutterPrevHunk)
 
 nnoremap <silent><C-f> :silent !tmux neww $HOME/Dropbox/code/dotfiles/terminal/tmux-sessionizer.sh<CR>
+
+command Health :checkhealth

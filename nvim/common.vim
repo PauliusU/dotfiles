@@ -50,11 +50,12 @@ map! <C-s> <esc>:update<CR><esc>i
 nnoremap <C-q> :q<CR>
 command QQ :q!
 
-" Select all with Ctrl+A
-map <silent> <C-a> <esc>ggVG<CR>
+" Select all with Alt-A. Ctrl-A is use by VIM to increment number
+map <silent> <A-a> <esc>ggVG<CR>
 
 " System copy-paste
-vnoremap <silent> <C-x> "+x
+" Ctrl-X is used by VIM to decrement number, Alt-X is used instead
+vnoremap <silent> <A-x> "+x
 vnoremap <silent> <C-c> "+y
 map      <silent> <C-v> "+gP
 map!     <silent> <C-v> <esc>
