@@ -1,5 +1,7 @@
 # ~/.aliases
 
+echo ".aliases"
+
 SCRIPTS_PATH="~/Dropbox/code/dotfiles/scripts"
 
 # Navigation and file listing
@@ -21,10 +23,10 @@ function cd() {
 }
 # If running bash
 if [ -n "$BASH_VERSION" ]; then
-	# Include .bashrc if it exists
-	if [ -f "$HOME/.bashrc" ]; then
-		. "$HOME/.bashrc"
-	fi
+	# # Include .bashrc if it exists
+	# if [ -f "$HOME/.bashrc" ]; then
+	# . "$HOME/.bashrc"
+	# fi
 	alias ....="cd ../../.."
 	alias ...="cd ../.."
 	alias ..="cd .."
@@ -90,14 +92,13 @@ alias ys="yarn start"
 alias yt="yarn test"
 alias yu="yarn lint && yarn test"
 alias yy="yarn install --check-files"
-# Python and pip (act like python-is-python3)
-alias pip="pip3"                                                          # Python-is-python3
-alias py="python3"                                                        # Python-is-python3
-alias python="python3"                                                    # Python-is-python3
+# Python, pip and jupyter
+alias py="python"
 alias pipi="PIP_REQUIRE_VIRTUALENV=false && pip install --upgrade --user" # Install package in user scope
 alias pipl="pip list --user"                                              # List user packages
 alias pipll="pip list"                                                    # List global packages
-alias jn="jupyter notebook"                                               # Run Jupyter notebook
+alias jn="jupyter notebook"
+alias jl="jupyter lab"
 # Pipenv
 alias peg="pipenv graph"                                 # Dependency graph
 alias peh="pipenv --where"                               # Project home path
@@ -267,7 +268,13 @@ function git_change_origin() {
 	git push -u origin master
 }
 
+function extract_audio() {
+	# Extract audio from video
+
+	# -vn					skips the inclusion of the video stream,
+	# -acodec copy			copies the picked audio streams (without re-encoding)
+	ffmpeg -i $1 -vn -acodec copy "${1%.*}.aac"
+}
+
 # Files and directories
 alias npc="nvim ~/Dropbox/DropsyncFiles/audiob/notes_PC.md"
-
-echo ".aliases loaded"
