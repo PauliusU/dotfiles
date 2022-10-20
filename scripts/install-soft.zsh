@@ -151,12 +151,13 @@ volta which node
 node -v
 volta install yarn
 yarn -v
-volta install npm # update oudated version installed with Node v14
+volta install npm # update oudated version installed with Node
 npm -v
 npm install --global typescript
 tsc -v
 npm i -g ts-node
 ts-node -v
+npm install -g npm-check-updates # Update depenceny versions in package.json from terminal
 volta list
 
 echo "**** Go Goland ****"
