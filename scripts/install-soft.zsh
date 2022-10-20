@@ -55,6 +55,10 @@ brew install neovim
 # Install vim-plug for neovim
 sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+# Nvim telescope plugin requirements for grep_string and live_grep functions
+brew install ripgrep
+# scoop install fd
+brew install fd
 
 # sudo apt install -y vim
 brew install vim
