@@ -1,7 +1,7 @@
 # .bashrc for git-bash on Windows
+echo ".bashrc"
 
 # Imports
-source /d/Dropbox/code/dotfiles/terminal/.shellrc
+source ~/.aliases
+source ~/.shellrc.private.sh
 source ~/bash_completion.d/git
-
-echo ".bashrc loaded"
