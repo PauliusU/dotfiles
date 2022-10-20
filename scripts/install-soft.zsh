@@ -74,36 +74,70 @@ sudo apt install -y python-is-python3 # Minimum Debian 11 and Ubuntu 20.04
 python3 --version
 python --version
 
-# pip
+# Pip
 # sudo apt install -y python3-pip
 python3 -m pip install --upgrade pip
 pip3 --version
 pip --version
 
-# pip global user packages
+# Pip global user packages
 pip3 install --upgrade --user notebook   # Run using "jupyter notebook"
 pip3 install --upgrade --user subliminal # For subs script in MPV
 
-# pipenv
+# Pipenv
 # sudo apt install -y pipenv
 brew install pipenv
 pipenv --version
 
-# Conda
-brew install --cask miniconda
-# Update conda itself
-conda --version
+# Conda and Mamba
+# scoop install miniconda3
+brew install --cask miniforge
+
+# Update conda itself and get info
 conda update conda
+conda config --show channels
 conda --version
-# Clean previous environments (if any)
-conda install anaconda-clean
-anaconda-clean --yes
-# Create commonly used environments
-conda create --name ml python=3.9 jupyter numpy pandas tensorflow tensorflow_datasets
-conda create --name ml-mac python=3.9 jupyter numpy pandas tesnsorflow-macos tensorflow-metal tensorflow_datasets
-conda create -n tf tensorflow tensorflow_datasets
-conda create -n tf-gpu tensorflow-gpu tensorflow_datasets
-conda create -n tf-mac tesnsorflow-macos tensorflow-metal
+
+# # Clean previous environments (if any)
+# conda install anaconda-clean
+# Remove all Anaconda-related files and directories without prompt
+# anaconda-clean --yes
+
+# Mamba. If conda is already installed, to get mamba, just install it into the base environment from the conda-forge channel:
+conda install mamba -n base -c conda-forge
+mamba --version
+
+# Create machine learning (ML) environment
+mamba create -n ml python=3.8 -y
+mamba activate ml
+if [[ $(uname) -eq "Darwin" ]]; then
+    mamba install -c apple tensorflow-deps -y # The dependencies from Apple to run Tensorflow on arm64, e.g. python, numpy, grpcio and h5py
+    pip install tensorflow-metal              # Install tensorflow-metal plugin
+    pip install tensorflow-macos              # Install base TensorFlow (it depends upon two packages above)
+else
+    # View compatible version of tf, cudnn and cudatoolkit in https://www.tensorflow.org/install/source_windows#gpu
+    mamba install cudatoolkit=11.2 cudnn=8.1 -c=conda-forge
+    pip install --upgrade tensorflow-gpu==2.10.0
+    # pip install tensorflow-gpu
+    # pip install tensorflow
+fi
+# Install common Data Science packages
+mamba install notebook -y                    # Or use jupyter or jupyterlab
+mamba install -c conda-forge matplotlib -y   # For plotting
+mamba install -c conda-forge scikit-learn -y # Exposed as sklearn
+mamba install -c conda-forge pandas -y       # Data analysis and manipulation
+pip install tensorflow-datasets              # Exposed as tf.data.Datasets
+pip install --upgrade opencv-python          # Exposed as cv2
+pip install --upgrade scikit-image           # Exposed as skimage
+
+# List conda environments
+conda env list # = conda info --envs
+
+# micromamba (standalone of Mamba, i.e. no dependency on Conda)
+brew install --cask micromamba
+micromamba --version
+micromamba env
+micromamba create -n ml-micromamba jupyter numpy pandas keras matplotlib requests
 
 echo "**** TypeScript, JavaScript, Node.js, NPM, yarn, Volta ****"
 brew install volta
