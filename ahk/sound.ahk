@@ -13,7 +13,7 @@ soundToggle := true
 
 ; Sound playback device functions
 
-setSoundDevice(device) {
+SetSoundDevice(device) {
     ; global - variable that was previously given a value somewhere outside this function
     global CLI_TOOL_NIR_CMD
     Run, %CLI_TOOL_NIR_CMD% setdefaultsounddevice "%device%
@@ -21,7 +21,7 @@ setSoundDevice(device) {
     return
 }
 
-toggleSoundDevice(device1, device2) {
+ToggleSoundDevice(device1, device2) {
     global soundToggle := !soundToggle ; toggle the variable between true/false
     if soundToggle {
         setSoundDevice(device1)

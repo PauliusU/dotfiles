@@ -10,13 +10,13 @@ SET SCRIPTS=d:\Dropbox\code\dotfiles\scripts
 DOSKEY .. = CD ..
 DOSKEY ... = CD ..\..
 DOSKEY ~ = CD /D %USERPROFILE%
-DOSKEY ~~ = CD /D %USERPROFILE%\Downloads\
-DOSKEY cde = CD /D d:\Dropbox\code\
-DOSKEY desk = CD /D %USERPROFILE%\Desktop\
-DOSKEY dev = CD /D d:\Dropbox\dev\
-DOSKEY docs = CD /D %USERPROFILE%\Documents\
-DOSKEY dt = CD /D %USERPROFILE%\Desktop\
-DOSKEY dwn = CD /D %USERPROFILE%\Downloads\
+DOSKEY ~~ = CD /D %USERPROFILE%\Downloads
+DOSKEY cde = CD /D d:\Dropbox\code
+DOSKEY desk = CD /D %USERPROFILE%\Desktop
+DOSKEY dev = CD /D d:\Dropbox\dev
+DOSKEY docs = CD /D %USERPROFILE%\Documents
+DOSKEY dt = CD /D %USERPROFILE%\Desktop
+DOSKEY dwn = CD /D %USERPROFILE%\Downloads
 
 :: ------------------------------ Shell control --------------------------------
 DOSKEY c = clear
