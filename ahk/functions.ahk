@@ -39,3 +39,22 @@ TurnOnCapsLock() {
     Msgbox, , ON, CapsLock is OFF, 0.3
     return
 }
+
+ToggleHiddenFiles() {
+    ; Toggle showing hidden files in File Explorer (previously known as Windows Explorer)
+
+    RegRead, HiddenFiles_Status, HKEY_CURRENT_USER, Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced, Hidden
+    if (HiddenFiles_Status = 2) {
+        RegWrite, REG_DWORD, HKEY_CURRENT_USER, Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced, Hidden, 1
+        MsgBox, , , Showing hidden files, 1
+    } else {
+        RegWrite, REG_DWORD, HKEY_CURRENT_USER, Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced, Hidden, 2
+        MsgBox, , , Not showing hidden files (back to default), 1
+    }
+
+    if WinActive("ahk_exe explorer.exe") {
+        Send, {F5}
+    }
+
+    return
+}
