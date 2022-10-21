@@ -1,19 +1,18 @@
 local fn = require("functions") -- Import functions module
-require "hyper"
-require "private" -- not commited to Git
--- require "utils" -- debug and development utilites (disabled by default)
+require "hyper" -- Hyper key Setup
+require "private" -- Not commited to Git
+-- require "utils" -- Debug and development utilites (disabled by default)
 
+-- Startup
 hs.hid.capslock.set(false) -- Disable capslock
 
---------------------------------------------------------------------------------
 -- Reload config on write
---------------------------------------------------------------------------------
 hs.pathwatcher.new(os.getenv("HOME") .. "/.hammerspoon/", fn.reloadHs()):start()
 hs.alert.show("Config loaded")
 
 ---------------------------- Keyboard shortcuts --------------------------------
--- modifier keys: https://www.hammerspoon.org/docs/hs.hotkey.html#bind
--- key codes: https://www.hammerspoon.org/docs/hs.keycodes.html#map
+-- Modifier keys: https://www.hammerspoon.org/docs/hs.hotkey.html#bind
+-- Key codes: https://www.hammerspoon.org/docs/hs.keycodes.html#map
 -- Unicode Codes for Keyboard symbols https://www.acrobatfaq.com/atbref5/index/KeyboardShortcuts/UnicodeCodesforKeyboards.html
 local mash       = { "ctrl", "alt", "cmd" }
 local shift_mash = { "ctrl", "alt", "cmd", "shift" }
@@ -50,7 +49,7 @@ hs.hotkey.bind({ "alt", "shift" }, 22, fn.printText("^")) -- 6 Š
 hs.hotkey.bind({ "alt", "shift" }, 26, fn.printText("&")) -- 7 Ų
 hs.hotkey.bind({ "alt", "shift" }, 28, fn.printText("*")) -- 8 Ū
 hs.hotkey.bind({ "alt", "shift" }, 24, fn.printText("=")) -- =+ Ž
--- Numbers in any keyboard layou
+-- Numbers in any keyboard layout
 hs.hotkey.bind({"alt"}, 18, fn.printText("1")) -- 1 Ą
 hs.hotkey.bind({"alt"}, 19, fn.printText("2")) -- 2 Č
 hs.hotkey.bind({"alt"}, 20, fn.printText("3")) -- 3 Ę
@@ -63,36 +62,33 @@ hs.hotkey.bind({"alt"}, 25, fn.printText("9")) -- 9
 hs.hotkey.bind({"alt"}, 29, fn.printText("0")) -- 0
 
 -- Quick open applications, files and paths
-Hyper:bind({}, "F", nil, fn.open("Google Chrome"))
-Hyper:bind({}, "V", nil, fn.open("Safari"))
-Hyper:bind({}, "G", nil, fn.exec("open 'https://gmail.com'"))
-Hyper:bind({}, "L", nil, fn.exec("open 'https://calendar.google.com'"))
-Hyper:bind({"Shift"}, "L", nil, fn.open("Calendar"))
-hs.hotkey.bind(mash, "V", fn.open("Google Chrome")) -- [ ⌃ + ⌥ + ⌘ + C ]
-hs.hotkey.bind("ctrl", "escape", fn.openTab()) -- Open Google Chrome tab [ ⌃ + ⎋ Escape (Esc) ]
 hs.hotkey.bind("alt", "escape", fn.openTab()) -- Open Google Chrome tab [ ⌥ + ⎋ Escape (Esc) ]
-Hyper:bind({}, "A", nil, fn.open("iTerm"))
-Hyper:bind("Shift", "A", nil, fn.open("alacritty"))
-Hyper:bind({}, "T", nil, fn.open("Terminal"))
-hs.hotkey.bind(mash, "T", fn.open("Terminal")) -- [ ⌃ + ⌥ + ⌘ + T ]
+hs.hotkey.bind("ctrl", "escape", fn.openTab()) -- Open Google Chrome tab [ ⌃ + ⎋ Escape (Esc) ]
 hs.hotkey.bind(ctrl_opt, "Z", fn.open("Terminal")) -- [ ⌃ + ⌥ + Z ]
-Hyper:bind({}, "S", fn.open("Marta"))
-Hyper:bind({}, "Z", fn.open("EasyFind"))
-Hyper:bind({}, "D", nil, fn.open("Visual Studio Code"))
-hs.hotkey.bind(mash, "C", fn.open("Visual Studio Code")) -- [ ⌃ + ⌥ + ⌘ + V ]
-Hyper:bind({}, "O", nil, fn.exec("$HOME/bin/homebrew/bin/code $HOME/code/dotfiles"))
-Hyper:bind({}, "B", nil, fn.open("MongoDB Compass"))
-Hyper:bind({}, "P", nil, fn.open("Spotify"))
-Hyper:bind("Shift", "P", nil, fn.open("MPV"))
-Hyper:bind({}, "E", fn.exec("open ~/Downloads"))
 hs.hotkey.bind(mash, "F", fn.open("Finder")) -- Finder (recent files) [ ⌃ + ⌥ + ⌘ + F ]
-hs.hotkey.bind(mash, "E", fn.exec("open ~/Downloads")) -- Downloads folder [ ⌃ + ⌥ + ⌘ + E ]
-hs.hotkey.bind(shift_mash, "F5", fn.exec("open ~/Dropbox/DropsyncFiles/audiob/notes_PC.md")) -- notes_PC [ ⌃ + ⌥ + ⇧ + ⌘ + F5 ]
-Hyper:bind({}, "N", nil, fn.exec("open ~/Dropbox/DropsyncFiles/audiob/notes_PC.md"))
-Hyper:bind({}, "K", nil, fn.open("Ferdi"))
-Hyper:bind("Shift", "K", nil, fn.open("Slack"))
-Hyper:bind({}, "I", nil, fn.open("Preview"))
+Hyper:bind("Shift", "A", nil, fn.open("alacritty"))
 Hyper:bind("Shift", "I", nil, fn.open("Foxit PDF Reader"))
+Hyper:bind("Shift", "K", nil, fn.open("Slack"))
+Hyper:bind("Shift", "P", nil, fn.open("MPV"))
+Hyper:bind("Shift", "L", nil, fn.open("Calendar"))
+Hyper:bind({}, "A", nil, fn.open("iTerm"))
+Hyper:bind({}, "B", nil, fn.open("MongoDB Compass"))
+Hyper:bind({}, "D", nil, fn.open("Visual Studio Code"))
+Hyper:bind({}, "E", fn.exec("open ~/Downloads"))
+Hyper:bind({}, "F", nil, fn.open("Google Chrome"))
+Hyper:bind({}, "G", nil, fn.exec("open 'https://gmail.com'"))
+Hyper:bind({}, "I", nil, fn.open("Preview"))
+Hyper:bind({}, "K", nil, fn.open("Ferdi"))
+Hyper:bind({}, "L", nil, fn.exec("open 'https://calendar.google.com'"))
+Hyper:bind({}, "N", nil, fn.exec("open ~/Dropbox/DropsyncFiles/audiob/notes_PC.md"))
+Hyper:bind({}, "O", nil, fn.exec("$HOME/bin/homebrew/bin/code $HOME/code/dotfiles"))
+Hyper:bind({}, "P", nil, fn.open("Spotify"))
+Hyper:bind({}, "S", fn.open("Marta"))
+Hyper:bind({}, "U", fn.open("MPV"))
+Hyper:bind({}, "T", nil, fn.open("Terminal"))
+Hyper:bind({}, "V", nil, fn.open("Safari"))
+Hyper:bind({}, "Y", fn.open("Toggl Track"))
+Hyper:bind({}, "Z", fn.open("EasyFind"))
 
 -- Window management
 -- -- Seature spectacle/another window sizing apps
@@ -124,7 +120,7 @@ hs.hotkey.bind(mash, "G", fn.moveLeft()) -- [ ⌃ + ⌥ + ⌘ + J ]
 Hyper:bind({ "cmd" }, "left", fn.prevMonitor()) -- [Hyper + ⌘ + ◀ ]
 Hyper:bind({ "cmd" }, "right", fn.nextMonitor()) -- [Hyper + ⌘ + ▶ ]
 
--- System control (sound, keyboar layout)
+-- System control (sound, keyboard layout)
 hs.hotkey.bind(shift_mash, "R", fn.restartOSWindow()) -- [ ⌃ + ⌥ + ⌘ + ⇧ + R ]
 Hyper:bind({ "shift" }, "R", nil, fn.restartOSWindow())
 hs.hotkey.bind("ctrl", "space", fn.toggleLayout()) -- Overrides system layout chooser [ ⌃ + Space ]
