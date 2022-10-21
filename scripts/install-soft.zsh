@@ -114,6 +114,9 @@ if [[ $(uname) -eq "Darwin" ]]; then
     # sudo port install nomacs
     brew install --cask xnviewmp
 
+    echo "**** Toggl (a.k.a ToggleDesktop) ****"
+    brew install --cask toggl-track
+
     echo "**** Window managers ****"
     brew install --cask alt-tab # AltTab - Windows alt-tab on macOS
     brew install --cask rectangle
