@@ -16,13 +16,14 @@ SetNumLockState, on ; Turn on NumLock
 
 ; Imports
 #Include, %A_ScriptDir%\variables.ahk
+#Include, %A_ScriptDir%\private\MAIN.ahk
 #Include, %A_ScriptDir%\functions.ahk
 #Include, %A_ScriptDir%\sound.ahk
 #Include, %A_ScriptDir%\text-code.ahk
 #Include, %A_ScriptDir%\text-date-time.ahk
 #Include, %A_ScriptDir%\text-manipulation.ahk
 #Include, %A_ScriptDir%\window-manager.ahk
-#Include, %A_ScriptDir%\private\MAIN.ahk
+#Include, %A_ScriptDir%\private\text-base.ahk
 
 ; Keyboard shortcuts
 
@@ -61,28 +62,31 @@ CapsLock & Enter:: FullScreen()
 ScrollLock & Q:: SetSoundDevice("Headphones")
 ScrollLock & W:: SetSoundDevice("Speakers")
 
-; Apps, folders and files
+; Apps, folders and files (CapsLock based)
 CapsLock & A:: OpenAppOrFile(TERMINAL, "ahk_exe WindowsTerminal.exe")
 CapsLock & B:: OpenAppOrFile(USER_HOME . "\scoop\apps\mongodb-compass\current\MongoDBCompass.exe", "ahk_exe MongoDBCompass.exe")
 CapsLock & C:: OpenAppOrFile(CHROME, "ahk_exe chrome.exe")
 CapsLock & D:: OpenAppOrFile(EDITOR_VISUAL, "ahk_exe Code.exe")
-CapsLock & E:: return
+CapsLock & E:: OpenAppOrFile(DIRECTORY . "%Clipboard%", "ahk_exe GoldenDict.exe")
 CapsLock & F:: OpenAppOrFile(BROWSER, "ahk_class MozillaWindowClass")
 CapsLock & G:: OpenAppOrFile(BROWSER . " mail.google.com/mail/", "Gmail")
-CapsLock & H:: return
+CapsLock & H:: OpenAppOrFile(USER_HOME . "\scoop\apps\qBittorrent\current\qbittorrent.exe" , "ahk_exe qbittorrent.exe")
 CapsLock & I:: OpenAppOrFile(IMAGE_VIEWER, "IrfanView")
 CapsLock & J:: return
 CapsLock & K:: OpenAppOrFile(USER_HOME . "\scoop\apps\ferdi\current\Ferdi.exe", "Ferdi")
 CapsLock & L:: OpenAppOrFile(BROWSER . " calendar.google.com", "Google Calendar")
+CapsLock & M:: OpenYoutube()
 CapsLock & N:: Run, %EDITOR_VISUAL% %NOTES%
 CapsLock & O:: Run, %EDITOR_VISUAL% %DOTFILES%
+CapsLock & P:: OpenSpotify()
 CapsLock & Q:: ToggleSoundDevice("Headphones", "Speakers")
-CapsLock & R:: return
+CapsLock & R:: OpenAppOrFile(USER_HOME . "\scoop\apps\anki\current\anki.exe", "Anki")
 CapsLock & S:: OpenAppOrFile(FILE_MANAGER, "ahk_exe TOTALCMD64.EXE")
 CapsLock & T:: OpenAppOrFile("d:\Dropbox\soft\todotxt.net\todotxt.exe", "todotxt.net")
-CapsLock & U:: OpenAppOrFile(USER_HOME . "\scoop\apps\anki\current\anki.exe", "Anki")
+CapsLock & U:: OpenAppOrFile(PLAYER, "ahk_exe mpv.exe")
 CapsLock & V:: OpenAppOrFile(VIVALDI " --start-fullscreen" , "ahk_exe vivaldi.exe")
 CapsLock & W:: return
+CapsLock & X:: Run, chrome
 CapsLock & Y:: OpenAppOrFile(USER_HOME . "\scoop\apps\toggl\current\TogglDesktop.exe", "ahk_exe TogglDesktop.exe")
 CapsLock & Z:: OpenAppOrFile(FILE_SEARCH, "ahk_exe Everything64.exe")
 CapsLock & Numpad0:: OpenAppOrFile(USER_HOME . "\Desktop", "Desktop")
@@ -100,27 +104,29 @@ CapsLock & NumpadMult:: Run, "C:\Windows\SysWOW64\calc.exe" ; Calculator
 Capslock:: TurnOffCapsLock()
 +Capslock:: TurnOnCapsLock()
 
-; Win-Fn
+; Scripts (Win-Fn based)
 #F1:: Run, "%SCRIPTS_PATH%\processes-kill.bat"
 #F2:: Run, "%SCRIPTS_PATH%\fs-backup.private.bat"
 #F3:: Run, "%SCRIPTS_PATH%\fs-cleanup.private.bat"
 #F5:: Run, %EDITOR_VISUAL% "d:\Dropbox\dev\utils"
 
-; Ctrl-Alt-Win
-^!#C:: ToEachCapitalized()
-^!#D:: CurrentYearDay()
-^!#F:: FullDate()
-^!#G:: PathWindows()
-^!#H:: CurrentDate()
-^!#I:: ToInverted()
-^!#J:: CurrentShortDate()
-^!#K:: Run, C:\Windows\System32\osk.exe ; On screen keyboard
-^!#L:: ToLowercase()
+; Utils (Ctrl-Alt-Win based)
+^!#C:: ToEachCapitalized()  ; text example => Text Example
+^!#D:: CurrentYearDay()     ; => 295
+^!#F:: FullDate()           ; => 2022-10-22 20:46
+^!#G:: PathUnix()           ; c:\windows\path\example => /c/windows/path/example
+^!#H:: ToggleHiddenFiles()  ; File explorer setting "Show hidden files, folders, and drives"
+^!#I:: ToInverted()         ; teXT EXAmple => TExt exaMPLE
+^!#J:: CurrentDate()        ; => 2029-12-31
+^!#K:: CurrentShortDate()   ; => 20291231
+^!#L:: ToLowercase()        ; TEXT Example => text example
 ^!#N:: Run, control /name Microsoft.NetworkAndSharingCenter ; Network and sharing center
-^!#O:: ToSentenceCase()
-^!#T:: PathUnix()
-^!#U:: ToUppercase()
-^!#W:: CurrentWeek()
+^!#O:: Run, C:\Windows\System32\osk.exe ; On screen keyboard
+^!#S:: ToSentenceCase()     ; text Example => Text example
+^!#T:: PathWindows()        ; c:\windows\path\example => c:\\path\\example
+^!#U:: ToUppercase()        ; text example => TEXT EXAMPLE
+^!#W:: CurrentWeek()        ; => w42
+; Ctrl-Alt-Win-Fn
 ^!#F1:: Run, "C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe" ; PowerShell
 ^!#F2:: Run, "c:\Windows\System32\cmd.exe" ; Command Prompt (vanilla)
 ^!#F3:: Run, "c:\Windows\System32\cmd.exe" /K "%DOTFILES%\terminal\cmdrc.cmd" & @echo on ; Command Prompt (custom)
