@@ -65,10 +65,12 @@ PathWindows() {
 }
 
 PathUnix() {
-    ; Replace '\' with '/'. Useful for converting Windows paths to Unix paths
+    ; Convert Windows paths to Git-Bash and WSL2 frienldy format
+    ; c:\windows\path\example => /c/windows/path/example
     if InStr(Clipboard, "\") {
         output := Strreplace(Clipboard, "\", "/")
-        SendInput, %output%
+        output := StrReplace(output, ":", "")
+        SendInput, /%output%
     } else {
         MsgBox, , , Clipboard does not contain path:`n`n%Clipboard%, 5
     }
