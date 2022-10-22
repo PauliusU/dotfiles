@@ -58,3 +58,31 @@ ToggleHiddenFiles() {
 
     return
 }
+
+OpenYoutube() {
+    ; Open Youtube URL in player locally
+
+    global PLAYER
+    global YOUTUBE_PLAYLIST
+
+    if (GetKeyState("Shift", "P")) {
+        Run, %PLAYER% --ytdl-format=bestvideo[height<=1080]+bestaudio/best %YOUTUBE_PLAYLIST%
+        MsgBox, , Launching in player, Playlist is loading, 6
+        WinActive("ahk_exe mpv.exe")
+    } else {
+        if WinActive("ahk_class Chrome_WidgetWin_1") or WinActive("ahk_class MozillaWindowClass") {
+            ; If Chromium based browser or Firefox is  active
+            Send, ^l ; Go to address bar
+            Sleep, 100
+            Send, ^c ; Copy URL
+            Sleep, 100
+            if ErrorLevel {
+                MsgBox, The attempt to copy text onto the clipboard failed.
+                return
+            }
+        }
+        Run, %PLAYER% --ytdl-format=bestvideo[height<=1080]+bestaudio/best %clipboard%
+        MsgBox, , Launching in player, Clipboard:`n%clipboard%, 0.9
+    }
+    return
+}
