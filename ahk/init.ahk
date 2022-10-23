@@ -1,4 +1,4 @@
-﻿/*
+/*
 AHK main entry point
 Used to import other modules and set keyboard shortcuts in a single place
 Syntax: AutoHotkey v1.1 (originally called AutoHotkey_L)
@@ -36,6 +36,9 @@ SetNumLockState, on ; Turn on NumLock
 CapsLock & Enter:: FullScreen()
 !#[:: PreviousWindow()
 !#]:: NextWindow()
+!#\:: SendInput, !{Tab} ; Toggle between two windows
+!#Left:: LeftHalf()
+!#Right:: RightHalf()
 !#WheelDown:: PreviousWindow()
 !#WheelUp:: NextWindow()
 
