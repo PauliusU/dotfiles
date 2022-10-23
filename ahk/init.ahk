@@ -1,4 +1,4 @@
-/*
+﻿/*
 AHK main entry point
 Used to import other modules and set keyboard shortcuts in a single place
 Syntax: AutoHotkey v1.1 (originally called AutoHotkey_L)
@@ -16,7 +16,7 @@ SetNumLockState, on ; Turn on NumLock
 
 ; Imports
 #Include, %A_ScriptDir%\variables.ahk
-#Include, %A_ScriptDir%\private\MAIN.ahk
+#Include, %A_ScriptDir%\main.private.ahk
 #Include, %A_ScriptDir%\functions.ahk
 #Include, %A_ScriptDir%\sound.ahk
 #Include, %A_ScriptDir%\text-code.ahk
@@ -66,12 +66,12 @@ ScrollLock & Q:: SetSoundDevice("Headphones")
 ScrollLock & W:: SetSoundDevice("Speakers")
 
 ; Apps, folders and files (CapsLock based)
-CapsLock & A:: OpenAppOrFile(TERMINAL, "ahk_exe WindowsTerminal.exe")
+CapsLock & A:: OpenAppOrFile("wt", "ahk_exe WindowsTerminal.exe")
 CapsLock & B:: OpenAppOrFile(USER_HOME . "\scoop\apps\mongodb-compass\current\MongoDBCompass.exe", "ahk_exe MongoDBCompass.exe")
 CapsLock & C:: OpenAppOrFile(CHROME, "ahk_exe chrome.exe")
 CapsLock & D:: OpenAppOrFile(EDITOR_VISUAL, "ahk_exe Code.exe")
-CapsLock & E:: OpenAppOrFile(DIRECTORY . "%Clipboard%", "ahk_exe GoldenDict.exe")
-CapsLock & F:: OpenAppOrFile(BROWSER, "ahk_class MozillaWindowClass")
+CapsLock & E:: OpenAppOrFile(DICTIONARY . " %Clipboard%", "ahk_exe GoldenDict.exe")
+CapsLock & F:: OpenAppOrFile(BROWSER . " --kiosk", "ahk_class MozillaWindowClass")
 CapsLock & G:: OpenAppOrFile(BROWSER . " mail.google.com/mail/", "Gmail")
 CapsLock & H:: OpenAppOrFile(USER_HOME . "\scoop\apps\qBittorrent\current\qbittorrent.exe" , "ahk_exe qbittorrent.exe")
 CapsLock & I:: OpenAppOrFile(IMAGE_VIEWER, "IrfanView")
@@ -87,7 +87,7 @@ CapsLock & R:: OpenAppOrFile(USER_HOME . "\scoop\apps\anki\current\anki.exe", "A
 CapsLock & S:: OpenAppOrFile(FILE_MANAGER, "ahk_exe TOTALCMD64.EXE")
 CapsLock & T:: OpenAppOrFile("d:\Dropbox\soft\todotxt.net\todotxt.exe", "todotxt.net")
 CapsLock & U:: OpenAppOrFile(PLAYER, "ahk_exe mpv.exe")
-CapsLock & V:: OpenAppOrFile(VIVALDI " --start-fullscreen" , "ahk_exe vivaldi.exe")
+CapsLock & V:: OpenAppOrFile(VIVALDI . " --start-fullscreen" , "ahk_exe vivaldi.exe")
 CapsLock & W:: return
 CapsLock & X:: Run, chrome
 CapsLock & Y:: OpenAppOrFile(USER_HOME . "\scoop\apps\toggl\current\TogglDesktop.exe", "ahk_exe TogglDesktop.exe")
