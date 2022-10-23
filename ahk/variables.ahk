@@ -18,7 +18,6 @@ FILE_MANAGER := "D:\Dropbox\soft\totalcmd\TOTALCMD64.EXE"
 FILE_SEARCH := "c:\Program Files\Everything\Everything64.exe"
 IMAGE_VIEWER := "d:\Dropbox\soft\IrfanView\i_view64.exe"
 PLAYER := "d:\Dropbox\soft\mpv_portable\mpv.exe"
-TERMINAL := USER_HOME . "\AppData\Local\Microsoft\WindowsApps\wt.exe"
 VIVALDI := "d:\soft\network\vivaldi\Application\vivaldi.exe"
 
 ; Files
