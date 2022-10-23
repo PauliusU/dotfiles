@@ -16,6 +16,18 @@ FullScreen() {
     return
 }
 
+LeftHalf() {
+    ; Moves active window to left half of the screen
+    WinMove, A, , 0, 0, (A_ScreenWidth/2), A_ScreenHeight
+    return
+}
+
+RightHalf() {
+    ; Moves active window to right half of the screen
+    WinMove, A, , (A_ScreenWidth/2), 0, (A_ScreenWidth/2), A_ScreenHeight
+    return
+}
+
 MaximizeActiveWindow() {
     ; Maximizes windows but keeps taksbar visible
     WinMaximize, A ; A stands for active window
