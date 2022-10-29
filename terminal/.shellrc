@@ -67,7 +67,7 @@ if command -v tmux &>/dev/null && [ -z "$TMUX" ]; then
     # "command -v" pathname  or  command  that  will be used by the shell
     # "-z" returns true if the string is empty, false if it contains something
     # "$TMUX" used to check if a tmux session is active
-    tmux attach -t default || tmux new -s default
+    tmux attach -t main || tmux new -s main
 fi
 
 # ---------------------------------- PLUGINS -----------------------------------
