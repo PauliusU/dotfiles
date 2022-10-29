@@ -150,25 +150,26 @@ alias shutdown="sudo shutdown -h now"                     # Requires root passwo
 alias startup="gnome-session-properties"
 
 # Program access
-alias bw="bwm-ng -d"                                 # Network speed with dynamic units like K, M or G
-alias deb="sudo dpkg -i"                             # Install deb package (for Ubuntu, Debian, Raspbian)
-alias nv="nvim"                                      # Neovim
-alias nvrc="${EDITOR} ${HOME}/.config/nvim/init.vim" # Neovim config
-alias rmm="rm -rf"                                   # Remove non-empty folder
-alias space="du -h | awk 'END{print $1}'"            # Space used by current folder (and subfolders)
-alias td="tmux detach"                               # Exit the tmux window to come back to later
-alias tl="tmux ls"                                   # = tmux list-sessions
-alias tm="tmux"                                      # = tmux new = tmux new-session
-alias tmks="tmux kill-server"                        # Cleanly and gracefully kill all tmux open sessions (and server)
-alias tmm="echo tmux: $TMUX"                         # = tmux new = tmux new-session
-alias tt="tmux switch -t main || tmux new -As main"  # Switch to "main" session or create it if needed
-alias tmx="tmux new-session -ADs main"               # Create "main" session or attach to it (if exists)
-alias vi="$BREW_HOME/bin/vim"                        # Shothand for vim
-alias vim="nvim"                                     # Replace vim with neovim
-alias vimrc="${EDITOR} ${HOME}/.vimrc"               # Vim config
-alias tarx="tar -xvf"                                # Unzip
-alias tarz='tar czvf'                                # Zip
-alias taru='tar xzvf'                                # Unzip
+alias bw="bwm-ng -d"                                      # Network speed with dynamic units like K, M or G
+alias deb="sudo dpkg -i"                                  # Install deb package (for Ubuntu, Debian, Raspbian)
+alias nv="nvim"                                           # Neovim
+alias nvrc="${EDITOR} ${HOME}/.config/nvim/init.vim"      # Neovim config
+alias rmm="rm -rf"                                        # Remove non-empty folder
+alias space="du -h | awk 'END{print $1}'"                 # Space used by current folder (and subfolders)
+alias taru='tar xzvf'                                     # Unzip
+alias tarx="tar -xvf"                                     # Unzip
+alias tarz='tar czvf'                                     # Zip
+alias td="tmux detach"                                    # Exit the tmux window to come back to later
+alias tl="tmux ls"                                        # = tmux list-sessions
+alias tm="tmux"                                           # = tmux new = tmux new-session
+alias tmks="tmux kill-server"                             # Cleanly and gracefully kill all tmux open sessions (and server)
+alias tmm="echo tmux: $TMUX"                              # = tmux new = tmux new-session
+alias tmx="tmux new-session -ADs main"                    # Create "main" session or attach to it (if exists)
+alias tt="tmux switch -t main || tmux new -As main"       # Switch to "main"ß session or create it if needed
+alias vi="$BREW_HOME/bin/vim"                             # Shothand for vim
+alias vim="nvim"                                          # Replace vim with neovim
+alias vimrc="${EDITOR} ${HOME}/.vimrc"                    # Vim config
+alias yta="yt-dlp -x --restrict-filenames --add-metadata" # YouTube audio
 
 # Time and Date
 alias fulldate="date +%F"                                                          # Date in YYYY-MM-DD format
