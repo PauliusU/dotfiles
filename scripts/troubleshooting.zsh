@@ -4,6 +4,8 @@
 
 # Reset all accesability settings
 sudo tccutil reset Accessibility
+# Reset all "Full disk access" settings
+sudo tccutil reset SystemPolicyAllFiles
 # Reset macOS permissions for Alfred
  reset All com.runningwithcrayons.Alfred
 
