@@ -117,8 +117,8 @@ if [[ $(uname) -eq "Darwin" ]]; then
     echo "**** Toggl (a.k.a ToggleDesktop) ****"
     brew install --cask toggl-track
 
-    echo "**** Window managers ****"
-    brew install --cask alt-tab # AltTab - Windows alt-tab on macOS
-    brew install --cask rectangle
+    echo "**** Window management ****"
+    # brew install --cask alt-tab # AltTab - Windows alt-tab on macOS
+    # brew install --cask rectangle
     brew install --cask amethyst
 fi
