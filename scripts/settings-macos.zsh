@@ -35,8 +35,9 @@ killall Finder
 echo "**** Group windows by application in Mission Control ****"
 defaults write com.apple.dock "expose-group-by-app" -bool true
 
-# Show the ~/Library folder
-chflags nohidden ~/Library
+echo "Disable 'Displays have separate Spaces' [Requires log out]"
+defaults write com.apple.spaces spans-displays -int 1
+defaults read com.apple.spaces spans-displays
 
 # Desktop & Dock => Hot corners
 echo "**** Hot corners ****"
