@@ -1,6 +1,6 @@
 # dotfiles
 
-> Personal configuration files for macOS 12 (Monterey) and WSL2
+> Personal configuration files for macOS 13 (Ventura) and WSL2
 
 ## Configs
 
