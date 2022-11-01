@@ -9,13 +9,14 @@ autocmd VimEnter *
 " Themes and colors
 colorscheme onedark
 
-""" Nerd tree 
+""" Nerd tree
 " Open with Ctrl-E
 nnoremap <C-e> :NERDTreeToggle<CR>
 
 """ Telescope - fuzzy finder
 " Find files using Telescope command-line sugar
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>ft <cmd>Telescope find_files hidden=true<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
@@ -25,9 +26,9 @@ nnoremap <leader>ps <cmd>Telescope grep_string<cr>
 
 """ fzf
 " Git files
-nnoremap <C-p> :GFiles<cr> 
+nnoremap <C-p> :GFiles<cr>
 " Project files
-nnoremap <leader>pf :Files<cr> 
+nnoremap <leader>pf :Files<cr>
 
 """ ALE (ESlint)
 "  Set ESLint as plugging manager
