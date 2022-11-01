@@ -32,13 +32,24 @@ call plug#begin($BASE.'/plugged')
     
     if is_nvim
         " Nvim-only plugins
-        
+
         " Better syntax highlighting and syntax support for languages
         Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
         " Telescope - fuzzy find files
         Plug 'nvim-lua/plenary.nvim' " required depencency for Telescope
         Plug 'nvim-telescope/telescope.nvim'
+
+        " Completion
+        Plug 'neovim/nvim-lspconfig'
+        Plug 'hrsh7th/cmp-nvim-lsp'
+        Plug 'hrsh7th/cmp-buffer'
+        Plug 'hrsh7th/cmp-path'
+        Plug 'hrsh7th/cmp-cmdline'
+        Plug 'hrsh7th/nvim-cmp'
+        " For vsnip users.
+        Plug 'hrsh7th/cmp-vsnip'
+        Plug 'hrsh7th/vim-vsnip'
     else
         " Vim-only plugins
 
