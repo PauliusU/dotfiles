@@ -29,7 +29,13 @@ call plug#begin($BASE.'/plugged')
 
     " ESlint
     Plug 'w0rp/ale'
-    
+
+    " Comments (shortcut: gcc)
+    Plug 'tomtom/tcomment_vim'
+
+    " Auto close parentheses and repeat by dot dot dot...
+    Plug 'cohama/lexima.vim'
+
     if is_nvim
         " Nvim-only plugins
 
