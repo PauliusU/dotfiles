@@ -70,7 +70,7 @@ if [[ $(uname) -eq "Darwin" ]]; then
     brew install --cask hammerspoon        # Free, open source, mac
     ln -sf $(pwd)/hammerspoon ~/.hammerspoon
 
-    # Espanso. Free, open source, cross-platform
+    # Espanso. Free, open source, cross-platform text expander
     brew tap espanso/espanso # Add espanso tap, because Espanso is hosted outside the core homebrew repository
     brew install --cask espanso
     espanso path
@@ -81,7 +81,7 @@ if [[ $(uname) -eq "Darwin" ]]; then
     espanso --version
     ln -sf $(pwd)/espanso ~/Library/Application\ Support/espanso
 
-    # ### macOS built-in options ####
+    # ### macOS built-in automation options ####
     # Script Editor (called AppleScript Editor from 2009 to 2014) for the AppleScript and Javascript
     #       plain text (.applescript), as a compiled script (.scpt), as a script bundle (.scptd), or as an application (.app).
     # Automator # built-in in macOS since 10.4
@@ -108,10 +108,10 @@ if [[ $(uname) -eq "Darwin" ]]; then
     brew install --cask obs
 
     echo "**** PDFs ****"
-    brew install --cask adobe-acrobat-reader
+    # brew install --cask adobe-acrobat-reader
+    brew install --cask foxitreader
 
     echo "**** Images ****"
-    # sudo port install nomacs
     brew install --cask xnviewmp
 
     echo "**** Toggl (a.k.a ToggleDesktop) ****"
