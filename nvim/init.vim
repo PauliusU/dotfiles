@@ -42,9 +42,10 @@ call plug#begin($BASE.'/plugged')
         " Better syntax highlighting and syntax support for languages
         Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
-        " Telescope - fuzzy find files
-        Plug 'nvim-lua/plenary.nvim' " required depencency for Telescope
-        Plug 'nvim-telescope/telescope.nvim'
+        " File navigation and fuzzy finding
+        Plug 'nvim-lua/plenary.nvim' " required dependency for Telescope and Harpoon
+        Plug 'nvim-telescope/telescope.nvim' " Telescope - fuzzy find files
+        Plug 'ThePrimeagen/harpoon'
 
         " Completion
         Plug 'neovim/nvim-lspconfig'
