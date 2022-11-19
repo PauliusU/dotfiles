@@ -186,4 +186,5 @@ if [[ $(uname) -eq "Darwin" ]]; then
     echo "**** xcode ****"
     /usr/bin/xcodebuild -version
     clang --version
+    xcode-select --version
 fi
