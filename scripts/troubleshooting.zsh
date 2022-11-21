@@ -2,6 +2,9 @@
 
 # Toubleshoot system problems by reseting settings and cleaning up the software
 
+# Reset xcode developer path
+sudo xcode-select --reset
+
 # Reset all "Accessibility" settings
 sudo tccutil reset Accessibility
 # Reset all "Full disk access" settings
