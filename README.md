@@ -15,4 +15,4 @@ Name                                | Description
 [espanso](/espanso)                 | [Espanso](https://espanso.org/) is a free and open-source text expansion tool for Linux, macOS, and Windows.
 [hammerspoon](/hammerspoon)         | [Hammerspoon](https://www.hammerspoon.org/) is a powerful automation tool of macOS with Lua scripting engine. Similar to [AHK](https://www.autohotkey.com/) for Windows.
 [marta](/marta)                     | [Marta](https://marta.sh) is a dual-pane file manager for macOS.
-[nvim](/nvim)                       | Common settings common for `VIM`and `Neovim`
+[nvim](/vim)                       | Common settings common for `VIM`and `Neovim`
