@@ -1,5 +1,5 @@
 /*
-👨‍💻 Code snippets
+Code snippets 👨‍💻
 */
 #NoEnv
 #SingleInstance, Force ; Replace the old instance

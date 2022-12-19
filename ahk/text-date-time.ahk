@@ -1,5 +1,5 @@
 /*
-📅 Date and time functions
+Date and time functions 📅
 */
 #NoEnv
 #SingleInstance, Force ; Replace the old instance
