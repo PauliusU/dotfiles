@@ -10,11 +10,15 @@ sudo tccutil reset Accessibility
 # Reset all "Full disk access" settings
 sudo tccutil reset SystemPolicyAllFiles
 # Reset macOS permissions for Alfred
- reset All com.runningwithcrayons.Alfred
+reset All com.runningwithcrayons.Alfred
 
 # Uninstall all apps from macports
 sudo port -fp uninstall installed
 port installed
+
+# Neovim
+rm -rf ~/.local/share/nvim
+rm -rf ~/.config/nvim/*
 
 if [[ $(uname) == "Linux" ]]; then
     sudo apt-get -y autoremove
