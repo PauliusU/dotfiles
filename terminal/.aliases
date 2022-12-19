@@ -63,6 +63,7 @@ function updater() {
 	brew update
 	brew upgrade && brew upgrade --cask
 	brew cleanup
+	brew cleanup --prune=all --dry-run
 	softwareupdate -ai
 }
 function apt-updater {
