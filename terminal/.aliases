@@ -168,6 +168,7 @@ alias tmx="tmux new-session -ADs main"                    # Create "main" sessio
 alias tt="tmux switch -t main || tmux new -As main"       # Switch to "main"ß session or create it if needed
 alias vi="$BREW_HOME/bin/vim"                             # Shothand for vim
 alias vim="nvim"                                          # Replace vim with neovim
+alias fdd="fd -IH"                                        # File system search 
 alias vimrc="${EDITOR} ${HOME}/.vimrc"                    # Vim config
 alias yta="yt-dlp -x --restrict-filenames --add-metadata" # YouTube audio
 
