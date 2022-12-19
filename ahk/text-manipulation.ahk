@@ -1,5 +1,5 @@
 /*
-📜 Text manipulation functions (change case, convert folder paths)
+Text manipulation functions (change case, convert folder paths) 📜
 */
 #NoEnv
 #SingleInstance, Force ; Replace the old instance
