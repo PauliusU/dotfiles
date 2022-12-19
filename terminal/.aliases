@@ -182,6 +182,7 @@ alias ip="echo 'External IP:\n\n$(dig +short myip.opendns.com @resolver1.opendns
 alias ips="ifconfig | grep inet | grep -v inet6 | awk '{print $2}'"                     # Internal IPs
 
 # Scripts and functions
+alias di="py $SCRIPTS_PATH/fs_dropbox_ignore_node_modules.private.py"
 alias fss="$SCRIPTS_PATH/fs.sh"
 function ytpl() {
 	#  Download youtube laylist or channel
