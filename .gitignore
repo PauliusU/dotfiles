@@ -8,6 +8,8 @@ private.lua
 *.lnk
 
 espanso/match/packages/*
+nvim/plugin/
+nvim/undodir/
 vim/autoload/
 vim/plugged/
 terminal/WindowsTerminal/state.json

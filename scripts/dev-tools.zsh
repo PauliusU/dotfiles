@@ -37,9 +37,10 @@ gh --version
 
 echo "**** Neovim / Vim ****"
 brew install neovim
-# Install vim-plug for neovim
-sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
-       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+# Install packer for neovim
+git clone --depth 1 https://github.com/wbthomason/packer.nvim\
+    ~/.local/share/nvim/site/pack/packer/start/packer.nvim
+ln -sf $(pwd)/nvim ~/.config/nvim
 # Nvim telescope plugin requirements for grep_string and live_grep functions
 brew install ripgrep
 # scoop install fd
@@ -50,10 +51,8 @@ brew install vim
 # Install vim-plug for vim
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-
-ln -sf $(pwd)/nvim ~/.config/nvim
-ln -sf $(pwd)/nvim ~/.vim
-ln -sf $(pwd)/nvim/init.vim ~/.vimrc
+ln -sf $(pwd)/vim ~/.vim
+ln -sf $(pwd)/vim/init.vim ~/.vimrc
 
 echo "**** Python [Python 3] and artificial intelligence ****"
 
