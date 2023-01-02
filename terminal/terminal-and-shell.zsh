@@ -14,6 +14,7 @@ echo "**** tmux ****"
 brew install tmux
 tmux -V # Capital V
 ln -sf $(pwd)/terminal/.tmux.conf ~/.tmux.conf
+ln -sf $(pwd)/terminal/tmux-sessionizer.sh ~/.local/bin/tmux-sessionizer
 
 echo "================================ ZSH ===================================="
 
