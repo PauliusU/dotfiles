@@ -1,6 +1,16 @@
 #!/usr/bin/env bash
 
-session=$(find ~ ~/code ~/dev ~/Dropbox/code ~/code/Languages ~/Dropbox/dev ~/Dropbox/DropsyncFiles -mindepth 1 -maxdepth 1 -type d | fzf)
+session=$(find \
+    ~ \
+    ~/code \
+    ~/code/Languages \
+    ~/dev \
+    ~/Dropbox/code \
+    ~/Dropbox/dev \
+    ~/Dropbox/DropsyncFiles \
+    ~/Dropbox/projects \
+    -mindepth 1 -maxdepth 1 -type d | fzf
+)
 
 session_name=$(basename "$session" | tr . _)
 
