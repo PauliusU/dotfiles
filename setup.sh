@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/usr/bin/env bash
 
 # Symlinks for common files and folders. -f forces linking if file aready exists.
 ln -sf ~/Dropbox/code ~/code
