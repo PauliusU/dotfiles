@@ -6,10 +6,13 @@ SCRIPTS_PATH="~/Dropbox/code/dotfiles/scripts"
 
 # Navigation and file listing
 alias cde="cd ~/code/"
+alias cl="cd ~/Library/CloudStorage/"
 alias desk="cd ~/Desktop/"
 alias dev="cd ~/dev/"
+alias dl="cd ~/Downloads/"
 alias docs="cd ~/Documents/"
 alias drb="cd ~/Dropbox/"
+alias ds="cd ~/Dropbox/DropsyncFiles"
 alias dt="cd ~/Desktop/" # "dt" is also a command line tool to display information about your domain on Linux or Unix system
 alias dwn="cd ~/Downloads/"
 # Save and then change the current directory. With no arguments, pushd exchanges the top two directories.
@@ -154,6 +157,7 @@ alias startup="gnome-session-properties"
 alias bw="bwm-ng -d"                                      # Network speed with dynamic units like K, M or G
 alias deb="sudo dpkg -i"                                  # Install deb package (for Ubuntu, Debian, Raspbian)
 alias nv="nvim"                                           # Neovim
+alias nvu="nvim +PackerSync"                              # Neovim with `PackerSync` to make changes to your plugin configuration
 alias nvrc="${EDITOR} ${HOME}/.config/nvim/init.vim"      # Neovim config
 alias rmm="rm -rf"                                        # Remove non-empty folder
 alias space="du -h | awk 'END{print $1}'"                 # Space used by current folder (and subfolders)
