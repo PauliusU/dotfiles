@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/usr/bin/env bash
 
 # Check default shell
 which $SHELL
@@ -12,6 +12,7 @@ fi
 
 echo "**** tmux ****"
 brew install tmux
+sudo apt install -y tmux
 tmux -V # Capital V
 ln -sf $(pwd)/terminal/.tmux.conf ~/.tmux.conf
 ln -sf $(pwd)/terminal/tmux-sessionizer.sh ~/.local/bin/tmux-sessionizer
@@ -19,11 +20,13 @@ ln -sf $(pwd)/terminal/tmux-sessionizer.sh ~/.local/bin/tmux-sessionizer
 echo "================================ ZSH ===================================="
 
 if [[ $(uname) -eq "Linux" ]]; then
-    sudo apt-get update
-    sudo apt-get install zsh
+    sudo apt update
+
+    sudo apt install -y zsh
     # Set ZSH as  default shell
     chsh -s $(which zsh)
-    sudo apt-get install curl
+
+    sudo apt install -y curl
     # Oh My Zsh is an extension to Zsh that will allow you to easily customise your prompt to add themes, plugins and shortcuts
     sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
@@ -42,9 +45,14 @@ fi
 
 if [[ $(uname) -eq "Darwin" ]]; then
     echo "**** Spaceship Prompt (and fira-code font) ****"
+
     brew tap homebrew/cask-fonts
     brew install --cask font-fira-code
     brew install --cask font-cascadia-code-pl
+
+    sudo apt install -y fonts-firacode
+    sudo apt install -y fonts-cascadia-code
+
     # brew install spaceship
     # echo "source $(brew --prefix)/opt/spaceship/spaceship.zsh" >>! ~/.zshrc
     git clone https://github.com/spaceship-prompt/spaceship-prompt.git "$ZSH_CUSTOM/themes/spaceship-prompt" --depth=1
