@@ -1,6 +1,6 @@
 vim.g.mapleader = " "
 
-vim.keymap.set("n", "<leader>r", "<cmd>:source $MYVIMRC<CR>") -- Reload config
+vim.keymap.set("n", "<leader>r", "<cmd>source $MYVIMRC<CR>") -- Reload config
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex) -- Explore file tree (project view)
 vim.keymap.set("i", "jk", "<Esc>") -- Enter normal mode
 
@@ -30,7 +30,7 @@ vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]])
 -- vim.keymap.set("i", "<C-c>", "<Esc>")
 
 vim.keymap.set("n", "Q", "<nop>") -- disable capital Q
-vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
+vim.keymap.set({"n", "v", "i"}, "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
 vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)
 
 -- Quickfix navigation
@@ -46,6 +46,10 @@ vim.keymap.set("n", "<leader>n", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><
 vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 
 -- -- Similar to other editors
+-- Save with Alt-S
+vim.keymap.set({"n", "v", "i"}, "<A-s>", vim.cmd.update)
+-- Quit with Alt-Q
+vim.keymap.set({"n", "v"}, "<A-q>", "<cmd>q<CR>")
 -- Select all with Alt-A
 vim.keymap.set({"n", "v"}, "<A-a>", "<esc>ggVG")
 
