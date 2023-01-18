@@ -32,6 +32,7 @@ brew install midnight-commander
 
 echo "**** File search ****"
 brew install fzf # Fuzzy finder
+sudo apt install fzf -y
 
 echo "**** Network ****"
 # sudo apt install -y bwm-ng        # bandwidth meter

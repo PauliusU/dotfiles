@@ -46,6 +46,14 @@ brew install ripgrep
 # scoop install fd
 brew install fd
 
+# sudo add-apt-repository ppa:neovim-ppa/stable
+sudo add-apt-repository ppa:neovim-ppa/unstable
+sudo apt update
+sudo apt install -y neovim
+sudo apt install -y ripgrep
+sudo apt install -y fd-find # Note it's "fd-find" not "fd"
+# tsserver requires npm
+
 # sudo apt install -y vim
 brew install vim
 # Install vim-plug for vim
@@ -129,6 +137,7 @@ micromamba create -n ml-micromamba jupyter numpy pandas keras matplotlib request
 
 echo "**** TypeScript, JavaScript, Node.js, NPM, yarn, Volta ****"
 brew install volta
+# curl https://get.volta.sh | bash
 volta -v
 
 volta install node@16
@@ -161,7 +170,7 @@ if [[ $(uname) -eq "Darwin" ]]; then
     brew install --cask docker # Docker desktop
     docker -v                  # = docker --version
     docker version             # More info than docker -v
-    docker-compose --version
+    docker compose version     # = docker-compose --version
 
     echo "**** Git client git-fork ****"
     brew install --cask fork
