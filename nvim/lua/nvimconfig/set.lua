@@ -23,8 +23,10 @@ vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
 vim.opt.undofile = true
 
 -- Search
-vim.opt.hlsearch = false
+-- vim.opt.hlsearch = false
 vim.opt.incsearch = true -- Incremental search (highlighting as you type)
+vim.opt.ignorecase = true -- Ignore case in search patterns
+vim.opt.smartcase = true  -- Override the 'ignorecase' if search contains an uppercase characters
 
 -- Colors
 vim.opt.termguicolors = true
