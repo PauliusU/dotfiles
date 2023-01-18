@@ -20,7 +20,7 @@ Linux*)
     OSFOUND="Linux"
     IS_LINUX=true
     ;;
-CYGWIN* | MINGW* | MINGW32* | MSYS*)
+MINGW* | CYGWIN* | MSYS*) # E.g. Git Bash for Windows
     OSFOUND="Windows"
     IS_WINDOWS=true
     ;;
@@ -61,7 +61,7 @@ prepend_path "$VOLTA_HOME/bin"      # Use Volta Node instead of global Node by d
 unset -f prepend_path
 
 # ----------------------------------- TMUX -------------------------------------
-bindkey -s ^f "$HOME/code/dotfiles/terminal/tmux-sessionizer.sh\n"
+bindkey -s ^f "tmux-sessionizer\n"
 # Run TMUX if not in active session
 if command -v tmux &>/dev/null && [ -z "$TMUX" ]; then
     # "command -v" pathname  or  command  that  will be used by the shell
@@ -88,4 +88,4 @@ autoload -U compinit
 # Load aliases (and other custom settings)
 source ~/.aliases
 
-echo ".shellrc loaded for $OSFOUND"
+echo ".shellrc for $OSFOUND"
