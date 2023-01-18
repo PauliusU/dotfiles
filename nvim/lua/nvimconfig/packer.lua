@@ -9,7 +9,7 @@ return require('packer').startup(function(use)
     use 'wbthomason/packer.nvim'
 
     -- Navigation
-    -- Telescope - fuzzy file finder
+    -- Telescope - fuzzy finder
     use {
         'nvim-telescope/telescope.nvim', tag = '0.1.0',
         -- or                            , branch = '0.1.x',
@@ -24,17 +24,12 @@ return require('packer').startup(function(use)
     use('mbbill/undotree')
 
     -- Syntax highlighting, colors and themes
+    -- treesitter - amazingly fast code parsing
     use({ 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' })
+    -- Onedark colorscheme
     use 'navarasu/onedark.nvim'
-    use({
-        'rose-pine/neovim',
-        as = 'rose-pine',
-        config = function()
-            vim.cmd('colorscheme rose-pine')
-        end
-    })
 
-    -- LSP
+    -- LSP and completion
     use {
         'VonHeikemen/lsp-zero.nvim',
         requires = {
