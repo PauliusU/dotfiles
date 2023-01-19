@@ -21,7 +21,7 @@ rm -rf ~/.local/share/nvim
 rm -rf ~/.config/nvim/*
 
 if [[ $(uname) == "Linux" ]]; then
-    sudo apt-get -y autoremove
-    sudo apt-get -y autoclean
-    sudo apt-get -y clean
+    sudo apt -y autoremove
+    sudo apt -y autoclean
+    sudo apt -y clean
 fi
