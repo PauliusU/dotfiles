@@ -26,7 +26,6 @@ hs.hotkey.bind(mash, "Y", function() hs.reload() end) -- Reload HS config #2 (in
 hs.hotkey.bind(mash, "W", fn.sayHello) -- [ ⌃ + ⌥ + ⌘ + W ]
 
 -- Text and key manipulation
-Hyper:bind({}, "H", nil, fn.getDate())
 Hyper:bind({}, "J", nil, fn.getDate())
 hs.hotkey.bind(mash, "D", fn.getDate()) -- [ ⌃ + ⌥ + ⌘ + D ]
 -- VIM like arrow keys
@@ -73,20 +72,27 @@ Hyper:bind("Shift", "P", nil, fn.open("MPV"))
 Hyper:bind("Shift", "L", nil, fn.open("Calendar"))
 Hyper:bind({}, "A", nil, fn.open("iTerm"))
 Hyper:bind({}, "B", nil, fn.open("MongoDB Compass"))
+Hyper:bind({}, "C", nil, fn.open("DisplayLink Manager"))
 Hyper:bind({}, "D", nil, fn.open("Visual Studio Code"))
 Hyper:bind({}, "E", fn.exec("open ~/Downloads"))
 Hyper:bind({}, "F", nil, fn.open("Google Chrome"))
 Hyper:bind({}, "G", nil, fn.exec("open 'https://gmail.com'"))
+Hyper:bind({}, "H", nil, fn.open("Anki"))
 Hyper:bind({}, "I", nil, fn.open("Preview"))
+-- Hyper:bind({}, "J", nil, fn.getDate())
 Hyper:bind({}, "K", nil, fn.open("Ferdi"))
 Hyper:bind({}, "L", nil, fn.exec("open 'https://calendar.google.com'"))
+-- Hyper:bind({}, "M", nil, fn.hideAllWindows()) -- [ Hyper + M ]
 Hyper:bind({}, "N", nil, fn.exec("open ~/Dropbox/DropsyncFiles/audiob/notes_PC.md"))
 Hyper:bind({}, "O", nil, fn.exec("$HOME/bin/homebrew/bin/code $HOME/code/dotfiles"))
 Hyper:bind({}, "P", nil, fn.open("Spotify"))
+-- Hyper:bind({}, "R", nil, fn.reloadHs())
 Hyper:bind({}, "S", fn.open("Marta"))
-Hyper:bind({}, "U", fn.open("MPV"))
 Hyper:bind({}, "T", nil, fn.open("Terminal"))
+Hyper:bind({}, "U", fn.open("MPV"))
+Hyper:bind({}, "W", nil, fn.open("System Settings"))
 Hyper:bind({}, "V", nil, fn.open("Safari"))
+Hyper:bind({}, "X", nil, fn.open("Messages"))
 Hyper:bind({}, "Y", fn.open("Toggl Track"))
 Hyper:bind({}, "Z", fn.open("EasyFind"))
 
