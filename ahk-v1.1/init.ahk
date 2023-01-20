@@ -10,7 +10,7 @@ SetBatchLines, -1
 SetWorkingDir, %A_ScriptDir%
 
 ; Startup
-MsgBox, , , AHK, 0.4 ; Nofity that script has loaded
+MsgBox, , , AHKv1.1, 0.4 ; Nofity that script has loaded
 TaskbarToggle(true) ; Hide taskbar
 SetNumLockState, on ; Turn on NumLock
 
