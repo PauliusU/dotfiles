@@ -5,6 +5,7 @@ echo ".aliases"
 SCRIPTS_PATH="~/Dropbox/code/dotfiles/scripts"
 
 # Navigation and file listing
+alias -- -='cd -' # Toggle between last two directories
 alias cde="cd ~/code/"
 alias cl="cd ~/Library/CloudStorage/"
 alias desk="cd ~/Desktop/"
@@ -139,12 +140,13 @@ alias zrc="$EDITOR ~/.zshrc"                     # ZSH config
 alias zshrc="${EDITOR} ${HOME}/.zshrc"           # Alternative alias for ZSH config
 
 # Sensible defaults (same command but with differrent default value)
-alias df="df -h"     # Human readable
-alias du="du -h"     # Human readable
-alias htop="htop -t" # Processes in an indented tree - control+C to stop
-alias rm='rm -i'     # Prompt before every removal
-alias cp='cp -i'     # Prompt before overwrite
-alias mv='mv -i'     # Prompt before overwrite
+alias df="df -h"               # Human readable
+alias du="du -h"               # Human readable
+alias htop="htop -t"           # Processes in an indented tree - control+C to stop
+alias rm='rm -i'               # Prompt before every removal
+alias cp='cp -i'               # Prompt before overwrite
+alias mv='mv -i'               # Prompt before overwrite
+alias mount='mount |column -t' # Make mount command output pretty and human readable format
 
 # System control (startup, restart, shutdown, cron jobs)
 alias crn="crontab -e"                                    # Edit current crontab
