@@ -66,6 +66,7 @@ hs.hotkey.bind("ctrl", "escape", fn.openTab()) -- Open Google Chrome tab [ ⌃ +
 hs.hotkey.bind(ctrl_opt, "Z", fn.open("Terminal")) -- [ ⌃ + ⌥ + Z ]
 hs.hotkey.bind(mash, "F", fn.open("Finder")) -- Finder (recent files) [ ⌃ + ⌥ + ⌘ + F ]
 Hyper:bind("Shift", "A", nil, fn.open("alacritty"))
+Hyper:bind("Shift", "S", nil, fn.open("Double Commander"))
 Hyper:bind("Shift", "I", nil, fn.open("Foxit PDF Reader"))
 Hyper:bind("Shift", "K", nil, fn.open("Slack"))
 Hyper:bind("Shift", "P", nil, fn.open("MPV"))
