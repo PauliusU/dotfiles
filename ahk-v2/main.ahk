@@ -2,7 +2,8 @@
 AutoHotkey v2 main entry point
 Used to import other modules and set keyboard shortcuts in a single place
 */
-; Startup
+
+; Script startup settings
 #SingleInstance Force    ; Replace the old instance
 MsgBox('AHKv2', , 'T0.4')    ; Nofity that script has loaded
 hideTaskbar := true
@@ -60,8 +61,6 @@ CapsLock & Enter:: FullScreen()
 ScrollLock & Q:: SetSoundDevice('Headphones')
 ScrollLock & W:: SetSoundDevice('Speakers')
 
-; MsgBox(EDITOR_VISUAL)
-
 ; Apps, folders and files (CapsLock based)
 CapsLock & A:: OpenAppOrFile('wt', 'ahk_exe WindowsTerminal.exe')
 CapsLock & B:: OpenAppOrFile(USER_HOME . '\scoop\apps\mongodb-compass\current\MongoDBCompass.exe', 'ahk_exe MongoDBCompass.exe')
@@ -75,10 +74,10 @@ CapsLock & I:: OpenAppOrFile(IMAGE_VIEWER, 'IrfanView')
 CapsLock & J:: return
 CapsLock & K:: OpenAppOrFile(USER_HOME . '\scoop\apps\ferdi\current\Ferdi.exe', 'Ferdi')
 CapsLock & L:: OpenAppOrFile(BROWSER . ' calendar.google.com', 'Google Calendar')
-; CapsLock & M:: OpenYoutube()
+CapsLock & M:: OpenYoutube()
 CapsLock & N:: Run(EDITOR_VISUAL . ' ' . NOTES)
 CapsLock & O:: Run(EDITOR_VISUAL . ' ' . DOTFILES)
-; CapsLock & P:: OpenSpotify()
+CapsLock & P:: OpenSpotify()
 CapsLock & Q:: ToggleSoundDevice('Headphones', 'Speakers')
 CapsLock & R:: OpenAppOrFile(USER_HOME . '\scoop\apps\anki\current\anki.exe', 'Anki')
 CapsLock & S:: OpenAppOrFile(FILE_MANAGER, 'ahk_exe TOTALCMD64.EXE')
@@ -91,7 +90,7 @@ CapsLock & Y:: OpenAppOrFile(USER_HOME . '\scoop\apps\toggl\current\TogglDesktop
 CapsLock & Z:: OpenAppOrFile(FILE_SEARCH, 'ahk_exe Everything64.exe')
 CapsLock & Numpad0:: OpenAppOrFile(USER_HOME . '\Desktop', 'Desktop')
 CapsLock & Numpad1:: OpenAppOrFile('::{645FF040-5081-101B-9F08-00AA002F954E}', 'Recycle Bin')
-; CapsLock & Numpad2:: EmptyRecycleBin()
+CapsLock & Numpad2:: EmptyRecycleBin()
 CapsLock & Numpad3:: OpenAppOrFile(USER_HOME . '\Downloads', 'Downloads')
 CapsLock & Numpad4:: Run('F:\dwn')
 CapsLock & Numpad5:: Run('d:\Dropbox\DropsyncFiles')
@@ -100,9 +99,6 @@ CapsLock & Numpad7:: OpenAppOrFile('D:\Dropbox\DropsyncFiles\audiob\DBs\input.xl
 CapsLock & Numpad8:: OpenAppOrFile(BROWSER . ' drive.google.com', 'Drive')
 CapsLock & Numpad9:: OpenAppOrFile('D:\Dropbox\DropsyncFiles\audiob\DBs\input_charts.xlsx', 'input_charts')
 CapsLock & NumpadMult:: Run('C:\Windows\SysWOW64\calc.exe')    ; Calculator
-
-; Capslock:: TurnOffCapsLock()
-; +Capslock:: TurnOnCapsLock()
 
 ; Scripts (Win-Fn based)
 #F1:: Run(SCRIPTS_PATH '\processes-kill.bat')
@@ -126,11 +122,15 @@ CapsLock & NumpadMult:: Run('C:\Windows\SysWOW64\calc.exe')    ; Calculator
 ^!#T:: PathWindows()    ; c:\windows\path\example => c:\\path\\example
 ^!#U:: ToUppercase()    ; text example => TEXT EXAMPLE
 ^!#W:: CurrentWeek()    ; => w42
-; Utils (Ctrl-Alt-Win-Fn based)
 ^!#F1:: Run('C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe')    ; PowerShell
 ^!#F2:: Run('c:\Windows\System32\cmd.exe')    ; Command Prompt (vanilla)
 ^!#F3:: Run('c:\Windows\System32\cmd.exe /K %DOTFILES%\terminal\cmdrc.cmd & @echo on')    ; Command Prompt (custom)
 ^!#F4:: OpenAppOrFile(TERMINAL, 'ahk_exe WindowsTerminal.exe')
 ^!#Left:: Run('control')    ; classic Control Panel
-
+; Utils (Ctrl-Alt)
 ^!Z:: OpenAppOrFile(TERMINAL, 'ahk_exe WindowsTerminal.exe')
+
+; Windows OS remaps and disabled keys
+#Space:: return    ; Disable keyboard-layout switcher
+Capslock:: TurnOffCapsLock()
++Capslock:: TurnOnCapsLock()
