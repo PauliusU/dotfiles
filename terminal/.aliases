@@ -286,5 +286,19 @@ function extract_audio() {
 	ffmpeg -i $1 -vn -acodec copy "${1%.*}.aac"
 }
 
+function ver() {
+	# os-check - get basic info about OS running the script, OS version, build.
+
+	echo "uname: $(uname)\n" # Linux, Darwin, MINGW64_NT-10.0-25211
+	echo "OSTYPE: $OSTYPE\n" # linux-gnu, darwin21, msys (Windows in Git Bash)
+	uname -a && echo "\n"
+
+	if [[ "$(uname)" == "Darwin" ]]; then
+		sw_vers                            # macOS and build version
+		sw_vers -productVersion            # macOS version only
+		system_profiler SPSoftwareDataType # OS version, computer name, user name, etc.
+	fi
+}
+
 # Files and directories
 alias npc="nvim ~/Dropbox/DropsyncFiles/audiob/notes_PC.md"
