@@ -15,6 +15,7 @@ DOSKEY cde = CD /D d:\Dropbox\code
 DOSKEY desk = CD /D %USERPROFILE%\Desktop
 DOSKEY dev = CD /D d:\Dropbox\dev
 DOSKEY docs = CD /D %USERPROFILE%\Documents
+DOSKEY drb = CD /D %USERPROFILE%\Dropbox
 DOSKEY dt = CD /D %USERPROFILE%\Desktop
 DOSKEY dwn = CD /D %USERPROFILE%\Downloads
 
