@@ -118,7 +118,7 @@ alias pew="pipenv --venv"                                # Check location of the
 # Docker
 alias doa="docker attach"  # Get back to running container
 alias dops="docker ps"     # See running containers = docker container ls
-alias dopss="docker ps- a" # See all containers (not only those that run) = docker container ls -a
+alias dopss="docker ps -a" # See all containers (not only those that run) = docker container ls -a
 alias dols="docker images" # See downloaded images = docker image ls
 
 # Shell control
