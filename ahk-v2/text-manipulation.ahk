@@ -18,7 +18,7 @@ ToLowercase() {
 
 ToInverted() {
     ; Convert text to inverted (invert case). Example => eXAMPLE
-    invertedChars := ""
+    invertedChars := ''
     loop (Strlen(A_Clipboard)) {
         workingChar := Substr(A_Clipboard, A_Index, 1)
         if (IsUpper(workingChar))
@@ -43,15 +43,15 @@ ToEachCapitalized() {
 ToSentenceCase() {
     ; Convert text sentence case. quick example => Quick example
     Clipboard := StrUpper(A_Clipboard)
-    Clipboard := RegExReplace(Clipboard, "((?:^|[.!?]\s+)[a-z])", "$u1")
+    Clipboard := RegExReplace(Clipboard, '((?:^|[.!?]\s+)[a-z])', '$u1')
     Send(Clipboard)
     return
 }
 
 PathWindows() {
     ; Replace '\' with '\\'. Useful for Windows paths in JSON.
-    if (InStr(A_Clipboard, "\")) {
-        output := Strreplace(A_Clipboard, "\", "\\")
+    if (InStr(A_Clipboard, '\')) {
+        output := Strreplace(A_Clipboard, '\', '\\')
         SendInput(output)
     } else {
         MsgBox('Clipboard does not contain path:`n`n' . A_Clipboard, 'T5')
@@ -62,9 +62,9 @@ PathWindows() {
 PathUnix() {
     ; Convert Windows paths to Git-Bash and WSL2 frienldy format
     ; c:\windows\path\example => /c/windows/path/example
-    if (InStr(A_Clipboard, "\")) {
-        output := Strreplace(A_Clipboard, "\", "/")
-        output := StrReplace(output, ":", "")
+    if (InStr(A_Clipboard, '\')) {
+        output := Strreplace(A_Clipboard, '\', '/')
+        output := StrReplace(output, ':', '')
         SendInput('/'.output)
     } else {
         MsgBox('Clipboard does not contain path:`n`n' . A_Clipboard, 'T5')

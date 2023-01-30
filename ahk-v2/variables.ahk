@@ -1,7 +1,7 @@
 ﻿; Folders
 USER_HOME := EnvGet('USERPROFILE')    ; Get USERPROFILE env variable and save to USER_HOME
 SplitPath(A_ScriptDir, , &DOTFILES)    ; Get parent of A_ScriptDir and save to DOTFILES
-SCRIPTS_PATH := DOTFILES . "\scripts"
+SCRIPTS_PATH := DOTFILES . '\scripts'
 
 ; Apps
 BROWSER := USER_HOME . '\scoop\apps\firefox\current\firefox.exe'

@@ -1,6 +1,6 @@
 ﻿OpenAppOrFile(pathToOpen, winName) {
-    ; "Activate window if exists, otherwise open it
-    ; "2" - window's title can contain WinTitle anywhere inside it to be a match
+    ; 'Activate window if exists, otherwise open it
+    ; '2' - window's title can contain WinTitle anywhere inside it to be a match
     SetTitleMatchMode(2)
     if WinExist(winName) {
         WinActivate
@@ -16,7 +16,7 @@ EmptyRecycleBin() {
     ; Empty Recycle Bin if it is active
     ; 2: A window's title can contain WinTitle anywhere inside it to be a match
     SetTitleMatchMode(2)
-    if WinActive("Recycle Bin") {
+    if WinActive('Recycle Bin') {
         FileRecycleEmpty
     }
     return
@@ -46,7 +46,7 @@ ToggleHiddenFiles() {
         MsgBox('Not showing hidden files (back to default)', , 'T1')
     }
 
-    if WinActive("ahk_exe explorer.exe") {
+    if WinActive('ahk_exe explorer.exe') {
         Send('{F5}')
     }
 
@@ -62,9 +62,9 @@ OpenYoutube() {
     if (GetKeyState('Shift', 'P')) {
         Run(PLAYER . ' --ytdl-format=bestvideo[height<=1080]+bestaudio/best ' . YOUTUBE_PLAYLIST)
         MsgBox('Playlist is loading', 'Launching in player', 'T6')
-        WinActive("ahk_exe mpv.exe")
+        WinActive('ahk_exe mpv.exe')
     } else {
-        if WinActive("ahk_class Chrome_WidgetWin_1") or WinActive("ahk_class MozillaWindowClass") {
+        if WinActive('ahk_class Chrome_WidgetWin_1') or WinActive('ahk_class MozillaWindowClass') {
             ; If Chromium based browser or Firefox is  active
             Send('^l')    ; Go to address bar
             Sleep(100)
