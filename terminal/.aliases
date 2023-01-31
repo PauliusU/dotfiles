@@ -173,7 +173,7 @@ alias tm="tmux"                                           # = tmux new = tmux ne
 alias tmks="tmux kill-server"                             # Cleanly and gracefully kill all tmux open sessions (and server)
 alias tmm="echo tmux: $TMUX"                              # = tmux new = tmux new-session
 alias tmx="tmux new-session -ADs main"                    # Create "main" session or attach to it (if exists)
-alias tt="tmux switch -t main || tmux new -As main"       # Switch to "main"ß session or create it if needed
+alias tt="tmux switch -t main || tmux new -As main"       # Switch to "main" session or create it if needed
 alias vi="$BREW_HOME/bin/vim"                             # Shorthand for vim
 alias vim="nvim"                                          # Replace vim with neovim
 alias fdd="fd -IH"                                        # File system search
