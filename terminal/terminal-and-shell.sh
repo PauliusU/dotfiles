@@ -52,7 +52,9 @@ if [[ $(uname) -eq "Darwin" ]]; then
 
     brew tap homebrew/cask-fonts
     brew install --cask font-fira-code
+    brew install --cask font-fira-code-nerd-font
     brew install --cask font-cascadia-code-pl
+    brew install --cask font-caskaydia-cove-nerd-font
 
     sudo apt install -y fonts-firacode
     sudo apt install -y fonts-cascadia-code
