@@ -96,6 +96,7 @@ Hyper:bind({}, "V", nil, fn.open("Safari"))
 Hyper:bind({}, "X", nil, fn.open("Messages"))
 Hyper:bind({}, "Y", fn.open("Toggl Track"))
 Hyper:bind({}, "Z", fn.open("EasyFind"))
+Hyper:bind({}, "pad7", fn.exec("open ~/Dropbox/DropsyncFiles/audiob/DBs/input.xlsx"))
 
 -- Window management
 -- -- Seature spectacle/another window sizing apps
