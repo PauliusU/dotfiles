@@ -184,6 +184,10 @@ if [[ $(uname) -eq "Darwin" ]]; then
     echo "**** Postman ****"
     brew install --cask postman
 
+    echo "**** PostgreSQL psql ****"
+    brew install libpq
+    brew link --force libpq
+
     echo "**** Visual studio code [VSCode] ****"
     # sudo apt install -y code          # VSCode for Debian 10
     # sudo apt install -y gnome-keyring # required to authorize Visual Studio Code to access GitHub
