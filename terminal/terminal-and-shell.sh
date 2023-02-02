@@ -8,6 +8,10 @@ echo "=============================== TERMINAL ================================"
 if [[ $(uname) -eq "Darwin" ]]; then
     echo "**** iterm2 - Terminal.app replacement ****"
     brew install --cask iterm2
+
+    echo "**** alacritty - a fast, cross-platform, OpenGL terminal emulator ****"
+    brew install --cask alacritty
+    ln -sf $(pwd)/terminal/alacritty/alacritty.yml ~/.config/alacritty/alacritty.yml
 fi
 
 echo "**** tmux ****"
