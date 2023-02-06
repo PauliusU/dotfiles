@@ -116,10 +116,19 @@ alias peu="pipenv update"                                # Update all or specifi
 alias peun="pipenv uninstall"                            # Uninstall dependency
 alias pew="pipenv --venv"                                # Check location of the environment
 # Docker
-alias doa="docker attach"  # Get back to running container
-alias dops="docker ps"     # See running containers = docker container ls
-alias dopss="docker ps -a" # See all containers (not only those that run) = docker container ls -a
-alias dols="docker images" # See downloaded images = docker image ls
+alias da='docker attach'                                                                                  # Get back to running container
+alias dcls='docker compose ls -a'                                                                         # List running compose projects
+alias ddr='docker run -it --rm --name disposable'                                                         # Run any disposable container and delete it after exiting
+alias ddru='docker run -it --rm --name disposable-ubuntu ubuntu:23.04 || docker attach disposable-ubuntu' # Run Ubuntu container and automatically delete it when it exits
+alias dei='docker exec -it'                                                                               # Docker run interactive shell
+alias dls='docker images'                                                                                 # See downloaded images = docker image ls
+alias dnls='docker network ls'                                                                            # List docker networks
+alias dps='docker ps --format="$DOCKER_FORMAT"'                                                           # See running containers = docker container ls
+alias dpss='docker ps -a --format="$DOCKER_FORMAT"'                                                       # See all containers (not only those that run) = docker container ls -a
+alias drn='docker run -w /src -v $PWD:/src --rm node:18'                                                  # Run Node commands without installing it. "-w /src" - creates folder inside a container.
+alias dru='(docker start ubun && docker attach ubun) || docker run -it --name ubun pu/ubuntu fish'        # Run custom Ubuntu container (create it if needed)
+alias dst='open -a Docker'                                                                                # Docker [st]art daemon
+export DOCKER_FORMAT='ID\t{{.ID}}\nNAME\t{{.Names}}\nIMAGE\t{{.Image}}\nPORTS\t{{.Ports}}\nCOMMAND\t{{.Command}}\nCREATED\t{{.CreatedAt}}\nSTATUS\t{{.Status}}\n'
 
 # Shell control
 alias __="append_less_pipe"                      # Add "| less" to passed param
@@ -132,6 +141,7 @@ alias fn='find . -name'                          # Find by given NAME
 alias fnd='find . -type d -name'                 # Find by given NAME
 alias fnf='find . -type f -name'                 # Find by given NAME
 alias p="pwd"                                    # Print working directory
+alias pe='printenv'                              # Print environment variables
 alias reload="source ~/.zshrc"                   # ZSH settings reload
 alias rr="clear && exec ${SHELL} -l"             # Reload the shell
 alias s="sudo"                                   # Sudo shorthand
