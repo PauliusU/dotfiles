@@ -67,6 +67,11 @@ echo "**** Python [Python 3] and artificial intelligence ****"
 # sudo apt install -y python3
 brew install python                   # Defaults to python3
 sudo apt install -y python-is-python3 # Minimum Debian 11 and Ubuntu 20.04
+# Set python symlinks (requires sudo)
+ln -sf -- $BREW_HOME/bin/python3.11(:P) /usr/local/bin/py
+ln -sf -- $BREW_HOME/bin/python3.11(:P) /usr/local/bin/python
+ln -sf -- "$(readlink -f $BREW_HOME/bin/python3.11)" /usr/local/bin/py3
+
 python3 --version
 python --version
 
