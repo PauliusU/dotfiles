@@ -35,8 +35,8 @@ if [[ $(uname) -eq "Linux" ]]; then
     sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
     # The easiest way to install and manage Oh My Zsh plugins is via a package manage
-    curl -L git.io/antigen >~/antigen.zsh
-    # source ~/antigen.zsh
+    curl -L git.io/antigen >~/.config/antigen.zsh
+    # source ~/.config/antigen.zsh
 
     # Nerd fonts
     sudo apt install -y fonts-cascadia-code # minimum Debian 11 and Ubuntu 20.04
