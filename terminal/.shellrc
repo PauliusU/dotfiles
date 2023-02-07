@@ -75,12 +75,17 @@ fi
 ZSH_THEME="spaceship"
 source ~/.oh-my-zsh/custom/themes/spaceship-prompt/spaceship.zsh
 
-source ~/antigen.zsh
+source ~/.config/antigen.zsh
 antigen bundle git
 antigen bundle zsh-users/zsh-autosuggestions
 # antigen bundle z-shell/fast-syntax-highlighting # Stopped working
 antigen bundle z-shell/F-Sy-H --branch=main
 antigen bundle zsh-users/zsh-syntax-highlighting
+antigen bundle zsh-users/zsh-history-substring-search
+# Configure zsh-history-substring-search keybindings to up arrow and down arrow
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
+# Tell Antigen that you're done.
 antigen apply
 
 autoload -U compinit

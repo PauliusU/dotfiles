@@ -71,8 +71,6 @@ sudo apt install -y python-is-python3 # Minimum Debian 11 and Ubuntu 20.04
 ln -sf -- $BREW_HOME/bin/python3.11(:P) /usr/local/bin/py
 ln -sf -- $BREW_HOME/bin/python3.11(:P) /usr/local/bin/python
 ln -sf -- $BREW_HOME/bin/python3.11(:P) /usr/local/bin/python3
-ln -sf -- $BREW_HOME/bin/pip3.11(:P) /usr/local/bin/pip
-ln -sf -- $BREW_HOME/bin/pip3.11(:P) /usr/local/bin/pip3
 ln -sf -- "$(readlink -f $BREW_HOME/bin/python3.11)" /usr/local/bin/py3
 
 python3 --version
@@ -81,6 +79,8 @@ python --version
 # Pip
 # sudo apt install -y python3-pip
 python3 -m pip install --upgrade pip
+ln -sf -- $BREW_HOME/bin/pip3.11(:P) /usr/local/bin/pip
+ln -sf -- $BREW_HOME/bin/pip3.11(:P) /usr/local/bin/pip3
 pip3 --version
 pip --version
 
