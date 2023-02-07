@@ -52,6 +52,9 @@ return require('packer').startup(function(use)
         }
     }
 
+    -- Comments
+    use "terrortylor/nvim-comment"
+
     -- Distraction free coding
     use("folke/zen-mode.nvim")
 end)
