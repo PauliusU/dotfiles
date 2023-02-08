@@ -1,4 +1,5 @@
 local fn = require("functions") -- Import functions module
+local wm = require("window-management") -- Import Window managerment functions
 require "hyper" -- Hyper key Setup
 require "private" -- Not commited to Git
 -- require "utils" -- Debug and development utilites (disabled by default)
@@ -49,16 +50,16 @@ hs.hotkey.bind({ "alt", "shift" }, 26, fn.printText("&")) -- 7 Ų
 hs.hotkey.bind({ "alt", "shift" }, 28, fn.printText("*")) -- 8 Ū
 hs.hotkey.bind({ "alt", "shift" }, 24, fn.printText("=")) -- =+ Ž
 -- Numbers in any keyboard layout
-hs.hotkey.bind({"alt"}, 18, fn.printText("1")) -- 1 Ą
-hs.hotkey.bind({"alt"}, 19, fn.printText("2")) -- 2 Č
-hs.hotkey.bind({"alt"}, 20, fn.printText("3")) -- 3 Ę
-hs.hotkey.bind({"alt"}, 21, fn.printText("4")) -- 4 Ė
-hs.hotkey.bind({"alt"}, 23, fn.printText("5")) -- 5 Į
-hs.hotkey.bind({"alt"}, 22, fn.printText("6")) -- 6 Š
-hs.hotkey.bind({"alt"}, 26, fn.printText("7")) -- 7 Ų
-hs.hotkey.bind({"alt"}, 28, fn.printText("8")) -- 8 Ū
-hs.hotkey.bind({"alt"}, 25, fn.printText("9")) -- 9
-hs.hotkey.bind({"alt"}, 29, fn.printText("0")) -- 0
+hs.hotkey.bind({ "alt" }, 18, fn.printText("1")) -- 1 Ą
+hs.hotkey.bind({ "alt" }, 19, fn.printText("2")) -- 2 Č
+hs.hotkey.bind({ "alt" }, 20, fn.printText("3")) -- 3 Ę
+hs.hotkey.bind({ "alt" }, 21, fn.printText("4")) -- 4 Ė
+hs.hotkey.bind({ "alt" }, 23, fn.printText("5")) -- 5 Į
+hs.hotkey.bind({ "alt" }, 22, fn.printText("6")) -- 6 Š
+hs.hotkey.bind({ "alt" }, 26, fn.printText("7")) -- 7 Ų
+hs.hotkey.bind({ "alt" }, 28, fn.printText("8")) -- 8 Ū
+hs.hotkey.bind({ "alt" }, 25, fn.printText("9")) -- 9
+hs.hotkey.bind({ "alt" }, 29, fn.printText("0")) -- 0
 
 -- Quick open applications, files and paths
 hs.hotkey.bind("alt", "escape", fn.openTab()) -- Open Google Chrome tab [ ⌥ + ⎋ Escape (Esc) ]
@@ -100,41 +101,45 @@ Hyper:bind({}, "pad7", fn.exec("open ~/Dropbox/DropsyncFiles/audiob/DBs/input.xl
 
 -- Window management
 -- -- Seature spectacle/another window sizing apps
-hs.hotkey.bind(mash, "pad4", fn.baseMove(0, 0, 0.5, 1))
-hs.hotkey.bind(mash, "pad6", fn.baseMove(0.5, 0, 0.5, 1))
-hs.hotkey.bind(mash, "pad2", fn.baseMove(0, 0.5, 1, 0.5))
-hs.hotkey.bind(mash, "pad8", fn.baseMove(0, 0, 1, 0.5))
-hs.hotkey.bind(mash, "pad7", fn.baseMove(0, 0, 0.5, 0.5))
-hs.hotkey.bind(mash, "pad9", fn.baseMove(0.5, 0, 0.5, 0.5))
-hs.hotkey.bind(mash, "pad1", fn.baseMove(0, 0.5, 0.5, 0.5))
-hs.hotkey.bind(mash, "pad3", fn.baseMove(0.5, 0.5, 0.5, 0.5))
+hs.hotkey.bind(mash, "pad4", wm.baseMove(0, 0, 0.5, 1))
+hs.hotkey.bind(mash, "pad6", wm.baseMove(0.5, 0, 0.5, 1))
+hs.hotkey.bind(mash, "pad2", wm.baseMove(0, 0.5, 1, 0.5))
+hs.hotkey.bind(mash, "pad8", wm.baseMove(0, 0, 1, 0.5))
+hs.hotkey.bind(mash, "pad7", wm.baseMove(0, 0, 0.5, 0.5))
+hs.hotkey.bind(mash, "pad9", wm.baseMove(0.5, 0, 0.5, 0.5))
+hs.hotkey.bind(mash, "pad1", wm.baseMove(0, 0.5, 0.5, 0.5))
+hs.hotkey.bind(mash, "pad3", wm.baseMove(0.5, 0.5, 0.5, 0.5))
 hs.hotkey.bind(mash, "pad5", hs.grid.maximizeWindow)
 hs.hotkey.bind(mash, "padenter", function()
     hs.window:setFullScreen(true)
 end)
 -- -- Other window management options
-Hyper:bind({}, "up", nil, fn.maximizeWindow())
-Hyper:bind({}, "down", nil, fn.minimizeWindow())
-Hyper:bind({}, "right", nil, fn.baseMove(0.5, 0, 0.5, 1))
-Hyper:bind({}, "left", nil, fn.baseMove(0, 0, 0.5, 1))
-Hyper:bind({}, "Return", nil, fn.toggleMax()) -- [ Hyper + ↩ ]
-hs.hotkey.bind(mash, "up", fn.maximizeWindow()) -- [ ⌃ + ⌥ + ⌘ + Up ]
-Hyper:bind("Shift", "Return", nil, fn.toggleFullscreen()) -- [ Hyper + F ]
-Hyper:bind("Shift", "F", nil, fn.toggleFullscreen()) -- [ Hyper + Shift + F ]
-hs.hotkey.bind("alt", "F4", fn.closeWindow()) -- [ ⌥ + F4 ]
-Hyper:bind({}, "M", nil, fn.hideAllWindows()) -- [ Hyper + M ]
-hs.hotkey.bind(mash, "M", fn.hideAllWindows()) -- [ ⌃ + ⌥ + ⌘ + H ]
-hs.hotkey.bind(mash, "G", fn.moveLeft()) -- [ ⌃ + ⌥ + ⌘ + J ]
-Hyper:bind({ "cmd" }, "left", fn.prevMonitor()) -- [Hyper + ⌘ + ◀ ]
-Hyper:bind({ "cmd" }, "right", fn.nextMonitor()) -- [Hyper + ⌘ + ▶ ]
+Hyper:bind({}, "up", nil, wm.maximizeWindow()) -- [Hyper + ▲ ]
+Hyper:bind({}, "down", nil, wm.minimizeWindow()) -- [Hyper + ▼ ]
+Hyper:bind({}, "left", nil, wm.baseMove(0, 0, 0.5, 1)) -- [Hyper + ◀ ]
+Hyper:bind({}, "right", nil, wm.baseMove(0.5, 0, 0.5, 1)) -- [Hyper + ▶ ]
+Hyper:bind({}, "Return", nil, wm.toggleMax()) -- [ Hyper + ↩ ]
+hs.hotkey.bind(mash, "up", wm.maximizeWindow()) -- [ ⌃ + ⌥ + ⌘ + Up ]
+Hyper:bind("Shift", "Return", nil, wm.toggleFullscreen()) -- [ Hyper + F ]
+Hyper:bind("Shift", "F", nil, wm.toggleFullscreen()) -- [ Hyper + Shift + F ]
+hs.hotkey.bind("alt", "F4", wm.closeWindow()) -- [ ⌥ + F4 ]
+Hyper:bind({}, "M", nil, wm.hideAllWindows()) -- [ Hyper + M ]
+hs.hotkey.bind(mash, "M", wm.hideAllWindows()) -- [ ⌃ + ⌥ + ⌘ + H ]
+hs.hotkey.bind(mash, "G", wm.moveLeft()) -- [ ⌃ + ⌥ + ⌘ + J ]
+hs.hotkey.bind(mash, "I", wm.prevMonitor())
+hs.hotkey.bind(mash, "U", wm.nextMonitor())
+hs.hotkey.bind(mash, "J", wm.moveWindowToDisplay(2))
+hs.hotkey.bind(mash, "K", wm.moveWindowToDisplay(1))
+hs.hotkey.bind(mash, "L", wm.moveWindowToDisplay(3))
+hs.hotkey.bind(mash, "H", wm.moveToNextDisplay())
 
 -- System control (sound, keyboard layout)
 hs.hotkey.bind(shift_mash, "R", fn.restartOSWindow()) -- [ ⌃ + ⌥ + ⌘ + ⇧ + R ]
 Hyper:bind({ "shift" }, "R", nil, fn.restartOSWindow())
 hs.hotkey.bind("ctrl", "space", fn.toggleLayout()) -- Overrides system layout chooser [ ⌃ + Space ]
 hs.hotkey.bind(opt_cmd, "up", fn.volumeChange(10)) -- Increase volume [ ⌥ + ⌘ + ↑ ]
-hs.hotkey.bind(opt_cmd, "down", fn.volumeChange(-10)) -- Decrease volume [ ⌥ + ⌘ + ↓ ]
+hs.hotkey.bind(opt_cmd, "down", fn.volumeChange( -10)) -- Decrease volume [ ⌥ + ⌘ + ↓ ]
 
 --  Mac keyboard
-hs.hotkey.bind(mash, "F11", fn.volumeChange(-10)) -- Decrease volume [ ⌃ + ⌥ + ⌘ + F11 ]
+hs.hotkey.bind(mash, "F11", fn.volumeChange( -10)) -- Decrease volume [ ⌃ + ⌥ + ⌘ + F11 ]
 hs.hotkey.bind(mash, "F12", fn.volumeChange(10)) -- Increase volume [ ⌃ + ⌥ + ⌘ + F12 ]
