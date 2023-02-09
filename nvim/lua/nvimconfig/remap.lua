@@ -30,8 +30,8 @@ vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]])
 -- vim.keymap.set("i", "<C-c>", "<Esc>")
 
 vim.keymap.set("n", "Q", "<nop>") -- disable capital Q
-vim.keymap.set({"n", "v", "i"}, "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
-vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)
+vim.keymap.set({ "n", "v", "i" }, "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
+vim.keymap.set("n", "<leader>o", vim.lsp.buf.format) -- Format current buffer
 
 -- Quickfix navigation
 -- TODO resolve conflict with harpoon shortcuts
@@ -47,9 +47,12 @@ vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 
 -- -- Similar to other editors
 -- Save with Alt-S
-vim.keymap.set({"n", "v", "i"}, "<A-s>", vim.cmd.update)
+vim.keymap.set({ "n", "v", "i" }, "<A-s>", vim.cmd.update)
 -- Quit with Alt-Q
-vim.keymap.set({"n", "v"}, "<A-q>", "<cmd>q<CR>")
+vim.keymap.set({ "n", "v", "i" }, "<A-q>", "<cmd>q<CR>")
+-- Force quit qith Ctrl-Alt-Q
+vim.keymap.set({ "n", "v", "i" }, "<C-A-q>", "<cmd>q!<CR>")
 -- Select all with Alt-A
-vim.keymap.set({"n", "v"}, "<A-a>", "<esc>ggVG")
+vim.keymap.set({ "n", "v" }, "<A-a>", "<esc>ggVG")
 
+vim.keymap.set({ "n", "v" }, "<A-m>", "<cmd>set wrap!<CR>") -- Toggle wrap
