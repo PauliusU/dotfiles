@@ -123,6 +123,7 @@ function windowManagement.nextMonitor()
 end
 
 -- Move active window to next display
+-- Ref: https://stackoverflow.com/questions/54151343/how-to-move-an-application-between-monitors-in-hammerspoon
 function windowManagement.moveToNextDisplay()
     return function()
         -- get the focused window
@@ -136,6 +137,7 @@ function windowManagement.moveToNextDisplay()
 end
 
 -- Move active window to display by it's number
+-- Ref: https://stackoverflow.com/questions/54151343/how-to-move-an-application-between-monitors-in-hammerspoon
 function windowManagement.moveWindowToDisplay(d)
     return function()
         -- allScreens lists the displays in the same order as they are defined by the system
