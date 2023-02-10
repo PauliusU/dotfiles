@@ -56,7 +56,10 @@ if [[ $(uname) -eq "Darwin" ]]; then
 
     echo "**** File management and file search ****"
     brew install --cask marta # Marta File Manager for macOS. Native. Extensible. Fast. 🚀
+    # Marta settings
     ln -sf $(pwd)/marta ~/Library/Application\ Support/org.yanex.marta
+    # Marta terminal integration
+    ln -s /Applications/Marta.app/Contents/Resources/launcher /usr/local/bin/marta
     # sudo apt install -y doublecmd-gtk # GUI file manager
     brew install --cask double-commander
 
