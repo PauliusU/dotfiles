@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/bin/sh
 
 # Install software and setup symlinks
 
@@ -101,6 +101,10 @@ if [[ $(uname) -eq "Darwin" ]]; then
 
     echo "**** Microsoft Teams ****"
     brew install --cask microsoft-teams
+
+    echo "**** Messeging ****"
+    brew install --cask slack
+    brew install --cask ferdium
 
     echo "**** MPV ****"
     # sudo apt install -y mpv
