@@ -7,7 +7,7 @@ window:
     y: 16
   dynamic_padding: false
   decorations: buttonless # macOS only
-  # startup_mode: Maximized
+  startup_mode: Maximized
 
 font:
   normal:

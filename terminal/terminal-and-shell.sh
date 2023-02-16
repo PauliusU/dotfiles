@@ -11,6 +11,7 @@ if [[ $(uname) -eq "Darwin" ]]; then
 
     echo "**** alacritty - a fast, cross-platform, OpenGL terminal emulator ****"
     brew install --cask alacritty
+    mkdir -p ~/.config/alacritty
     ln -sf $(pwd)/terminal/alacritty/alacritty.yml ~/.config/alacritty/alacritty.yml
 fi
 
