@@ -50,7 +50,7 @@ vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 vim.keymap.set({ "n", "v", "i" }, "<A-s>", vim.cmd.update)
 -- Quit with Alt-Q
 vim.keymap.set({ "n", "v", "i" }, "<A-q>", "<cmd>q<CR>")
--- Force quit qith Ctrl-Alt-Q
+-- Force quit with Ctrl-Alt-Q
 vim.keymap.set({ "n", "v", "i" }, "<C-A-q>", "<cmd>q!<CR>")
 -- Select all with Alt-A
 vim.keymap.set({ "n", "v" }, "<A-a>", "<esc>ggVG")
