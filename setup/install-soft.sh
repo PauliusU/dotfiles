@@ -102,7 +102,7 @@ if [[ $(uname) -eq "Darwin" ]]; then
     echo "**** Microsoft Teams ****"
     brew install --cask microsoft-teams
 
-    echo "**** Messeging ****"
+    echo "**** Messaging ****"
     brew install --cask slack
     brew install --cask ferdium
 

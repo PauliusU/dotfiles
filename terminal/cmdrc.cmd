@@ -6,7 +6,7 @@ CD /D %USERPROFILE%\Downloads\
 SET SCRIPTS=d:\Dropbox\code\dotfiles\scripts
 
 :: -------------------------------- Navigation  --------------------------------
-::      /D switch is necessary to allow cd to change drives
+::      /D switch is necessary to allow CD to change drives
 DOSKEY .. = CD ..
 DOSKEY ... = CD ..\..
 DOSKEY ~ = CD /D %USERPROFILE%
