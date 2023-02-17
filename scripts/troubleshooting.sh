@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/bin/sh
 
 # Toubleshoot system problems by reseting settings and cleaning up the software
 

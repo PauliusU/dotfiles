@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/bin/sh
 
 # Gets information related to admin users
 
