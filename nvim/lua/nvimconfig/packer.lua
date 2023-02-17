@@ -55,6 +55,9 @@ return require('packer').startup(function(use)
     -- Comments
     use "terrortylor/nvim-comment"
 
+    -- Running code
+    use { 'CRAG666/code_runner.nvim', requires = 'nvim-lua/plenary.nvim' }
+
     -- Distraction free coding
     use("folke/zen-mode.nvim")
 end)
