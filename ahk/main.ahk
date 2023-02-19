@@ -72,7 +72,7 @@ CapsLock & G:: OpenAppOrFile(BROWSER . ' mail.google.com/mail/', 'Gmail')
 CapsLock & H:: OpenAppOrFile(USER_HOME . '\scoop\apps\qBittorrent\current\qbittorrent.exe', 'ahk_exe qbittorrent.exe')
 CapsLock & I:: OpenAppOrFile(IMAGE_VIEWER, 'IrfanView')
 CapsLock & J:: return
-CapsLock & K:: OpenAppOrFile(USER_HOME . '\scoop\apps\ferdium-nightly\current\Ferdium.exe', 'Ferdium')
+CapsLock & K:: OpenAppOrFile(SCOOP . '\apps\ferdium-nightly\current\Ferdium.exe', 'Ferdium')
 CapsLock & L:: OpenAppOrFile(BROWSER . ' calendar.google.com', 'Google Calendar')
 CapsLock & M:: OpenYoutube()
 CapsLock & N:: Run(EDITOR_VISUAL . ' ' . NOTES)
