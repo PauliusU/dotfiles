@@ -8,7 +8,7 @@ return require('packer').startup(function(use)
     -- Packer can manage itself
     use 'wbthomason/packer.nvim'
 
-    -- Navigation
+    -- Navigation and fuzzy finding
     -- Telescope - fuzzy finder
     use {
         'nvim-telescope/telescope.nvim', tag = '0.1.0',
@@ -17,6 +17,13 @@ return require('packer').startup(function(use)
     }
     -- Harpoon - quick file toggle
     use('theprimeagen/harpoon')
+    -- Nvim-tree - a file explorer written in LUA
+    use {
+        'nvim-tree/nvim-tree.lua',
+        requires = {
+            'nvim-tree/nvim-web-devicons', -- optional, for file icons
+        },
+    }
 
     -- Git and edit history
     use('tpope/vim-fugitive')
