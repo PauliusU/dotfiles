@@ -1,3 +1,12 @@
+--[[
+
+VIM-FUGITIVE default shortcuts:
+    '-' adds/removes the file under the cursor to/from the staging area
+    'dd' opens the file in diff mode in two splits
+    'cc' to commit your changes and write the commit message
+
+-- ]]
+
 vim.keymap.set("n", "<leader>gs", vim.cmd.Git)
 
 local NvimConfig_Fugitive = vim.api.nvim_create_augroup("NvimConfig_Fugitive", {})
