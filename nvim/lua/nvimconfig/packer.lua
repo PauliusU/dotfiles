@@ -32,6 +32,8 @@ return require('packer').startup(function(use)
     -- Syntax highlighting
     -- treesitter - amazingly fast code parsing
     use({ 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' })
+    -- Highlight and search for todo comments like TODO, HACK, BUG
+    use {"folke/todo-comments.nvim", requires = "nvim-lua/plenary.nvim"}
     -- Onedark colorscheme
     use 'navarasu/onedark.nvim'
 
