@@ -1,8 +1,13 @@
+-- Set <space> as the leader key
 vim.g.mapleader = " "
 
 vim.keymap.set("n", "<leader>r", "<cmd>source $MYVIMRC<CR>") -- Reload config
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex) -- Explore file tree (project view)
 vim.keymap.set("i", "jk", "<Esc>") -- Enter normal mode
+
+-- Navigation
+vim.keymap.set({ "n", "v", "i" }, "[b", "<cmd>bp<CR>", { desc = "Previous buffer :bprevious" })
+vim.keymap.set({ "n", "v", "i" }, "]b", "<cmd>bn<CR>", { desc = "Next buffer :bnext" })
 
 -- Move lines in visual mode
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
