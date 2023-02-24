@@ -34,9 +34,17 @@ return require('packer').startup(function(use)
     use({ 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' })
     -- Highlight and search for todo comments like TODO, HACK, BUG
     use {"folke/todo-comments.nvim", requires = "nvim-lua/plenary.nvim"}
+
     -- Onedark colorscheme
     use 'navarasu/onedark.nvim'
 
+    -- Comments, "gc" to comment visual regions/lines
+    use {
+        'numToStr/Comment.nvim',
+        config = function()
+            require('Comment').setup()
+        end
+    }
     -- LSP and completion
     use {
         'VonHeikemen/lsp-zero.nvim',
@@ -61,9 +69,6 @@ return require('packer').startup(function(use)
             { 'rafamadriz/friendly-snippets' },
         }
     }
-
-    -- Comments
-    use "terrortylor/nvim-comment"
 
     -- Running code
     use { 'CRAG666/code_runner.nvim', requires = 'nvim-lua/plenary.nvim' }
