@@ -20,11 +20,11 @@ vim.opt.colorcolumn = "80"
 vim.opt.swapfile = false
 vim.opt.backup = false
 vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
-vim.opt.undofile = true
+vim.opt.undofile = true -- Save undo history
 
 -- Search
 -- vim.opt.hlsearch = false
-vim.opt.incsearch = true -- Incremental search (highlighting as you type)
+vim.opt.incsearch = true -- Incremental search (highlight matches as you type)
 vim.opt.ignorecase = true -- Ignore case in search patterns
 vim.opt.smartcase = true  -- Override the 'ignorecase' if search contains an uppercase characters
 
@@ -32,8 +32,11 @@ vim.opt.smartcase = true  -- Override the 'ignorecase' if search contains an upp
 vim.opt.termguicolors = true
 
 vim.opt.scrolloff = 8 -- Never have less than 8 lines whan scrolling
-vim.opt.signcolumn = "yes"
+vim.opt.signcolumn = "yes" -- Keep signcolumn on by default
 vim.opt.isfname:append("@-@")
 
--- Fast update time
+-- Faster update time
 vim.opt.updatetime = 50
+
+-- Enable mouse mode (right mouse click menu)
+vim.o.mouse = 'a'
