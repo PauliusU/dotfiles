@@ -11,8 +11,7 @@ return require('packer').startup(function(use)
     -- Navigation and fuzzy finding
     -- Telescope - fuzzy finder
     use {
-        'nvim-telescope/telescope.nvim', tag = '0.1.0',
-        -- or                            , branch = '0.1.x',
+        'nvim-telescope/telescope.nvim', branch = '0.1.x',
         requires = { { 'nvim-lua/plenary.nvim' } }
     }
     -- Harpoon - quick file toggle
@@ -30,7 +29,7 @@ return require('packer').startup(function(use)
     use('airblade/vim-gitgutter')
     use('mbbill/undotree')
 
-    -- Syntax highlighting, colors and themes
+    -- Syntax highlighting
     -- treesitter - amazingly fast code parsing
     use({ 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' })
     -- Onedark colorscheme
@@ -41,7 +40,9 @@ return require('packer').startup(function(use)
         'VonHeikemen/lsp-zero.nvim',
         requires = {
             -- LSP Support
+            -- LSP Configuration & Plugins
             { 'neovim/nvim-lspconfig' },
+            -- Automatically install LSPs to stdpath
             { 'williamboman/mason.nvim' },
             { 'williamboman/mason-lspconfig.nvim' },
 
@@ -64,6 +65,16 @@ return require('packer').startup(function(use)
 
     -- Running code
     use { 'CRAG666/code_runner.nvim', requires = 'nvim-lua/plenary.nvim' }
+
+    -- Keyboard shortcuts help by showing pending keybinds
+    use {
+        "folke/which-key.nvim",
+        config = function()
+            vim.o.timeout = true
+            vim.o.timeoutlen = 300
+            require("which-key").setup {}
+        end
+    }
 
     -- Distraction free coding
     use("folke/zen-mode.nvim")
