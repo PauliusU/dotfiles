@@ -88,10 +88,12 @@ alias gw="git config --get core.isWork || echo false"                           
 alias gll="git log --pretty='%C(yellow)%h %Creset%C(cyan)%ar %C(green)%an %C(reset)%s'" # Prettier git log. "gl" is alias for "git pull" in git plugin
 alias gs="git status -s -b"                                                             # Cleaner git status
 # JS/TS, npm, yarn
-alias ncuu="ncu --upgrade --target minor" # Upgrade to non breaking dependency versions (minor and bugfixes) in package.json
 alias ncul="ncu --target lastest"         # Show available depenecy updates with breaking changes
+alias ncuu="ncu --upgrade --target minor" # Upgrade to non breaking dependency versions (minor and bugfixes) in package.json
+alias npmg="npm list -g --depth 0"        # List global packages
 alias yb="yarn build"
 alias yd="yarn dev"
+alias yg="yarn global list"
 alias yl="yarn lint"
 alias ys="yarn start"
 alias yt="yarn test"
@@ -168,11 +170,13 @@ alias shutdown="sudo shutdown -h now"                     # Requires root passwo
 alias startup="gnome-session-properties"
 
 # Program access
-alias bw="bwm-ng -d"                                      # Network speed with dynamic units like K, M or G
-alias deb="sudo dpkg -i"                                  # Install deb package (for Ubuntu, Debian, Raspbian)
-alias nv="nvim"                                           # Neovim
-alias nvu="nvim +PackerSync"                              # Neovim with `PackerSync` to make changes to your plugin configuration
+alias bw="bwm-ng -d"         # Network speed with dynamic units like K, M or G
+alias deb="sudo dpkg -i"     # Install deb package (for Ubuntu, Debian, Raspbian)
+alias nv="nvim"              # Neovim
+alias nvu="nvim +PackerSync" # Neovim with `PackerSync` to make changes to your plugin configuration
+alias nvup="nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'"
 alias nvrc="${EDITOR} ${HOME}/.config/nvim/init.vim"      # Neovim config
+alias mpvv=mpv_detached                                   # Run MPV in detached mode
 alias rmm="rm -rf"                                        # Remove non-empty folder
 alias space="du -h | awk 'END{print $1}'"                 # Space used by current folder (and subfolders)
 alias taru='tar xzvf'                                     # Unzip
@@ -198,6 +202,7 @@ alias timer="echo 'Timer started. <crtl+d> to break.' && date && time cat && dat
 
 # Network
 alias ip="echo 'External IP:\n\n$(dig +short myip.opendns.com @resolver1.opendns.com)'" # External IP
+alias ipp="curl icanhazip.com"                                                          # External IP #2
 alias ips="ifconfig | grep inet | grep -v inet6 | awk '{print $2}'"                     # Internal IPs
 
 # Scripts and functions
@@ -320,6 +325,11 @@ function append_less_pipe() {
 		return 1
 	fi
 	$1 | less
+}
+
+function mpv_detached() {
+	# Run detached MPV player which allows closing terminal without ending MPV
+	mpv --no-terminal 2 $1 &>1 1>/dev/null &
 }
 
 # Files and directories
