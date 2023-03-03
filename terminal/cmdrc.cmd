@@ -3,8 +3,6 @@ TITLE Custom CMD &:: Title is needed for AHK to auto close script
 COLOR A &:: Color "bright green"
 CD /D %USERPROFILE%\Downloads\
 
-SET SCRIPTS=d:\Dropbox\code\dotfiles\scripts
-
 :: -------------------------------- Navigation  --------------------------------
 ::      /D switch is necessary to allow CD to change drives
 DOSKEY .. = CD ..
@@ -34,22 +32,24 @@ DOSKEY cpr = control printers &:: Devices and printers
 DOSKEY cfh = control /name Microsoft.FileHistory
 
 :: ---------------------------- Software management ----------------------------
-DOSKEY si = scoop install $*
-DOSKEY sl = scoop list
-DOSKEY ss = scoop search $*
-DOSKEY su = scoop update $*
-DOSKEY sua = scoop update *
-DOSKEY sun = scoop uninstall $*
+DOSKEY si = powershell scoop install $*
+DOSKEY sl = powershell scoop list
+DOSKEY ss = powershell scoop search $*
+DOSKEY su = powershell scoop update *
+DOSKEY sun = powershell scoop uninstall $*
 DOSKEY wi = winget install $*
+DOSKEY wl = winget list
 DOSKEY ws = winget search $*
+DOSKEY wua = winget upgrade --all --silent
 DOSKEY wun = winget uninstall $*
 
 :: ----------------------------- Program access --------------------------------
 DOSKEY nv = nvim
 DOSKEY rdd = RD /s /q $* &:: remove non empty directory
+DOSKEY vi = nvim
 DOSKEY vim = nvim
 DOSKEY yy = yarn install --check-files
 
 :: --------------------------------- Scripts  ----------------------------------
-DOSKEY di = python %SCRIPTS%\fs_dropbox_ignore_node_modules.private.py
-DOSKEY nd = node d:\Dropbox\code\daily-tasks-ts\dist\app.js
+DOSKEY di = python "%DOTFILES%\scripts\fs_dropbox_ignore_node_modules.private.py"
+DOSKEY nd = node "d:\Dropbox\code\daily-tasks-ts\dist\app.js"
