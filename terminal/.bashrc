@@ -1,7 +1,6 @@
 # .bashrc for git-bash on Windows
 echo ".bashrc"
 
-# Imports
-source ~/.aliases
-source ~/.shellrc.private.sh
-source ~/bash_completion.d/git
+source $DOTFILES/terminal/.aliases
+source $DOTFILES/terminal/.shellrc
+source $DOTFILES/terminal/.shellrc.private.sh
