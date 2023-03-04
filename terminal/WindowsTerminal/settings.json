@@ -45,14 +45,14 @@
     ],
     "copyFormatting": "none",
     "copyOnSelect": false,
-    "defaultProfile": "{00000000-0000-0000-0000-000000000002}",
+    "defaultProfile": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
     "profiles": 
     {
         "defaults": 
         {
             "font": 
             {
-                "face": "Cascadia Code PL"
+                "face": "FiraCode NFM"
             }
         },
         "list": 
@@ -81,10 +81,10 @@
                 "name": "Command Prompt CUSTOM"
             },
             {
-                "commandline": "%PROGRAMFILES%\\Git\\bin\\bash.exe",
+                "commandline": "%SCOOP%\\apps\\Git\\current\\bin\\bash.exe",
                 "guid": "{00000000-0000-0000-0000-000000000002}",
                 "hidden": false,
-                "icon": "%PROGRAMFILES%\\Git\\mingw64\\share\\git\\git-for-windows.ico",
+                "icon": "%SCOOP%\\apps\\Git\\current\\mingw64\\share\\git\\git-for-windows.ico",
                 "name": "Git Bash",
                 "opacity": 90,
                 "padding": "20, 20, 20, 20",
@@ -102,6 +102,7 @@
                     "size": 16.0
                 },
                 "guid": "{00000000-0000-0000-0000-000000000003}",
+                "hidden": true,
                 "historySize": 9001,
                 "icon": "ms-appx:///ProfileIcons/{9acb9455-ca41-5af7-950f-6bca1bc9722f}.png",
                 "name": "Ubuntu",
@@ -112,16 +113,16 @@
                 "useAcrylic": true
             },
             {
-                "guid": "{58ad8b0c-3ef8-5f4d-bc6f-13e4c00f2530}",
-                "hidden": true,
-                "name": "Debian",
-                "source": "Windows.Terminal.Wsl"
-            },
-            {
                 "guid": "{b453ae62-4e3d-5e58-b989-0a998ec441b8}",
                 "hidden": true,
                 "name": "Azure Cloud Shell",
                 "source": "Windows.Terminal.Azure"
+            },
+            {
+                "guid": "{51855cb2-8cce-5362-8f54-464b92b32386}",
+                "hidden": false,
+                "name": "Ubuntu",
+                "source": "CanonicalGroupLimited.Ubuntu_79rhkp1fndgsc"
             }
         ]
     },
@@ -312,6 +313,29 @@
             "yellow": "#C4A000"
         },
         {
+            "background": "#300A24",
+            "black": "#171421",
+            "blue": "#0037DA",
+            "brightBlack": "#767676",
+            "brightBlue": "#08458F",
+            "brightCyan": "#2C9FB3",
+            "brightGreen": "#26A269",
+            "brightPurple": "#A347BA",
+            "brightRed": "#C01C28",
+            "brightWhite": "#F2F2F2",
+            "brightYellow": "#A2734C",
+            "cursorColor": "#FFFFFF",
+            "cyan": "#3A96DD",
+            "foreground": "#FFFFFF",
+            "green": "#26A269",
+            "name": "Ubuntu-ColorScheme",
+            "purple": "#881798",
+            "red": "#C21A23",
+            "selectionBackground": "#FFFFFF",
+            "white": "#CCCCCC",
+            "yellow": "#A2734C"
+        },
+        {
             "background": "#000000",
             "black": "#000000",
             "blue": "#000080",
@@ -334,5 +358,6 @@
             "white": "#C0C0C0",
             "yellow": "#808000"
         }
-    ]
+    ],
+    "themes": []
 }
