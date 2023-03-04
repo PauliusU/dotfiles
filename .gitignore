@@ -12,4 +12,6 @@ nvim/plugin/
 nvim/undodir/
 vim/autoload/
 vim/plugged/
+terminal/PowerShell/Modules/
+terminal/PowerShell/Scripts/
 terminal/WindowsTerminal/state.json
