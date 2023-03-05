@@ -6,8 +6,7 @@ Used to import other modules and set keyboard shortcuts in a single place
 ; Script startup settings
 #SingleInstance Force    ; Replace the old instance
 MsgBox('AHKv2', , 'T0.4')    ; Nofity that script has loaded
-hideTaskbar := true
-TaskbarToggle(hideTaskbar)    ; Hide taskbar
+TaskbarToggle()    ; Hide taskbar
 SetNumLockState('on')    ; Turn on NumLock
 
 ; Imports
@@ -27,7 +26,8 @@ SetNumLockState('on')    ; Turn on NumLock
 ^!#F5:: Reload    ; Reload AHK script
 
 ; Window management (Alt-Win based)
-#!T:: TaskbarToggle(hideTaskbar)
+#!T:: TaskbarToggle()
+; #!T:: HideShowTaskbar()
 !#Enter:: MaximizeActiveWindow()
 CapsLock & Enter:: FullScreen()
 !#[:: PreviousWindow()
@@ -102,7 +102,7 @@ CapsLock & NumpadMult:: Run('C:\Windows\SysWOW64\calc.exe')    ; Calculator
 
 ; Scripts (Win-Fn based)
 #F1:: Run(SCRIPTS_PATH '\processes-kill.bat')
-#F2:: Run(SCRIPTS_PATH '\fs-backup.private.bat')
+#F2:: Run('powershell ' . SCRIPTS_PATH . '\fs-backup.private.ps1')
 #F3:: Run(SCRIPTS_PATH '\fs-cleanup.private.bat')
 #F5:: Run(EDITOR_VISUAL ' d:\Dropbox\dev\utils')
 
