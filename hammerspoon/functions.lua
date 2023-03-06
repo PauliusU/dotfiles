@@ -94,20 +94,4 @@ function functions.toggleLayout()
     end
 end
 
--- Change volume (both increase and decrease sound level)
--- @param difference number from -100 to 100
-function functions.volumeChange(difference)
-    return function()
-        local output = hs.audiodevice.defaultOutputDevice()
-        local newSoundLevel = output:volume() + difference
-        output:setVolume(newSoundLevel) -- Set sound level
-
-        -- Display alert with new and rounded sound level
-        hs.alert.closeAll() -- Closes all alerts currently open on the screen
-        local roundedLevel = math.floor(output:volume() / 10 + 0.5) * 10
-        -- hs.alert.show("Volume " .. new .. "%", {}, 0.5)
-        hs.alert.show("Volume: " .. roundedLevel .. "%")
-    end
-end
-
 return functions

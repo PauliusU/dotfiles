@@ -1,5 +1,7 @@
-local fn = require("functions") -- Import functions module
-local wm = require("window-management") -- Import Window managerment functions
+-- Import modules
+local fn = require("functions")
+local wm = require("window-management")
+local sound = require("sound")
 require "hyper" -- Hyper key Setup
 require "private" -- Not commited to Git
 -- require "utils" -- Debug and development utilites (disabled by default)
@@ -137,9 +139,13 @@ hs.hotkey.bind(mash, "H", wm.moveToNextDisplay())
 hs.hotkey.bind(shift_mash, "R", fn.restartOSWindow()) -- [ ⌃ + ⌥ + ⌘ + ⇧ + R ]
 Hyper:bind({ "shift" }, "R", nil, fn.restartOSWindow())
 hs.hotkey.bind("ctrl", "space", fn.toggleLayout()) -- Overrides system layout chooser [ ⌃ + Space ]
-hs.hotkey.bind(opt_cmd, "up", fn.volumeChange(10)) -- Increase volume [ ⌥ + ⌘ + ↑ ]
-hs.hotkey.bind(opt_cmd, "down", fn.volumeChange( -10)) -- Decrease volume [ ⌥ + ⌘ + ↓ ]
+hs.hotkey.bind(opt_cmd, "up", sound.volumeChange(10)) -- Increase volume [ ⌥ + ⌘ + ↑ ]
+hs.hotkey.bind(opt_cmd, "down", sound.volumeChange( -10)) -- Decrease volume [ ⌥ + ⌘ + ↓ ]
 
 --  Mac keyboard
-hs.hotkey.bind(mash, "F11", fn.volumeChange( -10)) -- Decrease volume [ ⌃ + ⌥ + ⌘ + F11 ]
-hs.hotkey.bind(mash, "F12", fn.volumeChange(10)) -- Increase volume [ ⌃ + ⌥ + ⌘ + F12 ]
+hs.hotkey.bind(mash, "F7", sound.previousSong())
+hs.hotkey.bind(mash, "F8", sound.togglePlayPause())
+hs.hotkey.bind(mash, "F9", sound.nextSong())
+hs.hotkey.bind(mash, "F10", sound.mute())
+hs.hotkey.bind(mash, "F11", sound.soundDown()) -- Decrease volume [ ⌃ + ⌥ + ⌘ + F11 ]
+hs.hotkey.bind(mash, "F12", sound.soundUp()) -- Increase volume [ ⌃ + ⌥ + ⌘ + F12 ]
