@@ -25,12 +25,11 @@ local ctrl_opt   = { "ctrl", "alt" }
 -- HammerSpoon settings
 hs.hotkey.bind(mash, "R", fn.reloadHs()) -- Reload HS config #1 [ ⌃ + ⌥ + ⌘ + R ]
 Hyper:bind({}, "R", nil, fn.reloadHs())
-hs.hotkey.bind(mash, "Y", function() hs.reload() end) -- Reload HS config #2 (inline example) [ ⌃ + ⌥ + ⌘ + Y ]
 hs.hotkey.bind(mash, "W", fn.sayHello) -- [ ⌃ + ⌥ + ⌘ + W ]
 
 -- Text and key manipulation
 Hyper:bind({}, "J", nil, fn.getDate())
-hs.hotkey.bind(mash, "D", fn.getDate()) -- [ ⌃ + ⌥ + ⌘ + D ]
+hs.hotkey.bind(mash, "G", fn.getDate()) -- [ ⌃ + ⌥ + ⌘ + G ]
 -- VIM like arrow keys
 hs.hotkey.bind(mash, "I", fn.press({}, "up")) -- ↑
 hs.hotkey.bind(mash, "K", fn.press({}, "down")) -- ↓
@@ -67,7 +66,7 @@ hs.hotkey.bind({ "alt" }, 29, fn.printText("0")) -- 0
 hs.hotkey.bind("alt", "escape", fn.openTab()) -- Open Google Chrome tab [ ⌥ + ⎋ Escape (Esc) ]
 hs.hotkey.bind("ctrl", "escape", fn.openTab()) -- Open Google Chrome tab [ ⌃ + ⎋ Escape (Esc) ]
 hs.hotkey.bind(ctrl_opt, "Z", fn.open("Terminal")) -- [ ⌃ + ⌥ + Z ]
-hs.hotkey.bind(mash, "F", fn.open("Finder")) -- Finder (recent files) [ ⌃ + ⌥ + ⌘ + F ]
+hs.hotkey.bind(mash, "E", fn.open("Finder")) -- Finder (recent files) [ ⌃ + ⌥ + ⌘ + F ]
 Hyper:bind("Shift", "A", nil, fn.open("alacritty"))
 Hyper:bind("Shift", "S", nil, fn.open("Double Commander"))
 Hyper:bind("Shift", "I", nil, fn.open("Foxit PDF Reader"))
@@ -102,38 +101,40 @@ Hyper:bind({}, "Z", fn.open("EasyFind"))
 Hyper:bind({}, "pad7", fn.exec("open ~/Dropbox/DropsyncFiles/audiob/DBs/input.xlsx"))
 
 -- Window management
--- -- Seature spectacle/another window sizing apps
-hs.hotkey.bind(mash, "pad4", wm.baseMove(0, 0, 0.5, 1))
-hs.hotkey.bind(mash, "pad6", wm.baseMove(0.5, 0, 0.5, 1))
-hs.hotkey.bind(mash, "pad2", wm.baseMove(0, 0.5, 1, 0.5))
-hs.hotkey.bind(mash, "pad8", wm.baseMove(0, 0, 1, 0.5))
-hs.hotkey.bind(mash, "pad7", wm.baseMove(0, 0, 0.5, 0.5))
-hs.hotkey.bind(mash, "pad9", wm.baseMove(0.5, 0, 0.5, 0.5))
-hs.hotkey.bind(mash, "pad1", wm.baseMove(0, 0.5, 0.5, 0.5))
-hs.hotkey.bind(mash, "pad3", wm.baseMove(0.5, 0.5, 0.5, 0.5))
+hs.hotkey.bind(mash, "pad4", wm.moveWindow(wm.screenPositions.left))
+hs.hotkey.bind(mash, "pad6", wm.moveWindow(wm.screenPositions.right))
+hs.hotkey.bind(mash, "pad2", wm.moveWindow(wm.screenPositions.bottom))
+hs.hotkey.bind(mash, "pad8", wm.moveWindow(wm.screenPositions.top))
+hs.hotkey.bind(mash, "pad7", wm.moveWindow(wm.screenPositions.topLeft))
+hs.hotkey.bind(mash, "pad9", wm.moveWindow(wm.screenPositions.topRight))
+hs.hotkey.bind(mash, "pad1", wm.moveWindow(wm.screenPositions.bottomLeft))
+hs.hotkey.bind(mash, "pad3", wm.moveWindow(wm.screenPositions.bottomRight))
 hs.hotkey.bind(mash, "pad5", hs.grid.maximizeWindow)
 hs.hotkey.bind(mash, "padenter", function()
     hs.window:setFullScreen(true)
 end)
+-- -- 2 X 2 window grid
+hs.hotkey.bind(mash, "left", wm.moveWindow(wm.screenPositions.left))
+hs.hotkey.bind(mash, "right", wm.moveWindow(wm.screenPositions.right))
+hs.hotkey.bind(mash, "up", wm.moveWindow(wm.screenPositions.top))
+hs.hotkey.bind(mash, "down", wm.moveWindow(wm.screenPositions.bottom))
+
 -- -- Other window management options
 Hyper:bind({}, "up", nil, wm.maximizeWindow()) -- [Hyper + ▲ ]
 Hyper:bind({}, "down", nil, wm.minimizeWindow()) -- [Hyper + ▼ ]
-Hyper:bind({}, "left", nil, wm.baseMove(0, 0, 0.5, 1)) -- [Hyper + ◀ ]
-Hyper:bind({}, "right", nil, wm.baseMove(0.5, 0, 0.5, 1)) -- [Hyper + ▶ ]
-Hyper:bind({}, "Return", nil, wm.toggleMax()) -- [ Hyper + ↩ ]
-hs.hotkey.bind(mash, "up", wm.maximizeWindow()) -- [ ⌃ + ⌥ + ⌘ + Up ]
+Hyper:bind("Shift", "left", nil, wm.moveWindow(wm.screenPositions.left)) -- [Hyper + ◀ ]
+Hyper:bind("Shift", "right", nil, wm.moveWindow(wm.screenPositions.right)) -- [Hyper + ▶ ]
+Hyper:bind({}, "Return", nil, wm.toggleMax()) 
 Hyper:bind("Shift", "Return", nil, wm.toggleFullscreen()) -- [ Hyper + F ]
 Hyper:bind("Shift", "F", nil, wm.toggleFullscreen()) -- [ Hyper + Shift + F ]
 hs.hotkey.bind("alt", "F4", wm.closeWindow()) -- [ ⌥ + F4 ]
 Hyper:bind({}, "M", nil, wm.hideAllWindows()) -- [ Hyper + M ]
 hs.hotkey.bind(mash, "M", wm.hideAllWindows()) -- [ ⌃ + ⌥ + ⌘ + H ]
-hs.hotkey.bind(mash, "G", wm.moveLeft()) -- [ ⌃ + ⌥ + ⌘ + J ]
-hs.hotkey.bind(mash, "I", wm.prevMonitor())
-hs.hotkey.bind(mash, "U", wm.nextMonitor())
-hs.hotkey.bind(mash, "J", wm.moveWindowToDisplay(2))
-hs.hotkey.bind(mash, "K", wm.moveWindowToDisplay(1))
-hs.hotkey.bind(mash, "L", wm.moveWindowToDisplay(3))
-hs.hotkey.bind(mash, "H", wm.moveToNextDisplay())
+-- -- Displays
+hs.hotkey.bind(mash, "A", wm.moveWindowToDisplay(2))
+hs.hotkey.bind(mash, "S", wm.moveWindowToDisplay(1))
+hs.hotkey.bind(mash, "D", wm.moveWindowToDisplay(3))
+hs.hotkey.bind(mash, "B", wm.moveWindowToDisplay())
 
 -- System control (sound, keyboard layout)
 hs.hotkey.bind(shift_mash, "R", fn.restartOSWindow()) -- [ ⌃ + ⌥ + ⌘ + ⇧ + R ]

@@ -1,7 +1,70 @@
 -- @module Hammerspoon window management functions
 
-local windowManagement = {}
-local frameCache = {}
+local windowManagement      = {}
+local frameCache            = {}
+
+-- Don't animate window changes... That's too slow
+hs.window.animationDuration = 0
+
+-- To easily layout windows on the screen, we use hs.grid to create
+-- a 4x4 grid. If you want to use a more detailed grid, simply
+-- change its dimension here
+local GRID_SIZE             = 4
+local HALF_GRID_SIZE        = GRID_SIZE / 2
+-- Set the grid size and add a few pixels of margin
+hs.grid.setGrid(GRID_SIZE .. 'x' .. GRID_SIZE)
+hs.grid.setMargins({ 5, 5 })
+
+local screenPositions            = {}
+screenPositions.left             = {
+    x = 0,
+    y = 0,
+    w = HALF_GRID_SIZE,
+    h = GRID_SIZE
+}
+screenPositions.right            = {
+    x = HALF_GRID_SIZE,
+    y = 0,
+    w = HALF_GRID_SIZE,
+    h = GRID_SIZE
+}
+screenPositions.top              = {
+    x = 0,
+    y = 0,
+    w = GRID_SIZE,
+    h = HALF_GRID_SIZE
+}
+screenPositions.bottom           = {
+    x = 0,
+    y = HALF_GRID_SIZE,
+    w = GRID_SIZE,
+    h = HALF_GRID_SIZE
+}
+screenPositions.topLeft          = {
+    x = 0,
+    y = 0,
+    w = HALF_GRID_SIZE,
+    h = HALF_GRID_SIZE
+}
+screenPositions.topRight         = {
+    x = HALF_GRID_SIZE,
+    y = 0,
+    w = HALF_GRID_SIZE,
+    h = HALF_GRID_SIZE
+}
+screenPositions.bottomLeft       = {
+    x = 0,
+    y = HALF_GRID_SIZE,
+    w = HALF_GRID_SIZE,
+    h = HALF_GRID_SIZE
+}
+screenPositions.bottomRight      = {
+    x = HALF_GRID_SIZE,
+    y = HALF_GRID_SIZE,
+    w = HALF_GRID_SIZE,
+    h = HALF_GRID_SIZE
+}
+windowManagement.screenPositions = screenPositions
 
 -- Toggle fullscreen of a window
 function windowManagement.toggleFullscreen()
@@ -11,27 +74,21 @@ function windowManagement.toggleFullscreen()
     end
 end
 
--- Maximize active window (a.k.a. maximize layout)
-function windowManagement.maximizeWindow()
+-- Maximize either specified or focused window (a.k.a. maximize layout) by
+-- moving it to the center of the sreen and let it fill up the entire screen.
+function windowManagement.maximizeWindow(window)
     return function()
-        local window = hs.window.focusedWindow()
-        -- ALternative (did the same in my tests)
-        -- hs.layout.apply({ { nil, window, window:screen(), hs.layout.maximized, 0, 0 } })
-        window:maximize()
+        if window == nil then
+            window = hs.window.focusedWindow()
+        end
+        if window then
+            -- ALternative (did the same in my tests)
+            -- hs.layout.apply({ { nil, window, window:screen(), hs.layout.maximized, 0, 0 } })
+            window:maximize()
 
-        local windowName = window:application():name()
-        hs.alert.show(windowName .. " maximized")
-    end
-end
-
--- Minimize active window
-function windowManagement.minimizeWindow()
-    return function()
-        local window = hs.window.focusedWindow()
-        window:minimize()
-
-        local windowName = window:application():name()
-        hs.alert.show(windowName .. " minimized")
+            local windowName = window:application():name()
+            hs.alert.show(windowName .. " maximized")
+        end
     end
 end
 
@@ -49,6 +106,17 @@ function windowManagement.toggleMax()
     end
 end
 
+-- Minimize active window
+function windowManagement.minimizeWindow()
+    return function()
+        local window = hs.window.focusedWindow()
+        window:minimize()
+
+        local windowName = window:application():name()
+        hs.alert.show(windowName .. " minimized")
+    end
+end
+
 -- Hide all windows and show desktop
 function windowManagement.hideAllWindows()
     return function()
@@ -57,32 +125,17 @@ function windowManagement.hideAllWindows()
     end
 end
 
---[[ function factory that takes the multipliers of screen width
-and height to produce the window's x pos, y pos, width, and height ]]
-function windowManagement.baseMove(x, y, w, h)
+-- Move either the specified or the focused window to the requested screen
+-- position
+function windowManagement.moveWindow(cell, window)
     return function()
-        local win = hs.window.focusedWindow()
-        local f = win:frame()
-        local screen = win:screen()
-        local max = screen:frame()
-
-        -- add max.x so it stays on the same screen, works with my second screen
-        f.x = max.w * x + max.x
-        f.y = max.h * y
-        f.w = max.w * w
-        f.h = max.h * h
-        win:setFrame(f, 0)
-    end
-end
-
--- Move active window left
-function windowManagement.moveLeft()
-    return function()
-        local window = hs.window.focusedWindow()
-        local f = window:frame()
-
-        f.x = f.x - 10
-        window:setFrame(f)
+        if window == nil then
+            window = hs.window.focusedWindow()
+        end
+        if window then
+            local screen = window:screen()
+            hs.grid.set(window, cell, screen)
+        end
     end
 end
 
@@ -97,53 +150,30 @@ function windowManagement.closeWindow()
         if (numOfWindows == 1) then
             window:application():kill() -- Close whole application
         else
-            window:close(); -- Close current window only
+            window:close();             -- Close current window only
         end
 
         hs.alert.show(windowName .. " was closed")
     end
 end
 
+-- Move active window to display by it's number (not to other space)
 -- Move active windows to previous monitor (not previous space)
-function windowManagement.prevMonitor()
+-- Ref: https://stackoverflow.com/questions/54151343/how-to-move-an-application-between-monitors-in-hammerspoon
+function windowManagement.moveWindowToDisplay(displayNo)
     return function()
         local window = hs.window.focusedWindow()
-        local nextScreen = window:screen():previous()
-        window:moveToScreen(nextScreen, false, false, 0)
-    end
-end
+        
+        local targetScreen
+        if displayNo == nil then
+            targetScreen = window:screen():next()
+        else
+            -- allScreens lists the displays in the same order as they are defined by the system
+            local displays = hs.screen.allScreens()
+            targetScreen =  displays[displayNo]
+        end
 
--- Move active windows to next monitor (not previous space)
-function windowManagement.nextMonitor()
-    return function()
-        local window = hs.window.focusedWindow()
-        local nextScreen = window:screen():next()
-        window:moveToScreen(nextScreen, false, false, 0)
-    end
-end
-
--- Move active window to next display
--- Ref: https://stackoverflow.com/questions/54151343/how-to-move-an-application-between-monitors-in-hammerspoon
-function windowManagement.moveToNextDisplay()
-    return function()
-        -- get the focused window
-        local win = hs.window.focusedWindow()
-        -- get the screen where the focused window is displayed, a.k.a. current screen
-        local screen = win:screen()
-        -- compute the unitRect of the focused window relative to the current screen
-        -- and move the window to the next screen setting the same unitRect
-        win:move(win:frame():toUnitRect(screen:frame()), screen:next(), true, 0)
-    end
-end
-
--- Move active window to display by it's number
--- Ref: https://stackoverflow.com/questions/54151343/how-to-move-an-application-between-monitors-in-hammerspoon
-function windowManagement.moveWindowToDisplay(d)
-    return function()
-        -- allScreens lists the displays in the same order as they are defined by the system
-        local displays = hs.screen.allScreens()
-        local win = hs.window.focusedWindow()
-        win:moveToScreen(displays[d], false, true, 0)
+        window:moveToScreen(targetScreen, false, false, 0)
     end
 end
 

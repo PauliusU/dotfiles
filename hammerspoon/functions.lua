@@ -47,10 +47,20 @@ end
 -- A closure function (will not work without it)
 function functions.open(name)
     return function()
-        hs.application.launchOrFocus(name)
-        if name == "Finder" then
-            hs.appfinder.appFromName(name):activate()
+        if name == "mpv" then
+            local app = hs.appfinder.appFromName(name):activate()
+            if app then return end
         end
+
+        if name == "finder" then
+            hs.appfinder.appFromName(name):activate()
+            return
+        end
+
+        hs.application.open(name)
+
+        local window = hs.window.focusedWindow()
+        window:maximize()
     end
 end
 
