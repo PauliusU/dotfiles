@@ -40,7 +40,7 @@ DOSKEY sun = powershell scoop uninstall $*
 DOSKEY wi = winget install $*
 DOSKEY wl = winget list
 DOSKEY ws = winget search $*
-DOSKEY wua = winget upgrade --all --silent
+DOSKEY wu = winget upgrade --all --silent
 DOSKEY wun = winget uninstall $*
 
 :: ----------------------------- Program access --------------------------------
