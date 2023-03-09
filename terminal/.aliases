@@ -206,7 +206,7 @@ alias ipp="curl icanhazip.com"                                                  
 alias ips="ifconfig | grep inet | grep -v inet6 | awk '{print $2}'"                     # Internal IPs
 
 # Scripts and functions
-alias di="py $SCRIPTS_PATH/fs_dropbox_ignore_node_modules.private.py"
+alias di="python3 $SCRIPTS_PATH/fs_dropbox_ignore_node_modules.private.py"
 alias fss="$SCRIPTS_PATH/fs.sh"
 function ytpl() {
 	#  Download youtube playlist or channel
@@ -329,7 +329,7 @@ function append_less_pipe() {
 
 function mpv_detached() {
 	# Run detached MPV player which allows closing terminal without ending MPV
-	mpv --no-terminal 2 $1 &>1 1>/dev/null &
+	mpv --no-terminal 2 $1 &>/dev/null &
 }
 
 # Files and directories

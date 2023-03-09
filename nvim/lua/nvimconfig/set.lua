@@ -1,6 +1,6 @@
 -- Line numbers
-vim.opt.nu = true -- Enable line numbers
-vim.opt.relativenumber = true -- Relabile line numbers
+vim.opt.nu = true             -- Enable line numbers
+vim.opt.relativenumber = true -- Relative line numbers
 vim.opt.cursorline = true
 
 -- Tabs
@@ -19,19 +19,19 @@ vim.opt.colorcolumn = "80"
 -- Disable navite nvim backup, but save to undotree
 vim.opt.swapfile = false
 vim.opt.backup = false
-vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
+vim.opt.undodir = (os.getenv("HOME") or os.getenv("USERPROFILE")) .. "/.vim/undodir"
 vim.opt.undofile = true -- Save undo history
 
 -- Search
 -- vim.opt.hlsearch = false
-vim.opt.incsearch = true -- Incremental search (highlight matches as you type)
+vim.opt.incsearch = true  -- Incremental search (highlight matches as you type)
 vim.opt.ignorecase = true -- Ignore case in search patterns
 vim.opt.smartcase = true  -- Override the 'ignorecase' if search contains an uppercase characters
 
 -- Colors
 vim.opt.termguicolors = true
 
-vim.opt.scrolloff = 8 -- Never have less than 8 lines whan scrolling
+vim.opt.scrolloff = 8      -- Never have less than 8 lines whan scrolling
 vim.opt.signcolumn = "yes" -- Keep signcolumn on by default
 vim.opt.isfname:append("@-@")
 
