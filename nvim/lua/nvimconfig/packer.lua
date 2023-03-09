@@ -69,6 +69,11 @@ return require('packer').startup(function(use)
             { 'rafamadriz/friendly-snippets' },
         }
     }
+    -- Automatically add closing pair characters for (, {, ", ', etc.
+    use {
+        "windwp/nvim-autopairs",
+        config = function() require("nvim-autopairs").setup {} end
+    }
 
     -- Running code
     use { 'CRAG666/code_runner.nvim', requires = 'nvim-lua/plenary.nvim' }
