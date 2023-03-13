@@ -97,6 +97,10 @@ return require('packer').startup(function(use)
         end
     }
 
+    -- Debugging
+    use 'mfussenegger/nvim-dap'
+    use { "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } }
+
     -- Distraction free coding
     use("folke/zen-mode.nvim")
 
