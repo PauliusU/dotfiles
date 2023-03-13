@@ -59,5 +59,5 @@ winget uninstall Microsoft.XboxGameOverlay_8wekyb3d8bbwe &:: Xbox Game Bar Plugi
 winget uninstall Clipchamp.Clipchamp_yxz26nhyzhsrt &:: Clipchamp - Video Editor
 
 ECHO **** Disable unused aliased for Windows apps ****
-DEL %USERPROFILE%\AppData\Local\Microsoft\WindowsApps\python.exe
-DEL %USERPROFILE%\AppData\Local\Microsoft\WindowsApps\python3.exe
+DEL %LOCALAPPDATA%\Microsoft\WindowsApps\python.exe
+DEL %LOCALAPPDATA%\Microsoft\WindowsApps\python3.exe
