@@ -7,4 +7,3 @@ require("nvimconfig.set")
 -- vim.g.netrw_banner = 0
 -- vim.g.netrw_winsize = 25
 
-vim.keymap.set('n', '<leader>ps', require('packer').sync, { desc = '[P]acker [S]ync' })
