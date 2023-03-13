@@ -49,6 +49,8 @@ return require('packer').startup(function(use)
     -- Syntax highlighting
     -- treesitter - amazingly fast code parsing
     use({ 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' })
+    -- Show the context of the currently visible buffer contents (a.k.a sticky scrolling)
+    use 'nvim-treesitter/nvim-treesitter-context'
     -- Highlight and search for todo comments like TODO, HACK, BUG
     use { "folke/todo-comments.nvim", requires = "nvim-lua/plenary.nvim" }
 
