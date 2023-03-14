@@ -5,7 +5,7 @@ vim.g.mapleader = " "
 
 -- Manage config
 vim.keymap.set("n", "<leader>r", "<cmd>source $MYVIMRC<CR>", { desc = 'Reload config' })
-vim.keymap.set('n', '<leader>l', '<cmd>source %<CR>', { desc = '[L]oad file a.k.a source active buffer' })
+vim.keymap.set('n', '<leader>ll', '<cmd>source %<CR>', { desc = '[L]oad file a.k.a source active buffer' })
 
 -- Switch modes
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex, { desc = 'Explore file tree ([P]roject [V]view)' })

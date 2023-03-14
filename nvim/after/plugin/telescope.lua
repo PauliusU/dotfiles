@@ -56,16 +56,16 @@ vim.keymap.set('n', '<leader>/', require('telescope.builtin').current_buffer_fuz
 vim.keymap.set('n', '<leader>sp', telescope_builtin.pickers)
 
 -- LSP
-vim.keymap.set('n', '<leader>lr', telescope_builtin.lsp_references)
-vim.keymap.set('n', '<leader>ls', telescope_builtin.lsp_document_symbols)
-vim.keymap.set('n', '<leader>lw', telescope_builtin.lsp_workspace_symbols)
-vim.keymap.set('n', '<leader>lo', telescope_builtin.lsp_dynamic_workspace_symbols)
-vim.keymap.set('n', '<leader>ld', telescope_builtin.diagnostics)
-vim.keymap.set('n', '<leader>li', telescope_builtin.lsp_implementations)
-vim.keymap.set('n', '<leader>le', telescope_builtin.lsp_definitions)
-vim.keymap.set('n', '<leader>lt', telescope_builtin.lsp_type_definitions)
-vim.keymap.set('n', '<leader>ld', require('telescope.builtin').diagnostics, { desc = '[S]earch [D]iagnostics' })
-vim.keymap.set('n', '<C-A-n>', telescope_builtin.treesitter, { desc = 'Find treesitter symbols' })
+vim.keymap.set('n', '<leader>lr', telescope_builtin.lsp_references, { desc = 'Search [L]SP [R]eferences' })
+vim.keymap.set('n', '<C-A-n>', telescope_builtin.lsp_document_symbols, { desc = 'Search LSP document Symbols' })
+vim.keymap.set('n', '<leader>lw', telescope_builtin.lsp_workspace_symbols, { desc = 'Search [L]SP workspace [S]ymbols' })
+vim.keymap.set('n', '<leader>lo', telescope_builtin.lsp_dynamic_workspace_symbols,
+    { desc = 'Search [L]SP dynamic workspace symb[O]ls' })
+vim.keymap.set('n', '<leader>ld', telescope_builtin.diagnostics, { desc = 'Search [L]SP [D]iagnostics' })
+vim.keymap.set('n', '<leader>li', telescope_builtin.lsp_implementations, { desc = 'Search [L]SP [I]mplementations' })
+vim.keymap.set('n', '<leader>le', telescope_builtin.lsp_definitions, { desc = 'Search [L]SP d[E]finitions' })
+vim.keymap.set('n', '<leader>lt', telescope_builtin.lsp_type_definitions, { desc = 'Search [L]SP [T]ype definitions' })
+vim.keymap.set('n', '<leader>ls', telescope_builtin.treesitter, { desc = 'Find treesitter [S]ymbols' })
 
 -- GIT
 vim.keymap.set('n', '<leader>gf', telescope_builtin.git_files)
