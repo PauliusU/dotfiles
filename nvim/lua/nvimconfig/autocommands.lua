@@ -1,11 +1,11 @@
 local augroup = vim.api.nvim_create_augroup
-local NvimConfigGroup = augroup('NvimConfig', {})
-
 local autocmd = vim.api.nvim_create_autocmd
-local yank_group = augroup('HighlightYank', {})
+
+local NvimConfigGroup = augroup('NvimConfig', {})
+local YankGroup = augroup('HighlightYank', {})
 
 autocmd('TextYankPost', {
-    group = yank_group,
+    group = YankGroup,
     pattern = '*',
     callback = function()
         vim.highlight.on_yank({
@@ -15,8 +15,16 @@ autocmd('TextYankPost', {
     end,
 })
 
-autocmd({"BufWritePre"}, {
+autocmd({ "BufWritePre" }, {
+    -- Delete line postspaces
     group = NvimConfigGroup,
     pattern = "*",
     command = [[%s/\s\+$//e]],
+})
+
+autocmd('BufWritePre', {
+    -- Fix linting problems with ESling
+    group = NvimConfigGroup,
+    pattern = { '*.tsx', '*.ts', '*.jsx', '*.js' },
+    command = 'silent! EslintFixAll',
 })
