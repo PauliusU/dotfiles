@@ -12,8 +12,6 @@ matches:
   - trigger: ":espanso"
     replace: "Hi there!"
 
-  # NOTE: espanso uses YAML to define matches, so pay attention to the indentation!
-
   # But matches can also be dynamic:
 
   # Print the output of a shell command
@@ -35,7 +33,7 @@ matches:
 
   ### MongoDB
 
-  # Mongo generic search string 
+  # Mongo generic search string
   - triggers: [":mgs", "mngs"]
     replace: "{$|$: //i}"
 
