@@ -9,6 +9,7 @@ private.lua
 
 espanso/match/packages/*
 nvim/plugin/
+nvim/spell/
 nvim/undodir/
 vim/autoload/
 vim/plugged/
