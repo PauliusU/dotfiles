@@ -22,15 +22,21 @@ node -v
 npm -v
 yarn -v
 
-ECHO **** NPM and Yarn global modules ****
+ECHO **** NPM and Yarn global packages ****
+:: TypeScript compiler for ts-node and other tools
+npm i -g typescript
+tsc -v
 :: Directly run TypeScript on Node.js without precompiling
 npm i -g ts-node
 ts-node -v
+:: Upgrade package.json dependencies
+npm i -g npm-check-updates
+npm list -g --depth 0
 
 yarn global add yarn-add-no-save
+yarn global list
 
 ECHO **** Deno ****
 powershell scoop install deno
 deno upgrade
 deno --version
-
