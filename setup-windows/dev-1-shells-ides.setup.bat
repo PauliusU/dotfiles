@@ -50,7 +50,7 @@ FTYPE MSInfoFile="%SCOOP%\apps\notepadplusplus\current\notepad++.exe" "%%1"
 ASSOC .txt=txtfile
 FTYPE txtfile="%SCOOP%\apps\notepadplusplus\current\notepad++.exe" "%%1"
 REG ADD "HKEY_CLASSES_ROOT\txtfile\DefaultIcon" /ve /t REG_EXPAND_SZ /d "C:\Windows\System32\Shell32.dll,260" /f
-:: List extensions containing "txtfile"
+:: List extensions containing "txtfile" [.txt, .exc, .txt]
 assoc | findstr /i "txtfile"
 
 ECHO **** Neovim ****
@@ -58,8 +58,13 @@ MKLINK /J "%LOCALAPPDATA%\nvim" "%DOTFILES%\nvim"
 powershell scoop install neovim
 nvim --version
 git clone https://github.com/wbthomason/packer.nvim "%LOCALAPPDATA%\nvim-data\site\pack\packer\start\packer.nvim"
+:: Neovim dependencies
+:: fzf, telescope and other search tools use ripgrep and fd
 powershell scoop install ripgrep
 powershell scoop install fd
+:: C and C++ compiler for LSP dependencies
+powershell scoop install gcc
+g++ --version
 
 ECHO **** Visual Studio Code [VSCode] ****
 powershell scoop install vscode
