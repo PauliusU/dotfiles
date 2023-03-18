@@ -20,8 +20,6 @@ MKLINK /J "%USERPROFILE%\.virtualenvs" "%USER_BAK%\.virtualenvs"
 python -m pip install -U --user autopep8
 :: HTTP/HTTPS requests
 python -m pip install --upgrade --user requests
-:: MPV subtitles script requirement
-python -m pip install --upgrade --user subliminal
 :: GoldenDict's Google Translate integration
 python -m pip install --upgrade --user google-translate-for-goldendict
 :: Jupyter notebooks. Run with "jypyter notebook" or "py -m notebook"
