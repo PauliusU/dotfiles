@@ -39,4 +39,7 @@ vim.opt.isfname:append("@-@")
 vim.opt.updatetime = 50
 
 -- Enable mouse mode (right mouse click menu)
-vim.o.mouse = 'a'
+vim.opt.mouse = 'a'
+
+-- Spelling
+vim.opt.spelllang ='lt,en'

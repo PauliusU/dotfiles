@@ -33,7 +33,9 @@ vim.keymap.set("n", "<C-A-k>", "<cmd>cnext<CR>zz", { desc = "Quickfix next" })
 vim.keymap.set("n", "<C-A-j>", "<cmd>cprev<CR>zz", { desc = "Quickfix previous" })
 vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz", { desc = "Like :cnext but use location list and not the quickfix" })
 vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz", { desc = "Like :cprev but use location list and not the quickfix" })
-
+-- Moving cursor in insert mode
+vim.keymap.set('i', '<C-l>', '<Esc>la', { desc = 'Move backward by one char in insert mode' })
+vim.keymap.set('i', '<C-h>', '<Esc>ha', { desc = 'Move forward by one char in insert mode' })
 -- Move lines in visual mode
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { desc = 'Move line down' })
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { desc = 'Move line up' })
@@ -41,7 +43,7 @@ vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { desc = 'Move line up' })
 vim.keymap.set("x", "J", ":move '>+1<CR>gv-gv", { desc = 'Move line down' })
 vim.keymap.set("x", "K", ":move '<-2<CR>gv-gv", { desc = 'Move line up' })
 
--- Resizing panes
+-- Resizing panes with arrow keys
 vim.keymap.set("n", "<Left>", ":vertical resize +1<CR>", default_opts)
 vim.keymap.set("n", "<Right>", ":vertical resize -1<CR>", default_opts)
 vim.keymap.set("n", "<Up>", ":resize -1<CR>", default_opts)
@@ -74,5 +76,9 @@ vim.keymap.set("n", "<leader>n", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><
     { desc = "Rename symbol (replace word under the cursor)" })
 vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true, desc = "Make file executable" })
 vim.keymap.set("n", "J", "mzJ`z", { desc = 'Append line below, but keep cursor in place' })
+-- Stay in indent mode
 vim.keymap.set("v", "<", "<gv", default_opts)
 vim.keymap.set("v", ">", ">gv", default_opts)
+-- Quotes
+vim.keymap.set('n', '<leader>q"', 'ciw""<Esc>P', { desc = 'Add double [q]uotes around the word' })
+vim.keymap.set('n', '<leader>q\'', 'ciw\'\'<Esc>P', { desc = 'Add single [q]uotes around the word' })
