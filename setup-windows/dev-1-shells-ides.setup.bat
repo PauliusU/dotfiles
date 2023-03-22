@@ -108,6 +108,8 @@ MKLINK /J "%APPDATA%\Docker Desktop" "%USER_BAK%\AppData\Roaming\Docker Desktop"
 MKLINK /J "%LOCALAPPDATA%\Docker" "%USER_BAK%\AppData\Local\Docker"
 winget install Docker.DockerDesktop
 docker --version
+:: Disable running Docker Desktop at startup
+REG DELETE HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Run /v "Docker Desktop" /f
 
 ECHO **** WSL ****
 :: Install recommended Windows Subsystem for Linux features
