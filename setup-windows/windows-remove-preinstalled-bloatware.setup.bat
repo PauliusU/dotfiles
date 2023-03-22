@@ -36,6 +36,9 @@ winget uninstall MicrosoftTeams_8wekyb3d8bbwe &:: Teams
 winget uninstall MicrosoftWindows.Client.WebExperience_cw5n1h2txyewy &:: Windows Web Experience Pack
 winget uninstall skype
 winget uninstall Teams
+:: Microsoft Teams startup items
+REG DELETE HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Run /v TeamsMachineUninstallerLocalAppData /f
+REG DELETE HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Run /v TeamsMachineUninstallerProgramData /f
 
 :: Apps that are left undeleted
 :: winget uninstall Microsoft.BingNews_8wekyb3d8bbwe &:: News [required for widgets]
