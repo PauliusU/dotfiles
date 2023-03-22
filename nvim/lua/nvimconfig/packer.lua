@@ -87,6 +87,7 @@ return require('packer').startup(function(use)
         "windwp/nvim-autopairs",
         config = function() require("nvim-autopairs").setup {} end
     }
+    use { 'github/copilot.vim' }
 
     -- Running code
     use { 'CRAG666/code_runner.nvim', requires = 'nvim-lua/plenary.nvim' }
