@@ -7,6 +7,8 @@ VIM-FUGITIVE default shortcuts:
 
 -- ]]
 vim.keymap.set("n", "<leader>gs", vim.cmd.Git, { desc = "[G]it [S]tatus for vim-fugitive" })
+vim.keymap.set("n", "<leader>gp", "<cmd>Git push<cr>", { desc = "[G]it [P]ush" })
+vim.keymap.set("n", "<leader>gl", "<cmd>Git pull<cr>", { desc = "[G]it pul[L]" })
 
 local NvimConfig_Fugitive = vim.api.nvim_create_augroup("NvimConfig_Fugitive", {})
 
