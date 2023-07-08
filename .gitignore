@@ -15,4 +15,5 @@ vim/autoload/
 vim/plugged/
 terminal/PowerShell/Modules/
 terminal/PowerShell/Scripts/
+terminal/WindowsTerminal/elevated-state.json
 terminal/WindowsTerminal/state.json
