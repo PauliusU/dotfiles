@@ -131,6 +131,6 @@ CapsLock & NumpadMult:: Run('C:\Windows\SysWOW64\calc.exe')    ; Calculator
 ^!Z:: OpenAppOrFile(TERMINAL, 'ahk_exe WindowsTerminal.exe')
 
 ; Windows OS remaps and disabled keys
-#Space:: return    ; Disable keyboard-layout switcher
+#Space:: SetKeyboard(LT_layout) ; Override keyboard-layout switcher
 Capslock:: TurnOffCapsLock()
 +Capslock:: TurnOnCapsLock()
