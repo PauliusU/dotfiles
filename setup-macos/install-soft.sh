@@ -68,6 +68,9 @@ if [[ $(uname) -eq "Darwin" ]]; then
     # sudo port install recoll # cluncy design
     # fsearch - everything alternative for Linux only
 
+    echo "**** Google Chrome ****"
+    brew install --cask google-chrome
+
     echo "**** Keyboard and automation (shortcuts, text expansion) ****"
     # Better shortcuts with Karabiner Elements and Hammerspoon
     brew install --cask karabiner-elements # Free, open source, mac. Remap the keys on a Mac at the kernel level. Ex KeyRemap4MacBook
@@ -95,6 +98,9 @@ if [[ $(uname) -eq "Darwin" ]]; then
     brew install --cask keyboard-maestro # Paid, mac only
     brew install --cask textexpander     # Paid, cross-platform
 
+    echo "**** keecastr - on-screen keyboard shortcut presenter ****"
+    brew install --cask keycastr
+
     echo "**** Keepassxc - Keepass port for macOS ****"
     brew install --cask keepassxc
     keepassxc-cli -v
@@ -111,6 +117,9 @@ if [[ $(uname) -eq "Darwin" ]]; then
     brew install --cask mpv
     mpv --version
     ln -sf ~/Dropbox/soft/mpv_portable/portable_config/* ~/.config/mpv
+
+    echo "**** numi - advanced calculator and unit converter ****"
+    brew install --cask numi
 
     echo "**** OBS Studio ****"
     brew install --cask obs
