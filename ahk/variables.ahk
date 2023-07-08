@@ -18,3 +18,7 @@ VIVALDI := 'd:\soft\network\vivaldi\Application\vivaldi.exe'
 
 ; Files
 NOTES := 'd:\Dropbox\DropsyncFiles\audiob\notes_PC.md'
+
+; Keyboard layouts
+EN_layout := 0x0409 ; English (USA)
+LT_layout := 0x0427

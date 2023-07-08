@@ -34,6 +34,17 @@ TurnOnCapsLock() {
     return
 }
 
+SetKeyboard(layout) {
+    ; Set keyboard layout of active window
+    ; layout - hexadecimal language/region ID. For list of available IDs see:
+    ; https://learn.microsoft.com/en-us/windows-hardware/manufacture/desktop/available-language-packs-for-windows?view=windows-11
+
+    WM_INPUTLANGCHANGEREQUEST := 0x0050
+    PostMessage(WM_INPUTLANGCHANGEREQUEST, 0, layout, , "A")
+    SoundBeep(750, 900)
+    return
+}
+
 ToggleHiddenFiles() {
     ; Toggle showing hidden files in File Explorer (previously known as Windows Explorer)
 
