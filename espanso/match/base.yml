@@ -52,3 +52,13 @@ matches:
   # Mongo clientName
   - triggers: [":mgc", "mngc"]
     replace: "{clientName: /$|$/i}"
+
+  # Mongo date
+  - triggers: [":mgd", "mngd"]
+    replace: "{created: {$gte: ISODate('{{currentDate}}$|$')}}"
+    vars:
+      - name: currentDate
+        type: date
+        params:
+          # Custom date format YYYY-MM-DD
+          format: '%Y-%m-%d'
