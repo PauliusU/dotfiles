@@ -5,6 +5,7 @@ private/
 *.private*
 private.lua
 
+.DS_Store
 *.lnk
 
 espanso/match/packages/*
