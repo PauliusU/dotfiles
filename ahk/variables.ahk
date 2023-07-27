@@ -5,8 +5,8 @@ SplitPath(A_ScriptDir, , &DOTFILES)    ; Get parent of A_ScriptDir and save to D
 SCRIPTS_PATH := DOTFILES . '\scripts'
 
 ; Apps
-BROWSER := SCOOP . '\apps\firefox\current\firefox.exe'
-CHROME := SCOOP . '\apps\googlechrome\current\chrome.exe'
+BROWSER := SCOOP . '\apps\googlechrome\current\chrome.exe'
+FIREFOX := SCOOP . '\apps\firefox\current\firefox.exe'
 DICTIONARY := 'd:\Dropbox\soft\GoldenDict\GoldenDict.exe'
 EDITOR_VISUAL := SCOOP . '\apps\vscode\current\Code.exe'
 FILE_MANAGER := 'd:\Dropbox\soft\totalcmd\TOTALCMD64.EXE'

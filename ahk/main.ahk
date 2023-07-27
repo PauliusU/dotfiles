@@ -1,4 +1,4 @@
-﻿/*
+/*
 AutoHotkey v2 main entry point
 Used to import other modules and set keyboard shortcuts in a single place
 */
@@ -64,15 +64,15 @@ ScrollLock & W:: SetSoundDevice('Speakers')
 ; Apps, folders and files (CapsLock based)
 CapsLock & A:: OpenAppOrFile('wt', 'ahk_exe WindowsTerminal.exe')
 CapsLock & B:: OpenAppOrFile(USER_HOME . '\scoop\apps\mongodb-compass\current\MongoDBCompass.exe', 'ahk_exe MongoDBCompass.exe')
-CapsLock & C:: OpenAppOrFile(CHROME, 'ahk_exe chrome.exe')
+CapsLock & C:: OpenAppOrFile(FIREFOX, 'ahk_class MozillaWindowClass')
 CapsLock & D:: OpenAppOrFile(EDITOR_VISUAL, 'ahk_exe Code.exe')
 CapsLock & E:: OpenAppOrFile(DICTIONARY . ' %Clipboard%', 'ahk_exe GoldenDict.exe')
-CapsLock & F:: OpenAppOrFile(BROWSER, 'ahk_class MozillaWindowClass')
+CapsLock & F:: OpenAppOrFile(BROWSER, 'ahk_exe chrome.exe')
 CapsLock & G:: OpenAppOrFile(BROWSER . ' mail.google.com/mail/', 'Gmail')
-CapsLock & H:: OpenAppOrFile(SCOOP . '\apps\qBittorrent\current\qbittorrent.exe', 'ahk_exe qbittorrent.exe')
+CapsLock & H:: OpenAppOrFile(PLAYER, 'ahk_exe mpv.exe')
 CapsLock & I:: OpenAppOrFile(IMAGE_VIEWER, 'IrfanView')
-CapsLock & J:: return
-CapsLock & K:: GetKeyState("Shift", "P") ? OpenAppOrFile(SCOOP . '\apps\slack\current\slack.exe', 'Slack') : OpenAppOrFile(SCOOP . '\apps\ferdium\current\Ferdium.exe', 'Ferdium')
+CapsLock & J:: OpenAppOrFile('wt -p "Git Bash" `; split-pane -p "Windows PowerShell"', 'ahk_exe WindowsTerminal.exe')
+CapsLock & K:: GetKeyState("Shift", "P") ? OpenAppOrFile(SCOOP . '\apps\ferdium\current\Ferdium.exe', 'Ferdium') : OpenAppOrFile(SCOOP . '\apps\slack\current\slack.exe', 'Slack')
 CapsLock & L:: OpenAppOrFile(BROWSER . ' calendar.google.com', 'Google Calendar')
 CapsLock & M:: OpenYoutube()
 CapsLock & N:: Run(EDITOR_VISUAL . ' ' . NOTES)
@@ -82,7 +82,7 @@ CapsLock & Q:: ToggleSoundDevice('Headphones', 'Speakers')
 CapsLock & R:: OpenAppOrFile(USER_HOME . '\scoop\apps\anki\current\anki.exe', 'Anki')
 CapsLock & S:: OpenAppOrFile(FILE_MANAGER, 'ahk_exe TOTALCMD64.EXE')
 CapsLock & T:: OpenAppOrFile('d:\Dropbox\soft\todotxt.net\todotxt.exe', 'todotxt.net')
-CapsLock & U:: OpenAppOrFile(PLAYER, 'ahk_exe mpv.exe')
+CapsLock & U:: OpenAppOrFile(SCOOP . '\apps\qBittorrent\current\qbittorrent.exe', 'ahk_exe qbittorrent.exe')
 CapsLock & V:: OpenAppOrFile(VIVALDI . ' --start-fullscreen', 'ahk_exe vivaldi.exe')
 CapsLock & W:: Run('chrome')
 CapsLock & X:: OpenAppOrFile(PLAYER, 'ahk_exe mpv.exe')
