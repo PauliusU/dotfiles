@@ -143,6 +143,10 @@ micromamba --version
 micromamba env
 micromamba create -n ml-micromamba jupyter numpy pandas keras matplotlib requests
 
+echo "**** Redis ****"
+brew install redis
+redis-cli -v
+
 echo "**** TypeScript, JavaScript, Node.js, NPM, yarn, Volta ****"
 brew install volta
 # curl https://get.volta.sh | bash
