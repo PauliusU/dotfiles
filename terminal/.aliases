@@ -1,8 +1,5 @@
 # ~/.aliases
-
 echo ".aliases"
-
-SCRIPTS_PATH="~/Dropbox/code/dotfiles/scripts"
 
 # Navigation and file listing
 alias -- -='cd -' # Toggle between last two directories
@@ -12,10 +9,12 @@ alias desk="cd ~/Desktop/"
 alias dev="cd ~/dev/"
 alias dl="cd ~/Downloads/"
 alias docs="cd ~/Documents/"
+alias dot="cd $DOTFILES"
 alias drb="cd ~/Dropbox/"
 alias ds="cd ~/Dropbox/DropsyncFiles"
 alias dt="cd ~/Desktop/" # "dt" is also a command line tool to display information about your domain on Linux or Unix system
 alias dwn="cd ~/Downloads/"
+alias prj="cd ~/Dropbox/projects/"
 # Save and then change the current directory. With no arguments, pushd exchanges the top two directories.
 alias pu="pushd"
 # Remove the top entry from the directory stack, and cd to the new top directory.
@@ -211,8 +210,8 @@ alias ipp="curl icanhazip.com"                                                  
 alias ips="ifconfig | grep inet | grep -v inet6 | awk '{print $2}'"                     # Internal IPs
 
 # Scripts and functions
-alias di="python3 $SCRIPTS_PATH/fs_dropbox_ignore_node_modules.private.py"
-alias fss="$SCRIPTS_PATH/fs.sh"
+alias di="python3 $DOTFILES/scripts/fs_dropbox_ignore_node_modules.private.py"
+alias fss="$DOTFILES/scripts/fs.sh"
 
 function ytpl() {
     #  Download youtube playlist or channel
