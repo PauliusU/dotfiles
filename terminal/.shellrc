@@ -31,10 +31,13 @@ esac
 
 # -------------------------- ENV VARIABLES AND PATH  ---------------------------
 
-# Defaults
+# Default settings
 export EDITOR="nvim"
 export VISUAL="code -w"
 export LANG="en_US.UTF-8"
+# Common paths
+export SCRIPTS_PATH="$HOME/Dropbox/code/dotfiles/scripts"
+export DOTFILES="$HOME/Dropbox/code/dotfiles"
 
 prepend_path() {
     # Prepend directory to PATH
@@ -48,13 +51,13 @@ prepend_path() {
 
 export BREW_HOME="$HOME/bin/homebrew"
 export CONDA_HOME="$HOME/bin/homebrew/anaconda3"
-export PYTHON_310_HOME="$HOME/Library/Python/3.10"
+export PYTHON_311_HOME="$HOME/Library/Python/3.11"
 export VOLTA_HOME="$HOME/.volta"
 # Order matters, first entry in PATH will take priority over later ones
 prepend_path "$CONDA_HOME/bin"      # Conda lowest in precedence for Python
 prepend_path "$HOME/.local/bin"     # Python packages store some bins here
 prepend_path "$BREW_HOME/bin"       # Use base Python instead of conda Python by default
-prepend_path "$PYTHON_310_HOME/bin" # User packages are installed here
+prepend_path "$PYTHON_311_HOME/bin" # User packages are installed here
 prepend_path "$VOLTA_HOME/bin"      # Use Volta Node instead of global Node by default
 
 # Clean-up
