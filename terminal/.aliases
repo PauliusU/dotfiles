@@ -83,24 +83,30 @@ function apt-updater {
 alias gcca="git config --list"                                                          # Show git config
 alias gccg="git config --list --global"                                                 # Show global git config
 alias gccl="git config --list --local"                                                  # Show local git config
-alias gw="git config --get core.isWork || echo false"                                   # Check if work config is applied
 alias gll="git log --pretty='%C(yellow)%h %Creset%C(cyan)%ar %C(green)%an %C(reset)%s'" # Prettier git log. "gl" is alias for "git pull" in git plugin
+alias gpp="git push && git push --tags"                                                 # Push commits and tags
 alias gs="git status -s -b"                                                             # Cleaner git status
+alias gw="git config --get core.isWork || echo false"                                   # Check if work config is applied
 # JS/TS, npm, yarn
 alias ncul="ncu --target lastest"         # Show available depenecy updates with breaking changes
 alias ncuu="ncu --upgrade --target minor" # Upgrade to non breaking dependency versions (minor and bugfixes) in package.json
 alias npmg="npm list -g --depth 0"        # List global packages
 alias nb="npm run build"
 alias nd="npm run dev"
+alias ndd="tsc -w -p tsconfig.build.json"
 alias ni="npm install"
 alias nl="npm run lint"
+alias ns="npm run start"
 alias nt="npm run test"
+alias nti="npm run test:integration"
+alias nu="npm run build && npm run lint && npm run test"
 alias yb="yarn build"
 alias yd="yarn dev"
 alias yg="yarn global list"
 alias yl="yarn lint"
 alias ys="yarn start"
 alias yt="yarn test"
+alias yt="yarn test:integration"
 alias yu="yarn lint && yarn test"
 alias yy="yarn install --check-files"
 # Python, pip and jupyter
