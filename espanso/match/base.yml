@@ -9,14 +9,14 @@
 # it gets replaced by the "replace" string.
 matches:
   # Simple text replacement
-  - trigger: ":espanso"
-    replace: "Hi there!"
+  - trigger: ':espanso'
+    replace: 'Hi there!'
 
   # But matches can also be dynamic:
 
   # Print the output of a shell command
-  - trigger: ":shell"
-    replace: "{{output}}"
+  - trigger: ':shell'
+    replace: '{{output}}'
     vars:
       - name: output
         type: shell
@@ -28,33 +28,33 @@ matches:
   ### JavaScript / TypeScript
 
   # String interpolation for Template literals (Template strings)
-  - triggers: ["jpp"]
-    replace: "${$|$}"
+  - triggers: ['jpp']
+    replace: '${$|$}'
 
   ### MongoDB
 
   # Mongo generic search string
-  - triggers: [":mgs", "mngs"]
-    replace: "{$|$: //i}"
+  - triggers: [':mgs', 'mngs']
+    replace: '{$|$: //i}'
 
-  # Mongo document ID
-  - triggers: [":mgi", "mngi"]
+  # MongoDB document ID
+  - triggers: [':mgi', 'mngi']
     replace: "{_id: ObjectId('$|$')}"
 
-  # Mongo email
-  - triggers: [":mge", "mnge"]
-    replace: "{email: /$|$/i}"
+  # MongoDB email
+  - triggers: [':mge', 'mnge']
+    replace: '{email: /$|$/i}'
 
-  # Mongo user
-  - triggers: [":mgu", "mngu"]
+  # MongoDB user
+  - triggers: [':mgu', 'mngu']
     replace: "{userId: ObjectId('$|$')}"
 
-  # Mongo clientName
-  - triggers: [":mgc", "mngc"]
-    replace: "{clientName: /$|$/i}"
+  # MongoDB clientName
+  - triggers: [':mgc', 'mngc']
+    replace: '{clientName: /$|$/i}'
 
-  # Mongo date
-  - triggers: [":mgd", "mngd"]
+  # MongoDB date
+  - triggers: [':mgd', 'mngd']
     replace: "{created: {$gte: ISODate('{{currentDate}}$|$')}}"
     vars:
       - name: currentDate
@@ -62,3 +62,7 @@ matches:
         params:
           # Custom date format YYYY-MM-DD
           format: '%Y-%m-%d'
+
+  # MongoDB _id in reverse order
+  - triggers: [':mgr', 'mngr']
+    replace: '{_id: -1}'
