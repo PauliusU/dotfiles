@@ -51,6 +51,7 @@ keyBindings {
     "Alt+I" {src "~/Dropbox/DropsyncFiles" id "core.open.folder"}
     "Alt+L" {src "~/Dropbox/linked/shared_IL" id "core.open.folder"}
     "Alt+O" {src "~/Dropbox/code/dotfiles" id "core.open.folder"}
+    "Alt+P" {src "~/Dropbox/projects" id "core.open.folder"}
     "Alt+Y" {src "~/Library" id "core.open.folder"}
     "Ctrl+X" "gadget.vscode"
  }
