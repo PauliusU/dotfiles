@@ -62,22 +62,6 @@ if [[ $(uname) == "Linux" ]]; then
     alias ag="sudo apt upgrade -y" # Update software (packages)
     alias auu="sudo apt update && sudo apt upgrade -y"
 fi
-function updater() {
-    brew update
-    brew upgrade && brew upgrade --cask
-    brew cleanup
-    brew cleanup --prune=all --dry-run
-    softwareupdate -ai
-}
-function apt-updater {
-    sudo apt update # Update list of available packages
-    sudo apt upgrade -y
-    sudo apt autoremove -y
-    sudo apt autoclean
-    # sudo apt full-upgrade
-    # sudo apt-get dist-upgrade
-    # sudo do-release-upgrade
-}
 
 # Git
 alias gcca="git config --list"                                                          # Show git config
