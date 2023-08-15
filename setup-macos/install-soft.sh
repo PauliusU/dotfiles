@@ -37,6 +37,7 @@ sudo apt install fzf -y
 echo "**** Network ****"
 # sudo apt install -y bwm-ng        # bandwidth meter
 brew install bwm-ng
+brew install bmon
 
 if [[ $(uname) -eq "Darwin" ]]; then
     echo "**** Anki ****"
@@ -117,9 +118,6 @@ if [[ $(uname) -eq "Darwin" ]]; then
     brew install --cask mpv
     mpv --version
     ln -sf ~/Dropbox/soft/mpv_portable/portable_config/* ~/.config/mpv
-
-    echo "**** numi - advanced calculator and unit converter ****"
-    brew install --cask numi
 
     echo "**** OBS Studio ****"
     brew install --cask obs
