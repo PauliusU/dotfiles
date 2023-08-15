@@ -94,7 +94,9 @@ alias yt="yarn test:integration"
 alias yu="yarn lint && yarn test"
 alias yy="yarn install --check-files"
 # Python, pip and jupyter
-alias py="python"
+alias py="python || python3"
+alias py3="python3"
+alias python="python3"
 alias pipi="PIP_REQUIRE_VIRTUALENV=false && pip install --upgrade --user" # Install package in user scope
 alias pipl="pip list --user"                                              # List user packages
 alias pipll="pip list"                                                    # List global packages
@@ -148,28 +150,29 @@ alias zrc="$EDITOR ~/.zshrc"                     # ZSH config
 alias zshrc="${EDITOR} ${HOME}/.zshrc"           # Alternative alias for ZSH config
 
 # Sensible defaults (same command but with differrent default value)
-alias df="df -h"               # Human readable
-alias du="du -h"               # Human readable
-alias htop="htop -t"           # Processes in an indented tree - control+C to stop
-alias rm='rm -i'               # Prompt before every removal
-alias cp='cp -i'               # Prompt before overwrite
-alias mv='mv -i'               # Prompt before overwrite
-alias mount='mount |column -t' # Make mount command output pretty and human readable format
+alias df="df -h"                # Human readable
+alias du="du -h"                # Human readable
+alias htop="htop -t"            # Processes in an indented tree - control+C to stop
+alias rm='rm -i'                # Prompt before every removal
+alias cp='cp -i'                # Prompt before overwrite
+alias mv='mv -i'                # Prompt before overwrite
+alias mount='mount | column -t' # Make mount command output pretty and human readable format
 
 # System control (startup, restart, shutdown, cron jobs)
 alias crn="crontab -e"                                    # Edit current crontab
 alias restart="sudo shutdown -r now"                      # Requires root password, disable it by sudo chmod u+s /sbin/shutdown
 alias services="systemctl list-unit-files | grep enabled" # List enabled services (Linux, WSL)
 alias shutdown="sudo shutdown -h now"                     # Requires root password, disable it by sudo chmod u+s /sbin/shutdown
-alias startup="gnome-session-properties"
+alias startup="gnome-session-properties"                  # Startup applications (Linux)
 
 # Program access
-alias bw="bwm-ng -d"         # Network speed with dynamic units like K, M or G
-alias cdd="code ."           # Open current folder in VS Code
-alias deb="sudo dpkg -i"     # Install deb package (for Ubuntu, Debian, Raspbian)
-alias nv="nvim"              # Neovim
-alias nvu="nvim +PackerSync" # Neovim with `PackerSync` to make changes to your plugin configuration
-alias nvup="nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'"
+alias bw="bwm-ng -d"                                                                           # Network speed with dynamic units like K, M or G
+alias cdd="code ."                                                                             # Open current folder in VS Code
+alias chx="chmod +x"                                                                           # Make file executable
+alias deb="sudo dpkg -i"                                                                       # Install deb package (for Ubuntu, Debian, Raspbian)
+alias nv='if [ -f "./src/index.ts" ]; then nvim "./src/index.ts"; else nvim; fi'               # Neovim (open index.ts if exists)
+alias nvu="nvim +PackerSync"                                                                   # Neovim with `PackerSync` to make changes to your plugin configuration
+alias nvup="nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'"          # Neovim headless update
 alias nvrc="${EDITOR} ${HOME}/.config/nvim/init.vim"                                           # Neovim config
 alias mpp=mpv_detached                                                                         # Run MPV in detached mode
 alias rmm="rm -rf"                                                                             # Remove non-empty folder
@@ -344,4 +347,4 @@ function mpv_detached() {
 }
 
 # Files and directories
-alias npc="nvim ~/Dropbox/DropsyncFiles/audiob/notes_PC.md"
+alias npc="nvim $PATH_NOTES/notes_PC.md"
