@@ -4,7 +4,7 @@
 vim.g.mapleader = " "
 
 -- Manage config
-vim.keymap.set("n", "<leader>r", "<cmd>source $MYVIMRC<CR>", { desc = 'Reload config' })
+vim.keymap.set("n", "<leader>rr", "<cmd>source $MYVIMRC<CR>", { desc = 'Reload config' })
 vim.keymap.set('n', '<leader>ll', '<cmd>source %<CR>', { desc = '[L]oad file a.k.a source active buffer' })
 
 -- Switch modes
@@ -61,6 +61,7 @@ vim.keymap.set("x", "<leader>p", [["_dP]], { desc = 'Paste without messing your 
 vim.keymap.set("v", "p", '"_dP', { desc = "Paste over currently selected text without yanking it" })
 vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]], { desc = 'asbjornHaland -- copy to system clipboard #1' })
 vim.keymap.set("n", "<leader>Y", [["+Y]], { desc = 'asbjornHaland -- copy to system clipboard #2' })
+vim.keymap.set({ "n", "v" }, "<leader>v", [["+p]], { desc = 'Paste from system clipboard' })
 
 -- Similar to other editors (save, quit, select all)
 vim.keymap.set({ "n", "v", "i" }, "<A-s>", vim.cmd.update, { desc = ":write, but only when the buffer is modified." })
