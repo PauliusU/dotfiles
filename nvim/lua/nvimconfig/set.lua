@@ -31,10 +31,6 @@ vim.opt.smartcase = true  -- Override the 'ignorecase' if search contains an upp
 -- Colors
 vim.opt.termguicolors = true
 
-vim.opt.scrolloff = 8      -- Never have less than 8 lines whan scrolling
-vim.opt.signcolumn = "yes" -- Keep signcolumn on by default
-vim.opt.isfname:append("@-@")
-
 -- Faster update time
 vim.opt.updatetime = 50
 
@@ -43,3 +39,10 @@ vim.opt.mouse = 'a'
 
 -- Spelling
 vim.opt.spelllang ='lt,en'
+
+-- ETC
+vim.opt.scrolloff = 8      -- Never have less than 8 lines whan scrolling
+vim.opt.signcolumn = "yes" -- Keep signcolumn on by default
+
+-- Sandbox (testing to include in the main config)
+vim.opt.cmdheight = 2 -- Disable the "Press ENTER or type command to continue" prompt
