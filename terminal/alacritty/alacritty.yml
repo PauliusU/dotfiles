@@ -12,7 +12,7 @@ window:
 
 font:
   normal:
-    family: "Fira Code"
+    family: "FiraCode Nerd Font Mono"
     style: Regular
   size: 21.0
   AppleFontSmoothing: true # macOS only
