@@ -70,10 +70,10 @@ vim.keymap.set('n', '<leader>ls', telescope_builtin.treesitter, { desc = 'Find t
 -- GIT
 vim.keymap.set('n', '<leader>gf', telescope_builtin.git_files, { desc = '[G]it [F]iles' })
 vim.keymap.set('n', '<leader>gc', telescope_builtin.git_commits, { desc = '[G]it [C]ommits' })
-vim.keymap.set('n', '<leader>gd', telescope_builtin.git_bcommits, { desc = '[G]it buffer`s commits (with [D]iff)' })
+vim.keymap.set('n', '<leader>gu', telescope_builtin.git_bcommits, { desc = '[G]it buffer`s commits (with [D]iff)' })
 vim.keymap.set('n', '<leader>gb', telescope_builtin.git_branches, { desc = '[G]it [B]ranches' })
 vim.keymap.set('n', '<leader>gt', telescope_builtin.git_status, { desc = '[G]it s[T]atus' })
-vim.keymap.set('n', '<leader>gh', telescope_builtin.git_stash, { desc = '[G]it stash a.k.a [H]idden' })
+vim.keymap.set('n', '<leader>ga', telescope_builtin.git_stash, { desc = '[G]it st[a]sh' })
 
 -- List pickers
 vim.keymap.set('n', '<leader>sb', telescope_builtin.builtin, { desc = '[S]earch Telescope [B]uiltin searches' })

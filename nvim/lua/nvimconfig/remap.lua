@@ -46,8 +46,8 @@ vim.keymap.set("x", "K", ":move '<-2<CR>gv-gv", { desc = 'Move line up' })
 -- Resizing panes with arrow keys
 vim.keymap.set("n", "<Left>", ":vertical resize +1<CR>", default_opts)
 vim.keymap.set("n", "<Right>", ":vertical resize -1<CR>", default_opts)
-vim.keymap.set("n", "<Up>", ":resize -1<CR>", default_opts)
-vim.keymap.set("n", "<Down>", ":resize +1<CR>", default_opts)
+-- vim.keymap.set("n", "<Up>", ":resize -1<CR>", default_opts)
+-- vim.keymap.set("n", "<Down>", ":resize +1<CR>", default_opts)
 
 -- Stay in the middle when navigating or searching
 vim.keymap.set("n", "<C-d>", "<C-d>zz", { desc = "Center screen when moving down" })
@@ -67,19 +67,24 @@ vim.keymap.set({ "n", "v" }, "<leader>v", [["+p]], { desc = 'Paste from system c
 vim.keymap.set({ "n", "v", "i" }, "<A-s>", vim.cmd.update, { desc = ":write, but only when the buffer is modified." })
 vim.keymap.set({ "n", "v", "i" }, "<A-q>", "<cmd>q<CR>", { desc = '[Q]uit neovim' })
 vim.keymap.set({ "n", "v", "i" }, "<C-A-q>", "<cmd>q!<CR>", { desc = 'Force [q]uit neovim' })
+
+-- Quotes
+vim.keymap.set('n', '<leader>q"', 'ciw""<Esc>P', { desc = 'Add double [q]uotes around the word' })
+vim.keymap.set('n', '<leader>q\'', 'ciw\'\'<Esc>P', { desc = 'Add single [q]uotes around the word' })
 vim.keymap.set({ "n", "v" }, "<A-a>", "<esc>ggVG", { desc = 'Select [A]ll text' })
+
+-- Stay in indent mode
+vim.keymap.set("v", "<", "<gv", default_opts)
+vim.keymap.set("v", ">", ">gv", default_opts)
+
+-- Other text manipulations
+vim.keymap.set("n", "<leader>n", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
+    { desc = "Rename symbol (replace word under the cursor)" })
+vim.keymap.set("n", "J", "mzJ`z", { desc = 'Join lines. Append line below, but keep cursor in place' })
+vim.keymap.set("n", "T", "i<CR><Esc>", { desc = 'Split lines' })
 
 -- Etc
 vim.keymap.set("n", "Q", "<nop>", { desc = 'Disable capital Q' })
 vim.keymap.set("n", "<leader>o", vim.lsp.buf.format, { desc = 'F[o]rmat current buffer' })
-vim.keymap.set({ "n", "v" }, "<A-m>", "<cmd>set wrap!<CR>", { desc = 'Toggle wrap' })
-vim.keymap.set("n", "<leader>n", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
-    { desc = "Rename symbol (replace word under the cursor)" })
+vim.keymap.set({ "n", "v" }, "<A-m>", "<cmd>set wrap!<CR>", { desc = 'Toggle line wrap' })
 vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true, desc = "Make file executable" })
-vim.keymap.set("n", "J", "mzJ`z", { desc = 'Append line below, but keep cursor in place' })
--- Stay in indent mode
-vim.keymap.set("v", "<", "<gv", default_opts)
-vim.keymap.set("v", ">", ">gv", default_opts)
--- Quotes
-vim.keymap.set('n', '<leader>q"', 'ciw""<Esc>P', { desc = 'Add double [q]uotes around the word' })
-vim.keymap.set('n', '<leader>q\'', 'ciw\'\'<Esc>P', { desc = 'Add single [q]uotes around the word' })

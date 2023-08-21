@@ -7,7 +7,8 @@ vim.g.copilot_assume_mapped = true
 
 vim.keymap.set('n', '<leader>cp', '<cmd>Copilot setup<cr>', { desc = 'Enable GitHub [C]o[p]ilot' })
 vim.keymap.set('n', '<leader>cs', '<cmd>Copilot status<cr>', { desc = 'Print GitHub [C]opilot [s]tatus' })
-vim.keymap.set('i', '<C-j>', '<Plug>(copilot-next)', { silent = true })
-vim.keymap.set('i', '<C-k>', '<Plug>(copilot-previous)', { silent = true })
-vim.keymap.set('i', '<C-u>', '<Plug>(copilot-suggest)', { silent = true })
-
+vim.keymap.set('i', '<C-j>', '<Plug>(copilot-next)', { silent = true, desc = 'Copilot next suggestion' })
+vim.keymap.set('i', '<C-k>', '<Plug>(copilot-previous)', { silent = true, desc = 'Copilot previous suggestion' })
+vim.keymap.set('i', '<C-u>', '<Plug>(copilot-suggest)', { silent = true, desc = 'Copilot suggest' })
+vim.keymap.set('i', '<C-t>', '<Plug>(copilot-accept)', { silent = true, desc = 'Copilot accept suggestion' })
+vim.keymap.set('i', '<C-y>', [[:call copilot#Accept()<CR>]], { desc = 'Copilot accept suggestion' })

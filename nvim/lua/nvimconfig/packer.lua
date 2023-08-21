@@ -36,7 +36,8 @@ return require('packer').startup(function(use)
 
     -- Git and edit history
     use('tpope/vim-fugitive')
-    use('airblade/vim-gitgutter')
+    use('lewis6991/gitsigns.nvim') -- Show which lines are currently changed
+    use("sindrets/diffview.nvim")  -- View git diffs
     use('mbbill/undotree')
 
     -- Comments, "gc" to comment visual regions/lines
@@ -55,8 +56,16 @@ return require('packer').startup(function(use)
     -- Highlight and search for todo comments like TODO, HACK, BUG
     use { "folke/todo-comments.nvim", requires = "nvim-lua/plenary.nvim" }
 
-    -- Onedark colorscheme
-    use 'navarasu/onedark.nvim'
+    -- Theme and colors
+    use 'navarasu/onedark.nvim' -- Onedark colorscheme
+    use 'xiyaowong/transparent.nvim' -- Make any colorscheme transparent
+
+    -- UI
+    use("folke/zen-mode.nvim") -- Distraction free coding
+    use {
+        'nvim-lualine/lualine.nvim', -- Statusline
+        requires = { 'nvim-tree/nvim-web-devicons', opt = true }
+    }
 
     -- LSP and completion
     use {
@@ -88,6 +97,7 @@ return require('packer').startup(function(use)
         config = function() require("nvim-autopairs").setup {} end
     }
     use { 'github/copilot.vim' }
+    use { 'windwp/nvim-ts-autotag' }
 
     -- Running code
     use { 'CRAG666/code_runner.nvim', requires = 'nvim-lua/plenary.nvim' }
@@ -106,8 +116,15 @@ return require('packer').startup(function(use)
     use 'mfussenegger/nvim-dap'
     use { "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } }
 
-    -- Distraction free coding
-    use("folke/zen-mode.nvim")
+    -- Sandbox (testing to include in the main config)
+    use {
+        "ThePrimeagen/refactoring.nvim",
+        requires = {
+            { "nvim-lua/plenary.nvim" },
+            { "nvim-treesitter/nvim-treesitter" }
+        }
+    }
+    use 'tpope/vim-surround'
 
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins

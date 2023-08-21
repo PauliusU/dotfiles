@@ -16,14 +16,14 @@ autocmd('TextYankPost', {
 })
 
 autocmd({ "BufWritePre" }, {
-    -- Delete line postspaces
+    -- Delete line postspaces on file save
     group = NvimConfigGroup,
     pattern = "*",
     command = [[%s/\s\+$//e]],
 })
 
 autocmd('BufWritePre', {
-    -- Fix linting problems with ESling
+    -- Fix linting problems on file save with ESlint
     group = NvimConfigGroup,
     pattern = { '*.tsx', '*.ts', '*.jsx', '*.js' },
     command = 'silent! EslintFixAll',
