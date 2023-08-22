@@ -14,7 +14,7 @@ echo "**** GIT ****"
 brew install git
 git config --global user.name "PauliusU"
 git config --global user.email "48020370+PauliusU@users.noreply.github.com"
-git config --global core.autocrlf input # Line endings for OS compatability
+git config --global core.autocrlf input # Line endings for OS compatability. macOS and Linux 'input', Windows 'true'
 git config --global core.editor "nvim"
 ln -sf $(pwd)/.gitignore_global ~/.gitignore_global
 git config --global core.excludesfile ~/.gitignore_global
@@ -37,7 +37,7 @@ gh --version
 
 echo "**** Neovim / Vim ****"
 brew install neovim
-# Install packer for neovim
+# Install packer for Neovim
 git clone --depth 1 https://github.com/wbthomason/packer.nvim\
     ~/.local/share/nvim/site/pack/packer/start/packer.nvim
 ln -sf $(pwd)/nvim ~/.config/nvim
@@ -45,6 +45,9 @@ ln -sf $(pwd)/nvim ~/.config/nvim
 brew install ripgrep
 # scoop install fd
 brew install fd
+# LSP dependencies
+npm install -g typescript typescript-language-server
+npm i -g vscode-langservers-extracted # HTML/CSS/JSON/ESLint language servers extracted from vscode
 
 # sudo add-apt-repository ppa:neovim-ppa/stable
 sudo add-apt-repository ppa:neovim-ppa/unstable
