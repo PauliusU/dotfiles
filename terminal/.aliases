@@ -71,6 +71,8 @@ alias gll="git log --pretty='%C(yellow)%h %Creset%C(cyan)%ar %C(green)%an %C(res
 alias gpp="git push && git push --tags"                                                 # Push commits and tags
 alias gs="git status -s -b"                                                             # Cleaner git status
 alias gw="git config --get core.isWork || echo false"                                   # Check if work config is applied
+# GitHub CLI
+alias ghb="gh browser"
 # JS/TS, npm, yarn
 alias ncul="ncu --target lastest"         # Show available depenecy updates with breaking changes
 alias ncuu="ncu --upgrade --target minor" # Upgrade to non breaking dependency versions (minor and bugfixes) in package.json
@@ -345,6 +347,18 @@ function mpv_detached() {
     # Run detached MPV player which allows closing terminal without ending MPV
     mpv --no-terminal 2 $1 &>/dev/null &
 }
+
+function _zsh_fancy_ctrl_z {
+    # Allow Ctrl-z to toggle between suspend and resume in ZSH
+    # Useful to switch between Neovim and running terminal commands
+    # Ref: https://stackoverflow.com/questions/35852061/avoid-adding-zsh-command-to-history
+    fg
+    zle push-input
+    BUFFER=""
+    zle accept-line
+}
+zle -N _zsh_fancy_ctrl_z
+bindkey "^Z" _zsh_fancy_ctrl_z
 
 # Files and directories
 alias npc="nvim $PATH_NOTES/notes_PC.md"
