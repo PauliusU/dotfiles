@@ -57,11 +57,11 @@ return require('packer').startup(function(use)
     use { "folke/todo-comments.nvim", requires = "nvim-lua/plenary.nvim" }
 
     -- Theme and colors
-    use 'navarasu/onedark.nvim' -- Onedark colorscheme
+    use 'navarasu/onedark.nvim'      -- Onedark colorscheme
     use 'xiyaowong/transparent.nvim' -- Make any colorscheme transparent
 
     -- UI
-    use("folke/zen-mode.nvim") -- Distraction free coding
+    use("folke/zen-mode.nvim")       -- Distraction free coding
     use {
         'nvim-lualine/lualine.nvim', -- Statusline
         requires = { 'nvim-tree/nvim-web-devicons', opt = true }
@@ -125,6 +125,10 @@ return require('packer').startup(function(use)
         }
     }
     use 'tpope/vim-surround'
+    use {
+        "m4xshen/hardtime.nvim", -- establish good neovim habits
+        requires = { 'MunifTanjim/nui.nvim', "nvim-lua/plenary.nvim" }
+    }
 
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins

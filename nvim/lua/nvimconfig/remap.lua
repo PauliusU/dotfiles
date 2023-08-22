@@ -5,7 +5,7 @@ vim.g.mapleader = " "
 
 -- Manage config
 vim.keymap.set("n", "<leader>rr", "<cmd>source $MYVIMRC<CR>", { desc = 'Reload config' })
-vim.keymap.set('n', '<leader>ll', '<cmd>source %<CR>', { desc = '[L]oad file a.k.a source active buffer' })
+vim.keymap.set('n', '<leader>lr', '<cmd>source %<CR>', { desc = '[L]oad [f]ile a.k.a source active buffer' })
 
 -- Switch modes
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex, { desc = 'Explore file tree ([P]roject [V]view)' })
@@ -33,6 +33,8 @@ vim.keymap.set("n", "<C-A-k>", "<cmd>cnext<CR>zz", { desc = "Quickfix next" })
 vim.keymap.set("n", "<C-A-j>", "<cmd>cprev<CR>zz", { desc = "Quickfix previous" })
 vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz", { desc = "Like :cnext but use location list and not the quickfix" })
 vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz", { desc = "Like :cprev but use location list and not the quickfix" })
+-- Moving cursor in normal mode
+vim.keymap.set('n', 'gl', '$', { desc = 'Go to end of line. Faster that "$" and layout independant' })
 -- Moving cursor in insert mode
 vim.keymap.set('i', '<C-l>', '<Esc>la', { desc = 'Move backward by one char in insert mode' })
 vim.keymap.set('i', '<C-h>', '<Esc>ha', { desc = 'Move forward by one char in insert mode' })
