@@ -41,7 +41,7 @@ vim.keymap.set('n', '<leader>sc', telescope_builtin.commands, { desc = 'telescop
 vim.keymap.set('n', '<leader>st', telescope_builtin.tags, { desc = 'telescope: [S]earch [T]ags' })
 vim.keymap.set('n', '<leader>sch', telescope_builtin.command_history,
     { desc = 'telescope: Lookup in [C]earch [H]istory' })
-vim.keymap.set('n', '<leader>ssh', telescope_builtin.search_history, { desc = 'telescope: Lookup in [S]earch [H]istory' })
+vim.keymap.set('n', '<leader>si', telescope_builtin.search_history, { desc = 'telescope: Lookup in [S]earch history' })
 vim.keymap.set('n', '<leader>se', telescope_builtin.colorscheme, { desc = 'telescope: Pick color schem[e]' })
 vim.keymap.set('n', '<leader>sq', telescope_builtin.quickfix, { desc = 'telescope: [S]earch [Q]uickfix' })
 vim.keymap.set('n', '<leader>sl', telescope_builtin.loclist, { desc = 'telescope: [S]earch [L]ocation list' })
@@ -62,7 +62,7 @@ vim.keymap.set('n', '<C-A-n>', telescope_builtin.lsp_document_symbols,
     { desc = 'telescope: Search LSP document Symbols' })
 vim.keymap.set('n', '<leader>lw', telescope_builtin.lsp_workspace_symbols,
     { desc = 'telescope: Search [L]SP workspace [S]ymbols' })
-vim.keymap.set('n', '<leader>ll', telescope_builtin.lsp_dynamic_workspace_symbols,
+vim.keymap.set('n', '<leader>ss', telescope_builtin.lsp_dynamic_workspace_symbols,
     { desc = 'telescope: Search [L]SP dynamic workspace symbo[l]s' })
 vim.keymap.set('n', '<leader>ld', telescope_builtin.diagnostics, { desc = 'telescope: Search [L]SP [D]iagnostics' })
 vim.keymap.set('n', '<leader>li', telescope_builtin.lsp_implementations,

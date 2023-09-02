@@ -99,6 +99,11 @@ return require('packer').startup(function(use)
     use { 'github/copilot.vim' }
     use { 'windwp/nvim-ts-autotag' }
 
+    -- Debugging
+    use 'mfussenegger/nvim-dap'
+    use { "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } }
+    use { "mxsdev/nvim-dap-vscode-js", requires = { "mfussenegger/nvim-dap" } }
+
     -- Running code
     use { 'CRAG666/code_runner.nvim', requires = 'nvim-lua/plenary.nvim' }
 
@@ -111,10 +116,6 @@ return require('packer').startup(function(use)
             require("which-key").setup {}
         end
     }
-
-    -- Debugging
-    use 'mfussenegger/nvim-dap'
-    use { "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } }
 
     -- Sandbox (testing to include in the main config)
     use {

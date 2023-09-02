@@ -15,7 +15,7 @@ local function nextTodo()
     require("todo-comments").jump_next(jumpKeywords)
 end
 
-vim.keymap.set('n', '<leader>st', '<cmd>TodoTelescope<CR>', { desc = '[S]earch [T]odos' })
+vim.keymap.set('n', '<leader>st', '<cmd>TodoTelescope<CR>', { desc = 'telescope_todo-comments: [S]earch [T]odos' })
 vim.keymap.set('n', '<leader>tt', '<cmd>TodoQuickFix<CR>', { desc = 'Add TODOs to quickfix list' })
 vim.keymap.set('n', '<leader>tl', '<cmd>TodoLocList<CR>', { desc = 'Show location list to show project TODOs' })
 vim.keymap.set("n", "]t", nextTodo, { desc = "Next todo comment" })

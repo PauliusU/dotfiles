@@ -60,7 +60,7 @@ lsp.on_attach(function(client, bufnr)
         { desc = 'lsp: [G]o to [I]mplementation', buffer = bufnr, remap = false })
     vim.keymap.set('n', '<leader>gr', vim.lsp.buf.references,
         { desc = 'lsp: [G]o to [R]eferences', buffer = bufnr, remap = false })
-    vim.keymap.set('n', '<leader>ws', vim.lsp.buf.workspace_symbol,
+    vim.keymap.set('n', '<leader>ll', vim.lsp.buf.workspace_symbol,
         { desc = 'lsp: query [W]orkspace [S]ymbol', buffer = bufnr, remap = false })
     -- LSP: actions and rename
     vim.keymap.set('n', '<S-F6>', vim.lsp.buf.rename, { desc = 'lsp: rename', buffer = bufnr, remap = false })
