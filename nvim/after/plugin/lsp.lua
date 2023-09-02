@@ -26,9 +26,33 @@ local cmp_mappings = lsp.defaults.cmp_mappings({
     ['<C-u>'] = cmp.mapping.abort(), -- Close suggestions pop-up
     ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
     ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
-    ['<Tab>'] = cmp.mapping.confirm({ select = true }),
+    -- ['<Tab>'] = cmp.mapping.confirm({ select = true }),
+    ["<Tab>"] = cmp.mapping(function(fallback)
+        if require("copilot.suggestion").is_visible() then
+            require("copilot.suggestion").accept()
+        elseif cmp.visible() then
+            cmp.select_next_item({ behavior = cmp.SelectBehavior.Insert })
+        -- elseif luasnip.expandable() then
+            -- luasnip.expand()
+        else
+            fallback()
+        end
+    end, {
+        "i",
+        "s",
+    }),
     ['<C-i>'] = cmp.mapping.complete(),
 })
+cmp.setup {
+    sources = {
+        -- Copilot Source
+        { name = "copilot",  group_index = 2 },
+        -- Other Sources
+        { name = "nvim_lsp", group_index = 2 },
+        { name = "path",     group_index = 2 },
+        { name = "luasnip",  group_index = 2 },
+    },
+}
 
 lsp.setup_nvim_cmp({
     mapping = cmp_mappings

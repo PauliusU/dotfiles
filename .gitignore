@@ -12,8 +12,7 @@ espanso/match/packages/*
 nvim/plugin/
 nvim/spell/
 nvim/undodir/
-vim/autoload/
-vim/plugged/
+nvim/lazy-lock.json
 terminal/PowerShell/Modules/
 terminal/PowerShell/Scripts/
 terminal/WindowsTerminal/elevated-state.json

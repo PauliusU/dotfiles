@@ -1,5 +1,5 @@
--- Packer
-vim.keymap.set('n', '<leader>ps', require('packer').sync, { desc = '[P]acker [S]ync' })
+-- Lazy
+vim.keymap.set('n', '<leader>pp', require('lazy').sync, { desc = 'Lazy plugin manager' })
 
 -- Autotag
 -- For React apps, you often want to close tags quickly. windwp/nvim-ts-autotag is exactly what you want.

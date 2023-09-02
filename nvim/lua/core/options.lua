@@ -1,7 +1,9 @@
+-- Neovim options
+
 -- Line numbers
-vim.opt.nu = true             -- Enable line numbers
+vim.opt.number = true             -- Show line nubmers
 vim.opt.relativenumber = true -- Relative line numbers
-vim.opt.cursorline = true
+vim.opt.cursorline = true -- Highlight the screen line of the cursor
 
 -- Tabs
 vim.opt.tabstop = 4
@@ -41,7 +43,7 @@ vim.opt.mouse = 'a'
 vim.opt.spelllang ='lt,en'
 
 -- ETC
-vim.opt.scrolloff = 8      -- Never have less than 8 lines whan scrolling
+vim.opt.scrolloff = 8      -- Never have less than 8 lines when scrolling
 vim.opt.signcolumn = "yes" -- Keep signcolumn on by default
 
 -- Sandbox (testing to include in the main config)

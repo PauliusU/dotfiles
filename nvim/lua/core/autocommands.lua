@@ -1,3 +1,5 @@
+-- Neovim autocommands
+
 local augroup = vim.api.nvim_create_augroup
 local autocmd = vim.api.nvim_create_autocmd
 
@@ -16,8 +18,9 @@ autocmd('TextYankPost', {
 })
 
 autocmd({ "BufWritePre" }, {
-    -- Delete line postspaces on file save
+    -- Delete line postspaces on file save. Trim white space before saving
     group = NvimConfigGroup,
+    -- Apply to all file types
     pattern = "*",
     command = [[%s/\s\+$//e]],
 })

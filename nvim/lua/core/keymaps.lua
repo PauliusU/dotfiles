@@ -1,4 +1,4 @@
--- Custom keyboard shortcuts for neovim
+-- Custom keyboard shortcuts for Neovim
 
 -- Set <space> as the leader key
 vim.g.mapleader = " "
