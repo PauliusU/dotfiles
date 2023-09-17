@@ -45,8 +45,8 @@ alias bs="brew search"
 alias bsl="brew services list"
 alias bss="brew services stop"
 alias bu="brew update && brew upgrade && brew upgrade --cask && brew cleanup"
-alias bun="brew uninstall"
-alias bunn="brew uninstall --ignore-dependencies"
+alias bunn="brew uninstall"
+alias bunnn="brew uninstall --ignore-dependencies"
 alias bupc="brew upgrade --cask" # Upgrade all casks installed with homebrew
 alias bupd="brew update"         # Update homebrew itself and the package lists
 alias bupg="brew upgrade"        # Upgrade all software installed with homebrew
@@ -71,8 +71,9 @@ alias gll="git log --pretty='%C(yellow)%h %Creset%C(cyan)%ar %C(green)%an %C(res
 alias gpp="git push && git push --tags"                                                 # Push commits and tags
 alias gs="git status -s -b"                                                             # Cleaner git status
 alias gw="git config --get core.isWork || echo false"                                   # Check if work config is applied
+alias gcontr="git shortlog -s -n"                                                       # Contributors list. ref: https://makandracards.com/makandra/15909-quick-git-contributors-list
 # GitHub CLI
-alias ghb="gh browser"
+alias ghb="gh browse"
 # JS/TS, npm, yarn
 alias ncul="ncu --target lastest"         # Show available depenecy updates with breaking changes
 alias ncuu="ncu --upgrade --target minor" # Upgrade to non breaking dependency versions (minor and bugfixes) in package.json
@@ -95,6 +96,7 @@ alias yt="yarn test"
 alias yt="yarn test:integration"
 alias yu="yarn lint && yarn test"
 alias yy="yarn install --check-files"
+alias pi="pnpm install"
 # Python, pip and jupyter
 alias py="python || python3"
 alias py3="python3"
@@ -115,6 +117,8 @@ alias pess="[ -z \"$PIPENV_ACTIVE\" ] && echo \"false\"" # Check if pipenv envir
 alias peu="pipenv update"                                # Update all or specified dependencies
 alias peun="pipenv uninstall"                            # Uninstall dependency
 alias pew="pipenv --venv"                                # Check location of the environment
+# Rust
+alias cr="cargo run"
 # Docker
 alias da='docker attach'                                                                                  # Get back to running container
 alias dcls='docker compose ls -a'                                                                         # List running compose projects
@@ -183,7 +187,7 @@ alias taru='tar xzvf'                                                           
 alias tarx="tar -xvf"                                                                          # Unzip
 alias tarz='tar czvf'                                                                          # Zip
 alias td="tmux detach"                                                                         # Exit the tmux window to come back to later
-alias tl="tmux ls"                                                                             # = tmux list-sessions
+alias tls="tmux ls"                                                                            # = tmux list-sessions
 alias tm="tmux"                                                                                # = tmux new = tmux new-session
 alias tmks="tmux kill-server"                                                                  # Cleanly and gracefully kill all tmux open sessions (and server)
 alias tmm="echo tmux: $TMUX"                                                                   # = tmux new = tmux new-session
@@ -228,6 +232,7 @@ function ytpl() {
         --embed-thumbnail \
         -i \
         "$@"
+    # --split-chapters \
 }
 
 function batch_convert() {
@@ -359,6 +364,3 @@ function _zsh_fancy_ctrl_z {
 }
 zle -N _zsh_fancy_ctrl_z
 bindkey "^Z" _zsh_fancy_ctrl_z
-
-# Files and directories
-alias npc="nvim $PATH_NOTES/notes_PC.md"

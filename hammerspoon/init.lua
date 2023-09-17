@@ -127,7 +127,7 @@ Hyper:bind({}, "up", nil, wm.maximizeWindow()) -- [Hyper + ▲ ]
 Hyper:bind({}, "down", nil, wm.minimizeWindow()) -- [Hyper + ▼ ]
 Hyper:bind("Shift", "left", nil, wm.moveWindow(wm.screenPositions.left)) -- [Hyper + ◀ ]
 Hyper:bind("Shift", "right", nil, wm.moveWindow(wm.screenPositions.right)) -- [Hyper + ▶ ]
-Hyper:bind({}, "Return", nil, wm.toggleMax()) 
+Hyper:bind({}, "Return", nil, wm.toggleMax())
 Hyper:bind("Shift", "Return", nil, wm.toggleFullscreen()) -- [ Hyper + F ]
 Hyper:bind("Shift", "F", nil, wm.toggleFullscreen()) -- [ Hyper + Shift + F ]
 hs.hotkey.bind("alt", "F4", wm.closeWindow()) -- [ ⌥ + F4 ]
