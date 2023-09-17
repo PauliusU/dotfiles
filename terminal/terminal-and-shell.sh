@@ -40,6 +40,7 @@ if [[ $(uname) -eq "Linux" ]]; then
     # source ~/.config/antigen.zsh
 
     # Nerd fonts
+    sudo apt install -y fonts-firacode
     sudo apt install -y fonts-cascadia-code # minimum Debian 11 and Ubuntu 20.04
 fi
 
@@ -52,13 +53,8 @@ if [[ $(uname) -eq "Darwin" ]]; then
     echo "**** Spaceship Prompt (and fira-code font) ****"
 
     brew tap homebrew/cask-fonts
-    brew install --cask font-fira-code
     brew install --cask font-fira-code-nerd-font
-    brew install --cask font-cascadia-code-pl
     brew install --cask font-caskaydia-cove-nerd-font
-
-    sudo apt install -y fonts-firacode
-    sudo apt install -y fonts-cascadia-code
 
     # brew install spaceship
     # echo "source $(brew --prefix)/opt/spaceship/spaceship.zsh" >>! ~/.zshrc
