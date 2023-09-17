@@ -37,17 +37,13 @@ gh --version
 
 echo "**** Neovim / Vim ****"
 brew install neovim
-# Install packer for Neovim
-git clone --depth 1 https://github.com/wbthomason/packer.nvim\
-    ~/.local/share/nvim/site/pack/packer/start/packer.nvim
 ln -sf $(pwd)/nvim ~/.config/nvim
+# Delete local Neovim cache to prevent any issues
+rm -rf ~/.local/share/nvim
 # Nvim telescope plugin requirements for grep_string and live_grep functions
 brew install ripgrep
 # scoop install fd
 brew install fd
-# LSP dependencies
-npm install -g typescript typescript-language-server
-npm i -g vscode-langservers-extracted # HTML/CSS/JSON/ESLint language servers extracted from vscode
 
 # sudo add-apt-repository ppa:neovim-ppa/stable
 sudo add-apt-repository ppa:neovim-ppa/unstable
@@ -155,15 +151,16 @@ brew install volta
 # curl https://get.volta.sh | bash
 volta -v
 
-volta install node@16
-# volta pin node@16
+volta install node@18
+# volta pin node@18
 # volta uninstall node is not supported. Remove node version from ~/.volta/tools/image/node/ istead
 volta list node
 volta which node
 node -v
 volta install yarn
+volta install pnpm
 yarn -v
-volta install npm # update oudated version installed with Node
+volta install npm # update oudated npm version installed with Node
 npm -v
 npm install --global typescript
 tsc -v
@@ -172,13 +169,18 @@ ts-node -v
 npm install -g npm-check-updates # Update depenceny versions in package.json from terminal
 volta list
 
+volta install deno
+volta install bun
+
 echo "**** Go Goland ****"
 brew install go
 go version
 
 echo "**** Rust ****"
-brew install rust
+brew install rustup
+# rustup component add rustfmt
 rustc --version
+cargo --version
 
 if [[ $(uname) -eq "Darwin" ]]; then
     echo "**** Docker ****"
