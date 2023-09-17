@@ -12,5 +12,6 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
--- Load lazy.nvim. Make sure `mapleader` is set before lazy so mappings are correct
+-- Load lazy.nvim from nvim/lua/plugins folder
+-- NOTE: Make sure `mapleader` is set before lazy so mappings are correct
 require('lazy').setup('plugins')
