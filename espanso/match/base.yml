@@ -45,9 +45,13 @@ matches:
   - triggers: [':mge', 'mnge']
     replace: '{email: /$|$/i}'
 
-  # MongoDB user
+  # MongoDB user ID
   - triggers: [':mgu', 'mngu']
     replace: "{userId: ObjectId('$|$')}"
+
+  # MongoDB username
+  - triggers: [':mgn', 'mngn']
+    replace: '{username: /$|$/i}'
 
   # MongoDB clientName
   - triggers: [':mgc', 'mngc']
