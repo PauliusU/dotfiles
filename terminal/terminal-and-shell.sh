@@ -6,6 +6,12 @@ which $SHELL
 echo "=============================== TERMINAL ================================"
 
 if [[ $(uname) -eq "Darwin" ]]; then
+    echo "**** Nerd fonts ****"
+    brew tap homebrew/cask-fonts
+    brew install --cask font-caskaydia-cove-nerd-font
+    brew install --cask font-fira-code-nerd-font
+    brew install --cask font-jetbrains-mono-nerd-font
+
     echo "**** iterm2 - Terminal.app replacement ****"
     brew install --cask iterm2
 
@@ -25,43 +31,29 @@ ln -sf $(pwd)/terminal/tmux-sessionizer.sh ~/.local/bin/tmux-sessionizer
 echo "================================ ZSH ===================================="
 
 if [[ $(uname) -eq "Linux" ]]; then
-    sudo apt update
-
-    sudo apt install -y zsh
-    # Set ZSH as  default shell
-    chsh -s $(which zsh)
-
-    sudo apt install -y curl
-    # Oh My Zsh is an extension to Zsh that will allow you to easily customise your prompt to add themes, plugins and shortcuts
-    sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-
-    # The easiest way to install and manage Oh My Zsh plugins is via a package manage
-    curl -L git.io/antigen >~/.config/antigen.zsh
-    # source ~/.config/antigen.zsh
-
     # Nerd fonts
     sudo apt install -y fonts-firacode
     sudo apt install -y fonts-cascadia-code # minimum Debian 11 and Ubuntu 20.04
-fi
 
-# echo "**** oh-my-zsh ****"
-# sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-# echo "**** zsh-completions ****"
-# brew install zsh-completions
+    sudo apt update
+    sudo apt install -y zsh
+    zsh --version
+    # Set ZSH as default shell
+    chsh -s $(which zsh)
+    # Verify the change of shell
+    echo $SHELL
+fi
 
 if [[ $(uname) -eq "Darwin" ]]; then
-    echo "**** Spaceship Prompt (and fira-code font) ****"
-
-    brew tap homebrew/cask-fonts
-    brew install --cask font-fira-code-nerd-font
-    brew install --cask font-caskaydia-cove-nerd-font
-
-    # brew install spaceship
-    # echo "source $(brew --prefix)/opt/spaceship/spaceship.zsh" >>! ~/.zshrc
-    git clone https://github.com/spaceship-prompt/spaceship-prompt.git "$ZSH_CUSTOM/themes/spaceship-prompt" --depth=1
-    ln -s "$ZSH_CUSTOM/themes/spaceship-prompt/spaceship.zsh-theme" "$ZSH_CUSTOM/themes/spaceship.zsh-theme"
-    # Set ZSH_THEME="spaceship" in your .zshrc.
+    brew install spaceship
 fi
+
+# Antigen - The plugin manager for zsh.
+curl -L git.io/antigen >~/.config/antigen.zsh
+antigen update # Update all bundles
+antigen selfupdate # Update antigen itself
+antigen list # List currently running bundles
+antigen version
 
 ln -sf $(pwd)/terminal/.aliases ~/.aliases
 ln -sf $(pwd)/terminal/.shellrc ~/.shellrc
