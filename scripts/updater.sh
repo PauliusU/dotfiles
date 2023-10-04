@@ -4,7 +4,7 @@ echo "**** Starting NPM updates ****"
 npm update -g npm-check-updates
 
 if [[ $(uname) == "Darwin" ]]; then
-    echo "**** 🍎 Starting macOS updates ****"
+    echo "**** 🍎 macOS updates ****"
 
     brew update
     brew upgrade && brew upgrade --cask
@@ -18,7 +18,7 @@ if [[ $(uname) == "Darwin" ]]; then
 fi
 
 if [[ $(uname) == "Linux" ]]; then
-    echo "**** 🐧 Starting Linux updates ****"
+    echo "**** 🐧 Linux updates ****"
 
     # Update list of available packages
     sudo apt update

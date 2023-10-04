@@ -57,7 +57,6 @@ ECHO **** Neovim ****
 MKLINK /J "%LOCALAPPDATA%\nvim" "%DOTFILES%\nvim"
 powershell scoop install neovim
 nvim --version
-git clone https://github.com/wbthomason/packer.nvim "%LOCALAPPDATA%\nvim-data\site\pack\packer\start\packer.nvim"
 :: Neovim dependencies
 :: fzf, telescope and other search tools use ripgrep and fd
 powershell scoop install ripgrep
@@ -92,6 +91,11 @@ ECHO **** AWS CLI ****
 MKLINK /J "%USERPROFILE%\.aws\" "d:\Dropbox\dev\config\.aws"
 powershell scoop install aws
 aws --version
+
+ECHO **** Git tools ****
+scoop install lazygit
+:: Git-delta
+scoop install delta
 
 ECHO **** GitHub CLI ****
 powershell scoop install gh

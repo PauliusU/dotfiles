@@ -31,6 +31,10 @@ git config --global alias.tags "! git tag | sort -V"
 # git config --global --list --show-origin # Show git global file and it's contents
 git --version
 
+echo "**** Git tools ****"
+brew install lazygit # Terminal UI for git commands
+brew install git-delta # Better git diff, including word-level diff highlighting
+
 echo "**** GitHub CLI ****"
 brew install gh
 gh --version

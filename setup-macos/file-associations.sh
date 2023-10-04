@@ -20,4 +20,4 @@ duti -s io.mpv .opus all
 # IMAGES
 
 echo
-echo "ASSOCIATIONS ARE DONE"
+echo "FILE ASSOCIATIONS ARE DONE"
