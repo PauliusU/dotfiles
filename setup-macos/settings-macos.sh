@@ -106,3 +106,7 @@ echo "**** Scroll direction - Disable “natural” (Lion-style) scrolling ****"
 # defaults write NSGlobalDomain com.apple.swipescrolldirection -bool false
 defaults write -g com.apple.swipescrolldirection -bool FALSE
 defaults read -g com.apple.swipescrolldirection
+
+# Sandbox (test before including in the main configuration)
+defaults write NSGlobalDomain AppleInterfaceStyle Dark  # Use dark menu bar and dock.
+
