@@ -1,6 +1,6 @@
 #!/bin/sh
 
-echo "**** Starting NPM updates ****"
+echo "**** 📦 NPM updates ****"
 npm update -g npm-check-updates
 
 if [[ $(uname) == "Darwin" ]]; then

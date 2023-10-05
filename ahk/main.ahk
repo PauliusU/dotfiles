@@ -18,7 +18,6 @@ SetNumLockState('on')    ; Turn on NumLock
 #Include text-date-time.ahk
 #Include text-manipulation.ahk
 #Include window-manager.ahk
-#Include private\text-base.ahk
 
 ; Keyboard shortcuts
 

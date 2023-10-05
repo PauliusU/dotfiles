@@ -9,6 +9,7 @@ volta install node@18
 :: Update NPM (newer than the one with Node)
 volta install npm
 volta install yarn
+volta install pnpm
 :: Display current volta toolchain
 volta list
 volta list node
@@ -21,6 +22,7 @@ volta -v
 node -v
 npm -v
 yarn -v
+pnpm -v
 
 ECHO **** NPM and Yarn global packages ****
 :: TypeScript compiler for ts-node and other tools
