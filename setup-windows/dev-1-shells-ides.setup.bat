@@ -130,3 +130,9 @@ wsl.exe --install
 wsl --update
 :: See WSL and kernel version
 wsl --status
+
+ECHO **** Rust ****
+powershell scoop install rustup
+winget install Microsoft.VisualStudio.2022.BuildTools
+rustc --version
+cargo --version
