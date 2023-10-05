@@ -5,6 +5,12 @@ which $SHELL
 
 echo "=============================== TERMINAL ================================"
 
+echo "**** Modern core utils****"
+# Bat - a cat clone with syntax highlighting and Git integration
+brew install bat
+# LSDeluxe - ls with colors, icons, tree-view, etc.
+brew install lsd
+
 if [[ $(uname) -eq "Darwin" ]]; then
     echo "**** Nerd fonts ****"
     brew tap homebrew/cask-fonts

@@ -14,10 +14,18 @@ ECHO **** Alacritty ****
 powershell scoop install alacritty
 
 ECHO **** Core utils ****
+:: Basic cli tools (rm, cat, ls, etc.) used on Unix-like operating systems
 powershell scoop install coreutils
+:: Bat - a cat clone with syntax highlighting and Git integration
+powershell scoop install bat
+:: LSDeluxe - ls with colors, icons, tree-view, etc.
+powershell scoop install lsd
 
 ECHO **** Git-Bash ****
 MKLINK /J "%USERPROFILE%\.bashrc" "%DOTFILES%\terminal\.bashrc"
+:: Git-bash depencencies
+:: Fuzzy find directories for path-switcher
+powershell scoop install fzf
 
 ECHO **** PowerShell ****
 MKLINK /J "%USERPROFILE%\Documents\WindowsPowerShell" "%DOTFILES%\terminal\PowerShell"
