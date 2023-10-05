@@ -4,11 +4,11 @@ TITLE IDEs, shells and programming tools
 
 TITLE Shells and terminals
 
-ECHO **** Nerd fonts and PowerLine fonts [ADMIN] ****
+ECHO **** Nerd fonts [ADMIN] ****
 powershell scoop bucket add nerd-fonts
-powershell sudo scoop install -g Cascadia-Code
 powershell sudo scoop install -g CascadiaCode-NF-Mono
 powershell sudo scoop install -g FiraCode-NF-Mono
+powershell sudo scoop install -g JetBrainsMono-NF
 
 ECHO **** Alacritty ****
 powershell scoop install alacritty
