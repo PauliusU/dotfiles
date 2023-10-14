@@ -34,6 +34,10 @@ git --version
 echo "**** Git tools ****"
 brew install lazygit # Terminal UI for git commands
 brew install git-delta # Better git diff, including word-level diff highlighting
+lazygit --version
+delta --version
+ln -sf $DOTFILES/terminal/lazygit ~/.config/lazygit
+ln -sf $DOTFILES/terminal/lazygit ~/Library/Application\ Support/lazygit
 
 echo "**** GitHub CLI ****"
 brew install gh
