@@ -13,6 +13,7 @@ nvim/plugin/
 nvim/spell/
 nvim/undodir/
 nvim/lazy-lock.json
+terminal/lazygit/state.yml
 terminal/PowerShell/Modules/
 terminal/PowerShell/Scripts/
 terminal/WindowsTerminal/elevated-state.json
