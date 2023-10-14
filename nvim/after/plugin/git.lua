@@ -1,4 +1,5 @@
 vim.keymap.set("n", "<leader>lg", "<Cmd>LazyGit<CR>", { desc = "LazyGit" })
+vim.keymap.set("n", "<leader>gg", "<Cmd>LazyGit<CR>", { desc = "LazyGit" })
 
 -- gitsigns: Show which lines are currently changed
 require('gitsigns').setup({
@@ -16,13 +17,13 @@ require('gitsigns').setup({
             if vim.wo.diff then return ']c' end
             vim.schedule(function() gs.next_hunk() end)
             return '<Ignore>'
-        end, { expr = true })
+        end, { expr = true, desc = 'gitsigns: next hunk' })
 
         map('n', '[c', function()
             if vim.wo.diff then return '[c' end
             vim.schedule(function() gs.prev_hunk() end)
             return '<Ignore>'
-        end, { expr = true })
+        end, { expr = true, desc = 'gitsigns: prev hunk' })
 
         -- Actions
         map('n', '<leader>hs', gs.stage_hunk, { desc = 'gitsigns: stage hunk' })

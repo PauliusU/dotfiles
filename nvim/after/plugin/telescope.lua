@@ -47,7 +47,7 @@ vim.keymap.set('n', '<leader>sw', require('telescope.builtin').grep_string,
     { desc = 'telescope: [S]earch current [W]ord under cursor' })
 
 -- VIM pickers
-vim.keymap.set('n', '<C-A-b>', telescope_builtin.buffers, { desc = 'telescope: Search buffers' })
+vim.keymap.set('n', '<leader>su', telescope_builtin.buffers, { desc = 'telescope: Search buffers' })
 vim.keymap.set('n', '<leader>?', telescope_builtin.oldfiles, { desc = 'telescope: [?] Find recently opened files' })
 vim.keymap.set('n', '<leader>sc', telescope_builtin.commands, { desc = 'telescope: [S]earch [C]ommands' })
 vim.keymap.set('n', '<leader>st', telescope_builtin.tags, { desc = 'telescope: [S]earch [T]ags' })
@@ -76,6 +76,8 @@ vim.keymap.set('n', '<leader>lw', telescope_builtin.lsp_workspace_symbols,
     { desc = 'telescope: Search [L]SP workspace [S]ymbols' })
 vim.keymap.set('n', '<leader>ss', telescope_builtin.lsp_dynamic_workspace_symbols,
     { desc = 'telescope: Search [L]SP dynamic workspace symbo[l]s' })
+vim.keymap.set('n', '<C-A-b>', telescope_builtin.lsp_dynamic_workspace_symbols,
+    { desc = 'telescope: Search [L]SP dynamic workspace symbo[l]s' })
 vim.keymap.set('n', '<leader>ld', telescope_builtin.diagnostics, { desc = 'telescope: Search [L]SP [D]iagnostics' })
 vim.keymap.set('n', '<leader>li', telescope_builtin.lsp_implementations,
     { desc = 'telescope: Search [L]SP [I]mplementations' })
@@ -95,7 +97,7 @@ vim.keymap.set('n', '<leader>ga', telescope_builtin.git_stash, { desc = 'telesco
 
 -- List pickers
 vim.keymap.set('n', '<leader>sb', telescope_builtin.builtin,
-    { desc = 'telescope: [S]earch Telescope [B]uiltin searches' })
+    { desc = 'telescope: [S]earch Telescope all [B]uiltin searches' })
 vim.keymap.set('n', '<leader>sp', telescope_builtin.reloader,
     { desc = 'telescope: [S]earch [P]ackages and reload on <cr>' })
 vim.keymap.set('n', '<leader>sy', telescope_builtin.symbols, { desc = 'telescope: [S]earch s[Y]mbols' })

@@ -3,7 +3,7 @@ require('code_runner').setup({
     filetype = {
         java = "cd $dir && javac $fileName && java $fileNameWithoutExt",
         python = "python3 -u",
-        typescript = "deno run",
+        typescript = "tsx", -- similar to ts-node --esm --swc
         rust = "cd $dir && rustc $fileName && $dir/$fileNameWithoutExt"
     },
 })
