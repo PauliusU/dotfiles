@@ -35,6 +35,7 @@ vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz", { desc = "Like :cnext but u
 vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz", { desc = "Like :cprev but use location list and not the quickfix" })
 -- Moving cursor in normal mode
 vim.keymap.set('n', 'gh', '$', { desc = 'Go to end of line. Faster that "$" and layout independant' })
+vim.keymap.set('n', 'gj', 'f)', { desc = 'Go to closing bracket. Faster that "f)" and layout independant' })
 -- Moving cursor in insert mode
 vim.keymap.set('i', '<C-l>', '<Esc>la', { desc = 'Move backward by one char in insert mode' })
 vim.keymap.set('i', '<C-k>', '<Esc>la', { desc = 'Move backward by one char in insert mode' })
