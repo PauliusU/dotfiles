@@ -72,8 +72,11 @@ alias gpp="git push && git push --tags"                                         
 alias gs="git status -s -b"                                                             # Cleaner git status
 alias gw="git config --get core.isWork || echo false"                                   # Check if work config is applied
 alias gcontr="git shortlog -s -n"                                                       # Contributors list. ref: https://makandracards.com/makandra/15909-quick-git-contributors-list
+# Lazygit
+alias lg="lazygit"
 # GitHub CLI
-alias ghb="gh browse"
+alias ghb="gh browse"   # Open GitHub repo in browser
+alias ghpr="gh pr list" # List pull requests
 # JS/TS, npm, yarn
 alias ncul="ncu --target lastest"         # Show available depenecy updates with breaking changes
 alias ncuu="ncu --upgrade --target minor" # Upgrade to non breaking dependency versions (minor and bugfixes) in package.json
@@ -96,7 +99,7 @@ alias yt="yarn test"
 alias yt="yarn test:integration"
 alias yu="yarn lint && yarn test"
 alias yy="yarn install --check-files"
-alias pi="pnpm install"
+alias pi="pnpm install && rm -f pnpm-lock.yaml"
 # Python, pip and jupyter
 alias py="python || python3"
 alias py3="python3"
@@ -145,6 +148,7 @@ alias ee="exit"                                  # Quit shell (one of alternativ
 alias fn='find . -name'                          # Find by given NAME
 alias fnd='find . -type d -name'                 # Find by given NAME
 alias fnf='find . -type f -name'                 # Find by given NAME
+alias l="ls -A"                                  # List entries starting with ., but do not list implied . and ..
 alias p="pwd"                                    # Print working directory
 alias pe='printenv'                              # Print environment variables
 alias reload="source ~/.zshrc"                   # ZSH settings reload
@@ -153,6 +157,7 @@ alias s="sudo"                                   # Sudo shorthand
 alias split_path='echo "$PATH" | sed "s/:/\n/g"' # Display PATH over multiple lines.
 alias x='exit'                                   # Quit shell (one of alternative aliased)
 alias zrc="$EDITOR ~/.zshrc"                     # ZSH config
+alias zsh-list="bindkey -L"                      # List ZSH keybindings
 alias zshrc="${EDITOR} ${HOME}/.zshrc"           # Alternative alias for ZSH config
 
 # Sensible defaults (same command but with differrent default value)
@@ -176,10 +181,10 @@ alias bw="bwm-ng -d"                                                            
 alias cdd="code ."                                                                             # Open current folder in VS Code
 alias chx="chmod +x"                                                                           # Make file executable
 alias deb="sudo dpkg -i"                                                                       # Install deb package (for Ubuntu, Debian, Raspbian)
+alias n='nvim'                                                                                 # Neovim
 alias nv='if [ -f "./src/index.ts" ]; then nvim "./src/index.ts"; else nvim; fi'               # Neovim (open index.ts if exists)
 alias nvu="nvim +PackerSync"                                                                   # Neovim with `PackerSync` to make changes to your plugin configuration
 alias nvup="nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'"          # Neovim headless update
-alias nvrc="${EDITOR} ${HOME}/.config/nvim/init.vim"                                           # Neovim config
 alias mpp=mpv_detached                                                                         # Run MPV in detached mode
 alias rmm="rm -rf"                                                                             # Remove non-empty folder
 alias space="du -h | awk 'END{print $1}'"                                                      # Space used by current folder (and subfolders)
@@ -188,15 +193,15 @@ alias tarx="tar -xvf"                                                           
 alias tarz='tar czvf'                                                                          # Zip
 alias td="tmux detach"                                                                         # Exit the tmux window to come back to later
 alias tls="tmux ls"                                                                            # = tmux list-sessions
-alias tm="tmux"                                                                                # = tmux new = tmux new-session
 alias tmks="tmux kill-server"                                                                  # Cleanly and gracefully kill all tmux open sessions (and server)
 alias tmm="echo tmux: $TMUX"                                                                   # = tmux new = tmux new-session
 alias tmx="tmux new-session -ADs main"                                                         # Create "main" session or attach to it (if exists) ref: https://github.com/threkk/dotfiles/blob/d1c3c6681286e3e289d04f64a8ffb37fdbdbbc98/dotfiles/alias
 alias tt="tmux switch -t main || tmux new -As main"                                            # Switch to "main" session or create it if needed
+alias tg="tmux switch -t dotfiles"                                                             # Switch to "dotfiles" session
+alias v="$BREW_HOME/bin/vim"                                                                   # Shorthand for vim
 alias vi="$BREW_HOME/bin/vim"                                                                  # Shorthand for vim
 alias vim="nvim"                                                                               # Replace vim with neovim
 alias fdd="fd -IH"                                                                             # File system search
-alias vimrc="${EDITOR} ${HOME}/.vimrc"                                                         # Vim config
 alias yta="yt-dlp -x --audio-format aac --restrict-filenames --add-metadata --embed-thumbnail" # YouTube audio
 
 # Time and Date
@@ -205,9 +210,8 @@ alias week="date +%V"                                                           
 alias timer="echo 'Timer started. <crtl+d> to break.' && date && time cat && date" # Stopwatch
 
 # Network
-alias ip="echo 'External IP:\n\n$(dig +short myip.opendns.com @resolver1.opendns.com)'" # External IP
-alias ipp="curl icanhazip.com"                                                          # External IP #2
-alias ips="ifconfig | grep inet | grep -v inet6 | awk '{print $2}'"                     # Internal IPs
+alias ip="curl icanhazip.com"                                       # External IP
+alias ipi="ifconfig | grep inet | grep -v inet6 | awk '{print $2}'" # Internal IPs
 
 # Scripts and functions
 alias di="python3 $DOTFILES/scripts/fs_dropbox_ignore_node_modules.private.py"
@@ -233,6 +237,13 @@ function ytpl() {
         -i \
         "$@"
     # --split-chapters \
+}
+
+function ytpl-chapters() {
+    #  Download youtube playlist or channel splitting chapters into separate files
+    ytpl \
+        --split-chapters \
+        "$@"
 }
 
 function batch_convert() {
@@ -353,14 +364,18 @@ function mpv_detached() {
     mpv --no-terminal 2 $1 &>/dev/null &
 }
 
-function _zsh_fancy_ctrl_z {
-    # Allow Ctrl-z to toggle between suspend and resume in ZSH
-    # Useful to switch between Neovim and running terminal commands
-    # Ref: https://stackoverflow.com/questions/35852061/avoid-adding-zsh-command-to-history
-    fg
-    zle push-input
-    BUFFER=""
-    zle accept-line
+function path-switcher() {
+    # Fuzzy find and natigate to common folders
+
+    cd $(
+        find \
+            ~ \
+            ~/Dropbox/code \
+            ~/Dropbox/code/lanuages \
+            ~/Dropbox/dev \
+            ~/Dropbox/DropsyncFiles \
+            ~/Dropbox/projects \
+            ~/repos \
+            -mindepth 1 -maxdepth 1 -type d | fzf
+    )
 }
-zle -N _zsh_fancy_ctrl_z
-bindkey "^Z" _zsh_fancy_ctrl_z
