@@ -101,9 +101,11 @@ powershell scoop install aws
 aws --version
 
 ECHO **** Git tools ****
-scoop install lazygit
-:: Git-delta
-scoop install delta
+powershell scoop install lazygit
+IF NOT EXIST "%APPDATA%\jesseduffield\" MKDIR "%APPDATA%\jesseduffield\"
+MKLINK /J "%APPDATA%\jesseduffield\lazygit\" "%DOTFILES%\terminal\lazygit"
+:: Git-delta. git diff | delta
+powershell scoop install delta
 
 ECHO **** GitHub CLI ****
 powershell scoop install gh
@@ -136,3 +138,7 @@ powershell scoop install rustup
 winget install Microsoft.VisualStudio.2022.BuildTools
 rustc --version
 cargo --version
+
+ECHO **** Go ****
+powershell scoop install go
+go version

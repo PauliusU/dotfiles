@@ -11,7 +11,7 @@ if [[ "$(uname -sr)" == "Linux"*"microsoft"* ]]; then
     ln -sf /mnt/d/Dropbox/dev ~/dev
 fi
 
-source $(dirname "$0")/scripts/file-system.zsh
-source $(dirname "$0")/scripts/install-soft.zsh
-source $(dirname "$0")/scripts/file-associations.zsh
-source $(dirname "$0")/scripts/settings-macos.zsh
+source "$(dirname "$0")/scripts/file-system.zsh"
+source "$(dirname "$0")/scripts/install-soft.zsh"
+source "$(dirname "$0")/scripts/file-associations.zsh"
+source "$(dirname "$0")/scripts/settings-macos.zsh"

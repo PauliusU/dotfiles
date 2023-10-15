@@ -33,11 +33,11 @@ git --version
 
 echo "**** Git tools ****"
 brew install lazygit # Terminal UI for git commands
-brew install git-delta # Better git diff, including word-level diff highlighting
-lazygit --version
-delta --version
 ln -sf $DOTFILES/terminal/lazygit ~/.config/lazygit
 ln -sf $DOTFILES/terminal/lazygit ~/Library/Application\ Support/lazygit
+lazygit --version
+brew install git-delta # Better git diff, including word-level diff highlighting
+delta --version 
 
 echo "**** GitHub CLI ****"
 brew install gh
@@ -60,14 +60,6 @@ sudo apt install -y neovim
 sudo apt install -y ripgrep
 sudo apt install -y fd-find # Note it's "fd-find" not "fd"
 # tsserver requires npm
-
-# sudo apt install -y vim
-brew install vim
-# Install vim-plug for vim
-curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
-    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-ln -sf $(pwd)/vim ~/.vim
-ln -sf $(pwd)/vim/init.vim ~/.vimrc
 
 echo "**** Python [Python 3] and artificial intelligence ****"
 

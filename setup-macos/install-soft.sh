@@ -58,7 +58,7 @@ if [[ $(uname) -eq "Darwin" ]]; then
     echo "**** File management and file search ****"
     brew install --cask marta # Marta File Manager for macOS. Native. Extensible. Fast. 🚀
     # Marta settings
-    ln -sf $(pwd)/marta ~/Library/Application\ Support/org.yanex.marta
+    ln -sf "$(pwd)/marta" "$HOME/Library/Application Support/org.yanex.marta"
     # Marta terminal integration
     ln -s /Applications/Marta.app/Contents/Resources/launcher /usr/local/bin/marta
     # sudo apt install -y doublecmd-gtk # GUI file manager
@@ -76,7 +76,7 @@ if [[ $(uname) -eq "Darwin" ]]; then
     # Better shortcuts with Karabiner Elements and Hammerspoon
     brew install --cask karabiner-elements # Free, open source, mac. Remap the keys on a Mac at the kernel level. Ex KeyRemap4MacBook
     brew install --cask hammerspoon        # Free, open source, mac
-    ln -sf $(pwd)/hammerspoon ~/.hammerspoon
+    ln -sf "$(pwd)/hammerspoon" "$HOME/.hammerspoon"
 
     # Espanso. Free, open source, cross-platform text expander
     brew tap espanso/espanso # Add espanso tap, because Espanso is hosted outside the core homebrew repository
@@ -87,7 +87,7 @@ if [[ $(uname) -eq "Darwin" ]]; then
     espanso package list       # List installed espanso packages
     espanso package update all # Update all packages
     espanso --version
-    ln -sf $(pwd)/espanso ~/Library/Application\ Support/espanso
+    ln -sf "$(pwd)/espanso" "$HOME/Library/Application Support/espanso"
 
     # ### macOS built-in automation options ####
     # Script Editor (called AppleScript Editor from 2009 to 2014) for the AppleScript and Javascript
