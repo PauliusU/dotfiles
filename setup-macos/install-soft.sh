@@ -117,7 +117,7 @@ if [[ $(uname) -eq "Darwin" ]]; then
     # sudo apt install -y mpv
     brew install --cask mpv
     mpv --version
-    ln -sf ~/Dropbox/soft/mpv_portable/portable_config/* ~/.config/mpv
+    ln -sf "$DOTFILES/mpv" "$HOME/.config/mpv"
 
     echo "**** OBS Studio ****"
     brew install --cask obs

@@ -9,6 +9,9 @@ private.lua
 *.lnk
 
 espanso/match/packages/*
+mpv/script-modules/*
+mpv/scripts/*
+mpv/watch_later/*
 nvim/plugin/
 nvim/spell/
 nvim/undodir/
