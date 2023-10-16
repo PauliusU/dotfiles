@@ -12,7 +12,7 @@ espanso/match/packages/*
 mpv/script-modules/*
 mpv/scripts/*
 mpv/watch_later/*
-nvim/plugin/
+nvim/luasnippets/
 nvim/spell/
 nvim/undodir/
 nvim/lazy-lock.json
