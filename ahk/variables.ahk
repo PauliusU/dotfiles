@@ -12,7 +12,7 @@ EDITOR_VISUAL := SCOOP . '\apps\vscode\current\Code.exe'
 FILE_MANAGER := 'd:\Dropbox\soft\totalcmd\TOTALCMD64.EXE'
 FILE_SEARCH := SCOOP . '\apps\everything-alpha\current\Everything.exe'
 IMAGE_VIEWER := 'd:\Dropbox\soft\IrfanView\i_view64.exe'
-PLAYER := 'd:\Dropbox\soft\mpv_portable\mpv.exe'
+PLAYER := SCOOP . '\apps\mpv\current\mpv.exe'
 TERMINAL := 'wt'
 VIVALDI := 'd:\soft\network\vivaldi\Application\vivaldi.exe'
 
