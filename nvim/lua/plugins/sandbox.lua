@@ -4,6 +4,7 @@ return {
         -- surround.vim
         -- Control "surroundings": parentheses, brackets, quotes, XML tags, and more.
         'tpope/vim-surround'
+        -- surround word with single quotes: ysiw'
     },
     {
         -- hardtime.nvim - establish good neovim habits
@@ -147,5 +148,11 @@ return {
         opts = {
             -- left empty to use the default settings
         },
+    },
+    {
+        "iamcco/markdown-preview.nvim",
+        cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+        ft = { "markdown" },
+        build = function() vim.fn["mkdp#util#install"]() end,
     },
 }

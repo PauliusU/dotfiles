@@ -3,12 +3,17 @@ return {
         'nvim-telescope/telescope.nvim',
         branch = '0.1.x',
         dependencies = {
-            'nvim-lua/plenary.nvim'
+            'nvim-lua/plenary.nvim',
+            -- not lsp symbols, but emojis, icons and etc.
+            'nvim-telescope/telescope-symbols.nvim'
         },
         config = function()
             local telescope_builtin = require('telescope.builtin')
             require('telescope').setup {
                 defaults = {
+                    file_ignore_patterns = {
+                        "node_modules"
+                    },
                     mappings = {
                         i = {
                             -- map actions.which_key to <C-h> (default: <C-/>)
@@ -28,7 +33,7 @@ return {
                         -- --hidden           search hidden files and folders
                         -- --no-ignore-vcs    don't respect ignore files (e.g. .gitignore)
                         find_command = { 'rg', '--files', '--hidden', '--no-ignore-vcs' },
-                        previewer = false
+                        -- previewer = false
                     }
                 end
             end
@@ -40,7 +45,7 @@ return {
                         -- -g                 glob - include or exlude files and directories from searching
                         find_command = { 'rg', '--files', '--hidden', '--no-ignore-vcs', '-g',
                             '!{node_modules,.git,dist}' },
-                        previewer = false
+                        -- previewer = false
                     }
                 end
             end
