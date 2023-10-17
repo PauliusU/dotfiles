@@ -15,7 +15,11 @@ return
             }
         })
 
-        local jumpKeywords = { keywords = { "FIX", "TEST", "TODO", "WARNING" } }
+        local jumpKeywords = {
+            keywords = {
+                "TODO", "FIX", "TEST", "WARNING", "HACK", "BUG"
+            }
+        }
         local function prevTodo()
             require("todo-comments").jump_prev(jumpKeywords)
         end
@@ -25,8 +29,10 @@ return
 
         vim.keymap.set('n', '<leader>tt', '<cmd>TodoTelescope<CR>',
             { desc = 'telescope_todo-comments: [S]earch [T]odos' })
-        vim.keymap.set('n', '<leader>tq', '<cmd>TodoQuickFix<CR>', { desc = 'todo-comments: add TODOs to quickfix list' })
-        vim.keymap.set('n', '<leader>tl', '<cmd>TodoLocList<CR>', { desc = 'todo-comments: show location list to show project TODOs' })
+        vim.keymap.set('n', '<leader>tq', '<cmd>TodoQuickFix<CR>',
+            { desc = 'todo-comments: add TODOs to quickfix list' })
+        vim.keymap.set('n', '<leader>tl', '<cmd>TodoLocList<CR>',
+            { desc = 'todo-comments: show location list to show project TODOs' })
         vim.keymap.set("n", "]t", nextTodo, { desc = "todo-comments: next todo comment" })
         vim.keymap.set("n", "[t", prevTodo, { desc = "todo-comments: previous todo comment" })
     end

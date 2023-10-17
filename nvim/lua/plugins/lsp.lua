@@ -186,6 +186,7 @@ return {
             lspconfig.yamlls.setup({})
             lspconfig.cssls.setup({})
             lspconfig.tailwindcss.setup({})
+            lspconfig.ltex.setup({})
 
             --
             -- Autocompletion

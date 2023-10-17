@@ -1,7 +1,7 @@
 -- Distraction free coding
 return {
     "folke/zen-mode.nvim",
-    lazy = true,
+    event = "VeryLazy",
     config = function()
         require("zen-mode").setup {
             window = {
@@ -13,7 +13,7 @@ return {
             },
         }
 
-        vim.keymap.set("n", "<leader>zc", function()
+        vim.keymap.set("n", "<leader>uz", function()
             require("zen-mode").toggle()
             vim.wo.wrap = false
             ColorMyPencils()

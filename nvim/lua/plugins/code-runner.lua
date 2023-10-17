@@ -2,7 +2,7 @@
 return {
     'CRAG666/code_runner.nvim',
     dependencies = 'nvim-lua/plenary.nvim',
-    lazy = true,
+    event = 'BufEnter', -- Lazy load when entering a buffer
     config = function()
         require('code_runner').setup({
             -- put here the commands by filetype

@@ -91,7 +91,7 @@ vim.keymap.set("v", ">", ">gv", default_opts)
 vim.keymap.set("n", "<leader>n", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
     { desc = "Rename symbol (replace word under the cursor)" })
 vim.keymap.set("n", "J", "mzJ`z", { desc = 'Join lines. Append line below, but keep cursor in place' })
-vim.keymap.set("n", "W", "i<CR><Esc>", { desc = 'Split lines' })
+vim.keymap.set("n", "qq", "i<CR><Esc>", { desc = 'split line' })
 
 -- Etc
 vim.keymap.set("n", "Q", "<nop>", { desc = 'Disable capital Q' })
