@@ -1,5 +1,5 @@
-# ~/.aliases
-echo ".aliases"
+# ~/.aliases.sh
+echo ".aliases.sh"
 
 # Navigation and file listing
 alias -- -='cd -' # Toggle between last two directories
@@ -156,7 +156,7 @@ alias reload="source ~/.zshrc"                   # ZSH settings reload
 alias rr="clear && exec ${SHELL} -l"             # Reload the shell
 alias s="sudo"                                   # Sudo shorthand
 alias split_path='echo "$PATH" | sed "s/:/\n/g"' # Display PATH over multiple lines.
-alias x='exit'                                   # Quit shell (one of alternative aliased)
+alias xx='exit'                                  # Quit shell (one of alternative aliased)
 alias zrc="$EDITOR ~/.zshrc"                     # ZSH config
 alias zsh-list="bindkey -L"                      # List ZSH keybindings
 alias zshrc="${EDITOR} ${HOME}/.zshrc"           # Alternative alias for ZSH config
@@ -323,7 +323,7 @@ function git_change_origin() {
     # Remove old remote
     git remote rm origin
     # Add new remote
-    git remote add origin $1
+    git remote add origin "$1"
     git push --set-upstream origin master
     git push -u origin master
 }
@@ -333,7 +333,7 @@ function extract_audio() {
 
     # -vn					skips the inclusion of the video stream,
     # -acodec copy			copies the picked audio streams (without re-encoding)
-    ffmpeg -i $1 -vn -acodec copy "${1%.*}.aac"
+    ffmpeg -i "$1" -vn -acodec copy "${1%.*}.aac"
 }
 
 function ver() {
@@ -362,7 +362,7 @@ function append_less_pipe() {
 
 function mpv_detached() {
     # Run detached MPV player which allows closing terminal without ending MPV
-    mpv --no-terminal 2 $1 &>/dev/null &
+    mpv --no-terminal 2 "$1" &>/dev/null &
 }
 
 function path-switcher() {

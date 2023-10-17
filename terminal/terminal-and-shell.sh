@@ -61,7 +61,7 @@ antigen selfupdate # Update antigen itself
 antigen list # List currently running bundles
 antigen version
 
-ln -sf $(pwd)/terminal/.aliases ~/.aliases
+ln -sf $(pwd)/terminal/.aliases.sh ~/.aliases.sh
 ln -sf $(pwd)/terminal/.shellrc.sh ~/.shellrc.sh
 echo "source ~/.shellrc.sh" >>~/.zshrc
 echo "source ~/.shellrc.sh" >>~/.bashrc

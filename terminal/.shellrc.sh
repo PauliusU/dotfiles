@@ -117,8 +117,6 @@ if [ -n "$ZSH_VERSION" ]; then
         # Ref: https://stackoverflow.com/questions/35852061/avoid-adding-zsh-command-to-history
         fg
         zle push-input
-        # TODO: test if this is needed
-        # BUFFER=""
         zle accept-line
     }
     #  Zsh Line Editor (ZLE)
@@ -127,7 +125,7 @@ if [ -n "$ZSH_VERSION" ]; then
 fi
 
 # Load aliases (and other custom settings)
-source "$DOTFILES/terminal/.aliases"
+source "$DOTFILES/terminal/.aliases.sh"
 source "$DOTFILES/terminal/.shellrc.private.sh"
 
 echo ".shellrc.sh for $OSFOUND loaded"
