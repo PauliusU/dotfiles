@@ -2,7 +2,7 @@ name: date-time
 matches:
   # Print the current date
   - triggers:
-    - ':date'
+    - 'dd;'
     - 'date;'
     replace: '{{mydate}}'
     vars:

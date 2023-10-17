@@ -149,6 +149,7 @@ alias fn='find . -name'                          # Find by given NAME
 alias fnd='find . -type d -name'                 # Find by given NAME
 alias fnf='find . -type f -name'                 # Find by given NAME
 alias l="ls -A"                                  # List entries starting with ., but do not list implied . and ..
+alias ll="ls -Al"                                 # All files and folders in table format
 alias p="pwd"                                    # Print working directory
 alias pe='printenv'                              # Print environment variables
 alias reload="source ~/.zshrc"                   # ZSH settings reload
