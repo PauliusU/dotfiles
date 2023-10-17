@@ -1,10 +1,10 @@
 # Common settings for ~/.zshrc or ~/.bashrc files
 
 # ---------------------------------- OS CHECK  ---------------------------------
-IS_LINUX=false
-IS_MAC=false
-IS_WINDOWS=false
-IS_WSL=false
+export IS_LINUX=false
+export IS_MAC=false
+export IS_WINDOWS=false
+export IS_WSL=false
 
 # Determine OS by OS name (-s) and OS release (-r) like "Darwin 21.6.0"
 case "$(uname -sr)" in #
@@ -51,26 +51,26 @@ prepend_path() {
 
 export BREW_HOME="$HOME/bin/homebrew"
 export CONDA_HOME="$HOME/bin/homebrew/anaconda3"
-export PYTHON_311_HOME="$HOME/Library/Python/3.11"
+export PYTHON_312_HOME="$HOME/Library/Python/3.12"
 export VOLTA_HOME="$HOME/.volta"
 # Order matters, first entry in PATH will take priority over later ones
 prepend_path "$CONDA_HOME/bin"      # Conda lowest in precedence for Python
 prepend_path "$HOME/.local/bin"     # Python packages store some bins here
 prepend_path "$BREW_HOME/bin"       # Use base Python instead of conda Python by default
-prepend_path "$PYTHON_311_HOME/bin" # User packages are installed here
+prepend_path "$PYTHON_312_HOME/bin" # User packages are installed here
 prepend_path "$VOLTA_HOME/bin"      # Use Volta Node instead of global Node by default
 
 # Clean-up
 unset -f prepend_path
 
-source "$HOME/.cargo/env" # add Rust to system PATH 
+source "$HOME/.cargo/env" # add Rust to system PATH
 
 # ----------------------------------- TMUX -------------------------------------
 if [ -n "$ZSH_VERSION" ]; then # zsh
     bindkey -s ^f "tmux-sessionizer\n"
 else
-    echo "👍 bash keybindings"
-    bind '"\C-f":" tmux-sessionizer"'
+    echo "bash"
+    # bind '"\C-f":" tmux-sessionizer\n"' # bash keybinding
 fi
 # Run TMUX if not in active session
 if command -v tmux &>/dev/null && [ -z "$TMUX" ]; then
@@ -80,30 +80,54 @@ if command -v tmux &>/dev/null && [ -z "$TMUX" ]; then
     tmux attach -t main || tmux new -s main
 fi
 
-# -------------------------------- ZSH PLUGINS ---------------------------------
+# ------------------------- ZSH PLUGINS AND SETTNGS ----------------------------
 if [ -n "$ZSH_VERSION" ]; then
-    # source $(brew --prefix)/opt/spaceship/spaceship.zsh
-    ZSH_THEME="spaceship"
-    source ~/.oh-my-zsh/custom/themes/spaceship-prompt/spaceship.zsh
+    # Change directory without `cd`
+    setopt auto_cd
 
-    # source ~/.config/antigen.zsh
-    # antigen bundle git
-    # antigen bundle zsh-users/zsh-autosuggestions
-    # # antigen bundle z-shell/fast-syntax-highlighting # Stopped working
-    # antigen bundle z-shell/F-Sy-H --branch=main
-    # antigen bundle zsh-users/zsh-syntax-highlighting
-    # antigen bundle zsh-users/zsh-history-substring-search
-    # # Configure zsh-history-substring-search keybindings to up arrow and down arrow
-    # bindkey '^[[A' history-substring-search-up
-    # bindkey '^[[B' history-substring-search-down
-    # # Tell Antigen that you're done.
-    # antigen appl
+    # Bind Ctrl + R for incremental patern history search
+    bindkey "^R" history-incremental-pattern-search-backward
+    # bindkey '^R' history-incremental-search-backward # non-patern search
 
-    # autoload -U compinit
+    # Load spaceship theme
+    source $(brew --prefix)/opt/spaceship/spaceship.zsh
+
+    # Load Antigen plugin manager
+    source ~/.config/antigen.zsh
+    # Use plugins from the default repo (robbyrussell's oh-my-zsh).
+    antigen bundle git
+    antigen bundle npm
+    # Use plugins from other sources
+    antigen bundle z-shell/brew-completions
+    # Bind Ctrl + K to accept the current suggestion. left arrow key is default
+    bindkey '^k' autosuggest-accept
+
+    # # Bind UP and DOWN arrow keys
+    bindkey "^[[A" history-search-backward
+    bindkey "^[[B" history-search-forward
+
+    # Tell Antigen that you're done.
+    antigen apply
+    # List currently loaded bundles
+    antigen list
+
+    function _zsh_fancy_ctrl_z {
+        # Allow Ctrl-z to toggle between suspend and resume in ZSH
+        # Useful to switch between Neovim and running terminal commands
+        # Ref: https://stackoverflow.com/questions/35852061/avoid-adding-zsh-command-to-history
+        fg
+        zle push-input
+        # TODO: test if this is needed
+        # BUFFER=""
+        zle accept-line
+    }
+    #  Zsh Line Editor (ZLE)
+    zle -N _zsh_fancy_ctrl_z
+    bindkey "^Z" _zsh_fancy_ctrl_z
 fi
 
 # Load aliases (and other custom settings)
 source "$DOTFILES/terminal/.aliases"
 source "$DOTFILES/terminal/.shellrc.private.sh"
 
-echo ".shellrc for $OSFOUND"
+echo ".shellrc.sh for $OSFOUND loaded"
