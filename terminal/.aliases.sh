@@ -75,8 +75,8 @@ alias gcontr="git shortlog -s -n"                                               
 # Lazygit
 alias lg="lazygit"
 # GitHub CLI
-alias ghb="gh browse"   # Open GitHub repo in browser
-alias ghpr="gh pr list" # List pull requests
+alias ghh="gh browse"  # Open GitHub repo in browser
+alias ghp="gh pr list" # List pull requests
 # JS/TS, npm, yarn
 alias ncul="ncu --target lastest"         # Show available depenecy updates with breaking changes
 alias ncuu="ncu --upgrade --target minor" # Upgrade to non breaking dependency versions (minor and bugfixes) in package.json
@@ -149,7 +149,8 @@ alias fn='find . -name'                          # Find by given NAME
 alias fnd='find . -type d -name'                 # Find by given NAME
 alias fnf='find . -type f -name'                 # Find by given NAME
 alias l="ls -A"                                  # List entries starting with ., but do not list implied . and ..
-alias ll="ls -Al"                                 # All files and folders in table format
+alias ls="lsd --group-dirs first"                # Use ls deluxe (lsd) instead of ls
+alias ll="ls -Al"                                # All files and folders in table format
 alias p="pwd"                                    # Print working directory
 alias pe='printenv'                              # Print environment variables
 alias reload="source ~/.zshrc"                   # ZSH settings reload
@@ -188,7 +189,7 @@ alias nvu="nvim +PackerSync"                                                    
 alias nvup="nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'"          # Neovim headless update
 alias mpp=mpv_detached                                                                         # Run MPV in detached mode
 alias rmm="rm -rf"                                                                             # Remove non-empty folder
-alias space="du -h | awk 'END{print $1}'"                                                      # Space used by current folder (and subfolders)
+alias space="du -sh"                                                                           # Space used by current folder (and subfolders)
 alias taru='tar xzvf'                                                                          # Unzip
 alias tarx="tar -xvf"                                                                          # Unzip
 alias tarz='tar czvf'                                                                          # Zip
@@ -202,7 +203,8 @@ alias tg="tmux switch -t dotfiles"                                              
 alias v="$BREW_HOME/bin/vim"                                                                   # Shorthand for vim
 alias vi="$BREW_HOME/bin/vim"                                                                  # Shorthand for vim
 alias vim="nvim"                                                                               # Replace vim with neovim
-alias fdd="fd -IH"                                                                             # File system search
+alias ff="fd -IH"                                                                              # File system search. Include 1. .gitignore and 2. hidden files
+alias fdd="fd -IH --type d"                                                                    # Search directories
 alias yta="yt-dlp -x --audio-format aac --restrict-filenames --add-metadata --embed-thumbnail" # YouTube audio
 
 # Time and Date
@@ -229,7 +231,7 @@ function ytpl() {
     # --embed-thumbnail                 yt-dlp: Embed thumbnail in the video as cover art || youtube-dl: Embed thumbnail in the audio as cover art
     # -i                                alias for --ignore-errors
     yt-dlp \
-        -f "bestvideo[ext=mp4][height>=720][height<=1080][fps>=23]+bestaudio[ext=m4a]" \
+        -f "bestvideo[ext=mp4][height<=1080][fps>=23]+bestaudio[ext=m4a]" \
         -o "%(upload_date)s-%(title)s_%(height)sp_%(fps)sfps.%(ext)s" \
         --playlist-reverse \
         --restrict-filenames \
@@ -237,14 +239,11 @@ function ytpl() {
         --embed-thumbnail \
         -i \
         "$@"
-    # --split-chapters \
 }
 
 function ytpl-chapters() {
     #  Download youtube playlist or channel splitting chapters into separate files
-    ytpl \
-        --split-chapters \
-        "$@"
+    ytpl --split-chapters "$@"
 }
 
 function batch_convert() {
@@ -271,7 +270,7 @@ function convert_to_hevc() {
 
     # -preset medium    (default)
     # -c:a copy			stream copy audio instead of re-encoding
-    ffmpeg -i $1 -c:v libx265 -preset ultrafast -vtag hvc1 -c:a copy "${1%.*}".hevc.mp4
+    ffmpeg -i "$1" -c:v libx265 -preset ultrafast -vtag hvc1 -c:a copy "${1%.*}".hevc.mp4
 }
 
 function convert_to_avc() {
@@ -285,7 +284,7 @@ function convert_to_avc() {
 
     # -c:a copy			stream copy audio instead of re-encoding
     # -preset medium    (default)
-    ffmpeg -i $1 -c:v libx264 -c:a copy "${1%.*}".avc.mp4
+    ffmpeg -i "$1" -c:v libx264 -c:a copy "${1%.*}".avc.mp4
 }
 function convert_to_mp3s() {
     # Convert all files of the same format in the folder to MP3s

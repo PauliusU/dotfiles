@@ -26,9 +26,11 @@ brew install p7zip # Posix 7zip (older version). Acessible using "7z"
 brew install 7zip # Latest version. Acessible using "7zz"
 7zz -version
 
-echo "**** File management ****"
+echo "**** File management and disk usage ****"
 # sudo apt install -y mc            # Midnight Commander
 brew install midnight-commander
+brew install dust # du alternative
+brew install ncdu # ncurses du
 
 echo "**** File search ****"
 brew install fzf # Fuzzy finder
