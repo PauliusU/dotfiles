@@ -15,7 +15,7 @@ return {
         })
 
         vim.keymap.set('n', '<leader>re', ':RunCode<CR>', { noremap = true, silent = false })
-        vim.keymap.set('n', '<leader>rr', ':RunFile<CR>', { noremap = true, silent = false })
+        vim.keymap.set('n', '<leader>rl', ':RunFile<CR>', { noremap = true, silent = false })
         vim.keymap.set('n', '<leader>rt', ':RunFile tab<CR>', { noremap = true, silent = false })
         vim.keymap.set('n', '<leader>rp', ':RunProject<CR>', { noremap = true, silent = false })
         vim.keymap.set('n', '<leader>rc', ':RunClose<CR>', { noremap = true, silent = false })

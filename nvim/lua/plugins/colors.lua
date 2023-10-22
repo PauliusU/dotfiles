@@ -17,8 +17,12 @@ return {
 
             ColorMyPencils()
 
-            vim.keymap.set('n', '<leader>zx', '<cmd>:TransparentToggle<CR>',
+            vim.keymap.set('n', '<leader>ut', '<cmd>:TransparentToggle<CR>',
                 { desc = '<transparent.nvim>: toggle nvim transparency' })
+            vim.keymap.set('n', '<leader>ul', '<cmd>set background=light<CR>',
+                { desc = 'UI: enable light background' })
+            vim.keymap.set('n', '<leader>ud', '<cmd>set background=dark<CR>',
+                { desc = 'UI: enable dark background' })
         end
     }
 }
