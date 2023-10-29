@@ -2,6 +2,7 @@
 
 ECHO **** Anki ****
 powershell scoop install anki
+MKLINK /J "%APPDATA%\Anki2" "%SCOOP%\persist\anki\data"
 
 ECHO **** GoldenDict ****
 powershell scoop install goldendict
