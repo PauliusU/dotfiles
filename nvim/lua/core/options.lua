@@ -47,4 +47,3 @@ vim.opt.scrolloff = 8      -- Never have less than 8 lines when scrolling
 vim.opt.signcolumn = "yes" -- Keep signcolumn on by default
 
 -- Sandbox (testing to include in the main config)
--- vim.opt.cmdheight = 2 -- Disable the "Press ENTER or type command to continue" prompt

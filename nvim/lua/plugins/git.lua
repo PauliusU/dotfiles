@@ -77,7 +77,12 @@ return {
 
                     -- Text object
                     map({ 'o', 'x' }, 'ih', ':<C-U>Gitsigns select_hunk<CR>')
-                end
+                end,
+                current_line_blame = true,  -- Toggle with `:Gitsigns toggle_current_line_blame`
+                current_line_blame_opts = {
+                    virt_text_pos = "right_align", -- 'eol' | 'overlay' | 'right_align'
+                    delay = 500, -- default: 1000
+                },
             })
         end,
 
