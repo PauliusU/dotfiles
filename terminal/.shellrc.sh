@@ -126,6 +126,7 @@ fi
 
 # Load aliases (and other custom settings)
 source "$DOTFILES/terminal/.aliases.sh"
+source "$DOTFILES/terminal/.functions.sh"
 source "$DOTFILES/terminal/.shellrc.private.sh"
 
 echo ".shellrc.sh for $OSFOUND loaded"
