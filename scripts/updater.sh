@@ -3,7 +3,7 @@
 echo "**** 📦 NPM updates ****"
 npm update -g npm-check-updates
 
-if [[ $(uname) == "Darwin" ]]; then
+if [ "$(uname)" = "Darwin" ]; then
     echo "**** 🍎 macOS updates ****"
 
     brew update
@@ -17,7 +17,7 @@ if [[ $(uname) == "Darwin" ]]; then
     softwareupdate -ai
 fi
 
-if [[ $(uname) == "Linux" ]]; then
+if [ "$(uname)" = "Linux" ]; then
     echo "**** 🐧 Linux updates ****"
 
     # Update list of available packages

@@ -177,11 +177,12 @@ alias bw="bwm-ng -d"                                                            
 alias cdd="code ."                                                                             # Open current folder in VS Code
 alias chx="chmod +x"                                                                           # Make file executable
 alias deb="sudo dpkg -i"                                                                       # Install deb package (for Ubuntu, Debian, Raspbian)
+alias ff="fd -IH"                                                                              # File system search. Include 1. .gitignore and 2. hidden files
+alias fdd="fd -IH --type d"                                                                    # Search directories
+alias m='mpv'                                                                                  # MPV media player
+alias mpp=mpv_detached                                                                         # Run MPV in detached mode
 alias n='nvim'                                                                                 # Neovim
 alias nv='if [ -f "./src/index.ts" ]; then nvim "./src/index.ts"; else nvim; fi'               # Neovim (open index.ts if exists)
-alias nvu="nvim +PackerSync"                                                                   # Neovim with `PackerSync` to make changes to your plugin configuration
-alias nvup="nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'"          # Neovim headless update
-alias mpp=mpv_detached                                                                         # Run MPV in detached mode
 alias rmm="rm -rf"                                                                             # Remove non-empty folder
 alias space="du -sh"                                                                           # Space used by current folder (and subfolders)
 alias taru='tar xzvf'                                                                          # Unzip
@@ -197,8 +198,6 @@ alias tg="tmux switch -t dotfiles"                                              
 alias v="$BREW_HOME/bin/vim"                                                                   # Shorthand for vim
 alias vi="$BREW_HOME/bin/vim"                                                                  # Shorthand for vim
 alias vim="nvim"                                                                               # Replace vim with neovim
-alias ff="fd -IH"                                                                              # File system search. Include 1. .gitignore and 2. hidden files
-alias fdd="fd -IH --type d"                                                                    # Search directories
 alias yta="yt-dlp -x --audio-format aac --restrict-filenames --add-metadata --embed-thumbnail" # YouTube audio
 
 # Time and Date
@@ -213,3 +212,4 @@ alias ipi="ifconfig | grep inet | grep -v inet6 | awk '{print $2}'" # Internal I
 # Scripts and functions
 alias di="python3 $DOTFILES/scripts/fs_dropbox_ignore_node_modules.private.py"
 alias fss="$DOTFILES/scripts/fs.sh"
+
