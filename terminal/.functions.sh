@@ -3,7 +3,7 @@ echo ".functions.sh"
 function ytpl() {
     #  Download youtube playlist or channel
 
-    builtin cd ~/Downloads
+    builtin cd ~/Downloads || return 1
 
     # Format for h264 and h265 codec:   -f "bestvideo[vcodec~='^((he|a)vc|h26[45])'][ext=mp4][height>=720][height<=1080][fps>=23]+bestaudio[ext=m4a]" \
     # --restrict-filenames              Restrict filenames to only ASCII characters, and avoid "&" and spaces in filenames
@@ -120,15 +120,48 @@ function extract_audio() {
 function ver() {
     # os-check - get basic info about OS running the script, OS version, build.
 
-    echo "uname: $(uname)\n" # Linux, Darwin, MINGW64_NT-10.0-25211
-    echo "OSTYPE: $OSTYPE\n" # linux-gnu, darwin21, msys (Windows in Git Bash)
-    uname -a && echo "\n"
+    echo "uname: $(uname)"; echo # Linux, Darwin, MINGW64_NT-10.0-25211
+    echo "OSTYPE: $OSTYPE"; echo # linux-gnu, darwin21, msys (Windows in Git Bash)
+    uname -a; echo
 
     if [[ "$(uname)" == "Darwin" ]]; then
         sw_vers                            # macOS and build version
         sw_vers -productVersion            # macOS version only
         system_profiler SPSoftwareDataType # OS version, computer name, user name, etc.
     fi
+}
+
+function get_os() {
+    # Check OS and set environment variables
+
+    export IS_LINUX=false
+    export IS_MAC=false
+    export IS_WINDOWS=false
+    export IS_WSL=false
+    export OSFOUND=""
+
+    # Determine OS by OS name (-s) and OS release (-r) like "Darwin 21.6.0"
+    case "$(uname -sr)" in #
+    Darwin*)
+        OSFOUND="macOS"
+        IS_MAC=true
+        ;;
+    Linux*microsoft*)
+        OSFOUND="WSL" # Windows Subsystem for Linux
+        IS_WSL=true
+        ;;
+    Linux*)
+        OSFOUND="Linux"
+        IS_LINUX=true
+        ;;
+    MINGW* | CYGWIN* | MSYS*) # E.g. Git Bash for Windows
+        OSFOUND="Windows"
+        IS_WINDOWS=true
+        ;;
+    *)
+        OSFOUND="Other OS"
+        ;;
+    esac
 }
 
 function append_less_pipe() {
@@ -163,5 +196,5 @@ function path-selector() {
 
 function path-switcher() {
     # Natigate to common folders
-    cd $(path-selector)
+    cd "$(path-selector)" || return 1
 }
