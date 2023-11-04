@@ -21,6 +21,10 @@ Set-Alias cc Use-CMD # CMD /c
 Set-Alias ee Quit
 Set-Alias rr Get-ReloadedSettings
 
+# Other aliases
+Set-Alias -Name n -Value nvim
+Set-Alias -Name v -Value nvim
+
 ### Functions ###
 
 function Set-ParentFolderLocation() {
@@ -82,10 +86,10 @@ function Quit {
 function Get-ReloadedSettings {
     # Reload PowerShell profile
     . $profile
-    
+
     # Update PATH environment variable
-    $env:Path = [System.Environment]::GetEnvironmentVariable("Path", "Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path", "User")  
-    
+    $env:Path = [System.Environment]::GetEnvironmentVariable("Path", "Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path", "User")
+
     # Update PowerShell session environment variables
     foreach ($level in "Machine", "User") {
         [Environment]::GetEnvironmentVariables($level)
@@ -95,3 +99,10 @@ function Get-ReloadedSettings {
 
     Write-Output 'PS Profile reloaded'
 }
+
+### Key bindings ###
+Set-PSReadlineKeyHandler -Chord Ctrl+e -Function EndOfLine
+Set-PSReadlineKeyHandler -Chord Ctrl+d -Function DeleteCharOrExit
+# Ctrl+a overrides default 'select all'
+# Set-PSReadlineKeyHandler -Chord Ctrl+a -Function BeginningOfLine
+
