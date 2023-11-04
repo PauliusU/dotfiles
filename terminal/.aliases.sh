@@ -1,14 +1,14 @@
 echo ".aliases.sh"
 
 # Navigation and file listing
-alias -- -='cd -' # Toggle between last two directories
+alias -- -='cd -' # Toggle between last two directories with '-'
 alias cde="cd ~/code/"
 alias cl="cd ~/Library/CloudStorage/"
 alias desk="cd ~/Desktop/"
 alias dev="cd ~/dev/"
 alias dl="cd ~/Downloads/"
 alias docs="cd ~/Documents/"
-alias dot="cd $DOTFILES"
+alias dot='cd $DOTFILES'
 alias drb="cd ~/Dropbox/"
 alias ds="cd ~/Dropbox/DropsyncFiles"
 alias dt="cd ~/Desktop/" # "dt" is also a command line tool to display information about your domain on Linux or Unix system
@@ -20,7 +20,7 @@ alias pu="pushd"
 alias po="popd"
 # Always list directory contents upon "cd"
 function cd() {
-    builtin cd "$@"
+    builtin cd "$@" || return 1 # If cd fails, don't try to run ls
     ls -A # List entries starting with ., but do not list implied . and ..
 }
 # If running bash
@@ -103,6 +103,7 @@ alias pipl="pip list --user"                                              # List
 alias pipll="pip list"                                                    # List global packages
 alias jn="jupyter notebook"
 alias jl="jupyter lab"
+alias pve="python -m venv venv && source venv/bin/activate"               # Create virtual environment
 # Pipenv
 alias peg="pipenv graph"                                 # Dependency graph
 alias peh="pipenv --where"                               # Project home path
@@ -110,7 +111,7 @@ alias pei="pipenv install"                               # Install dependencies
 alias per="pipenv run"                                   # Run a command in the virtual environment without launching a shell
 alias perm="pipenv --rm"                                 # Remove virtual environment
 alias pes="pipenv shell"                                 # Activate virtual environment
-alias pess="[ -z \"$PIPENV_ACTIVE\" ] && echo \"false\"" # Check if pipenv environment is activated
+alias pess='[ -z \"$PIPENV_ACTIVE\" ] && echo \"false\"' # Check if pipenv environment is activated
 alias peu="pipenv update"                                # Update all or specified dependencies
 alias peun="pipenv uninstall"                            # Uninstall dependency
 alias pew="pipenv --venv"                                # Check location of the environment
@@ -134,8 +135,9 @@ export DOCKER_FORMAT='ID\t{{.ID}}\nNAME\t{{.Names}}\nIMAGE\t{{.Image}}\nPORTS\t{
 
 # Shell control
 alias __="append_less_pipe"                      # Add "| less" to passed param
+alias af="alias | fzf"                           # Fuzzy find in aliases
 alias ag="alias | grep"                          # Quick search in aliases
-alias brc="$EDITOR ~/.bashrc"                    # Bash config
+alias brc='$EDITOR ~/.bashrc'                    # Bash config
 alias c="clear"                                  # Clear shell screen
 alias cls="clear"                                # Or user keyboard shortcut Command + K { # K }
 alias ee="exit"                                  # Quit shell (one of alternative aliased)
@@ -148,13 +150,12 @@ alias ll="ls -Al"                                # All files and folders in tabl
 alias p="pwd"                                    # Print working directory
 alias pe='printenv'                              # Print environment variables
 alias reload="source ~/.zshrc"                   # ZSH settings reload
-alias rr="clear && exec ${SHELL} -l"             # Reload the shell
+alias rr='clear && exec ${SHELL} -l'             # Reload the shell
 alias s="sudo"                                   # Sudo shorthand
 alias split_path='echo "$PATH" | sed "s/:/\n/g"' # Display PATH over multiple lines.
 alias xx='exit'                                  # Quit shell (one of alternative aliased)
-alias zrc="$EDITOR ~/.zshrc"                     # ZSH config
+alias zrc='$EDITOR ~/.zshrc'                     # ZSH config
 alias zsh-list="bindkey -L"                      # List ZSH keybindings
-alias zshrc="${EDITOR} ${HOME}/.zshrc"           # Alternative alias for ZSH config
 
 # Sensible defaults (same command but with differrent default value)
 alias df="df -h"                # Human readable
@@ -191,12 +192,12 @@ alias tarz='tar czvf'                                                           
 alias td="tmux detach"                                                                         # Exit the tmux window to come back to later
 alias tls="tmux ls"                                                                            # = tmux list-sessions
 alias tmks="tmux kill-server"                                                                  # Cleanly and gracefully kill all tmux open sessions (and server)
-alias tmm="echo tmux: $TMUX"                                                                   # = tmux new = tmux new-session
+alias tmm='echo tmux: $TMUX'                                                                   # = tmux new = tmux new-session
 alias tmx="tmux new-session -ADs main"                                                         # Create "main" session or attach to it (if exists) ref: https://github.com/threkk/dotfiles/blob/d1c3c6681286e3e289d04f64a8ffb37fdbdbbc98/dotfiles/alias
 alias tt="tmux switch -t main || tmux new -As main"                                            # Switch to "main" session or create it if needed
 alias tg="tmux switch -t dotfiles"                                                             # Switch to "dotfiles" session
-alias v="$BREW_HOME/bin/vim"                                                                   # Shorthand for vim
-alias vi="$BREW_HOME/bin/vim"                                                                  # Shorthand for vim
+alias v='$BREW_HOME/bin/vim'                                                                   # Shorthand for vim
+alias vi='$BREW_HOME/bin/vim'                                                                  # Shorthand for vim
 alias vim="nvim"                                                                               # Replace vim with neovim
 alias yta="yt-dlp -x --audio-format aac --restrict-filenames --add-metadata --embed-thumbnail" # YouTube audio
 
@@ -210,6 +211,6 @@ alias ip="curl icanhazip.com"                                       # External I
 alias ipi="ifconfig | grep inet | grep -v inet6 | awk '{print $2}'" # Internal IPs
 
 # Scripts and functions
-alias di="python3 $DOTFILES/scripts/fs_dropbox_ignore_node_modules.private.py"
-alias fss="$DOTFILES/scripts/fs.sh"
+alias di='python3 $DOTFILES/scripts/fs_dropbox_ignore_node_modules.private.py'
+alias fss='$DOTFILES/scripts/fs.sh'
 

@@ -33,11 +33,10 @@ git --version
 
 echo "**** Git tools ****"
 brew install lazygit # Terminal UI for git commands
-ln -sf $DOTFILES/terminal/lazygit ~/.config/lazygit
-ln -sf $DOTFILES/terminal/lazygit ~/Library/Application\ Support/lazygit
+ln -sf "$DOTFILES/terminal/lazygit" "$HOME/Library/Application Support/lazygit"
 lazygit --version
 brew install git-delta # Better git diff, including word-level diff highlighting
-delta --version 
+delta --version
 
 echo "**** GitHub CLI ****"
 brew install gh
@@ -45,7 +44,7 @@ gh --version
 
 echo "**** Neovim / Vim ****"
 brew install neovim
-ln -sf $(pwd)/nvim ~/.config/nvim
+ln -sf "$(pwd)/nvim" "$HOME/.config/nvim"
 # Delete local Neovim cache to prevent any issues
 rm -rf ~/.local/share/nvim
 # Nvim telescope plugin requirements for grep_string and live_grep functions
@@ -65,12 +64,12 @@ echo "**** Python [Python 3] and artificial intelligence ****"
 
 # sudo apt install -y python3
 brew install python                   # Defaults to python3
-sudo apt install -y python-is-python3 # Minimum Debian 11 and Ubuntu 20.04
-brew unlink python@3.11 && brew link python@3.11
+# sudo apt install -y python-is-python3 # For Debian and Ubuntu
+brew unlink python@3.12 && brew link python@3.12
 # Set python symlinks (requires sudo)
-# ln -sf -- $BREW_HOME/bin/python3.11(:P) /usr/local/bin/py
-ln -sf -- $BREW_HOME/bin/python3.11(:P) /usr/local/bin/python
-ln -sf -- "$(readlink -f $BREW_HOME/bin/python3.11)" /usr/local/bin/python3
+# ln -sf -- $BREW_HOME/bin/python3.12(:P) /usr/local/bin/py
+ln -sf -- $BREW_HOME/bin/python3.12(:P) /usr/local/bin/python
+ln -sf -- "$(readlink -f $BREW_HOME/bin/python3.12)" /usr/local/bin/python3
 
 python3 --version
 python --version
@@ -146,22 +145,24 @@ echo "**** Redis ****"
 brew install redis
 redis-cli -v
 
-echo "**** TypeScript, JavaScript, Node.js, NPM, yarn, Volta ****"
+echo "**** JavaScript, TypeScript, Node.js, NPM, yarn, Volta ****"
 brew install volta
 # curl https://get.volta.sh | bash
 volta -v
 
 volta install node@18
 # volta pin node@18
-# volta uninstall node is not supported. Remove node version from ~/.volta/tools/image/node/ istead
+# volta uninstall node is not supported. Remove node version from ~/.volta/tools/image/node/ instead
 volta list node
 volta which node
 node -v
-volta install yarn
 volta install pnpm
-yarn -v
+pnpm -v
+pnpm config set store-dir $HOME/.cache/.pnpm-store
+pnpm store path
 volta install npm # update oudated npm version installed with Node
 npm -v
+ln -sf ~/Dropbox/dev/config/.npmrc ~/.npmrc
 npm install --global typescript
 tsc -v
 npm i -g ts-node
@@ -189,24 +190,21 @@ if [[ $(uname) -eq "Darwin" ]]; then
     docker version             # More info than docker -v
     docker compose version     # = docker-compose --version
 
+    echo "**** Act - run GitHub Actions locally ****"
+    brew install act
+    act --version
+
     echo "**** Git client git-fork ****"
     brew install --cask fork
 
     echo "**** JetBrains Toolbox ****"
     brew install --cask jetbrains-toolbox
 
-    echo "**** MongoDB compass ****"
-    brew install --cask mongodb-compass
-
     echo "**** Postman ****"
     brew install --cask postman
 
-    echo "**** PostgreSQL psql ****"
-    brew install libpq
-    brew link --force libpq
-
     echo "**** Visual studio code [VSCode] ****"
-    # sudo apt install -y code          # VSCode for Debian 10
+    # sudo apt install -y code
     # sudo apt install -y gnome-keyring # required to authorize Visual Studio Code to access GitHub
     # gnome-keyring version
     brew install --cask visual-studio-code
@@ -216,4 +214,17 @@ if [[ $(uname) -eq "Darwin" ]]; then
     /usr/bin/xcodebuild -version
     clang --version
     xcode-select --version
+
+    echo "=========================== Database tools =========================="
+
+    echo "**** MongoDB compass ****"
+    brew install --cask mongodb-compass
+
+    echo "**** PostgreSQL psql ****"
+    brew install libpq # installs psql, a terminal-based front-end to PostgreSQL
+    brew link --force libpq
+    psql --version
+
+    echo "**** TablePlus - GUI client for PostgreSQL, SQLite, MongoDB ****"
+    brew install --cask tableplus
 fi

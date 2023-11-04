@@ -8,6 +8,7 @@ if [ "$(uname)" = "Darwin" ]; then
 
     brew update
     brew upgrade && brew upgrade --cask
+    # Remove stale lock files and outdated downloads older than 120 days old
     brew cleanup
     brew cleanup --prune=all --dry-run
 

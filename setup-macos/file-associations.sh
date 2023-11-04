@@ -3,6 +3,7 @@
 # Get the default app id for .sh and .jpg files (without a dot)
 duti -x sh
 duti -x jpg
+duti -x mp4
 
 # TEXT FILES com.microsoft.VSCode
 duti -s com.microsoft.VSCode .js all
@@ -16,6 +17,7 @@ duti -s io.mpv .m4a all
 duti -s io.mpv .opus all
 
 # VIDEO io.mpv
+duti -s io.mpv .mp4 all
 
 # IMAGES
 

@@ -1,34 +1,5 @@
 # Common settings for ~/.zshrc or ~/.bashrc files
 
-# ---------------------------------- OS CHECK  ---------------------------------
-export IS_LINUX=false
-export IS_MAC=false
-export IS_WINDOWS=false
-export IS_WSL=false
-
-# Determine OS by OS name (-s) and OS release (-r) like "Darwin 21.6.0"
-case "$(uname -sr)" in #
-Darwin*)
-    OSFOUND="macOS"
-    IS_MAC=true
-    ;;
-Linux*microsoft*)
-    OSFOUND="WSL" # Windows Subsystem for Linux
-    IS_WSL=true
-    ;;
-Linux*)
-    OSFOUND="Linux"
-    IS_LINUX=true
-    ;;
-MINGW* | CYGWIN* | MSYS*) # E.g. Git Bash for Windows
-    OSFOUND="Windows"
-    IS_WINDOWS=true
-    ;;
-*)
-    OSFOUND="Other OS"
-    ;;
-esac
-
 # -------------------------- ENV VARIABLES AND PATH  ---------------------------
 
 # XDG paths
@@ -134,4 +105,5 @@ source "$DOTFILES/terminal/.aliases.sh"
 source "$DOTFILES/terminal/.functions.sh"
 source "$DOTFILES/terminal/.shellrc.private.sh"
 
+get_os # defined in .functions.sh
 echo ".shellrc.sh for $OSFOUND loaded"
