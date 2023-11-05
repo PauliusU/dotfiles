@@ -17,7 +17,7 @@ FTYPE Image.TIF="%SCOOP%\apps\irfanview\current\i_view64.exe" "%%1"
 
 ECHO **** MPV ****
 powershell scoop install mpv
-MKLINK /J "%SCOOP%\persist\mpv\portable_config" "%DOTFILES%\mpv"
+MKLINK /J "%APPDATA%\mpv" "%DOTFILES%\mpv"
 mpv --version
 :: Dependency for subtitles script
 python -m pip install --upgrade --user subliminal
