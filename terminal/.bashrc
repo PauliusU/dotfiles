@@ -14,5 +14,8 @@ if [[ $- == *i* ]]; then
     bind '"\C-z":" fg\015"'
 fi
 
+bind '"\e[20~":"tmux-sessionizer\n"' # bind F9 to run tmux-sessionizer script
 bind '"\e[24~":"pwd\n"' # bind F12 to run pwd command
 bind '"\C-f":"path-switcher\n"'
+# Get list of key bindings
+# bind -p

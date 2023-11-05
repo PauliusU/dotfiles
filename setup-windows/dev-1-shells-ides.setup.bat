@@ -63,6 +63,7 @@ assoc | findstr /i "txtfile"
 
 ECHO **** Neovim ****
 MKLINK /J "%LOCALAPPDATA%\nvim" "%DOTFILES%\nvim"
+MKLINK /J "%USERPROFILE%\.config\nvim" "%DOTFILES%\nvim"
 powershell scoop install neovim
 nvim --version
 :: Neovim dependencies
