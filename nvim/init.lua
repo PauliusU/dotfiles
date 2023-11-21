@@ -1,7 +1,7 @@
 -- nvim/init.lua
 
--- As a part of migrating from 'packer' to 'lazy' plugin manager, settings in
--- 'nvim/after/plugin' will be slowly moved to 'nvim/lua/plugins'
+-- Reduce Neovim startup time
+vim.loader.enable()
 
 require('core.options')
 require('core.keymaps')
