@@ -21,8 +21,13 @@ alias po="popd"
 # Always list directory contents upon "cd"
 function cd() {
     builtin cd "$@" || return 1 # If cd fails, don't try to run ls
-    ls -A # List entries starting with ., but do not list implied . and ..
+    ls -A                       # List entries starting with ., but do not list implied . and ..
 }
+if [ -n "$ZSH_VERSION" ]; then
+    # ZSH suffix aliases
+    alias -s log="tail -f"
+    alias -s txt="open -t"
+fi
 # If running bash
 if [ -n "$BASH_VERSION" ]; then
     alias ....="cd ../../.."
@@ -103,7 +108,7 @@ alias pipl="pip list --user"                                              # List
 alias pipll="pip list"                                                    # List global packages
 alias jn="jupyter notebook"
 alias jl="jupyter lab"
-alias pve="python -m venv venv && source venv/bin/activate"               # Create virtual environment
+alias pve="python -m venv venv && source venv/bin/activate" # Create virtual environment
 # Pipenv
 alias peg="pipenv graph"                                 # Dependency graph
 alias peh="pipenv --where"                               # Project home path
@@ -116,7 +121,11 @@ alias peu="pipenv update"                                # Update all or specifi
 alias peun="pipenv uninstall"                            # Uninstall dependency
 alias pew="pipenv --venv"                                # Check location of the environment
 # Rust
+alias ca="cargo add"
+alias cb="cargo build"
 alias cr="cargo run"
+alias cw="cargo watch -x run"             # Watch for changes and run. Requires cargo install cargo-watch
+alias cww="cargo watch -q -c -x 'run -q'" # Watch for changes and run (without noisy output)
 # Docker
 alias da='docker attach'                                                                                  # Get back to running container
 alias dcls='docker compose ls -a'                                                                         # List running compose projects
@@ -180,6 +189,7 @@ alias chx="chmod +x"                                                            
 alias deb="sudo dpkg -i"                                                                       # Install deb package (for Ubuntu, Debian, Raspbian)
 alias ff="fd -IH"                                                                              # File system search. Include 1. .gitignore and 2. hidden files
 alias fdd="fd -IH --type d"                                                                    # Search directories
+alias hf='cat $HISTFILE | fzf'                                                                 # Fuzzy find in command history
 alias m='mpv'                                                                                  # MPV media player
 alias mpp=mpv_detached                                                                         # Run MPV in detached mode
 alias n='nvim'                                                                                 # Neovim
@@ -213,4 +223,3 @@ alias ipi="ifconfig | grep inet | grep -v inet6 | awk '{print $2}'" # Internal I
 # Scripts and functions
 alias di='python3 $DOTFILES/scripts/fs_dropbox_ignore_node_modules.private.py'
 alias fss='$DOTFILES/scripts/fs.sh'
-
