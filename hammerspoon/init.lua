@@ -68,14 +68,15 @@ hs.hotkey.bind("ctrl", "escape", fn.openTab()) -- Open Google Chrome tab [ ⌃ +
 hs.hotkey.bind(ctrl_opt, "Z", fn.open("Terminal")) -- [ ⌃ + ⌥ + Z ]
 hs.hotkey.bind(mash, "E", fn.open("Finder")) -- Finder (recent files) [ ⌃ + ⌥ + ⌘ + F ]
 Hyper:bind("Shift", "A", nil, fn.open("alacritty"))
-Hyper:bind("Shift", "S", nil, fn.open("Double Commander"))
 Hyper:bind("Shift", "D", nil, fn.open("Postman"))
 Hyper:bind("Shift", "I", nil, fn.open("Foxit PDF Reader"))
 Hyper:bind("Shift", "J", nil, fn.open("iTerm"))
 Hyper:bind("Shift", "K", nil, fn.open("Ferdium"))
-Hyper:bind("Shift", "U", nil, fn.open("Messages"))
-Hyper:bind("Shift", "P", nil, fn.open("mpv"))
 Hyper:bind("Shift", "L", nil, fn.open("Calendar"))
+Hyper:bind("Shift", "M", nil, fn.open("mpv"))
+Hyper:bind("Shift", "P", nil, fn.open("Music"))
+Hyper:bind("Shift", "S", nil, fn.open("Double Commander"))
+Hyper:bind("Shift", "U", nil, fn.open("Messages"))
 Hyper:bind({}, "A", nil, fn.open("iTerm"))
 Hyper:bind({}, "B", nil, fn.open("MongoDB Compass"))
 Hyper:bind({}, "C", nil, fn.open("DisplayLink Manager"))
