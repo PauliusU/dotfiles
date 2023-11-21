@@ -29,6 +29,11 @@ return {
         version = "v2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
         -- install jsregexp (optional!).
         build = "make install_jsregexp",
+        event = "InsertEnter",
+        config = function()
+            -- Check if the plugin is loaded correctly with :LuaSnipListAvailable
+            require('snippets.luasnip')
+        end,
     },
     { -- Automatically add closing pair characters for (, {, ", ', etc.
         "windwp/nvim-autopairs",
@@ -38,6 +43,7 @@ return {
         -- Autotag
         -- For React apps, you often want to close tags quickly. windwp/nvim-ts-autotag is exactly what you want.
         'windwp/nvim-ts-autotag',
+        event = "InsertEnter",
         config = function()
             require('nvim-ts-autotag').setup()
         end
@@ -68,6 +74,7 @@ return {
     },
     {
         "zbirenbaum/copilot-cmp",
+        event = "InsertEnter",
         config = function()
             require("copilot_cmp").setup()
         end
