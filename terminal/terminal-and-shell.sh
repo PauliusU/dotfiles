@@ -30,9 +30,12 @@ fi
 echo "**** tmux ****"
 brew install tmux
 sudo apt install -y tmux
-tmux -V # Capital V
-ln -sf $(pwd)/terminal/.tmux.conf ~/.tmux.conf
-ln -sf $(pwd)/terminal/tmux-sessionizer.sh ~/.local/bin/tmux-sessionizer
+tmux -V # capital V
+mkdir -p ~/.config/tmux/plugins
+# Tmux Plugin Manager (in non standard directory)
+git clone https://github.com/tmux-plugins/tpm ~/.config/tmux/plugins/tpm
+ln -sf "$DOTFILES/terminal/.tmux.conf" ~/.config/tmux/tmux.conf
+ln -sf "$DOTFILES/terminal/tmux-sessionizer.sh" ~/.local/bin/tmux-sessionizer
 
 echo "================================ ZSH ===================================="
 
@@ -47,7 +50,7 @@ if [[ $(uname) -eq "Linux" ]]; then
     # Set ZSH as default shell
     chsh -s $(which zsh)
     # Verify the change of shell
-    echo $SHELL
+    echo $"SHELL"
 fi
 
 if [[ $(uname) -eq "Darwin" ]]; then

@@ -1,8 +1,6 @@
 # .bashrc for git-bash on Windows
 echo ".bashrc"
 
-source $DOTFILES/terminal/.shellrc.sh
-
 if [[ $- == *i* ]]; then
     # Toggle between foreground and background processes with ctrl-z
     #
@@ -19,3 +17,7 @@ bind '"\e[24~":"pwd\n"' # bind F12 to run pwd command
 bind '"\C-f":"path-switcher\n"'
 # Get list of key bindings
 # bind -p
+
+eval "$(zoxide init bash)"
+
+source $DOTFILES/terminal/.shellrc.sh

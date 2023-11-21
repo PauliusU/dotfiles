@@ -26,11 +26,16 @@ brew install p7zip # Posix 7zip (older version). Acessible using "7z"
 brew install 7zip # Latest version. Acessible using "7zz"
 7zz -version
 
+echo "**** Disk usage ****"
+brew install diskonaut # disk usage analyzer and visualiser
+brew install dust # du alternative
+brew install ncdu # ncurses du
+
 echo "**** File management and disk usage ****"
 # sudo apt install -y mc            # Midnight Commander
 brew install midnight-commander
-brew install dust # du alternative
-brew install ncdu # ncurses du
+brew install yazi ffmpegthumbnailer unar jq poppler fd ripgrep fzf zoxide
+brew tap homebrew/cask-fonts && brew install --cask font-symbols-only-nerd-font
 
 echo "**** File search ****"
 brew install fzf # Fuzzy finder

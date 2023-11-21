@@ -23,17 +23,15 @@ REG ADD "HKCR\Archive.rar\shell\E&xtract to folder (7Z)" /V Icon /D "%SCOOP%\app
 REG ADD "HKCR\exefile\shell\E&xtract to folder (7Z)\command" /VE /T REG_SZ /D "%SCOOP%\apps\7zip\current\7z.exe x \"%%1\" -o* -aou" /F
 REG ADD "HKCR\exefile\shell\E&xtract to folder (7Z)" /V Icon /D "%SCOOP%\apps\7zip\current\7zip.ico" /F
 
+ECHO **** btop system monitor ****
+powershell scoop install btop
+btop --version
+
 ECHO **** Everything file search ****
 powershell scoop bucket add versions
 powershell scoop install everything-alpha
 REG IMPORT "%SCOOP%\apps\everything-alpha\current\install-context.reg"
 :: powershell scoop install everything
-
-ECHO *** Launchy ****
-powershell scoop install launchy
-SET TARGET='%SCOOP%\apps\launchy\current\Launchy.exe'
-SET SHORTCUT='%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\Launchy_startup.lnk'
-powershell -NoProfile -ExecutionPolicy Bypass -Command "$ws = New-Object -ComObject WScript.Shell; $s = $ws.CreateShortcut(%SHORTCUT%); $S.TargetPath = %TARGET%; $S.Save()"
 
 ECHO **** SpaceSniffer ****
 powershell scoop install spacesniffer
@@ -49,3 +47,8 @@ powershell scoop install unlocker
 REG ADD "HKEY_CLASSES_ROOT\Directory\shell\Unlocker" /VE /D "Send to &Unlocker" /F
 REG ADD "HKEY_CLASSES_ROOT\Directory\shell\Unlocker" /v Icon /d "%SCOOP%\apps\unlocker\current\Unlocker.exe" /F
 REG ADD "HKEY_CLASSES_ROOT\Directory\shell\Unlocker\Command" /ve /d "%SCOOP%\apps\unlocker\current\Unlocker.exe \"%%1\"" /F
+
+ECHO **** Yazi file manager ****
+powershell scoop install yazi
+powershell scoop install unar jq poppler fd ripgrep fzf zoxide
+yazi --version

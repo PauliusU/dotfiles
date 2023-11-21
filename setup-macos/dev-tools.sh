@@ -158,20 +158,20 @@ volta which node
 node -v
 volta install pnpm
 pnpm -v
-pnpm config set store-dir $HOME/.cache/.pnpm-store
+# pnpm config set store-dir $HOME/.cache/.pnpm-store
 pnpm store path
+volta install bun
+bun --version
 volta install npm # update oudated npm version installed with Node
 npm -v
 ln -sf ~/Dropbox/dev/config/.npmrc ~/.npmrc
-npm install --global typescript
-tsc -v
+npm i -g typescript
 npm i -g ts-node
+npm i -g npm-check-updates # Update depenceny versions in package.json from terminal
+tsc -v
 ts-node -v
-npm install -g npm-check-updates # Update depenceny versions in package.json from terminal
+ncu -v
 volta list
-
-volta install deno
-volta install bun
 
 echo "**** Go Goland ****"
 brew install go
@@ -180,8 +180,11 @@ go version
 echo "**** Rust ****"
 brew install rustup
 # rustup component add rustfmt
+rustup --version
+rustup toolchain list
 rustc --version
 cargo --version
+cargo install cargo-watch
 
 if [[ $(uname) -eq "Darwin" ]]; then
     echo "**** Docker ****"
@@ -213,6 +216,7 @@ if [[ $(uname) -eq "Darwin" ]]; then
     echo "**** xcode ****"
     /usr/bin/xcodebuild -version
     clang --version
+    # xcode-select --install # install mac build tools
     xcode-select --version
 
     echo "=========================== Database tools =========================="

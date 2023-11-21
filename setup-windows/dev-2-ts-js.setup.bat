@@ -8,37 +8,33 @@ powershell scoop install volta
 volta install node@18
 :: Update NPM (newer than the one with Node)
 volta install npm
-volta install yarn
+:: Create a symlink to the config file
+MKLINK "%USERPROFILE%\.npmrc" "d:\Dropbox\dev\config\.npmrc"
 volta install pnpm
+REM pnpm config set store-dir %USERPROFILE%\.cache\.pnpm-store
+REM pnpm store path
 :: Display current volta toolchain
 volta list
 volta list node
 :: Check paths
 volta which node
 volta which npm
-volta which yarn
 :: Check installed versions
 volta -v
 node -v
 npm -v
-yarn -v
 pnpm -v
 
-ECHO **** NPM and Yarn global packages ****
+ECHO **** NPM global packages ****
 :: TypeScript compiler for ts-node and other tools
 npm i -g typescript
 tsc -v
 :: Directly run TypeScript on Node.js without precompiling
 npm i -g ts-node
 ts-node -v
+:: Directly run TypeScript on Node.js without precompiling
+npm i -g tsx
+tsx -v
 :: Upgrade package.json dependencies
 npm i -g npm-check-updates
 npm list -g --depth 0
-
-yarn global add yarn-add-no-save
-yarn global list
-
-ECHO **** Deno ****
-powershell scoop install deno
-deno upgrade
-deno --version
