@@ -3,6 +3,7 @@
 # Symlinks for common files and folders. -f forces linking if file aready exists.
 ln -sf ~/Dropbox/code ~/code
 ln -sf ~/Dropbox/dev ~/dev
+ln -sf ~/Library/CloudStorage ~/storage
 
 if [[ "$(uname -sr)" == "Linux"*"microsoft"* ]]; then
     echo "WSL found"

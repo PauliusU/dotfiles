@@ -12,7 +12,7 @@ function ytpl() {
     # -i                                alias for --ignore-errors
     yt-dlp \
         -f "bestvideo[ext=mp4][height<=1080][fps>=23]+bestaudio[ext=m4a]" \
-        -o "%(upload_date)s-%(title)s_%(height)sp_%(fps)sfps.%(ext)s" \
+        -o "%(upload_date)s-%(title)s_%(height)sp%(fps)s.%(ext)s" \
         --playlist-reverse \
         --restrict-filenames \
         --add-metadata \

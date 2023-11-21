@@ -3,6 +3,9 @@
 echo "**** 📦 NPM updates ****"
 npm update -g npm-check-updates
 
+echo "**** 🦀 Rust updates ****"
+rustup update stable
+
 if [ "$(uname)" = "Darwin" ]; then
     echo "**** 🍎 macOS updates ****"
 
