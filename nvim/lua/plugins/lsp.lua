@@ -23,13 +23,17 @@ return {
                     }
                 }
             )
+
             require('mason-lspconfig').setup({
                 ensure_installed = {
                     'bashls',
                     'clangd',
+                    'cssls',
                     'eslint',
                     'gopls',
+                    'jsonls',
                     'lua_ls',
+                    'pylsp', -- has number of static analysers built-in
                     'rust_analyzer',
                     'tailwindcss',
                     'tsserver',
@@ -85,8 +89,8 @@ return {
                     vim.keymap.set('n', 'K', vim.lsp.buf.hover,
                         { desc = 'lsp: hover to display information about the symbol under the cursor', remap = false })
                     -- Displays a function's signature information
-                    vim.keymap.set('n', '<C-m>', vim.lsp.buf.signature_help,
-                        { desc = 'lsp: signature help', remap = false })
+                    -- vim.keymap.set('n', '<C-m>', vim.lsp.buf.signature_help,
+                    -- { desc = 'lsp: signature help', remap = false })
                     vim.keymap.set('n', 'gs', vim.lsp.buf.signature_help, { desc = 'lsp: signature help', remap = false })
                     -- LSP: worspace folders
                     vim.keymap.set('n', '<leader>wa', vim.lsp.buf.add_workspace_folder,
@@ -118,8 +122,12 @@ return {
                 settings = {
                     Lua = {
                         diagnostics = {
-                            -- Fix undefined globals 'vim' and hammerspoon 'hs'
-                            globals = { 'vim', 'hs' }
+                            -- Fix undefined globals
+                            globals = {
+                                'vim',
+                                'hs', -- hammerspoon
+                                'mp', -- mpv playler
+                            }
                         }
                     }
                 }
@@ -180,6 +188,7 @@ return {
                     }
                 }
             })
+            lspconfig.pylsp.setup({})  -- python
             lspconfig.gopls.setup({})
             lspconfig.clangd.setup({}) -- c, cpp
             lspconfig.bashls.setup({}) -- bash
@@ -187,6 +196,8 @@ return {
             lspconfig.cssls.setup({})
             lspconfig.tailwindcss.setup({})
             lspconfig.ltex.setup({})
+            lspconfig.prismals.setup({})
+            lspconfig.sqlls.setup({})
 
             --
             -- Autocompletion
@@ -214,6 +225,7 @@ return {
                     { name = 'calc' },                                       -- source for math calculation
                 },
                 window = {
+                    completion = cmp.config.window.bordered(),
                     documentation = cmp.config.window.bordered()
                 },
                 formatting = {
