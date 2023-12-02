@@ -123,7 +123,9 @@ alias pew="pipenv --venv"                                # Check location of the
 # Rust
 alias ca="cargo add"
 alias cb="cargo build"
+alias cbb="cargo build --release"
 alias cr="cargo run"
+alias ct="cargo test"
 alias cw="cargo watch -x run"             # Watch for changes and run. Requires cargo install cargo-watch
 alias cww="cargo watch -q -c -x 'run -q'" # Watch for changes and run (without noisy output)
 # Docker
