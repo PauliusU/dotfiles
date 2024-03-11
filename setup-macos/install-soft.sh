@@ -26,16 +26,20 @@ brew install p7zip # Posix 7zip (older version). Acessible using "7z"
 brew install 7zip # Latest version. Acessible using "7zz"
 7zz -version
 
+echo "**** Benchmarks ****"
+brew install hyperfine # A command-line benchmarking tool
+
 echo "**** Disk usage ****"
 brew install diskonaut # disk usage analyzer and visualiser
 brew install dust # du alternative
 brew install ncdu # ncurses du
 
-echo "**** File management and disk usage ****"
+echo "**** File management ****"
 # sudo apt install -y mc            # Midnight Commander
 brew install midnight-commander
 brew install yazi ffmpegthumbnailer unar jq poppler fd ripgrep fzf zoxide
 brew tap homebrew/cask-fonts && brew install --cask font-symbols-only-nerd-font
+brew install xdg-ninja # checks your $HOME for unwanted files and directories
 
 echo "**** File search ****"
 brew install fzf # Fuzzy finder
@@ -46,12 +50,13 @@ echo "**** Network ****"
 brew install bwm-ng
 brew install bmon
 
-if [[ $(uname) -eq "Darwin" ]]; then
+if [ "$(uname)" = "Darwin" ]; then
     echo "**** Anki ****"
     brew install --cask anki
 
     echo "**** DisplayLink Manager - control external displays ****"
-    brew tap homebrew/cask-drivers
+    # Cask was deprecated in 2023-11
+    # brew tap homebrew/cask-drivers
     brew install --cask displaylink
 
     echo "**** Dropbox sync ****"
@@ -122,7 +127,8 @@ if [[ $(uname) -eq "Darwin" ]]; then
 
     echo "**** MPV ****"
     # sudo apt install -y mpv
-    brew install --cask mpv
+    # brew install --cask mpv
+    brew install mpv
     mpv --version
     ln -sf "$DOTFILES/mpv" "$HOME/.config/mpv"
 
