@@ -44,6 +44,7 @@ return {
         -- For React apps, you often want to close tags quickly. windwp/nvim-ts-autotag is exactly what you want.
         'windwp/nvim-ts-autotag',
         event = "InsertEnter",
+        ft = { "html", "javascript", "javascriptreact", "typescriptreact", "svelte", "vue" },
         config = function()
             require('nvim-ts-autotag').setup()
         end

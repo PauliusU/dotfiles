@@ -47,8 +47,8 @@ vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz", { desc = "Like :cprev but u
 -- Moving cursor in normal mode
 vim.keymap.set('n', 'gh', '_', { desc = 'Go to start of line. Faster that "_"' })
 vim.keymap.set('n', 'gl', '$', { desc = 'Go to end of line. Faster that "$"' })
-vim.keymap.set('n', 'gk', 'f)', { desc = 'Go to closing bracket.' })
-vim.keymap.set('n', 'gl', 'f}', { desc = 'Go to closing curly bracket' })
+vim.keymap.set('n', 'gj', 'f)', { desc = 'Go to closing bracket.' })
+vim.keymap.set('n', 'gk', 'f}', { desc = 'Go to closing curly bracket' })
 -- Moving cursor in insert mode
 vim.keymap.set('i', '<C-l>', '<Esc>la', { desc = 'Move backward by one char in insert mode' })
 vim.keymap.set('i', '<C-k>', '<Esc>la', { desc = 'Move backward by one char in insert mode' })
@@ -112,6 +112,7 @@ vim.keymap.set("n", "J", "mzJ`z", { desc = 'Join lines. Append line below, but k
 vim.keymap.set("n", "qq", "i<CR><Esc>", { desc = 'split line' })
 
 -- Etc
+vim.keymap.set("n", "<leader>nn",  "<cmd> set nu! rnu! <CR>", {desc = "Toggle line numbers and relative line numbers" })
 vim.keymap.set("n", "Q", "<nop>", { desc = 'Disable capital Q' })
 vim.keymap.set({ "n", "v" }, "<A-z>", "<cmd>set wrap!<CR>", { desc = 'Toggle line wrap' })
 vim.keymap.set("n", "<leader>xc", "<cmd>!chmod +x %<CR>", { silent = true, desc = "Make file executable" })

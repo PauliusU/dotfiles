@@ -31,3 +31,10 @@ autocmd('BufWritePre', {
     pattern = { '*.tsx', '*.ts', '*.jsx', '*.js' },
     command = 'silent! EslintFixAll',
 })
+
+autocmd("BufEnter", {
+    -- Turn off automaticly commenting the new line
+    -- ref: https://www.reddit.com/r/neovim/comments/17fc669/turn_off_auto_commenting_lazynvim/?share_id=pD0z5W3DJ2RslBQ94PcV_
+    callback = function() vim.opt.formatoptions:remove { "c", "r", "o" } end,
+    desc = "Disable New Line Comment",
+})
