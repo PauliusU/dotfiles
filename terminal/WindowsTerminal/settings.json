@@ -16,6 +16,10 @@
             "keys": "ctrl+c"
         },
         {
+            "command": "find",
+            "keys": "ctrl+shift+f"
+        },
+        {
             "command": 
             {
                 "action": "splitPane",
@@ -23,10 +27,6 @@
                 "splitMode": "duplicate"
             },
             "keys": "alt+shift+d"
-        },
-        {
-            "command": "find",
-            "keys": "ctrl+shift+f"
         },
         {
             "command": 
@@ -141,6 +141,12 @@
                 "hidden": false,
                 "name": "Developer PowerShell for VS 2022",
                 "source": "Windows.Terminal.VisualStudio"
+            },
+            {
+                "guid": "{a5a97cb8-8961-5535-816d-772efe0c6a3f}",
+                "hidden": false,
+                "name": "Arch",
+                "source": "Windows.Terminal.Wsl"
             }
         ]
     },
