@@ -1,0 +1,26 @@
+live_config_reload = true
+
+[font]
+size = 21.0
+
+[font.normal]
+family = "FiraCode Nerd Font Mono"
+style = "Regular"
+
+[[mouse.bindings]]
+action = "PasteSelection"
+mouse = "Right"
+
+[selection]
+save_to_clipboard = true
+
+[window]
+decorations = "buttonless"
+dynamic_padding = false
+opacity = 0.85
+option_as_alt = "OnlyLeft"
+startup_mode = "Maximized"
+
+[window.padding]
+x = 18
+y = 16
