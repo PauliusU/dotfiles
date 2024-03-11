@@ -9,6 +9,7 @@ private.lua
 *.lnk
 
 espanso/match/packages/*
+mpv/cache/*
 mpv/script-modules/*
 mpv/scripts/*
 mpv/watch_later/*
