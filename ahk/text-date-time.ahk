@@ -2,6 +2,11 @@
 Date and time functions 📅
 */
 
+:*:dd;:: ; Same as macOS shortcut
+{
+    CurrentDate()
+}
+
 CurrentDate() {
     ; Type date in YYYY-MM-DD format => 2029-12-31
     currentDateTime := FormatTime(, 'yyyy-MM-dd')
@@ -17,7 +22,7 @@ CurrentShortDate() {
 }
 
 CurrentWeek() {
-    ; Type week number in wNN format => w37, w03    
+    ; Type week number in wNN format => w37, w03
     weekNo := SubStr(A_YWeek, -2)
     SendInput('w' . weekNo)
     return

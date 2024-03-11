@@ -71,7 +71,7 @@ OpenYoutube() {
     global YOUTUBE_PLAYLIST
 
     if (GetKeyState('Shift', 'P')) {
-        Run(PLAYER . ' --ytdl-format=bestvideo[height<=1080]+bestaudio/best ' . YOUTUBE_PLAYLIST)
+        Run(PLAYER . '--profile=streaming --ytdl-format=bestvideo[height<=1080]+bestaudio/best ' . YOUTUBE_PLAYLIST)
         MsgBox('Playlist is loading', 'Launching in player', 'T6')
         WinActive('ahk_exe mpv.exe')
     } else {
