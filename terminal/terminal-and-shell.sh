@@ -11,7 +11,7 @@ brew install bat
 # LSDeluxe - ls with colors, icons, tree-view, etc.
 brew install lsd
 
-if [[ $(uname) -eq "Darwin" ]]; then
+if [ "$(uname)" = "Darwin" ]; then
     echo "**** Nerd fonts ****"
     brew tap homebrew/cask-fonts
     brew install --cask font-caskaydia-cove-nerd-font
@@ -24,7 +24,7 @@ if [[ $(uname) -eq "Darwin" ]]; then
     echo "**** alacritty - a fast, cross-platform, OpenGL terminal emulator ****"
     brew install --cask alacritty
     mkdir -p ~/.config/alacritty
-    ln -sf $(pwd)/terminal/alacritty/alacritty.yml ~/.config/alacritty/alacritty.yml
+    ln -sf $(pwd)/terminal/alacritty/alacritty.toml ~/.config/alacritty/alacritty.toml
 fi
 
 echo "**** tmux ****"
@@ -39,7 +39,7 @@ ln -sf "$DOTFILES/terminal/tmux-sessionizer.sh" ~/.local/bin/tmux-sessionizer
 
 echo "================================ ZSH ===================================="
 
-if [[ $(uname) -eq "Linux" ]]; then
+if [ "$(uname)" = "Linux" ]; then
     # Nerd fonts
     sudo apt install -y fonts-firacode
     sudo apt install -y fonts-cascadia-code # minimum Debian 11 and Ubuntu 20.04
@@ -48,12 +48,12 @@ if [[ $(uname) -eq "Linux" ]]; then
     sudo apt install -y zsh
     zsh --version
     # Set ZSH as default shell
-    chsh -s $(which zsh)
+    chsh -s "$(which zsh)"
     # Verify the change of shell
-    echo $"SHELL"
+    echo "$SHELL"
 fi
 
-if [[ $(uname) -eq "Darwin" ]]; then
+if [ "$(uname)" = "Darwin" ]; then
     brew install spaceship
 fi
 
@@ -64,8 +64,8 @@ antigen selfupdate # Update antigen itself
 antigen list # List currently running bundles
 antigen version
 
-ln -sf $(pwd)/terminal/.aliases.sh ~/.aliases.sh
-ln -sf $(pwd)/terminal/.shellrc.sh ~/.shellrc.sh
+ln -sf "$(pwd)/terminal/.aliases.sh" ~/.aliases.sh
+ln -sf "$(pwd)/terminal/.shellrc.sh" ~/.shellrc.sh
 echo "source ~/.shellrc.sh" >>~/.zshrc
 echo "source ~/.shellrc.sh" >>~/.bashrc
 

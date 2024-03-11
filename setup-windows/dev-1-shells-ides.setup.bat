@@ -23,6 +23,8 @@ powershell scoop install lsd
 
 ECHO **** Git-Bash ****
 MKLINK /J "%USERPROFILE%\.bashrc" "%DOTFILES%\terminal\.bashrc"
+:: Symlink works (not /J folder junction)
+MKLINK "%SCOOP%\apps\git\current\usr\bin\tmux-sessionizer" "%DOTFILES%\terminal\tmux-sessionizer.sh"
 :: Git-bash depencencies
 :: Fuzzy find directories for path-switcher
 powershell scoop install fzf
@@ -30,9 +32,6 @@ powershell scoop install fzf
 ECHO **** PowerShell ****
 MKLINK /J "%USERPROFILE%\Documents\WindowsPowerShell" "%DOTFILES%\terminal\PowerShell"
 powershell $PSVersionTable
-
-ECHO **** SSH ****
-MKLINK /J "%USERPROFILE%\.ssh" "%USER_BAK%\.ssh"
 
 ECHO **** Windows Terminal ****
 MKLINK /J "%LOCALAPPDATA%\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\" "%DOTFILES%\terminal\WindowsTerminal"
