@@ -58,10 +58,10 @@ if [ "$(uname)" = "Darwin" ]; then
     echo "**** Anki ****"
     brew install --cask anki
 
-    echo "**** DisplayLink Manager - control external displays ****"
-    # Cask was deprecated in 2023-11
-    # brew tap homebrew/cask-drivers
-    brew install --cask displaylink
+    # echo "**** DisplayLink Manager - control external displays ****"
+    # # Cask was deprecated in 2023-11
+    # # brew tap homebrew/cask-drivers
+    # brew install --cask displaylink
 
     echo "**** Dropbox sync ****"
     brew install --cask dropbox # official client (takes up device spot)
@@ -72,18 +72,18 @@ if [ "$(uname)" = "Darwin" ]; then
     duti -V # capital V
 
     echo "**** File management and file search ****"
-    brew install --cask marta # Marta File Manager for macOS. Native. Extensible. Fast. 🚀
-    # Marta settings
-    ln -sf "$(pwd)/marta" "$HOME/Library/Application Support/org.yanex.marta"
-    # Marta terminal integration
-    ln -s /Applications/Marta.app/Contents/Resources/launcher /usr/local/bin/marta
+    # brew install --cask marta # Marta File Manager for macOS. Native. Extensible. Fast. 🚀
+    # # Marta settings
+    # ln -sf "$(pwd)/marta" "$HOME/Library/Application Support/org.yanex.marta"
+    # # Marta terminal integration
+    # ln -s /Applications/Marta.app/Contents/Resources/launcher /usr/local/bin/marta
     # sudo apt install -y doublecmd-gtk # GUI file manager
     brew install --cask double-commander
 
-    echo "**** File search (everything alternatives) ****"
-    brew install --cask easyfind
-    # sudo port install recoll # cluncy design
-    # fsearch - everything alternative for Linux only
+    # echo "**** File search (everything alternatives) ****"
+    # brew install --cask easyfind
+    # # sudo port install recoll # cluncy design
+    # # fsearch - everything alternative for Linux only
 
     echo "**** Google Chrome ****"
     brew install --cask google-chrome
@@ -111,10 +111,6 @@ if [ "$(uname)" = "Darwin" ]; then
     # Automator # built-in in macOS since 10.4
     # Shortcuts / apple shortcuts / siri shortcuts (formerly Workflow). Syncs with iPhone.
 
-    # Other autmation options
-    brew install --cask keyboard-maestro # Paid, mac only
-    brew install --cask textexpander     # Paid, cross-platform
-
     echo "**** keecastr - on-screen keyboard shortcut presenter ****"
     brew install --cask keycastr
 
@@ -122,8 +118,8 @@ if [ "$(uname)" = "Darwin" ]; then
     brew install --cask keepassxc
     keepassxc-cli -v
 
-    echo "**** Microsoft Teams ****"
-    brew install --cask microsoft-teams
+    # echo "**** Microsoft Teams ****"
+    # brew install --cask microsoft-teams
 
     echo "**** Messaging ****"
     brew install --cask slack
@@ -131,26 +127,26 @@ if [ "$(uname)" = "Darwin" ]; then
 
     echo "**** MPV ****"
     # sudo apt install -y mpv
-    # brew install --cask mpv
     brew install mpv
     mpv --version
     ln -sf "$DOTFILES/mpv" "$HOME/.config/mpv"
 
-    echo "**** OBS Studio ****"
-    brew install --cask obs
+    # echo "**** OBS Studio ****"
+    # brew install --cask obs
 
     echo "**** PDFs ****"
     # brew install --cask adobe-acrobat-reader
     brew install --cask foxitreader
 
-    echo "**** Images ****"
-    brew install --cask xnviewmp
+    # echo "**** Images ****"
+    # brew install --cask xnviewmp
 
-    echo "**** Toggl (a.k.a ToggleDesktop) ****"
-    brew install --cask toggl-track
+    # echo "**** Toggl (a.k.a ToggleDesktop) ****"
+    # brew install --cask toggl-track
 
-    echo "**** Window management ****"
-    # brew install --cask alt-tab # AltTab - Windows alt-tab on macOS
-    # brew install --cask rectangle
-    brew install --cask amethyst
+    # echo "**** Window management ****"
+    # # brew install --cask alt-tab # AltTab - Windows alt-tab on macOS
+    # # brew install --cask rectangle
+    # brew install --cask amethyst
+
 fi
