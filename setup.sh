@@ -12,7 +12,7 @@ if [[ "$(uname -sr)" == "Linux"*"microsoft"* ]]; then
     ln -sf /mnt/d/Dropbox/dev ~/dev
 fi
 
-source "$(dirname "$0")/setup-macos/file-system.zsh"
-source "$(dirname "$0")/setup-macos/install-soft.zsh"
-source "$(dirname "$0")/setup-macos/file-associations.zsh"
-source "$(dirname "$0")/setup-macos/settings-macos.zsh"
+source "$(dirname "$0")/setup-macos/file-system.sh"
+source "$(dirname "$0")/setup-macos/install-soft.sh"
+source "$(dirname "$0")/setup-macos/file-associations.sh"
+source "$(dirname "$0")/setup-macos/settings-macos.sh"
