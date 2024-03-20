@@ -45,6 +45,10 @@ echo "**** File search ****"
 brew install fzf # Fuzzy finder
 sudo apt install fzf -y
 
+echo "**** Media ****"
+brew install yt-dlp
+brew install ffmpeg
+
 echo "**** Network ****"
 # sudo apt install -y bwm-ng        # bandwidth meter
 brew install bwm-ng

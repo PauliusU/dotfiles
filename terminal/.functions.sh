@@ -6,19 +6,23 @@ function ytpl() {
     builtin cd ~/Downloads || return 1
 
     # Format for h264 and h265 codec:   -f "bestvideo[vcodec~='^((he|a)vc|h26[45])'][ext=mp4][height>=720][height<=1080][fps>=23]+bestaudio[ext=m4a]" \
-    # --restrict-filenames              Restrict filenames to only ASCII characters, and avoid "&" and spaces in filenames
     # --add-metadata                    Alias for --embed-metadata but supports youtube-dl as well
     # --embed-thumbnail                 yt-dlp: Embed thumbnail in the video as cover art || youtube-dl: Embed thumbnail in the audio as cover art
     # -i                                alias for --ignore-errors
     yt-dlp \
         -f "bestvideo[ext=mp4][height<=1080][fps>=23]+bestaudio[ext=m4a]" \
         -o "%(upload_date)s-%(title)s_%(height)sp%(fps)s.%(ext)s" \
-        --playlist-reverse \
         --restrict-filenames \
         --add-metadata \
         --embed-thumbnail \
         -i \
         "$@"
+}
+
+function ytpl-beggining() {
+    #  Download youtube playlist or channel from the beginning
+    # --restrict-filenames              Restrict filenames to only ASCII characters, and avoid "&" and spaces in filenames
+    ytpl --playlist-reverse "$@"
 }
 
 function ytpl-chapters() {
