@@ -9,15 +9,27 @@ brew install awscli
 aws --version
 ln -sf ~/Dropbox/dev/config/.aws ~/.aws
 
+echo "**** SSH ****"
+ln -sf ~/Dropbox/dev/config/.ssh ~/.ssh
+if [ ! -f ~/.ssh/id_rsa ]; then
+    # Generate public/private rsa key pair.
+    ssh-keygen -t rsa -C "48020370+PauliusU@users.noreply.github.com"
+fi
+# Test SSH
+ssh -T git@github.com
+ssh -T git@gitlab.mellifera.team
+
 echo "**** GIT ****"
 # sudo apt install -y git
 brew install git
+mkdir -p "$HOME/.config/git"
+ln -sf "$DOTFILES/.gitignore_global" "$HOME/.config/git/ignore"
 git config --global user.name "PauliusU"
 git config --global user.email "48020370+PauliusU@users.noreply.github.com"
 git config --global core.autocrlf input # Line endings for OS compatability. macOS and Linux 'input', Windows 'true'
 git config --global core.editor "nvim"
-ln -sf $(pwd)/.gitignore_global ~/.gitignore_global
-git config --global core.excludesfile ~/.gitignore_global
+# ln -sf "$(pwd)/.gitignore_global" "$HOME/.gitignore_global"
+# git config --global core.excludesfile ~/.gitignore_global
 git config --global core.editor "nvim"
 # Git global aliases
 # ref: https://dev.to/michaelcurrin/dotfiles-git-config-348o
@@ -51,6 +63,8 @@ rm -rf ~/.local/share/nvim
 brew install ripgrep
 # scoop install fd
 brew install fd
+git clone https://github.com/LazyVim/starter ~/.config/nvim-lazyman
+git clone https://github.com/NvChad/NvChad ~/.config/nvim-nvchad --depth 1
 
 # sudo add-apt-repository ppa:neovim-ppa/stable
 sudo add-apt-repository ppa:neovim-ppa/unstable
@@ -77,8 +91,8 @@ python --version
 # Pip
 # sudo apt install -y python3-pip
 python3 -m pip install --upgrade pip
-ln -sf -- $BREW_HOME/bin/pip3.11(:P) /usr/local/bin/pip
-ln -sf -- $BREW_HOME/bin/pip3.11(:P) /usr/local/bin/pip3
+ln -sf -- $BREW_HOME/bin/pip3.12(:P) /usr/local/bin/pip
+ln -sf -- $BREW_HOME/bin/pip3.12(:P) /usr/local/bin/pip3
 pip3 --version
 pip --version
 
@@ -86,19 +100,25 @@ pip --version
 pip3 install --upgrade --user notebook   # Run using "jupyter notebook"
 pip3 install --upgrade --user subliminal # For subs script in MPV
 
-# Pipenv
-# sudo apt install -y pipenv
-brew install pipenv
-pipenv --version
+# # Poetry
+# brew install poetry
+# poetry --version
+# poetry config virtualenvs.path $HOME/.cache/pypoetry/virtualenvs
+# poetry config virtualenvs.path
 
-# Conda and Mamba
-# scoop install miniconda3
-brew install --cask miniforge
+# # Pipenv
+# # sudo apt install -y pipenv
+# brew install pipenv
+# pipenv --version
 
-# Update conda itself and get info
-conda update conda
-conda config --show channels
-conda --version
+# # Conda and Mamba
+# # scoop install miniconda3
+# brew install --cask miniforge
+
+# # Update conda itself and get info
+# conda update conda
+# conda config --show channels
+# conda --version
 
 # # Clean previous environments (if any)
 # conda install anaconda-clean
@@ -228,6 +248,7 @@ if [[ $(uname) -eq "Darwin" ]]; then
     brew install libpq # installs psql, a terminal-based front-end to PostgreSQL
     brew link --force libpq
     psql --version
+    # pgAdming # GUI client for PostgreSQL
 
     echo "**** TablePlus - GUI client for PostgreSQL, SQLite, MongoDB ****"
     brew install --cask tableplus
