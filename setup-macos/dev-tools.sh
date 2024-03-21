@@ -82,8 +82,8 @@ brew install python                   # Defaults to python3
 brew unlink python@3.12 && brew link python@3.12
 # Set python symlinks (requires sudo)
 # ln -sf -- $BREW_HOME/bin/python3.12(:P) /usr/local/bin/py
-ln -sf -- $BREW_HOME/bin/python3.12(:P) /usr/local/bin/python
-ln -sf -- "$(readlink -f $BREW_HOME/bin/python3.12)" /usr/local/bin/python3
+# ln -sf -- $BREW_HOME/bin/python3.12(:P) /usr/local/bin/python
+# ln -sf -- "$(readlink -f $BREW_HOME/bin/python3.12)" /usr/local/bin/python3
 
 python3 --version
 python --version
@@ -91,8 +91,8 @@ python --version
 # Pip
 # sudo apt install -y python3-pip
 python3 -m pip install --upgrade pip
-ln -sf -- $BREW_HOME/bin/pip3.12(:P) /usr/local/bin/pip
-ln -sf -- $BREW_HOME/bin/pip3.12(:P) /usr/local/bin/pip3
+# ln -sf -- $BREW_HOME/bin/pip3.12(:P) /usr/local/bin/pip
+# ln -sf -- $BREW_HOME/bin/pip3.12(:P) /usr/local/bin/pip3
 pip3 --version
 pip --version
 
@@ -125,41 +125,41 @@ pip3 install --upgrade --user subliminal # For subs script in MPV
 # Remove all Anaconda-related files and directories without prompt
 # anaconda-clean --yes
 
-# Mamba. If conda is already installed, to get mamba, just install it into the base environment from the conda-forge channel:
-conda install mamba -n base -c conda-forge
-mamba --version
+# # Mamba. If conda is already installed, to get mamba, just install it into the base environment from the conda-forge channel:
+# conda install mamba -n base -c conda-forge
+# mamba --version
 
-# Create machine learning (ML) environment
-mamba create -n ml python=3.8 -y
-mamba activate ml
-if [[ $(uname) -eq "Darwin" ]]; then
-    mamba install -c apple tensorflow-deps -y # The dependencies from Apple to run Tensorflow on arm64, e.g. python, numpy, grpcio and h5py
-    pip install tensorflow-metal              # Install tensorflow-metal plugin
-    pip install tensorflow-macos              # Install base TensorFlow (it depends upon two packages above)
-else
-    # View compatible version of tf, cudnn and cudatoolkit in https://www.tensorflow.org/install/source_windows#gpu
-    mamba install cudatoolkit=11.2 cudnn=8.1 -c=conda-forge
-    pip install --upgrade tensorflow-gpu==2.10.0
-    # pip install tensorflow-gpu
-    # pip install tensorflow
-fi
-# Install common Data Science packages
-mamba install notebook -y                    # Or use jupyter or jupyterlab
-mamba install -c conda-forge matplotlib -y   # For plotting
-mamba install -c conda-forge scikit-learn -y # Exposed as sklearn
-mamba install -c conda-forge pandas -y       # Data analysis and manipulation
-pip install tensorflow-datasets              # Exposed as tf.data.Datasets
-pip install --upgrade opencv-python          # Exposed as cv2
-pip install --upgrade scikit-image           # Exposed as skimage
+# # Create machine learning (ML) environment
+# mamba create -n ml python=3.8 -y
+# mamba activate ml
+# if [[ $(uname) -eq "Darwin" ]]; then
+#     mamba install -c apple tensorflow-deps -y # The dependencies from Apple to run Tensorflow on arm64, e.g. python, numpy, grpcio and h5py
+#     pip install tensorflow-metal              # Install tensorflow-metal plugin
+#     pip install tensorflow-macos              # Install base TensorFlow (it depends upon two packages above)
+# else
+#     # View compatible version of tf, cudnn and cudatoolkit in https://www.tensorflow.org/install/source_windows#gpu
+#     mamba install cudatoolkit=11.2 cudnn=8.1 -c=conda-forge
+#     pip install --upgrade tensorflow-gpu==2.10.0
+#     # pip install tensorflow-gpu
+#     # pip install tensorflow
+# fi
+# # Install common Data Science packages
+# mamba install notebook -y                    # Or use jupyter or jupyterlab
+# mamba install -c conda-forge matplotlib -y   # For plotting
+# mamba install -c conda-forge scikit-learn -y # Exposed as sklearn
+# mamba install -c conda-forge pandas -y       # Data analysis and manipulation
+# pip install tensorflow-datasets              # Exposed as tf.data.Datasets
+# pip install --upgrade opencv-python          # Exposed as cv2
+# pip install --upgrade scikit-image           # Exposed as skimage
 
-# List conda environments
-conda env list # = conda info --envs
+# # List conda environments
+# conda env list # = conda info --envs
 
-# micromamba (standalone of Mamba, i.e. no dependency on Conda)
-brew install --cask micromamba
-micromamba --version
-micromamba env
-micromamba create -n ml-micromamba jupyter numpy pandas keras matplotlib requests
+# # micromamba (standalone of Mamba, i.e. no dependency on Conda)
+# brew install --cask micromamba
+# micromamba --version
+# micromamba env
+# micromamba create -n ml-micromamba jupyter numpy pandas keras matplotlib requests
 
 echo "**** Redis ****"
 brew install redis
@@ -227,9 +227,6 @@ if [[ $(uname) -eq "Darwin" ]]; then
     brew install --cask postman
 
     echo "**** Visual studio code [VSCode] ****"
-    # sudo apt install -y code
-    # sudo apt install -y gnome-keyring # required to authorize Visual Studio Code to access GitHub
-    # gnome-keyring version
     brew install --cask visual-studio-code
     code -v
 
