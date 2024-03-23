@@ -5,7 +5,7 @@ which $SHELL
 
 echo "=============================== TERMINAL ================================"
 
-echo "**** Modern core utils****"
+echo "**** Modern core utils ****"
 # Bat - a cat clone with syntax highlighting and Git integration
 brew install bat
 # LSDeluxe - ls with colors, icons, tree-view, etc.
@@ -35,6 +35,7 @@ mkdir -p ~/.config/tmux/plugins
 # Tmux Plugin Manager (in non standard directory)
 git clone https://github.com/tmux-plugins/tpm ~/.config/tmux/plugins/tpm
 ln -sf "$DOTFILES/terminal/.tmux.conf" ~/.config/tmux/tmux.conf
+mkdir -p "$HOME/.local/bin" # Ensure ./local/bin exists
 ln -sf "$DOTFILES/terminal/tmux-sessionizer.sh" ~/.local/bin/tmux-sessionizer
 
 echo "================================ ZSH ===================================="

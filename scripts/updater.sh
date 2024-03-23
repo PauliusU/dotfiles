@@ -1,10 +1,14 @@
 #!/bin/sh
 
+visible_line="================================================================"
+
 echo "**** 📦 NPM updates ****"
 npm update -g npm-check-updates
+echo $visible_line
 
 echo "**** 🦀 Rust updates ****"
 rustup update stable
+echo $visible_line
 
 if [ "$(uname)" = "Darwin" ]; then
     echo "**** 🍎 macOS updates ****"
@@ -13,7 +17,8 @@ if [ "$(uname)" = "Darwin" ]; then
     brew upgrade && brew upgrade --cask
     # Remove stale lock files and outdated downloads older than 120 days old
     brew cleanup
-    brew cleanup --prune=all --dry-run
+    # brew cleanup --prune=all --dry-run
+    echo $visible_line
 
     # Update macOS itself
     # -i | --install    Install

@@ -15,6 +15,8 @@ if [ ! -f ~/.ssh/id_rsa ]; then
     # Generate public/private rsa key pair.
     ssh-keygen -t rsa -C "48020370+PauliusU@users.noreply.github.com"
 fi
+# Fix 'Permissions for '~/.ssh/id_rsa' are too open' by making read-writable only by you
+chmod 600 ~/.ssh/id_rsa
 # Test SSH
 ssh -T git@github.com
 ssh -T git@gitlab.mellifera.team
@@ -199,6 +201,7 @@ go version
 
 echo "**** Rust ****"
 brew install rustup
+rustup-init
 # rustup component add rustfmt
 rustup --version
 rustup toolchain list

@@ -33,7 +33,7 @@ if [ "$(uname)" = "Darwin" ]; then
         fi
     }
 
-    export BREW_HOME="$HOME/bin/homebrew"
+    # export BREW_HOME="$HOME/bin/homebrew"
     export CONDA_HOME="$HOME/bin/homebrew/anaconda3"
     export PYTHON_312_HOME="$HOME/Library/Python/3.12"
     export VOLTA_HOME="$HOME/.config/volta"
@@ -41,7 +41,7 @@ if [ "$(uname)" = "Darwin" ]; then
     # Order matters, first entry in PATH will take priority over later ones
     prepend_path "$CONDA_HOME/bin"      # Conda lowest in precedence for Python
     prepend_path "$HOME/.local/bin"     # Python packages store some bins here
-    prepend_path "$BREW_HOME/bin"       # Use base Python instead of conda Python by default
+    # prepend_path "$BREW_HOME/bin"       # Use base Python instead of conda Python by default
     prepend_path "$PYTHON_312_HOME/bin" # User packages are installed here
     prepend_path "$VOLTA_HOME/bin"      # Use Volta Node instead of global Node by default
 
@@ -152,6 +152,8 @@ if [ -n "$ZSH_VERSION" ]; then
     zle -N _zsh_fancy_ctrl_z
     bindkey "^Z" _zsh_fancy_ctrl_z
 fi
+
+eval "$(zoxide init zsh)" # enable zoxide for zsh
 
 # Load aliases (and other custom settings)
 source "$DOTFILES/terminal/.aliases.sh"

@@ -25,6 +25,8 @@ ECHO **** Git-Bash ****
 MKLINK /J "%USERPROFILE%\.bashrc" "%DOTFILES%\terminal\.bashrc"
 :: Symlink works (not /J folder junction)
 MKLINK "%SCOOP%\apps\git\current\usr\bin\tmux-sessionizer" "%DOTFILES%\terminal\tmux-sessionizer.sh"
+:: # ln -sf "$DOTFILES\scripts\private\info.sh" "$SCOOP\apps\git\current\usr\bin\info"
+:: # ln -sf "$DOTFILES\scripts\updater.sh" "$SCOOP\apps\git\current\usr\bin\updater"
 :: Git-bash depencencies
 :: Fuzzy find directories for path-switcher
 powershell scoop install fzf
