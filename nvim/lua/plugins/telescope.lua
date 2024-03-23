@@ -1,5 +1,11 @@
+--[[
+Telescope - fuzzy finder
+    <C-x> go to file selection as a split
+    <C-v> go to file selection as a vsplit
+    <C-t> go to a file in a new tab
+]]
 return {
-    { -- Telescope - fuzzy finder
+    {
         'nvim-telescope/telescope.nvim',
         branch = '0.1.x',
         dependencies = {
@@ -12,7 +18,8 @@ return {
             require('telescope').setup {
                 defaults = {
                     file_ignore_patterns = {
-                        "node_modules"
+                        "node_modules/",
+                        ".git/"
                     },
                     mappings = {
                         i = {
@@ -20,8 +27,17 @@ return {
                             -- actions.which_key shows the mappings for your picker,
                             -- e.g. git_{create, delete, ...}_branch for the git_branches picker
                             ["<C-h>"] = "which_key",
+                            ["<C-i>"] = "select_default",
                         }
                     }
+                },
+                pickers = {
+                    find_files = { hidden = true }, -- TODO: test this
+                    live_grep = {
+                        additional_args = function(opts)
+                            return { "--hidden" } -- search hidden files e.g. starting with '.'
+                        end
+                    },
                 },
             }
 
@@ -65,12 +81,16 @@ return {
             vim.keymap.set('n', '<leader>su', telescope_builtin.buffers, { desc = 'telescope: Search buffers' })
             vim.keymap.set('n', '<leader>?', telescope_builtin.oldfiles,
                 { desc = 'telescope: [?] Find recently opened files' })
+            vim.keymap.set('n', '<leader>sz', telescope_builtin.oldfiles,
+                { desc = 'telescope: Find recently opened files' })
             vim.keymap.set('n', '<leader>sc', telescope_builtin.commands, { desc = 'telescope: [S]earch [C]ommands' })
             vim.keymap.set('n', '<leader>st', telescope_builtin.tags, { desc = 'telescope: [S]earch [T]ags' })
             vim.keymap.set('n', '<leader>sch', telescope_builtin.command_history,
                 { desc = 'telescope: Lookup in [C]earch [H]istory' })
             vim.keymap.set('n', '<leader>si', telescope_builtin.search_history,
                 { desc = 'telescope: Lookup in [S]earch history' })
+            vim.keymap.set('n', '<leader>sg', telescope_builtin.help_tags, { desc = 'telescope: help tags' })
+            vim.keymap.set('n', '<leader>sm', telescope_builtin.man_pages, { desc = 'telescope: man pages' })
             vim.keymap.set('n', '<leader>se', telescope_builtin.colorscheme, { desc = 'telescope: Pick color schem[e]' })
             vim.keymap.set('n', '<leader>sq', telescope_builtin.quickfix, { desc = 'telescope: [S]earch [Q]uickfix' })
             vim.keymap.set('n', '<leader>sl', telescope_builtin.loclist, { desc = 'telescope: [S]earch [L]ocation list' })
@@ -79,8 +99,8 @@ return {
             vim.keymap.set('n', '<leader>sr', telescope_builtin.registers, { desc = 'telescope: [S]earch [R]egisters' })
             vim.keymap.set('n', '<leader>sa', telescope_builtin.autocommands,
                 { desc = 'telescope: [S]earch [A]utocommands' })
-            vim.keymap.set('n', '<leader>sk', telescope_builtin.keymaps,
-                { desc = 'telescope: [S]earch [K]eyboard shortcuts' })
+            vim.keymap.set('n', '<leader>kk', telescope_builtin.keymaps,
+                { desc = 'telescope: search keyboard shortcuts' })
             vim.keymap.set('n', '<leader>sf', telescope_builtin.filetypes,
                 { desc = 'telescope: [S]earch [F]iletypes' })
             vim.keymap.set('n', '<leader>sh', telescope_builtin.highlights,
@@ -100,8 +120,8 @@ return {
                 { desc = 'telescope: Search [L]SP dynamic workspace symbo[l]s' })
             vim.keymap.set('n', '<C-A-b>', telescope_builtin.lsp_dynamic_workspace_symbols,
                 { desc = 'telescope: Search [L]SP dynamic workspace symbo[l]s' })
-            vim.keymap.set('n', '<leader>ld', telescope_builtin.diagnostics,
-                { desc = 'telescope: Search [L]SP [D]iagnostics' })
+            vim.keymap.set('n', '<leader>dd', telescope_builtin.diagnostics,
+                { desc = 'telescope: list LSP diagnostics' })
             vim.keymap.set('n', '<leader>li', telescope_builtin.lsp_implementations,
                 { desc = 'telescope: Search [L]SP [I]mplementations' })
             vim.keymap.set('n', '<leader>le', telescope_builtin.lsp_definitions,
