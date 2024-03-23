@@ -10,6 +10,9 @@ private.lua
 
 .config/karabiner/automatic_backups
 espanso/match/packages/*
+Library/preferences/doublecmd/history.xml
+Library/preferences/doublecmd/session.ini
+Library/preferences/doublecmd/tabs.xml
 mpv/cache/*
 mpv/script-modules/*
 mpv/scripts/*
