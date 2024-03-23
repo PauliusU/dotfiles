@@ -48,7 +48,7 @@ return {
             -- TODO: test. If you don't want to highlight the entire diagnostic line, use:
             -- vim.diagnostic.config({ virtual_lines = { highlight_whole_line = false } })
 
-            vim.keymap.set("", "<Leader>lk", require("lsp_lines").toggle, { desc = "Toggle lsp_lines" })
+            vim.keymap.set("", "<leader>lk", require("lsp_lines").toggle, { desc = "Toggle lsp_lines" })
         end,
     },
     {
@@ -84,10 +84,27 @@ return {
     {
         --  splitting/joining blocks of code like arrays, hashes, statements, objects, dictionaries, etc.
         'Wansmer/treesj',
-        keys = { '<space>m', '<space>j', '<space>s' },
+        keys = {
+            { 'M',          ':TSJToggle<cr>',   desc = ":TSJToggle" },
+            { '<C-g>',      ':TSJToggle<cr>',   desc = ":TSJToggle" },
+            { '<leader>m',  desc = ":TSJToggle" },
+            { '<leader>j',  desc = ":TSJoin" },
+            { '<leader>qs', ':TSJSplit<cr>',    desc = ':TSJSplit' },
+        },
         dependencies = { 'nvim-treesitter/nvim-treesitter' },
         config = function()
-            require('treesj').setup({ --[[ your config ]] })
+            require('treesj').setup({
+                langs = {
+                    -- lua = require('treesj.langs.lua'),
+                    -- typescript = require('treesj.langs.typescript'),
+                    -- javascript = require('treesj.langs.javascript'),
+                    -- python = require('treesj.langs.python'),
+                    -- rust = require('treesj.langs.rust'),
+                    -- go = require('treesj.langs.go'),
+                    -- c = require('treesj.langs.c'),
+                    -- cpp = require('treesj.langs.cpp'),
+                }
+            })
 
             -- -- For use default preset and it work with dot
             -- vim.keymap.set('n', '<leader>m', require('treesj').toggle)
@@ -107,7 +124,6 @@ return {
         "folke/noice.nvim",
         event = "VeryLazy",
         opts = {
-            -- add any options here
             lsp = {
                 -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
                 override = {
@@ -124,7 +140,11 @@ return {
             --   `nvim-notify` is only needed, if you want to use the notification view.
             --   If not available, we use `mini` as the fallback
             "rcarriga/nvim-notify",
-        }
+        },
+    },
+    {
+        "rcarriga/nvim-notify",
+        lazy = true,
     },
     {
         -- Neovim setup for init.lua and plugin development with full
@@ -147,6 +167,17 @@ return {
         dependencies = { "nvim-tree/nvim-web-devicons" },
         opts = {
             -- left empty to use the default settings
+            vim.keymap.set("n", "<leader>xx", function() require("trouble").toggle() end, { desc = "Trouble toggle" }),
+            vim.keymap.set("n", "<leader>xw", function() require("trouble").toggle("workspace_diagnostics") end),
+            { desc = "Trouble toggle workspace_diagnostics" },
+            vim.keymap.set("n", "<leader>xd", function() require("trouble").toggle("document_diagnostics") end,
+                { desc = "Trouble toggle document_diagnostics" }),
+            vim.keymap.set("n", "<leader>xq", function() require("trouble").toggle("quickfix") end,
+                { desc = "Trouble quickfix" }),
+            vim.keymap.set("n", "<leader>xl", function() require("trouble").toggle("loclist") end,
+                { desc = "Trouble loclist" }),
+            vim.keymap.set("n", "gR", function() require("trouble").toggle("lsp_references") end,
+                { desc = "Trouble lsp_references" }),
         },
     },
     {
@@ -154,5 +185,73 @@ return {
         cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
         ft = { "markdown" },
         build = function() vim.fn["mkdp#util#install"]() end,
+    },
+    {
+        'akinsho/toggleterm.nvim',
+        version = "*",
+        -- keys = {
+        --     { "<leader>rf", "<cmd>ToggleTermSendCurrentLine<cr>", desc = "ToggleTerm: send current line" },
+        --     { "<C-`>", "<cmd>ToggleTerm<cr>", desc = "ToggleTerm: send current line" },
+        -- },
+        opts = {
+            vim.keymap.set("n", "<leader>rr", "<cmd>ToggleTermSendCurrentLine<cr>",
+                { desc = "ToggleTerm: send current line" }),
+            vim.keymap.set({ "n", "t" }, "<M-C-x>", "<cmd>ToggleTerm<cr>", { desc = "ToggleTerm" })
+        }
+    },
+    {
+        "folke/flash.nvim",
+        event = "VeryLazy",
+        --- @type Flash.Config
+        opts = {},
+        -- stylua: ignore
+        keys = {
+            { "m", mode = { "n", "x", "o" }, function() require("flash").jump() end, desc = "Flash jump" },
+            {
+                "<C-t>",
+                mode = { "n", "x", "o" },
+                function() require("flash").treesitter() end,
+                desc = "Flash Treesitter",
+            },
+            {
+                "r",
+                mode = "o",
+                function() require("flash").remote() end,
+                desc = "Remote Flash",
+            },
+            {
+                "R",
+                mode = { "o", "x" },
+                function() require("flash").treesitter_search() end,
+                desc = "Treesitter Search",
+            },
+            {
+                "<c-a>",
+                mode = { "c" },
+                function() require("flash").toggle() end,
+                desc = "Toggle Flash Search",
+            },
+        },
+    },
+    {
+        "danymat/neogen",
+        dependencies = "nvim-treesitter/nvim-treesitter",
+        -- config = true,
+        -- Uncomment next line if you want to follow only stable versions
+        -- version = "*"
+        config = function()
+            require('neogen').setup({ enabled = true })
+            local opts = { noremap = true, silent = true }
+            vim.api.nvim_set_keymap("n", "<Leader>nf", ":lua require('neogen').generate()<CR>", opts)
+            vim.api.nvim_set_keymap("n", "<Leader>nc", ":lua require('neogen').generate({ type = 'class' })<CR>", opts)
+        end
+    },
+    {
+        "zeioth/garbage-day.nvim",
+        dependencies = "neovim/nvim-lspconfig",
+        event = "VeryLazy",
+        opts = {
+            notifications = true,
+        }
     },
 }
