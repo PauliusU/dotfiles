@@ -33,7 +33,7 @@ return {
                     'gopls',
                     'jsonls',
                     'lua_ls',
-                    'pylsp', -- has number of static analysers built-in
+                    'pylsp', -- has number of static analyzers built-in
                     'rust_analyzer',
                     'tailwindcss',
                     'tsserver',
@@ -165,7 +165,7 @@ return {
             }
 
             lspconfig.eslint.setup({
-                on_attach = function(client, bufnr)
+                on_attach = function(client, _bufnr)
                     if client.name == "eslint" then
                         client.server_capabilities.documentFormattingProvider = true
                     elseif client.name == "tsserver" then
@@ -190,7 +190,11 @@ return {
             })
             lspconfig.pylsp.setup({})  -- python
             lspconfig.gopls.setup({})
-            lspconfig.clangd.setup({}) -- c, cpp
+            lspconfig.clangd.setup({ -- c, cpp
+                -- Fix "Multiple different client offset_encodings detected" error
+                -- ref: https://www.reddit.com/r/neovim/comments/12qbcua/multiple_different_client_offset_encodings/
+                cmd = { "clangd", "--offset-encoding=utf-16", },
+            })
             lspconfig.bashls.setup({}) -- bash
             lspconfig.yamlls.setup({})
             lspconfig.cssls.setup({})
