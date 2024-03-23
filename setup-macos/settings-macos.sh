@@ -108,5 +108,8 @@ defaults write -g com.apple.swipescrolldirection -bool FALSE
 defaults read -g com.apple.swipescrolldirection
 
 # Sandbox (test before including in the main configuration)
-defaults write NSGlobalDomain AppleInterfaceStyle Dark  # Use dark menu bar and dock.
+echo "**** Dark mode: System Preferences -> General -> Appearance -> Dark ****"
+osascript -e 'tell application "System Events" to tell appearance preferences to set dark mode to true'
+# defaults write NSGlobalDomain AppleInterfaceStyle Dark  # Use dark menu bar and dock.
+# defaults read -g NSGlobalDomain AppleInterfaceStyle
 

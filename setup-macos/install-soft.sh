@@ -79,6 +79,7 @@ if [ "$(uname)" = "Darwin" ]; then
     # ln -s /Applications/Marta.app/Contents/Resources/launcher /usr/local/bin/marta
     # sudo apt install -y doublecmd-gtk # GUI file manager
     brew install --cask double-commander
+    ln -sf "$DOTFILES/Library/Preferences/doublecmd" "$HOME/Library/Preferences/doublecmd"
 
     # echo "**** File search (everything alternatives) ****"
     # brew install --cask easyfind
@@ -89,8 +90,9 @@ if [ "$(uname)" = "Darwin" ]; then
     brew install --cask google-chrome
 
     echo "**** Keyboard and automation (shortcuts, text expansion) ****"
-    # Better shortcuts with Karabiner Elements and Hammerspoon
+    # Better shortcuts with Karabiner Elements and Hammerspoon (for F18 setup)
     brew install --cask karabiner-elements # Free, open source, mac. Remap the keys on a Mac at the kernel level. Ex KeyRemap4MacBook
+    ln -sf "$DOTFILES/.config/karabiner" "$HOME/.config/karabiner"
     brew install --cask hammerspoon        # Free, open source, mac
     ln -sf "$(pwd)/hammerspoon" "$HOME/.hammerspoon"
 
