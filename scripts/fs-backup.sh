@@ -10,7 +10,7 @@
 # --progress        show progress percentage during transfer. Useful for large files
 # --mkpath          create the destination path. Was added in rsync 3.2.3 (6 Aug 2020).
 
-if [[ -z "${PATH_BACKUP}" ]]; then
+if [ -z "${PATH_BACKUP}" ]; then
     echo "❌ ERROR: Backup path env variable is not set"
     exit 1
 fi

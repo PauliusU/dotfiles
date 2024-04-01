@@ -47,7 +47,10 @@ git --version
 
 echo "**** Git tools ****"
 brew install lazygit # Terminal UI for git commands
+# Lazygit default path
 ln -sf "$DOTFILES/terminal/lazygit" "$HOME/Library/Application Support/lazygit"
+# Lazygit XDG path
+ln -sf "$DOTFILES/terminal/lazygit" "$HOME/.config/lazygit"
 lazygit --version
 brew install git-delta # Better git diff, including word-level diff highlighting
 delta --version

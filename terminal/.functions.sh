@@ -202,3 +202,11 @@ function path-switcher() {
     # Natigate to common folders
     cd "$(path-selector)" || return 1
 }
+
+function open_in_file_explorer() {
+    # Open current directory in system specific file explorer
+
+    if [[ "$(uname)" == "Darwin" ]]; then open . ; fi
+    if [[ $(uname) == "Linux" ]]; then xdg-open . ; fi
+    explorer .
+}
