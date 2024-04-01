@@ -47,6 +47,8 @@ if [ -n "$ZSH_VERSION" ]; then
     setopt HIST_FIND_NO_DUPS
     # Removes blank lines from history
     setopt HIST_REDUCE_BLANKS
+    # Puts timestamps in the history
+    # setopt EXTENDED_HISTORY
 
     # Enable autocorrect
     setopt correct

@@ -141,6 +141,7 @@ alias dpss='docker ps -a --format="$DOCKER_FORMAT"'                             
 alias drn='docker run -w /src -v $PWD:/src --rm node:18'                                                  # Run Node commands without installing it. "-w /src" - creates folder inside a container.
 alias dru='docker start -i ubun || docker run -it --name ubun -v ubuntu_data:/home pu/ubuntu fish'        # Run custom Ubuntu container (create it if needed)
 alias dst='open -a Docker'                                                                                # Docker [st]art daemon
+alias dstop='docker stop $(docker ps -a -q)'                                                              # Docker stope all containers
 alias dvls='docker volume ls'                                                                             # List docker volumes
 export DOCKER_FORMAT='ID\t{{.ID}}\nNAME\t{{.Names}}\nIMAGE\t{{.Image}}\nPORTS\t{{.Ports}}\nCOMMAND\t{{.Command}}\nCREATED\t{{.CreatedAt}}\nSTATUS\t{{.Status}}\n'
 
@@ -197,7 +198,7 @@ alias mpp=mpv_detached                                                          
 alias md='mkdir'                                                                               # Make directory
 alias n='nvim'                                                                                 # Neovim
 alias nv='if [ -f "./src/index.ts" ]; then nvim "./src/index.ts"; else nvim; fi'               # Neovim (open index.ts if exists)
-alias oo="open ."                                                                              # [macOS] open in Finder
+alias oo=open_in_file_explorer                                                                 # Open current folder in file explorer
 alias rmm="rm -rf"                                                                             # Remove non-empty folder
 alias space="du -sh"                                                                           # Space used by current folder (and subfolders)
 alias taru='tar xzvf'                                                                          # Unzip

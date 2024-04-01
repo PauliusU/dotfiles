@@ -127,9 +127,10 @@ if [ "$(uname)" = "Darwin" ]; then
     brew install --cask slack
     brew install --cask ferdium
 
-    echo "**** MPV ****"
+    echo "**** MPV (using cask for easier file associations) ****"
     # sudo apt install -y mpv
-    brew install mpv
+    # brew install mpv
+    brew install --cask mpv
     mpv --version
     ln -sf "$DOTFILES/mpv" "$HOME/.config/mpv"
 
