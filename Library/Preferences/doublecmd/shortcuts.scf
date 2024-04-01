@@ -293,11 +293,11 @@
         <Command>cm_ViewHistoryNext</Command>
       </Hotkey>
       <Hotkey>
-        <Shortcut>Alt+Shift+Enter</Shortcut>
+        <Shortcut>Shift+Alt+Enter</Shortcut>
         <Command>cm_CountDirContent</Command>
       </Hotkey>
       <Hotkey>
-        <Shortcut>Alt+Shift+F9</Shortcut>
+        <Shortcut>Shift+Alt+F9</Shortcut>
         <Command>cm_TestArchive</Command>
       </Hotkey>
       <Hotkey>

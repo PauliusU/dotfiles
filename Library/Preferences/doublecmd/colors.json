@@ -1482,67 +1482,67 @@
         {
           Unique : "D64C17AB-BF2D-33EF-4DA6-E422EB22A4D7",
           Name : "Default",
-          CursorBorderColor : 0,
+          CursorBorderColor : -2147483635,
           Columns : [
             {
               Unique : "64B467F3-C4AA-E6C3-1EBE-13291EC46931",
               Title : "Name",
-              TextColor : 0,
-              Background : 0,
-              Background2 : 0,
-              MarkColor : 0,
-              CursorColor : 0,
-              CursorText : 0,
-              InactiveCursorColor : 0,
-              InactiveMarkColor : 0
+              TextColor : -2147483640,
+              Background : -2147483643,
+              Background2 : -2147483643,
+              MarkColor : 255,
+              CursorColor : -2147483635,
+              CursorText : -2147483634,
+              InactiveCursorColor : -2147483645,
+              InactiveMarkColor : 128
             },
             {
               Unique : "4043245D-5E5E-1CC9-AA82-F0FF5242BF72",
               Title : "Ext",
-              TextColor : 0,
-              Background : 0,
-              Background2 : 0,
-              MarkColor : 0,
-              CursorColor : 0,
-              CursorText : 0,
-              InactiveCursorColor : 0,
-              InactiveMarkColor : 0
+              TextColor : -2147483640,
+              Background : -2147483643,
+              Background2 : -2147483643,
+              MarkColor : 255,
+              CursorColor : -2147483635,
+              CursorText : -2147483634,
+              InactiveCursorColor : -2147483645,
+              InactiveMarkColor : 128
             },
             {
               Unique : "0448105F-F45E-06D4-286C-208CDFDB32D4",
               Title : "Size",
-              TextColor : 0,
-              Background : 0,
-              Background2 : 0,
-              MarkColor : 0,
-              CursorColor : 0,
-              CursorText : 0,
-              InactiveCursorColor : 0,
-              InactiveMarkColor : 0
+              TextColor : -2147483640,
+              Background : -2147483643,
+              Background2 : -2147483643,
+              MarkColor : 255,
+              CursorColor : -2147483635,
+              CursorText : -2147483634,
+              InactiveCursorColor : -2147483645,
+              InactiveMarkColor : 128
             },
             {
               Unique : "E7D89C44-CF89-EBD7-66F1-608EBF580C0D",
               Title : "Date",
-              TextColor : 0,
-              Background : 0,
-              Background2 : 0,
-              MarkColor : 0,
-              CursorColor : 0,
-              CursorText : 0,
-              InactiveCursorColor : 0,
-              InactiveMarkColor : 0
+              TextColor : -2147483640,
+              Background : -2147483643,
+              Background2 : -2147483643,
+              MarkColor : 255,
+              CursorColor : -2147483635,
+              CursorText : -2147483634,
+              InactiveCursorColor : -2147483645,
+              InactiveMarkColor : 128
             },
             {
               Unique : "9F965C19-C0CD-FB08-0E76-D3E81B852FB9",
               Title : "Attr",
-              TextColor : 0,
-              Background : 0,
-              Background2 : 0,
-              MarkColor : 0,
-              CursorColor : 0,
-              CursorText : 0,
-              InactiveCursorColor : 0,
-              InactiveMarkColor : 0
+              TextColor : -2147483640,
+              Background : -2147483643,
+              Background2 : -2147483643,
+              MarkColor : 255,
+              CursorColor : -2147483635,
+              CursorText : -2147483634,
+              InactiveCursorColor : -2147483645,
+              InactiveMarkColor : 128
             }
           ]
         }
