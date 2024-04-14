@@ -34,6 +34,7 @@ return {
                     'jsonls',
                     'lua_ls',
                     'pylsp', -- has number of static analyzers built-in
+                    'prismals',
                     'rust_analyzer',
                     'tailwindcss',
                     'tsserver',
