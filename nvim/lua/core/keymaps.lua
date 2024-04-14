@@ -112,7 +112,7 @@ vim.keymap.set("n", "J", "mzJ`z", { desc = 'Join lines. Append line below, but k
 vim.keymap.set("n", "qq", "i<CR><Esc>", { desc = 'split line' })
 
 -- Etc
-vim.keymap.set("n", "<leader>nn",  "<cmd> set nu! rnu! <CR>", {desc = "Toggle line numbers and relative line numbers" })
+vim.keymap.set("n", "<leader>nn",  "<cmd> set nu! rnu! <CR>", {desc = "perf: toggle line numbers and relative line numbers" })
 vim.keymap.set("n", "Q", "<nop>", { desc = 'Disable capital Q' })
 vim.keymap.set({ "n", "v" }, "<A-z>", "<cmd>set wrap!<CR>", { desc = 'Toggle line wrap' })
 vim.keymap.set("n", "<leader>xc", "<cmd>!chmod +x %<CR>", { silent = true, desc = "Make file executable" })
