@@ -206,7 +206,7 @@ function path-switcher() {
 function open_in_file_explorer() {
     # Open current directory in system specific file explorer
 
-    if [[ "$(uname)" == "Darwin" ]]; then open . ; fi
-    if [[ $(uname) == "Linux" ]]; then xdg-open . ; fi
+    if [[ "$(uname)" == "Darwin" ]]; then open . && return ; fi
+    if [[ $(uname) == "Linux" ]]; then xdg-open . && return ; fi
     explorer .
 }

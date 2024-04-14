@@ -18,8 +18,8 @@ if [ "$(uname)" = "Darwin" ]; then
     brew install --cask font-fira-code-nerd-font
     brew install --cask font-jetbrains-mono-nerd-font
 
-    echo "**** iterm2 - Terminal.app replacement ****"
-    brew install --cask iterm2
+    # echo "**** iterm2 - Terminal.app replacement ****"
+    # brew install --cask iterm2
 
     echo "**** alacritty - a fast, cross-platform, OpenGL terminal emulator ****"
     brew install --cask alacritty

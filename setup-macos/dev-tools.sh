@@ -7,10 +7,10 @@ echo "=============================== DEV TOOLS ==============================="
 echo "**** AWS CLI ****"
 brew install awscli
 aws --version
-ln -sf ~/Dropbox/dev/config/.aws ~/.aws
+ln -nsf ~/Dropbox/dev/config/.aws ~/.aws
 
 echo "**** SSH ****"
-ln -sf ~/Dropbox/dev/config/.ssh ~/.ssh
+ln -nsf ~/Dropbox/dev/config/.ssh ~/.ssh
 if [ ! -f ~/.ssh/id_rsa ]; then
     # Generate public/private rsa key pair.
     ssh-keygen -t rsa -C "48020370+PauliusU@users.noreply.github.com"
@@ -48,9 +48,9 @@ git --version
 echo "**** Git tools ****"
 brew install lazygit # Terminal UI for git commands
 # Lazygit default path
-ln -sf "$DOTFILES/terminal/lazygit" "$HOME/Library/Application Support/lazygit"
+ln -nsf "$DOTFILES/terminal/lazygit" "$HOME/Library/Application Support/lazygit"
 # Lazygit XDG path
-ln -sf "$DOTFILES/terminal/lazygit" "$HOME/.config/lazygit"
+ln -nsf "$DOTFILES/terminal/lazygit" "$HOME/.config/lazygit"
 lazygit --version
 brew install git-delta # Better git diff, including word-level diff highlighting
 delta --version
@@ -61,7 +61,7 @@ gh --version
 
 echo "**** Neovim / Vim ****"
 brew install neovim
-ln -sf "$(pwd)/nvim" "$HOME/.config/nvim"
+ln -nsf "$(pwd)/nvim" "$HOME/.config/nvim"
 # Delete local Neovim cache to prevent any issues
 rm -rf ~/.local/share/nvim
 # Nvim telescope plugin requirements for grep_string and live_grep functions
@@ -84,11 +84,9 @@ echo "**** Python [Python 3] and artificial intelligence ****"
 # sudo apt install -y python3
 brew install python                   # Defaults to python3
 # sudo apt install -y python-is-python3 # For Debian and Ubuntu
-brew unlink python@3.12 && brew link python@3.12
 # Set python symlinks (requires sudo)
-# ln -sf -- $BREW_HOME/bin/python3.12(:P) /usr/local/bin/py
-# ln -sf -- $BREW_HOME/bin/python3.12(:P) /usr/local/bin/python
-# ln -sf -- "$(readlink -f $BREW_HOME/bin/python3.12)" /usr/local/bin/python3
+ln -sf -- $BREW_HOME/bin/python3 /usr/local/bin/py
+ln -sf -- $BREW_HOME/bin/python3 /usr/local/bin/python
 
 python3 --version
 python --version
@@ -96,8 +94,7 @@ python --version
 # Pip
 # sudo apt install -y python3-pip
 python3 -m pip install --upgrade pip
-# ln -sf -- $BREW_HOME/bin/pip3.12(:P) /usr/local/bin/pip
-# ln -sf -- $BREW_HOME/bin/pip3.12(:P) /usr/local/bin/pip3
+ln -sf -- $BREW_HOME/bin/pip3 /usr/local/bin/pip
 pip3 --version
 pip --version
 

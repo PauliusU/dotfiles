@@ -8,14 +8,14 @@ mkdir -p ~/repos
 mkdir -p ~/scripts
 
 # Symlinks for common files and folders. -f forces linking if file aready exists
-ln -sf ~/Dropbox/code ~/code
-ln -sf ~/Dropbox/dev ~/dev
-ln -sf ~/Dropbox/projects ~/projects
-ln -sf ~/Library/CloudStorage ~/storage
+ln -nsf ~/Dropbox/code ~/code
+ln -nsf ~/Dropbox/dev ~/dev
+ln -nsf ~/Dropbox/projects ~/projects
+ln -nsf ~/Library/CloudStorage ~/storage
 
 if [[ "$(uname -sr)" == "Linux"*"microsoft"* ]]; then
     echo "**** WSL setup ****"
-    ln -sf /mnt/d/Dropbox ~/Dropbox
-    ln -sf /mnt/d/Dropbox/code ~/code
-    ln -sf /mnt/d/Dropbox/dev ~/dev
+    ln -nsf /mnt/d/Dropbox ~/Dropbox
+    ln -nsf /mnt/d/Dropbox/code ~/code
+    ln -nsf /mnt/d/Dropbox/dev ~/dev
 fi
