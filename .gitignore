@@ -16,6 +16,7 @@ Library/Preferences/doublecmd/history.xml
 Library/Preferences/doublecmd/multiarc.ini
 Library/Preferences/doublecmd/session.ini
 Library/Preferences/doublecmd/tabs.xml
+Library/Preferences/doublecmd/wfx.ini
 mpv/cache/*
 mpv/script-modules/*
 mpv/scripts/*

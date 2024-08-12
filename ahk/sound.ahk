@@ -3,7 +3,7 @@ Sound management functions
 */
 
 ; Variables
-CLI_TOOL_NIR_CMD := 'd:\Dropbox\soft\CLI-tools\nircmd-x64\nircmd.exe'
+CLI_TOOL_NIR_CMD := 'd:\Dropbox\soft\cli-tools\nircmd-x64\nircmd.exe'
 soundToggle := true
 
 ; Sound playback device functions
