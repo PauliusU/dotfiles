@@ -5,10 +5,10 @@ return {
         vim.o.timeout = true
         vim.o.timeoutlen = 300
         local wk = require("which-key")
-        wk.register({
-            u = { name = "UI" },
-            s = { name = "Telescope search" },
-        }, { prefix = "<leader>" })
+        wk.add({
+            { "<leader>s", group = "Telescope search" },
+            { "<leader>u", group = "UI" },
+        })
         require("which-key").setup {}
     end
 }

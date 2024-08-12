@@ -33,11 +33,12 @@ return {
                     'gopls',
                     'jsonls',
                     'lua_ls',
-                    'pylsp', -- has number of static analyzers built-in
                     'prismals',
+                    'pylsp', -- has number of static analyzers built-in
                     'rust_analyzer',
                     'tailwindcss',
                     'tsserver',
+                    'yamlls',
                 }
             })
 
@@ -112,6 +113,14 @@ return {
                         { desc = 'Next diagnostic (problem)', remap = false })
                     vim.keymap.set('n', '[d', vim.diagnostic.goto_prev,
                         { desc = 'Prev diagnostic (problem)', remap = false })
+
+                    -- LSP: etc
+                    vim.keymap.set('n', '<leader>ux', function()
+                        vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+                    end, { desc = 'LSP: toggle inlay hints', remap = false })
+                    vim.keymap.set('n', '<M-C-i>', function()
+                        vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+                    end, { desc = 'LSP: toggle inlay hints', remap = false })
                 end
             })
 
@@ -163,6 +172,30 @@ return {
                         description = "Organize Imports"
                     }
                 },
+                settings = {
+                    javascript = {
+                        inlayHints = {
+                            includeInlayEnumMemberValueHints = true,
+                            includeInlayFunctionLikeReturnTypeHints = true,
+                            includeInlayFunctionParameterTypeHints = true,
+                            includeInlayParameterNameHints = "all", -- 'none' | 'literals' | 'all';
+                            includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+                            includeInlayPropertyDeclarationTypeHints = true,
+                            includeInlayVariableTypeHints = false,
+                        },
+                    },
+                    typescript = {
+                        inlayHints = {
+                            includeInlayEnumMemberValueHints = true,
+                            includeInlayFunctionLikeReturnTypeHints = true,
+                            includeInlayFunctionParameterTypeHints = true,
+                            includeInlayParameterNameHints = "all", -- 'none' | 'literals' | 'all';
+                            includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+                            includeInlayPropertyDeclarationTypeHints = true,
+                            includeInlayVariableTypeHints = false,
+                        },
+                    },
+                },
             }
 
             lspconfig.eslint.setup({
@@ -189,9 +222,9 @@ return {
                     }
                 }
             })
-            lspconfig.pylsp.setup({})  -- python
+            lspconfig.pylsp.setup({}) -- python
             lspconfig.gopls.setup({})
-            lspconfig.clangd.setup({ -- c, cpp
+            lspconfig.clangd.setup({  -- c, cpp
                 -- Fix "Multiple different client offset_encodings detected" error
                 -- ref: https://www.reddit.com/r/neovim/comments/12qbcua/multiple_different_client_offset_encodings/
                 cmd = { "clangd", "--offset-encoding=utf-16", },
@@ -199,8 +232,9 @@ return {
             lspconfig.bashls.setup({}) -- bash
             lspconfig.yamlls.setup({})
             lspconfig.cssls.setup({})
+            -- lspconfig.ltex.setup({})
+            lspconfig.markdown_oxide.setup({})
             lspconfig.tailwindcss.setup({})
-            lspconfig.ltex.setup({})
             lspconfig.prismals.setup({})
             lspconfig.sqlls.setup({})
 
