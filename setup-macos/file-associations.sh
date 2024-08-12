@@ -17,6 +17,7 @@ duti -s io.mpv .m4a all
 duti -s io.mpv .opus all
 
 # VIDEO io.mpv
+duti -s io.mpv .mov all
 duti -s io.mpv .mp4 all
 
 # IMAGES

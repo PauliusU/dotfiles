@@ -6,10 +6,12 @@ which $SHELL
 echo "=============================== TERMINAL ================================"
 
 echo "**** Modern core utils ****"
-# Bat - a cat clone with syntax highlighting and Git integration
+# Bat (better cat) - a cat clone with syntax highlighting and Git integration
 brew install bat
-# LSDeluxe - ls with colors, icons, tree-view, etc.
+# LSDeluxe (better ls) - ls with colors, icons, tree-view, etc.
 brew install lsd
+# eza (better ls)
+brew install eza
 
 if [ "$(uname)" = "Darwin" ]; then
     echo "**** Nerd fonts ****"

@@ -1,14 +1,14 @@
 echo ".aliases.sh"
 
 # Navigation and file listing
-alias -- -='cd -' # Toggle between last two directories with '-'
+alias -- -='cd -' # Toggle between last two directories with single dash '-'
 alias cde="cd ~/code/"
-alias cl="cd ~/Library/CloudStorage/"
+alias cl="cd $CLOUD_STORAGE"
 alias desk="cd ~/Desktop/"
 alias dev="cd ~/dev/"
 alias dl="cd ~/Downloads/"
 alias docs="cd ~/Documents/"
-alias dot='cd $DOTFILES'
+alias dot="cd $DOTFILES"
 alias drb="cd ~/Dropbox/"
 alias ds="cd ~/Dropbox/DropsyncFiles"
 alias dt="cd ~/Desktop/" # "dt" is also a command line tool to display information about your domain on Linux or Unix system
@@ -18,9 +18,10 @@ alias prj="cd ~/Dropbox/projects/"
 alias pu="pushd"
 # Remove the top entry from the directory stack, and cd to the new top directory.
 alias po="popd"
+alias zz="cd -" # Toggle between last two directories
 # Always list directory contents upon "cd"
 function cd() {
-    builtin cd "$@" || return 1 # If cd fails, don't try to run ls
+    z "$@" || builtin cd "$@" || return 1 # If cd fails, don't try to run ls
     ls -A                       # List entries starting with ., but do not list implied . and ..
 }
 if [ -n "$ZSH_VERSION" ]; then
@@ -89,16 +90,19 @@ alias ns="npm run start"
 alias nt="npm run test"
 alias nti="npm run test:integration"
 alias nu="npm run build && npm run lint && npm run test && npm run test:integration"
-alias yb="yarn build"
-alias yd="yarn dev"
-alias yg="yarn global list"
-alias yl="yarn lint"
-alias ys="yarn start"
-alias yt="yarn test"
-alias yt="yarn test:integration"
-alias yu="yarn lint && yarn test"
-alias yy="yarn install --check-files"
+alias yyb="yarn build"
+alias yyd="yarn dev"
+alias yyg="yarn global list"
+alias yyl="yarn lint"
+alias yys="yarn start"
+alias yyt="yarn test"
+alias yytt="yarn test:integration"
+alias yyu="yarn lint && yarn test"
+alias yyy="yarn install --check-files"
 alias pi="pnpm install && rm -f pnpm-lock.yaml"
+alias pii="pnpm install"
+alias bii="bun install --no-save"
+alias bt="bun test"
 # Python, pip and jupyter
 alias py="python || python3"
 alias py3="python3"
@@ -153,6 +157,7 @@ alias brc='$EDITOR ~/.bashrc'                    # Bash config
 alias c="clear"                                  # Clear shell screen
 alias cls="clear"                                # Or user keyboard shortcut Command + K { # K }
 alias ee="exit"                                  # Quit shell (one of alternative aliased)
+alias ef="env | fzf"                             # Fuzzy find environment variables
 alias fn='find . -name'                          # Find by given NAME
 alias fnd='find . -type d -name'                 # Find by given NAME
 alias fnf='find . -type f -name'                 # Find by given NAME
@@ -210,10 +215,11 @@ alias tmks="tmux kill-server"                                                   
 alias tmm='echo tmux: $TMUX'                                                                   # = tmux new = tmux new-session
 alias tmx="tmux new-session -ADs main"                                                         # Create "main" session or attach to it (if exists) ref: https://github.com/threkk/dotfiles/blob/d1c3c6681286e3e289d04f64a8ffb37fdbdbbc98/dotfiles/alias
 alias tt="tmux switch -t main || tmux new -As main"                                            # Switch to "main" session or create it if needed
-alias tg="tmux switch -t dotfiles"                                                             # Switch to "dotfiles" session
+alias tg="tmux switch -t dotfiles || tmux new -s dotfiles -c $DOTFILES -d && tmux switch -t dotfiles"                     # Switch to "dotfiles" session
 alias v='$BREW_HOME/bin/vim'                                                                   # Shorthand for vim
 alias vi='$BREW_HOME/bin/vim'                                                                  # Shorthand for vim
 alias vim="nvim"                                                                               # Replace vim with neovim
+alias y="yazi"                                                                                 # Yazi file manager
 alias yta="yt-dlp -x --audio-format aac --restrict-filenames --add-metadata --embed-thumbnail" # YouTube audio
 
 # Time and Date

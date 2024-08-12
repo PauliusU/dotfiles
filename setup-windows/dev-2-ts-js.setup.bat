@@ -4,8 +4,8 @@ TITLE JavaScript and TypeScript ecosystem
 
 ECHO **** Volta [JavaScript Tool Manager] *****
 powershell scoop install volta
-:: Install latest Node.js 18 version [e.g. 18.19.1]
-volta install node@18
+:: Install latest Node.js 20 version
+volta install node@20
 :: Update NPM (newer than the one with Node)
 volta install npm
 :: Create a symlink to the config file
@@ -13,6 +13,7 @@ MKLINK "%USERPROFILE%\.npmrc" "d:\Dropbox\dev\config\.npmrc"
 volta install pnpm
 REM pnpm config set store-dir %USERPROFILE%\.cache\.pnpm-store
 REM pnpm store path
+volta install bun
 :: Display current volta toolchain
 volta list
 volta list node

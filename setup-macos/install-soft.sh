@@ -120,9 +120,6 @@ if [ "$(uname)" = "Darwin" ]; then
     brew install --cask keepassxc
     keepassxc-cli -v
 
-    # echo "**** Microsoft Teams ****"
-    # brew install --cask microsoft-teams
-
     echo "**** Messaging ****"
     brew install --cask slack
     brew install --cask ferdium
@@ -130,7 +127,7 @@ if [ "$(uname)" = "Darwin" ]; then
     echo "**** MPV (using cask for easier file associations) ****"
     # sudo apt install -y mpv
     # brew install mpv
-    brew install --cask mpv
+    brew install --cask stolendata-mpv
     mpv --version
     ln -nsf "$DOTFILES/mpv" "$HOME/.config/mpv"
 
@@ -141,8 +138,11 @@ if [ "$(uname)" = "Darwin" ]; then
     # brew install --cask adobe-acrobat-reader
     brew install --cask foxitreader
 
-    # echo "**** Images ****"
-    # brew install --cask xnviewmp
+    echo "**** Raycast launcher (better Spotlight) ****"
+    brew install --cask raycast
+
+    brew install tlrc
+    tldr --version # Note: install is 'tlrc' but command is 'tldr'
 
     # echo "**** Toggl (a.k.a ToggleDesktop) ****"
     # brew install --cask toggl-track
