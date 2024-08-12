@@ -29,8 +29,8 @@ if [ -n "$ZSH_VERSION" ]; then
 
     # Change directory without `cd`
     setopt AUTO_CD
-    # Use case-insensitive globbing (i.e. *.jpg = *.JPG)
-    setopt NO_CASE_GLOB
+    # # Use case-insensitive globbing (i.e. *.jpg = *.JPG)
+    # setopt NO_CASE_GLOB
 
     # History settings
     # Append to history file instead of replacing when using multiple zsh sessions.
@@ -50,10 +50,10 @@ if [ -n "$ZSH_VERSION" ]; then
     # Puts timestamps in the history
     # setopt EXTENDED_HISTORY
 
-    # Enable autocorrect
-    setopt correct
-    # Enable autocorrect for commands
-    setopt correct_all
+    # # Enable autocorrect
+    # setopt correct
+    # # Enable autocorrect for commands
+    # setopt correct_all
 
     # List the existing ZSH options
     # setopt
@@ -81,10 +81,14 @@ if [ -n "$ZSH_VERSION" ]; then
     # Load Antigen plugin manager
     source ~/.config/antigen.zsh
     # Use plugins from the default repo (robbyrussell's oh-my-zsh).
-    antigen bundle git
+    antigen bundle git # aliases for git commands
     antigen bundle npm
     # Use plugins from other sources
     antigen bundle z-shell/brew-completions
+    # Other plugins:
+    antigen bundle zsh-users/zsh-syntax-highlighting
+    antigen bundle zsh-users/zsh-completions
+    antigen bundle zsh-users/zsh-autosuggestions
 
     # Tell Antigen that you're done.
     antigen apply
@@ -103,7 +107,44 @@ if [ -n "$ZSH_VERSION" ]; then
     zle -N _zsh_fancy_ctrl_z
     bindkey "^Z" _zsh_fancy_ctrl_z
 
-    eval "$(zoxide init zsh)" # enable zoxide for zsh
+    # Shell integrations
+
+    eval "$(zoxide init zsh)" # Enable zoxide for zsh
+
+    ### FZF
+    eval "$(fzf --zsh)" # Set up fzf key bindings (C^t) and fuzzy completion
+    show_file_or_dir_preview="if [ -d {} ]; then eza --tree --color=always {} | head -200; else bat -n --color=always --line-range :500 {}; fi"
+    # Use fd instead of find
+    export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --exclude .git"
+    export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+    export FZF_CTRL_T_OPTS="--preview '$show_file_or_dir_preview'"
+    export FZF_ALT_C_COMMAND="fd --type d --hidden --strip-cwd-prefix --exclude .git"
+    export FZF_ALT_C_OPTS="--preview 'eza --tree --color=always {} | head -200'" # eza not lsd
+    # For ** completion when looking for files and directories.
+    # I.e. use fd for listing path candidates.
+    # - The first argument ($1) is the base path to start traversal
+    # - See the source code (completion.{bash,zsh}) for more details.
+    _fzf_compgen_path() {
+        fd --hidden --exclude .git . "$1"
+    }
+    # For ** tab functionality but when looking for directories. E.g. cd **<TAB>
+    # I.e. use fs to generate the list for directory completion
+    _fzf_compgen_dir() {
+        fd --type d --hidden --exclude .git . "$1"
+    }
+    # **<TAB> previews
+    _fzf_comprun() {
+          local command=$1
+          shift
+
+          case "$command" in
+               cd)           fzf --preview 'eza --tree --color=always {} | head -200' "$@" ;;
+               export|unset) fzf --preview "eval 'echo ${}'"         "$@" ;;
+               ssh)          fzf --preview 'dig {}'                   "$@" ;;
+               *)            fzf --preview "$show_file_or_dir_preview" "$@" ;;
+          esac
+    }
+
 fi
 
 get_os # Defined in .functions.sh

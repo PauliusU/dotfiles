@@ -22,6 +22,9 @@
     <Highlighter Tag="1" Name="Diff File">
       <DefaultFilter>Difference Files (*.diff,*.patch)|*.diff;*.patch</DefaultFilter>
     </Highlighter>
+    <Highlighter Tag="0" Name="Go">
+      <DefaultFilter>Go|*.GO</DefaultFilter>
+    </Highlighter>
     <Highlighter Tag="1" Name="HTML document">
       <DefaultFilter>HTML Document (*.htm,*.html)|*.htm;*.html</DefaultFilter>
     </Highlighter>
