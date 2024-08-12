@@ -1,9 +1,7 @@
 echo ".functions.sh"
 
-function ytpl() {
+function yt() {
     #  Download youtube playlist or channel
-
-    builtin cd ~/Downloads || return 1
 
     # Format for h264 and h265 codec:   -f "bestvideo[vcodec~='^((he|a)vc|h26[45])'][ext=mp4][height>=720][height<=1080][fps>=23]+bestaudio[ext=m4a]" \
     # --add-metadata                    Alias for --embed-metadata but supports youtube-dl as well
@@ -19,15 +17,20 @@ function ytpl() {
         "$@"
 }
 
-function ytpl-beggining() {
-    #  Download youtube playlist or channel from the beginning
-    # --restrict-filenames              Restrict filenames to only ASCII characters, and avoid "&" and spaces in filenames
-    ytpl --playlist-reverse "$@"
+function yt-fk() {
+    # Download videos in 4K resolution
+    yt -f "bestvideo[ext=mp4][height<=2160][fps>=23]+bestaudio[ext=m4a]" "$@"
 }
 
-function ytpl-chapters() {
+function yt-beggining() {
+    #  Download youtube playlist or channel from the beginning
+    # --restrict-filenames              Restrict filenames to only ASCII characters, and avoid "&" and spaces in filenames
+    yt --playlist-reverse "$@"
+}
+
+function yt-chapters() {
     #  Download youtube playlist or channel splitting chapters into separate files
-    ytpl --split-chapters "$@"
+    yt --split-chapters "$@"
 }
 
 function batch_convert() {
@@ -124,9 +127,12 @@ function extract_audio() {
 function ver() {
     # os-check - get basic info about OS running the script, OS version, build.
 
-    echo "uname: $(uname)"; echo # Linux, Darwin, MINGW64_NT-10.0-25211
-    echo "OSTYPE: $OSTYPE"; echo # linux-gnu, darwin21, msys (Windows in Git Bash)
-    uname -a; echo
+    echo "uname: $(uname)"
+    echo # Linux, Darwin, MINGW64_NT-10.0-25211
+    echo "OSTYPE: $OSTYPE"
+    echo # linux-gnu, darwin21, msys (Windows in Git Bash)
+    uname -a
+    echo
 
     if [[ "$(uname)" == "Darwin" ]]; then
         sw_vers                            # macOS and build version
@@ -199,14 +205,31 @@ function path-selector() {
 }
 
 function path-switcher() {
-    # Natigate to common folders
+    # Navigate to common folders
     cd "$(path-selector)" || return 1
 }
 
 function open_in_file_explorer() {
     # Open current directory in system specific file explorer
 
-    if [[ "$(uname)" == "Darwin" ]]; then open . && return ; fi
-    if [[ $(uname) == "Linux" ]]; then xdg-open . && return ; fi
+    if [[ "$(uname)" == "Darwin" ]]; then open . && return; fi
+    if [[ $(uname) == "Linux" ]]; then xdg-open . && return; fi
     explorer .
+}
+
+function pwdc() {
+    # Copy current working directory to clipboard
+
+    if [ "$(uname)" = "Darwin" ]; then
+        # When using MacOS (e.g. working from zsh)
+        pwd | pbcopy
+    fi
+
+    if [ "$(uname)" = "Linux" ]; then
+        # When using Linux
+        pwd | xclip
+    fi
+
+    # When using Bash for Windows
+    pwd | clip
 }

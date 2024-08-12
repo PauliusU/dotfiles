@@ -172,8 +172,8 @@ brew install volta
 # curl https://get.volta.sh | bash
 volta -v
 
-volta install node@18
-# volta pin node@18
+volta install node@20
+# volta pin node@20
 # volta uninstall node is not supported. Remove node version from ~/.volta/tools/image/node/ instead
 volta list node
 volta which node

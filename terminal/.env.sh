@@ -22,6 +22,8 @@ export RUSTUP_HOME="$XDG_DATA_HOME"/rustup
 # source "$HOME/.cargo/env" # add Rust to system PATH
 
 if [ "$(uname)" = "Darwin" ]; then
+    export CLOUD_STORAGE="$HOME/Library/CloudStorage"
+
     prepend_path() {
         # Prepend directory to PATH
         # Skipped if directory does not exist
