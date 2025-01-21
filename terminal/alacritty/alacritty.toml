@@ -1,3 +1,6 @@
+# Default config: https://alacritty.org/config-alacritty.html
+
+[general]
 live_config_reload = true
 
 [font]
@@ -17,7 +20,7 @@ save_to_clipboard = true
 [window]
 decorations = "buttonless"
 dynamic_padding = false
-opacity = 0.85
+# opacity = 0.85 # Default: 1.0
 # blur = true
 option_as_alt = "OnlyLeft"
 startup_mode = "Maximized"
@@ -25,3 +28,6 @@ startup_mode = "Maximized"
 [window.padding]
 x = 12
 y = 12
+
+[colors.primary]
+background = "#282c34" # Default: "#181818"
