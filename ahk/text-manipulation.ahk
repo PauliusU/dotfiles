@@ -11,7 +11,7 @@ ToUppercase() {
 
 ToLowercase() {
     ; Convert clipboard text to lowercase. EXAMPLE => example
-    Clipboard := StrUpper(A_Clipboard)
+    Clipboard := StrLower(A_Clipboard)
     Send(Clipboard)
     return
 }
