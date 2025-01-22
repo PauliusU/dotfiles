@@ -14,7 +14,7 @@ FILE_SEARCH := SCOOP . '\apps\everything-alpha\current\Everything.exe'
 IMAGE_VIEWER:= SCOOP . '\apps\irfanview\current\i_view64.exe'
 PLAYER := SCOOP . '\apps\mpv\current\mpv.exe'
 TERMINAL := 'wt'
-VIVALDI := 'd:\soft\network\vivaldi\Application\vivaldi.exe'
+VIVALDI := SCOOP . '\apps\vivaldi\current\Application\vivaldi.exe'
 
 ; Files
 NOTES := 'd:\Dropbox\DropsyncFiles\audiob\notes_PC.md'
