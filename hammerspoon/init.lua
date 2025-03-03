@@ -3,11 +3,11 @@ local fn = require("functions")
 local wm = require("window-management")
 local sound = require("sound")
 require "hyper" -- Hyper key Setup
-require "private" -- Not commited to Git
--- require "utils" -- Debug and development utilites (disabled by default)
+require "private" -- Not committed to Git
+-- require "utils" -- Debug and development utilities (disabled by default)
 
 -- Startup
-hs.hid.capslock.set(false) -- Disable capslock
+hs.hid.capslock.set(false) -- Disable caps lock
 
 -- Reload config on write
 hs.pathwatcher.new(os.getenv("HOME") .. "/.hammerspoon/", fn.reloadHs()):start()
@@ -69,7 +69,8 @@ hs.hotkey.bind(ctrl_opt, "Z", fn.open("Terminal")) -- [ ⌃ + ⌥ + Z ]
 hs.hotkey.bind(mash, "E", fn.open("Finder")) -- Finder (recent files) [ ⌃ + ⌥ + ⌘ + F ]
 Hyper:bind("Shift", "A", nil, fn.open("alacritty"))
 Hyper:bind("Shift", "D", nil, fn.open("Postman"))
-Hyper:bind("Shift", "I", nil, fn.open("Foxit PDF Reader"))
+Hyper:bind("Shift", "H", nil, fn.open("VLC"))
+Hyper:bind("Shift", "I", nil, fn.open("System Settings"))
 Hyper:bind("Shift", "J", nil, fn.open("iTerm"))
 Hyper:bind("Shift", "K", nil, fn.open("Ferdium"))
 Hyper:bind("Shift", "L", nil, fn.open("Calendar"))
@@ -77,7 +78,7 @@ Hyper:bind("Shift", "M", nil, fn.open("mpv"))
 Hyper:bind("Shift", "P", nil, fn.open("Music"))
 Hyper:bind("Shift", "S", nil, fn.open("Marta"))
 Hyper:bind("Shift", "U", nil, fn.open("Messages"))
-Hyper:bind("Shift", "V", nil, fn.open("Arc"))
+Hyper:bind("Shift", "V", nil, fn.open("Safari"))
 Hyper:bind({}, "A", nil, fn.open("iTerm"))
 Hyper:bind({}, "B", nil, fn.open("MongoDB Compass"))
 Hyper:bind({}, "C", nil, fn.open("DisplayLink Manager"))
@@ -98,9 +99,9 @@ Hyper:bind({}, "P", nil, fn.open("Spotify"))
 Hyper:bind({}, "S", fn.open("Double Commander"))
 Hyper:bind({}, "T", nil, fn.open("Terminal"))
 Hyper:bind({}, "U", nil, fn.open("Anki"))
-Hyper:bind({}, "W", nil, fn.open("System Settings"))
+Hyper:bind({}, "W", nil, fn.open("Foxit PDF Reader"))
 Hyper:bind({}, "X", fn.open("mpv"))
-Hyper:bind({}, "V", nil, fn.open("Safari"))
+Hyper:bind({}, "V", nil, fn.open("Arc"))
 Hyper:bind({}, "Y", fn.open("Toggl Track"))
 Hyper:bind({}, "Z", fn.open("EasyFind"))
 Hyper:bind({}, "pad7", fn.exec("open ~/Dropbox/DropsyncFiles/audiob/DBs/input.xlsx"))
