@@ -1,6 +1,6 @@
 # dotfiles
 
-> Personal configuration files for macOS 14 (Sonoma), Windows 11 and WSL2
+> Personal configuration files for macOS 15 (Sequoia), Windows 11 and WSL2
 
 ## Configs
 

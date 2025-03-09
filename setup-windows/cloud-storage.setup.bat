@@ -1,6 +1,7 @@
 @ECHO OFF &:: Clean output and hide path of running command
 
 ECHO **** Dropbox ****
+:: TODO test dropbox reg files
 @REM REG IMPORT "%DOTFILES%\Dropbox_HOME_backup.reg"
 @REM REG IMPORT "%DOTFILES%\DropboxUpdate_HOME_backup.reg"
 MKLINK /J "%APPDATA%\Dropbox" "%USER_BAK%\AppData\Roaming\Dropbox"

@@ -174,7 +174,7 @@ alias xx='exit'                                  # Quit shell (one of alternativ
 alias zrc='$EDITOR ~/.zshrc'                     # ZSH config
 alias zsh-list="bindkey -L"                      # List ZSH keybindings
 
-# Sensible defaults (same command but with differrent default value)
+# Sensible defaults (same command but with different default value)
 alias df="df -h"                # Human readable
 alias du="du -h"                # Human readable
 alias htop="htop -t"            # Processes in an indented tree - control+C to stop
@@ -225,7 +225,7 @@ alias yta="yt-dlp -x --audio-format aac --restrict-filenames --add-metadata --em
 # Time and Date
 alias fulldate="date +%F"                                                          # Date in YYYY-MM-DD format
 alias week="date +%V"                                                              # Get week number
-alias timer="echo 'Timer started. <crtl+d> to break.' && date && time cat && date" # Stopwatch
+alias timer="echo 'Timer started. <ctrl+d> to break.' && date && time cat && date" # Stopwatch
 
 # Network
 alias ip="curl icanhazip.com"                                       # External IP

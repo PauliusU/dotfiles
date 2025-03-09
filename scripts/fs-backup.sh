@@ -16,6 +16,6 @@ if [ -z "${PATH_BACKUP}" ]; then
 fi
 
 # Software settings
-mkdir -p $PATH_BACKUP/.config/
-rsync -av --delete $HOME/.config/karabiner $PATH_BACKUP/.config 
-rsync -av --delete $HOME/Library/Preferences/doublecmd/ $PATH_BACKUP/doublecmd
+mkdir -p "$PATH_BACKUP/.config/"
+rsync -av --delete "$HOME/.config/karabiner" "$PATH_BACKUP/.config"
+rsync -av --delete "$HOME/Library/Preferences/doublecmd/" "$PATH_BACKUP/doublecmd"

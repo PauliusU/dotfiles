@@ -22,7 +22,7 @@ function yt-fk() {
     yt -f "bestvideo[ext=mp4][height<=2160][fps>=23]+bestaudio[ext=m4a]" "$@"
 }
 
-function yt-beggining() {
+function yt-beginning() {
     #  Download youtube playlist or channel from the beginning
     # --restrict-filenames              Restrict filenames to only ASCII characters, and avoid "&" and spaces in filenames
     yt --playlist-reverse "$@"
@@ -196,7 +196,6 @@ function path-selector() {
         ~ \
         ~/.config \
         ~/Dropbox/code \
-        ~/Dropbox/code/lanuages \
         ~/Dropbox/dev \
         ~/Dropbox/DropsyncFiles \
         ~/Dropbox/projects \
