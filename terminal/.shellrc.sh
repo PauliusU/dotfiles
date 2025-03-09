@@ -1,4 +1,5 @@
 # Common settings for ~/.zshrc or ~/.bashrc files
+echo ".shellrc.sh ◘"
 
 # Load aliases (and other custom settings)
 export DOTFILES="$HOME/Dropbox/code/dotfiles"
@@ -22,7 +23,7 @@ if command -v tmux &>/dev/null && [ -z "$TMUX" ]; then
     tmux attach -t main || tmux new -s main
 fi
 
-# ------------------------- ZSH PLUGINS AND SETTNGS ----------------------------
+# ------------------------- ZSH PLUGINS AND SETTINGS ----------------------------
 if [ -n "$ZSH_VERSION" ]; then
     # Use default settings for the current shell
     # emulate -LR zsh
@@ -134,15 +135,15 @@ if [ -n "$ZSH_VERSION" ]; then
     }
     # **<TAB> previews
     _fzf_comprun() {
-          local command=$1
-          shift
+        local command=$1
+        shift
 
-          case "$command" in
-               cd)           fzf --preview 'eza --tree --color=always {} | head -200' "$@" ;;
-               export|unset) fzf --preview "eval 'echo ${}'"         "$@" ;;
-               ssh)          fzf --preview 'dig {}'                   "$@" ;;
-               *)            fzf --preview "$show_file_or_dir_preview" "$@" ;;
-          esac
+        case "$command" in
+            cd)           fzf --preview 'eza --tree --color=always {} | head -200' "$@" ;;
+            export|unset) fzf --preview "eval 'echo ${}'"         "$@" ;;
+            ssh)          fzf --preview 'dig {}'                   "$@" ;;
+            *)            fzf --preview "$show_file_or_dir_preview" "$@" ;;
+        esac
     }
 
 fi
