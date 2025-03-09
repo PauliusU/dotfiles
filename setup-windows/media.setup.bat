@@ -1,5 +1,8 @@
 @ECHO OFF &:: Clean output and hide path of running command
 
+ECHO **** AceStream ****
+winget install --id=AceStream.AceStream  -e
+
 ECHO **** Irfanview ****
 powershell scoop install irfranview
 ASSOC .bmp=Image.BMP

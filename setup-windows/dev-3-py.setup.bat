@@ -1,7 +1,7 @@
 @ECHO OFF &:: Clean output and hide path of running command
 
 ECHO **** Python ****
-winget install Python.Python.3.11
+winget install Python.Python.3.13
 python --version
 
 ECHO **** pip ****
