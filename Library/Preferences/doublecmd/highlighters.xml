@@ -31,11 +31,17 @@
     <Highlighter Tag="1" Name="INI file">
       <DefaultFilter>INI Files (*.ini)|*.ini</DefaultFilter>
     </Highlighter>
+    <Highlighter Tag="0" Name="JSON">
+      <DefaultFilter>JSON|*.json</DefaultFilter>
+    </Highlighter>
     <Highlighter Tag="1" Name="Java">
       <DefaultFilter>Java Files (*.java)|*.java</DefaultFilter>
     </Highlighter>
     <Highlighter Tag="0" Name="Java script">
       <DefaultFilter>Java script|*.js;*.json</DefaultFilter>
+    </Highlighter>
+    <Highlighter Tag="0" Name="Kotlin">
+      <DefaultFilter>Kotlin|*.kt;*.kts</DefaultFilter>
     </Highlighter>
     <Highlighter Tag="1" Name="Lazarus Form definition">
       <DefaultFilter>Lazarus Form Files (*.lfm)|*.lfm</DefaultFilter>
@@ -60,6 +66,9 @@
     </Highlighter>
     <Highlighter Tag="1" Name="Python">
       <DefaultFilter>Python Files (*.py)|*.py</DefaultFilter>
+    </Highlighter>
+    <Highlighter Tag="0" Name="QML">
+      <DefaultFilter>QML|*.qml</DefaultFilter>
     </Highlighter>
     <Highlighter Tag="0" Name="Rust">
       <DefaultFilter>Rust|*.RS</DefaultFilter>

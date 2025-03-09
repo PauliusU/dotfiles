@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<doublecmd DCVersion="1.1.11 beta">
+<doublecmd DCVersion="1.1.17 gamma">
   <Hotkeys Version="63">
     <Form Name="Main">
       <Hotkey>
@@ -467,17 +467,17 @@
         <Control>Files Panel</Control>
       </Hotkey>
       <Hotkey>
-        <Shortcut>WinKey+C</Shortcut>
+        <Shortcut>Cmd+C</Shortcut>
         <Command>cm_CopyToClipboard</Command>
         <Control>Files Panel</Control>
       </Hotkey>
       <Hotkey>
-        <Shortcut>WinKey+V</Shortcut>
+        <Shortcut>Cmd+V</Shortcut>
         <Command>cm_PasteFromClipboard</Command>
         <Control>Files Panel</Control>
       </Hotkey>
       <Hotkey>
-        <Shortcut>WinKey+X</Shortcut>
+        <Shortcut>Cmd+X</Shortcut>
         <Command>cm_CutToClipboard</Command>
         <Control>Files Panel</Control>
       </Hotkey>
@@ -572,7 +572,7 @@
         <Command>cm_ExitViewer</Command>
       </Hotkey>
       <Hotkey>
-        <Shortcut>WinKey+F</Shortcut>
+        <Shortcut>Cmd+F</Shortcut>
         <Command>cm_Find</Command>
       </Hotkey>
       <Hotkey>
@@ -604,23 +604,23 @@
         <Command>cm_Fullscreen</Command>
       </Hotkey>
       <Hotkey>
-        <Shortcut>WinKey+P</Shortcut>
+        <Shortcut>Cmd+P</Shortcut>
         <Command>cm_Print</Command>
       </Hotkey>
       <Hotkey>
-        <Shortcut>WinKey+G</Shortcut>
+        <Shortcut>Cmd+G</Shortcut>
         <Command>cm_GotoLine</Command>
       </Hotkey>
       <Hotkey>
-        <Shortcut>WinKey+A</Shortcut>
+        <Shortcut>Cmd+A</Shortcut>
         <Command>cm_SelectAll</Command>
       </Hotkey>
       <Hotkey>
-        <Shortcut>WinKey+C</Shortcut>
+        <Shortcut>Cmd+C</Shortcut>
         <Command>cm_CopyToClipboard</Command>
       </Hotkey>
       <Hotkey>
-        <Shortcut>WinKey+Z</Shortcut>
+        <Shortcut>Cmd+Z</Shortcut>
         <Command>cm_Undo</Command>
       </Hotkey>
       <Hotkey>
@@ -650,7 +650,7 @@
         <Command>cm_Reload</Command>
       </Hotkey>
       <Hotkey>
-        <Shortcut>WinKey+F</Shortcut>
+        <Shortcut>Cmd+F</Shortcut>
         <Command>cm_Find</Command>
       </Hotkey>
       <Hotkey>
@@ -666,7 +666,7 @@
         <Command>cm_FindPrev</Command>
       </Hotkey>
       <Hotkey>
-        <Shortcut>WinKey+G</Shortcut>
+        <Shortcut>Cmd+G</Shortcut>
         <Command>cm_GotoLine</Command>
       </Hotkey>
       <Hotkey>
@@ -726,29 +726,29 @@
     </Form>
     <Form Name="Synchronize Directories">
       <Hotkey>
-        <Shortcut>WinKey+M</Shortcut>
+        <Shortcut>Cmd+M</Shortcut>
         <Command>cm_SelectClear</Command>
       </Hotkey>
       <Hotkey>
-        <Shortcut>WinKey+D</Shortcut>
+        <Shortcut>Cmd+D</Shortcut>
         <Command>cm_SelectCopyDefault</Command>
       </Hotkey>
       <Hotkey>
-        <Shortcut>WinKey+W</Shortcut>
+        <Shortcut>Cmd+W</Shortcut>
         <Command>cm_SelectCopyReverse</Command>
       </Hotkey>
       <Hotkey>
-        <Shortcut>WinKey+L</Shortcut>
+        <Shortcut>Cmd+L</Shortcut>
         <Command>cm_SelectCopyLeftToRight</Command>
       </Hotkey>
       <Hotkey>
-        <Shortcut>WinKey+R</Shortcut>
+        <Shortcut>Cmd+R</Shortcut>
         <Command>cm_SelectCopyRightToLeft</Command>
       </Hotkey>
     </Form>
     <Form Name="Editor">
       <Hotkey>
-        <Shortcut>WinKey+F</Shortcut>
+        <Shortcut>Cmd+F</Shortcut>
         <Command>cm_EditFind</Command>
       </Hotkey>
       <Hotkey>
@@ -760,7 +760,7 @@
         <Command>cm_FileSave</Command>
       </Hotkey>
       <Hotkey>
-        <Shortcut>WinKey+S</Shortcut>
+        <Shortcut>Cmd+S</Shortcut>
         <Command>cm_FileSave</Command>
       </Hotkey>
       <Hotkey>
@@ -780,43 +780,43 @@
         <Command>cm_FileExit</Command>
       </Hotkey>
       <Hotkey>
-        <Shortcut>WinKey+X</Shortcut>
+        <Shortcut>Cmd+X</Shortcut>
         <Command>cm_EditCut</Command>
       </Hotkey>
       <Hotkey>
-        <Shortcut>WinKey+N</Shortcut>
+        <Shortcut>Cmd+N</Shortcut>
         <Command>cm_FileNew</Command>
       </Hotkey>
       <Hotkey>
-        <Shortcut>WinKey+O</Shortcut>
+        <Shortcut>Cmd+O</Shortcut>
         <Command>cm_FileOpen</Command>
       </Hotkey>
       <Hotkey>
-        <Shortcut>WinKey+R</Shortcut>
+        <Shortcut>Cmd+R</Shortcut>
         <Command>cm_EditRplc</Command>
       </Hotkey>
       <Hotkey>
-        <Shortcut>WinKey+C</Shortcut>
+        <Shortcut>Cmd+C</Shortcut>
         <Command>cm_EditCopy</Command>
       </Hotkey>
       <Hotkey>
-        <Shortcut>WinKey+Z</Shortcut>
+        <Shortcut>Cmd+Z</Shortcut>
         <Command>cm_EditUndo</Command>
       </Hotkey>
       <Hotkey>
-        <Shortcut>WinKey+V</Shortcut>
+        <Shortcut>Cmd+V</Shortcut>
         <Command>cm_EditPaste</Command>
       </Hotkey>
       <Hotkey>
-        <Shortcut>WinKey+A</Shortcut>
+        <Shortcut>Cmd+A</Shortcut>
         <Command>cm_EditSelectAll</Command>
       </Hotkey>
       <Hotkey>
-        <Shortcut>Shift+WinKey+Z</Shortcut>
+        <Shortcut>Shift+Cmd+Z</Shortcut>
         <Command>cm_EditRedo</Command>
       </Hotkey>
       <Hotkey>
-        <Shortcut>WinKey+G</Shortcut>
+        <Shortcut>Cmd+G</Shortcut>
         <Command>cm_EditGotoLine</Command>
       </Hotkey>
     </Form>
@@ -882,11 +882,11 @@
         <Command>cm_FreeFromMem</Command>
       </Hotkey>
       <Hotkey>
-        <Shortcut>WinKey+Tab</Shortcut>
+        <Shortcut>Cmd+Tab</Shortcut>
         <Command>cm_PageNext</Command>
       </Hotkey>
       <Hotkey>
-        <Shortcut>Shift+WinKey+Tab</Shortcut>
+        <Shortcut>Shift+Cmd+Tab</Shortcut>
         <Command>cm_PagePrev</Command>
       </Hotkey>
     </Form>
