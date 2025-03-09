@@ -1998,10 +1998,6 @@
               Value : "$1FFFFFFF|$1FFFFFFF|$1FFFFFFF|0|1|0|0"
             },
             {
-              Name : "Modifier",
-              Value : "$1FFFFFFF|$1FFFFFFF|$1FFFFFFF|0|1|1|0"
-            },
-            {
               Name : "Number",
               Value : "$1FFFFFFF|$00E8BCBC|$1FFFFFFF|0|1|0|0"
             },
@@ -2703,6 +2699,43 @@
           ]
         },
         {
+          Name : "JSON",
+          Ranges : [
+            {
+              Name : "Root",
+              Attributes : "$80000008,$80000005;False:False.",
+              Sets : [
+                {
+                  Name : "Numbers",
+                  Attributes : "$008AD277,$80000005;False:True."
+                }
+              ],
+              KeyLists : [
+                {
+                  Name : "Keywords",
+                  Attributes : "$007891E2,$80000005;False:True."
+                },
+                {
+                  Name : "Punctuators",
+                  Attributes : "$00C09B61,$80000005;False:True."
+                }
+              ],
+              Ranges : [
+                {
+                  Name : "Strings \"..\"",
+                  Attributes : "$00898BB9,$80000005;False:True.",
+                  KeyLists : [
+                    {
+                      Name : "Escape",
+                      Attributes : "$00898BB9,$80000005;True:True."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
           Name : "Java script",
           Ranges : [
             {
@@ -2750,6 +2783,75 @@
                       Attributes : "$00898BB9,$80000005;True:True."
                     }
                   ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          Name : "Kotlin",
+          Ranges : [
+            {
+              Name : "Root",
+              Attributes : "$80000008,$80000005;False:False.",
+              Sets : [
+                {
+                  Name : "Numbers",
+                  Attributes : "$00B8AC2A,$80000005;False:True."
+                }
+              ],
+              KeyLists : [
+                {
+                  Name : "Keywords",
+                  Attributes : "$006D8ECF,$80000005;False:True."
+                },
+                {
+                  Name : "Contextual keywords",
+                  Attributes : "$006D8ECF,$80000005;False:True."
+                },
+                {
+                  Name : "Modifier keywords",
+                  Attributes : "$006D8ECF,$80000005;False:True."
+                },
+                {
+                  Name : "Special Identifiers",
+                  Attributes : "$1FFFFFFF,$80000005;False:True.B"
+                },
+                {
+                  Name : "Basic data types",
+                  Attributes : "$1FFFFFFF,$80000005;False:True."
+                }
+              ],
+              Ranges : [
+                {
+                  Name : "@Annotation",
+                  Attributes : "$0060AEB3,$80000005;False:True."
+                },
+                {
+                  Name : "Strings '..'",
+                  Attributes : "$0073AB6A,$80000005;False:True."
+                },
+                {
+                  Name : "Strings \"..\"",
+                  Attributes : "$0073AB6A,$80000005;False:True.",
+                  KeyLists : [
+                    {
+                      Name : "Escape",
+                      Attributes : "$006D8ECF,$80000005;True:True."
+                    }
+                  ]
+                },
+                {
+                  Name : "Remarks //",
+                  Attributes : "$00857E7A,$80000005;False:True."
+                },
+                {
+                  Name : "Remarks /*..*/",
+                  Attributes : "$00857E7A,$80000005;False:True."
+                },
+                {
+                  Name : "Remarks /**..*/",
+                  Attributes : "$006B825F,$80000005;False:True.I"
                 }
               ]
             }
@@ -2807,6 +2909,51 @@
                 {
                   Name : "Variables",
                   Attributes : "$00008000,$80000005;False:True."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          Name : "QML",
+          Ranges : [
+            {
+              Name : "Root",
+              Attributes : "$80000008,$80000005;False:False.",
+              KeyLists : [
+                {
+                  Name : "Keywords",
+                  Attributes : "$003278CC,$80000005;False:True."
+                },
+                {
+                  Name : "Basic types",
+                  Attributes : "$003278CC,$80000005;False:True."
+                },
+                {
+                  Name : "QtQuick Object Types",
+                  Attributes : "$006DC6FF,$80000005;False:True."
+                },
+                {
+                  Name : "Aurora & Sailfish Silica Types",
+                  Attributes : "$006DC6FF,$80000005;False:True."
+                }
+              ],
+              Ranges : [
+                {
+                  Name : "Strings '..'",
+                  Attributes : "$0059876A,$80000005;False:True."
+                },
+                {
+                  Name : "Strings \"..\"",
+                  Attributes : "$0059876A,$80000005;False:True."
+                },
+                {
+                  Name : "Remarks //",
+                  Attributes : "$00808080,$80000005;False:True."
+                },
+                {
+                  Name : "Remarks /*..*/",
+                  Attributes : "$00808080,$80000005;False:True."
                 }
               ]
             }
