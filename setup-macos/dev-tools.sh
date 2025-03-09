@@ -4,10 +4,13 @@
 
 echo "=============================== DEV TOOLS ==============================="
 
-echo "**** AWS CLI ****"
+echo "**** AWS tools ****"
 brew install awscli
 aws --version
 ln -nsf ~/Dropbox/dev/config/.aws ~/.aws
+ln -nsf ~/Dropbox/dev/config/.aws ~/.config/aws
+brew install aws-cdk
+cdk --version
 
 echo "**** SSH ****"
 ln -nsf ~/Dropbox/dev/config/.ssh ~/.ssh

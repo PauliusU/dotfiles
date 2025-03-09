@@ -43,6 +43,7 @@ TITLE IDEs and text editors
 ECHO **** JetBrains ****
 MKLINK /J "%APPDATA%\JetBrains" "%USER_BAK%\AppData\Roaming\JetBrains"
 MKLINK /J "%LOCALAPPDATA%\JetBrains" "%USER_BAK%\AppData\Local\JetBrains"
+MKLINK /J "%LOCALAPPDATA%\Programs" "%USER_BAK%\AppData\Local\Programs"
 :: TODO: test if installed IDEs integrate with OS properly
 :: winget install JetBrains.Toolbox
 powershell scoop install jetbrains-toolbox
@@ -97,10 +98,14 @@ powershell scoop install mongosh
 
 TITLE Other programming tools
 
-ECHO **** AWS CLI ****
+ECHO **** AWS tools ****
+:: AWS CLI
 MKLINK /J "%USERPROFILE%\.aws\" "d:\Dropbox\dev\config\.aws"
 powershell scoop install aws
 aws --version
+:: AWS CDK
+npm install -g aws-cdk
+cdk --version
 
 ECHO **** Git tools ****
 powershell scoop install lazygit
@@ -115,6 +120,17 @@ gh --version
 
 ECHO **** Postman ****
 powershell scoop install postman
+
+ECHO **** Rust ****
+powershell scoop install rustup
+rustup update stable
+winget install Microsoft.VisualStudio.2022.BuildTools
+rustc --version
+cargo --version
+
+ECHO **** Go ****
+powershell scoop install go
+go version
 
 TITLE Virtualization
 
@@ -134,13 +150,3 @@ wsl.exe --install
 wsl --update
 :: See WSL and kernel version
 wsl --status
-
-ECHO **** Rust ****
-powershell scoop install rustup
-winget install Microsoft.VisualStudio.2022.BuildTools
-rustc --version
-cargo --version
-
-ECHO **** Go ****
-powershell scoop install go
-go version

@@ -35,24 +35,25 @@ brew install dust # du alternative
 brew install ncdu # ncurses du
 
 echo "**** File management ****"
-# sudo apt install -y mc            # Midnight Commander
 brew install midnight-commander
-brew install yazi ffmpegthumbnailer unar jq poppler fd ripgrep fzf zoxide
-brew tap homebrew/cask-fonts && brew install --cask font-symbols-only-nerd-font
+brew install yazi ffmpegthumbnailer sevenzip jq poppler fd ripgrep fzf zoxide imagemagick font-symbols-only-nerd-font
+# brew tap homebrew/cask-fonts && brew install --cask font-symbols-only-nerd-font
 brew install xdg-ninja # checks your $HOME for unwanted files and directories
 
 echo "**** File search ****"
 brew install fzf # Fuzzy finder
-sudo apt install fzf -y
 
 echo "**** Media ****"
 brew install yt-dlp
 brew install ffmpeg
+brew install media-info
 
-echo "**** Network ****"
-# sudo apt install -y bwm-ng        # bandwidth meter
+echo "**** Network monitoring and testing ****"
 brew install bwm-ng
 brew install bmon
+brew tap teamookla/speedtest
+brew update
+brew install speedtest --force
 
 if [ "$(uname)" = "Darwin" ]; then
     echo "**** Anki ****"
@@ -62,6 +63,15 @@ if [ "$(uname)" = "Darwin" ]; then
     # # Cask was deprecated in 2023-11
     # # brew tap homebrew/cask-drivers
     # brew install --cask displaylink
+
+    echo "**** Battery ****"
+    # Battery charge limiter for Apple Silicon Macbook devices
+    brew install --cask battery
+    # Enable charging when your battery dips under 80, and disable it when it exceeds 80
+    battery maintain 80
+    battery status
+    # Battery info GUI
+    brew install --cask coconutbattery
 
     echo "**** Dropbox sync ****"
     brew install --cask dropbox # official client (takes up device spot)
@@ -77,7 +87,6 @@ if [ "$(uname)" = "Darwin" ]; then
     # ln -nsf "$(pwd)/marta" "$HOME/Library/Application Support/org.yanex.marta"
     # # Marta terminal integration
     # ln -s /Applications/Marta.app/Contents/Resources/launcher /usr/local/bin/marta
-    # sudo apt install -y doublecmd-gtk # GUI file manager
     brew install --cask double-commander
     ln -nsf "$DOTFILES/Library/Preferences/doublecmd" "$HOME/Library/Preferences/doublecmd"
 
@@ -125,14 +134,13 @@ if [ "$(uname)" = "Darwin" ]; then
     brew install --cask ferdium
 
     echo "**** MPV (using cask for easier file associations) ****"
-    # sudo apt install -y mpv
     # brew install mpv
     brew install --cask stolendata-mpv
     mpv --version
     ln -nsf "$DOTFILES/mpv" "$HOME/.config/mpv"
 
-    # echo "**** OBS Studio ****"
-    # brew install --cask obs
+    echo "**** OBS Studio ****"
+    brew install --cask obs
 
     echo "**** PDFs ****"
     # brew install --cask adobe-acrobat-reader
@@ -144,6 +152,9 @@ if [ "$(uname)" = "Darwin" ]; then
     brew install tlrc
     tldr --version # Note: install is 'tlrc' but command is 'tldr'
 
+    echo "**** System statistics in menu bar ****"
+    brew install stats
+
     # echo "**** Toggl (a.k.a ToggleDesktop) ****"
     # brew install --cask toggl-track
 
@@ -152,4 +163,22 @@ if [ "$(uname)" = "Darwin" ]; then
     # # brew install --cask rectangle
     # brew install --cask amethyst
 
+fi
+
+if [ "$(uname)" = "Linux" ]; then
+    sudo apt install -y bat           # Better cat
+    sudo apt install -y btop          # Better top or htop
+    sudo apt install -y bwm-ng        # Bandwidth meter
+    sudo apt install -y du-dust       # Better du
+    sudo apt install -y fish          # Fish shell
+    sudo apt install -y fzf           # Fuzzy finder
+    sudo apt install -y fd-find       # Better find
+    sudo apt install -y git           # Version control
+    sudo apt install -y mc            # Midnight Commander
+    sudo apt install -y ripgrep       # Better grep
+    sudo apt install -y tmux          # Terminal multiplexer
+    sudo apt install -y zoxide        # Better cd
+
+    sudo apt install -y doublecmd-gtk # Double Commander - GUI file manager
+    sudo apt install -y mpv
 fi
