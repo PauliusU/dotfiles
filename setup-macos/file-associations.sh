@@ -14,9 +14,12 @@ duti -s com.microsoft.VSCode .sh all
 # AUDIO io.mpv
 duti -s io.mpv .aac all
 duti -s io.mpv .m4a all
+duti -s io.mpv .ogg all
 duti -s io.mpv .opus all
 
 # VIDEO io.mpv
+duti -s io.mpv .avi all
+duti -s io.mpv .mkv all
 duti -s io.mpv .mov all
 duti -s io.mpv .mp4 all
 

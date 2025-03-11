@@ -25,17 +25,16 @@ ssh -T git@github.com
 ssh -T git@gitlab.mellifera.team
 
 echo "**** GIT ****"
-# sudo apt install -y git
 brew install git
 mkdir -p "$HOME/.config/git"
-ln -sf "$DOTFILES/.gitignore_global" "$HOME/.config/git/ignore"
+touch "$HOME/.config/git/config"
+ln -sf "$DOTFILES/.config/git/.gitignore_global" "$HOME/.config/git/ignore"
 git config --global user.name "PauliusU"
 git config --global user.email "48020370+PauliusU@users.noreply.github.com"
 git config --global core.autocrlf input # Line endings for OS compatability. macOS and Linux 'input', Windows 'true'
 git config --global core.editor "nvim"
 # ln -sf "$(pwd)/.gitignore_global" "$HOME/.gitignore_global"
 # git config --global core.excludesfile ~/.gitignore_global
-git config --global core.editor "nvim"
 # Git global aliases
 # ref: https://dev.to/michaelcurrin/dotfiles-git-config-348o
 # More useful branch list -a all branches, -v verbose
@@ -44,8 +43,8 @@ git config --global alias.br "branch -a -v"
 git config --global alias.st "status -s -b"
 # View tags sorted by version number oldest first (use -r for newest first)
 git config --global alias.tags "! git tag | sort -V"
-# Show git info
-# git config --global --list --show-origin # Show git global file and it's contents
+# Show git global file and it's contents
+git config --global --list --show-origin
 git --version
 
 echo "**** Git tools ****"
@@ -74,30 +73,34 @@ brew install fd
 git clone https://github.com/LazyVim/starter ~/.config/nvim-lazyman
 git clone https://github.com/NvChad/NvChad ~/.config/nvim-nvchad --depth 1
 
-# sudo add-apt-repository ppa:neovim-ppa/stable
-sudo add-apt-repository ppa:neovim-ppa/unstable
-sudo apt update
-sudo apt install -y neovim
-sudo apt install -y ripgrep
-sudo apt install -y fd-find # Note it's "fd-find" not "fd"
-# tsserver requires npm
+if [ "$(uname)" = "Linux" ]; then
+    # sudo add-apt-repository ppa:neovim-ppa/stable
+    sudo add-apt-repository ppa:neovim-ppa/unstable
+    sudo apt update
+    sudo apt install -y neovim
+    sudo apt install -y ripgrep
+    sudo apt install -y fd-find # Note it's "fd-find" not "fd"
+fi
 
 echo "**** Python [Python 3] and artificial intelligence ****"
 
-# sudo apt install -y python3
 brew install python                   # Defaults to python3
-# sudo apt install -y python-is-python3 # For Debian and Ubuntu
 # Set python symlinks (requires sudo)
-ln -sf -- $BREW_HOME/bin/python3 /usr/local/bin/py
-ln -sf -- $BREW_HOME/bin/python3 /usr/local/bin/python
+ln -sf -- "$BREW_HOME/bin/python3" /usr/local/bin/py
+ln -sf -- "$BREW_HOME/bin/python3" /usr/local/bin/python
+
+if [ "$(uname)" = "Linux" ]; then
+    sudo apt install -y python3
+    sudo apt install -y python-is-python3 # For Debian and Ubuntu
+    sudo apt install -y python3-pip
+fi
 
 python3 --version
 python --version
 
 # Pip
-# sudo apt install -y python3-pip
 python3 -m pip install --upgrade pip
-ln -sf -- $BREW_HOME/bin/pip3 /usr/local/bin/pip
+ln -sf -- "$BREW_HOME/bin/pip3" /usr/local/bin/pip
 pip3 --version
 pip --version
 
@@ -171,12 +174,14 @@ brew install redis
 redis-cli -v
 
 echo "**** JavaScript, TypeScript, Node.js, NPM, yarn, Volta ****"
+mkdir -p "$HOME/.config/npm"
 brew install volta
+
 # curl https://get.volta.sh | bash
 volta -v
 
-volta install node@20
-# volta pin node@20
+volta install node@22
+# volta pin node@22
 # volta uninstall node is not supported. Remove node version from ~/.volta/tools/image/node/ instead
 volta list node
 volta which node
@@ -187,14 +192,17 @@ pnpm -v
 pnpm store path
 volta install bun
 bun --version
-volta install npm # update oudated npm version installed with Node
+# Update outdated npm version installed with Node
+volta install npm
 npm -v
-ln -sf ~/Dropbox/dev/config/.npmrc ~/.npmrc
+ln -sf ~/Dropbox/dev/config/.npmrc ~/.config/npm/npmrc
 npm i -g typescript
-npm i -g ts-node
-npm i -g npm-check-updates # Update depenceny versions in package.json from terminal
 tsc -v
+npm i -g ts-node
 ts-node -v
+npm i -g tsx
+# Package to update dependency versions in package.json from terminal
+npm i -g npm-check-updates
 ncu -v
 volta list
 
@@ -212,12 +220,12 @@ rustc --version
 cargo --version
 cargo install cargo-watch
 
-if [[ $(uname) -eq "Darwin" ]]; then
+if [ "$(uname)" = "Darwin" ]; then
     echo "**** Docker ****"
-    brew install --cask docker # Docker desktop
-    docker -v                  # = docker --version
-    docker version             # More info than docker -v
-    docker compose version     # = docker-compose --version
+    # Docker desktop
+    brew install --cask docker
+    docker version
+    docker compose version
 
     echo "**** Act - run GitHub Actions locally ****"
     brew install act

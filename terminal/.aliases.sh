@@ -1,13 +1,12 @@
-echo ".aliases.sh"
+echo ".aliases.sh ◘"
 
 # Navigation and file listing
 alias -- -='cd -' # Toggle between last two directories with single dash '-'
 alias cde="cd ~/code/"
 alias cl="cd $CLOUD_STORAGE"
-alias desk="cd ~/Desktop/"
 alias dev="cd ~/dev/"
 alias dl="cd ~/Downloads/"
-alias docs="cd ~/Documents/"
+alias doc="cd ~/Documents/"
 alias dot="cd $DOTFILES"
 alias drb="cd ~/Dropbox/"
 alias ds="cd ~/Dropbox/DropsyncFiles"
@@ -85,6 +84,7 @@ alias nb="npm run build"
 alias nd="npm run dev"
 alias ndd="tsc -w -p tsconfig.build.json"
 alias ni="npm install"
+alias nii="npm install && rm -f package-lock.json"
 alias nl="npm run lint"
 alias ns="npm run start"
 alias nt="npm run test"
@@ -95,12 +95,12 @@ alias yyd="yarn dev"
 alias yyg="yarn global list"
 alias yyl="yarn lint"
 alias yys="yarn start"
-alias yyt="yarn test"
+alias yat="yarn test"
 alias yytt="yarn test:integration"
 alias yyu="yarn lint && yarn test"
 alias yyy="yarn install --check-files"
-alias pi="pnpm install && rm -f pnpm-lock.yaml"
-alias pii="pnpm install"
+alias pi="pnpm install"
+alias pii="pnpm install && rm -f pnpm-lock.yaml"
 alias bii="bun install --no-save"
 alias bt="bun test"
 # Python, pip and jupyter
@@ -124,10 +124,11 @@ alias pess='[ -z \"$PIPENV_ACTIVE\" ] && echo \"false\"' # Check if pipenv envir
 alias peu="pipenv update"                                # Update all or specified dependencies
 alias peun="pipenv uninstall"                            # Uninstall dependency
 alias pew="pipenv --venv"                                # Check location of the environment
-# Rust
+# Rust and cargo
 alias ca="cargo add"
 alias cb="cargo build"
 alias cbb="cargo build --release"
+alias cdo="cargo doc --open"              # Build package’s documentation and open in browser
 alias cr="cargo run"
 alias ct="cargo test"
 alias cw="cargo watch -x run"             # Watch for changes and run. Requires cargo install cargo-watch
@@ -143,7 +144,7 @@ alias dnls='docker network ls'                                                  
 alias dps='docker ps --format="$DOCKER_FORMAT"'                                                           # See running containers = docker container ls
 alias dpss='docker ps -a --format="$DOCKER_FORMAT"'                                                       # See all containers (not only those that run) = docker container ls -a
 alias drn='docker run -w /src -v $PWD:/src --rm node:18'                                                  # Run Node commands without installing it. "-w /src" - creates folder inside a container.
-alias dru='docker start -i ubun || docker run -it --name ubun -v ubuntu_data:/home pu/ubuntu fish'        # Run custom Ubuntu container (create it if needed)
+alias dru='docker start -i ubun || docker run -it --name ubun -h ubuntu -v ubuntu-vol:/home pu/ubuntu fish'        # Run custom Ubuntu container (create it if needed)
 alias dst='open -a Docker'                                                                                # Docker [st]art daemon
 alias dstop='docker stop $(docker ps -a -q)'                                                              # Docker stope all containers
 alias dvls='docker volume ls'                                                                             # List docker volumes
@@ -165,6 +166,7 @@ alias l="ls -A"                                  # List entries starting with .,
 alias ls="lsd --group-dirs first"                # Use ls deluxe (lsd) instead of ls
 alias ll="ls -Al"                                # All files and folders in table format
 alias p="pwd"                                    # Print working directory
+alias pf="echo $PATH | tr ':' '\n' | fzf"        # Fuzzy find directories in PATH
 alias pe='printenv'                              # Print environment variables
 alias reload="source ~/.zshrc"                   # ZSH settings reload
 alias rr='clear && exec ${SHELL} -l'             # Reload the shell
@@ -192,6 +194,7 @@ alias startup="gnome-session-properties"                  # Startup applications
 
 # Program access
 alias bw="bwm-ng -d"                                                                           # Network speed with dynamic units like K, M or G
+alias bww="bmon -p en8,en0"                                                                    # Network speed with specific interfaces
 alias cdd="code ."                                                                             # Open current folder in VS Code
 alias chx="chmod +x"                                                                           # Make file executable
 alias deb="sudo dpkg -i"                                                                       # Install deb package (for Ubuntu, Debian, Raspbian)
@@ -199,7 +202,7 @@ alias ff="fd -IH"                                                               
 alias fdd="fd -IH --type d"                                                                    # Search directories
 alias hf='cat $HISTFILE | fzf'                                                                 # Fuzzy find in command history
 alias m='mpv'                                                                                  # MPV media player
-alias mpp=mpv_detached                                                                         # Run MPV in detached mode
+alias mm=mpv_detached                                                                          # Run MPV in detached mode
 alias md='mkdir'                                                                               # Make directory
 alias n='nvim'                                                                                 # Neovim
 alias nv='if [ -f "./src/index.ts" ]; then nvim "./src/index.ts"; else nvim; fi'               # Neovim (open index.ts if exists)
@@ -219,6 +222,7 @@ alias tg="tmux switch -t dotfiles || tmux new -s dotfiles -c $DOTFILES -d && tmu
 alias v='$BREW_HOME/bin/vim'                                                                   # Shorthand for vim
 alias vi='$BREW_HOME/bin/vim'                                                                  # Shorthand for vim
 alias vim="nvim"                                                                               # Replace vim with neovim
+alias vv="code ."                                                                              # Open current folder in VS Code
 alias y="yazi"                                                                                 # Yazi file manager
 alias yta="yt-dlp -x --audio-format aac --restrict-filenames --add-metadata --embed-thumbnail" # YouTube audio
 
