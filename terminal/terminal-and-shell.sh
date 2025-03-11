@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Check default shell
-which $SHELL
+which "$SHELL"
 
 echo "=============================== TERMINAL ================================"
 
@@ -67,9 +67,12 @@ antigen selfupdate # Update antigen itself
 antigen list # List currently running bundles
 antigen version
 
+mkdir -p "$HOME/.config/zsh/"
+mkdir -p "$XDG_STATE_HOME"/zsh/
 ln -sf "$(pwd)/terminal/.aliases.sh" ~/.aliases.sh
 ln -sf "$(pwd)/terminal/.shellrc.sh" ~/.shellrc.sh
 echo "source ~/.shellrc.sh" >>~/.zshrc
+echo "source ~/.shellrc.sh" >>~/.config/zsh/.zshrc
 echo "source ~/.shellrc.sh" >>~/.bashrc
 
 source ~/.zshrc
