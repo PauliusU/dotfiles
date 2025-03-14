@@ -1,24 +1,42 @@
 # Script for setting up environment variables and PATH
-echo ".env.sh"
+echo ".env.sh ◘"
 
 # Default programs and settings
 export EDITOR="nvim"
 export VISUAL="code -w"
 export LANG="en_US.UTF-8"
+export TIME_STYLE='+%F %T' # ISO 8601 date format for ls and lsd
+
 # Common paths
 export DOTFILES="$HOME/Dropbox/code/dotfiles"
 export SCRIPTS_PATH="$HOME/Dropbox/code/dotfiles/scripts"
+
 # XDG paths
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_STATE_HOME="$HOME/.local/state"
-# Home directory cleanup
-# go env -w GOPATH=$HOME/.cache/go
-export CARGO_HOME="$XDG_DATA_HOME"/cargo
-export GOPATH="$XDG_DATA_HOME"/go
-export NVM_DIR="$XDG_DATA_HOME"/nvm
-export RUSTUP_HOME="$XDG_DATA_HOME"/rustup
+
+# Home directory cleanup using XDG paths
+export AWS_SHARED_CREDENTIALS_FILE="$XDG_CONFIG_HOME/aws/credentials"
+export AWS_CONFIG_FILE="$XDG_CONFIG_HOME/aws/config"
+export ADOTDIR="$XDG_DATA_HOME/antigen"
+export CARGO_HOME="$XDG_DATA_HOME/cargo"
+export DOCKER_CONFIG="$XDG_CONFIG_HOME/docker"
+export HISTFILE="$XDG_STATE_HOME/zsh/history"
+export LESSHISTFILE="$XDG_STATE_HOME/less/history"
+export GOPATH="$XDG_DATA_HOME/go"
+export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
+export NODE_REPL_HISTORY="$XDG_DATA_HOME/node_repl_history"
+export NVM_DIR="$XDG_DATA_HOME/nvm"
+export PYTHONSTARTUP="$HOME/python/pythonrc"
+export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
+export SONARLINT_USER_HOME="$XDG_DATA_HOME/sonarlint"
+export TERMINFO="$XDG_DATA_HOME/terminfo" # ncurses terminfo database
+export TERMINFO_DIRS="$XDG_DATA_HOME/terminfo:/usr/share/terminfo" # ncurses terminfo database
+export TS_NODE_HISTORY="$XDG_STATE_HOME/ts_node_repl_history"
+export VOLTA_HOME="$XDG_DATA_HOME/volta"
+export ZDOTDIR="$HOME/.config/zsh"
 # source "$HOME/.cargo/env" # add Rust to system PATH
 
 if [ "$(uname)" = "Darwin" ]; then
@@ -35,13 +53,10 @@ if [ "$(uname)" = "Darwin" ]; then
     }
 
     export CONDA_HOME="$HOME/bin/homebrew/anaconda3"
-    export PYTHON_312_HOME="$HOME/Library/Python/3.12"
-    export VOLTA_HOME="$HOME/.config/volta"
 
     # Order matters, first entry in PATH will take priority over later ones
     prepend_path "$CONDA_HOME/bin"      # Conda lowest in precedence for Python
     prepend_path "$HOME/.local/bin"     # Python packages store some bins here
-    prepend_path "$PYTHON_312_HOME/bin" # User packages are installed here
     prepend_path "$VOLTA_HOME/bin"      # Use Volta Node instead of global Node by default
 
     # Clean-up

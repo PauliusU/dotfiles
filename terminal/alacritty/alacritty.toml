@@ -4,7 +4,7 @@
 live_config_reload = true
 
 [font]
-size = 18.0
+size = 14.0
 
 [font.normal]
 family = "FiraCode Nerd Font Mono"
@@ -20,8 +20,6 @@ save_to_clipboard = true
 [window]
 decorations = "buttonless"
 dynamic_padding = false
-# opacity = 0.85 # Default: 1.0
-# blur = true
 option_as_alt = "OnlyLeft"
 startup_mode = "Maximized"
 
