@@ -4,7 +4,6 @@ session_path=$(find \
     ~ \
     ~/.config \
     ~/Dropbox/code \
-    ~/Dropbox/code/languages \
     ~/Dropbox/dev \
     ~/Dropbox/DropsyncFiles \
     ~/Dropbox/projects \
