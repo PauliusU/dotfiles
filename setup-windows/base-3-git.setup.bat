@@ -9,7 +9,13 @@ git config --global user.email "48020370+PauliusU@users.noreply.github.com"
 :: Line endings for OS compatability. macOS and Linux 'input', Windows 'true'
 git config --global core.autocrlf true 
 git config --global core.editor "nvim"
-git config --global core.excludesfile "%DOTFILES%\.gitignore_global"
+git config --global core.excludesfile "%DOTFILES%\.config\git\.gitignore_global"
+git config --global --add safe.directory "%SCOOP%/apps/scoop/current"
+git config --global --add safe.directory "%SCOOP%/buckets/extras"
+git config --global --add safe.directory "%SCOOP%/buckets/main"
+git config --global --add safe.directory "%SCOOP%/buckets/nerd-fonts"
+git config --global --add safe.directory "%SCOOP%/buckets/nonportable"
+git config --global --add safe.directory "%SCOOP%/buckets/versions"
 
 :: Git global aliases
 :: ref: https://dev.to/michaelcurrin/dotfiles-git-config-348o
