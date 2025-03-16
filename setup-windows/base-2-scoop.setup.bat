@@ -5,7 +5,8 @@ ECHO **** scoop ****
 :: Change powershell execution policy to allow running a remote script
 powershell Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
 
-:: Install scoop
+:: Install scoop - installation does not run under admin console by default:
+:: https://github.com/ScoopInstaller/Install?tab=readme-ov-file#for-admin
 powershell "irm get.scoop.sh | iex"
 
 :: Update scoop itself and all scoop programs [REQUIRES: git]

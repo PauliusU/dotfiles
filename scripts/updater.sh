@@ -14,7 +14,10 @@ if [ "$(uname)" = "Darwin" ]; then
     echo "**** 🍎 macOS updates ****"
 
     brew update
-    brew upgrade && brew upgrade --cask
+    # Upgrade outdated packages (called "formulae" in Homebrew terminology) 
+    brew upgrade
+    # Upgrade all installed casks, even those that are marked as "auto_updates: false" or "version :latest"
+    brew upgrade --cask --greedy
     # Remove stale lock files and outdated downloads older than 120 days old
     brew cleanup
     # brew cleanup --prune=all --dry-run
