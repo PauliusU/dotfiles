@@ -15,10 +15,11 @@ defaults read NSGlobalDomain AppleMeasurementUnits
 defaults write NSGlobalDomain AppleMetricUnits -bool true
 defaults read NSGlobalDomain AppleMetricUnits
 
-# Accessibility => Display => Reduce motion
-echo "**** Reduce aninmations ****"
+echo "**** Reduce animations ****"
+# Accessibility => Display => Reduce motion => on
 defaults write com.apple.universalaccess reduceMotion -bool true
 defaults read com.apple.universalaccess reduceMotion
+defaults write com.apple.dock autohide-time-modifier -float 0.15; killall Dock
 
 # Desktop & Dock => Dock
 echo "**** Enable Dock autohide ****"
@@ -107,7 +108,7 @@ echo "**** Scroll direction - Disable “natural” (Lion-style) scrolling ****"
 defaults write -g com.apple.swipescrolldirection -bool FALSE
 defaults read -g com.apple.swipescrolldirection
 
-# Sandbox (test before including in the main configuration)
+echo "🏖️🛝 Sandbox (test before including in the main configuration)"
 echo "**** Dark mode: System Preferences -> General -> Appearance -> Dark ****"
 osascript -e 'tell application "System Events" to tell appearance preferences to set dark mode to true'
 # defaults write NSGlobalDomain AppleInterfaceStyle Dark  # Use dark menu bar and dock.

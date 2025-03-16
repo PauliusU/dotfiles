@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# Toubleshoot system problems by reseting settings and cleaning up the software
+# Troubleshoot system problems by resetting settings and cleaning up the software
 
 # Reset xcode developer path
 sudo xcode-select --reset
