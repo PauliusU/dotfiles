@@ -7,7 +7,7 @@ mkdir -p ~/bin
 mkdir -p ~/repos
 mkdir -p ~/scripts
 
-# Symlinks for common files and folders. -f forces linking if file aready exists
+# Symlinks for common files and folders. -f forces linking if file already exists
 ln -nsf ~/Dropbox/code ~/code
 ln -nsf ~/Dropbox/dev ~/dev
 ln -nsf ~/Dropbox/projects ~/projects
