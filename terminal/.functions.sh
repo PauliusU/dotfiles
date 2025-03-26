@@ -1,9 +1,10 @@
-echo ".functions.sh"
+echo ".functions.sh ◘"
 
 function yt() {
     #  Download youtube playlist or channel
 
     # Format for h264 and h265 codec:   -f "bestvideo[vcodec~='^((he|a)vc|h26[45])'][ext=mp4][height>=720][height<=1080][fps>=23]+bestaudio[ext=m4a]" \
+    # --restrict-filenames              Restrict filenames to only ASCII characters, and avoid "&" and spaces in filenames
     # --add-metadata                    Alias for --embed-metadata but supports youtube-dl as well
     # --embed-thumbnail                 yt-dlp: Embed thumbnail in the video as cover art || youtube-dl: Embed thumbnail in the audio as cover art
     # -i                                alias for --ignore-errors
@@ -17,14 +18,23 @@ function yt() {
         "$@"
 }
 
+function yyt() {
+    # Download with archive
+    yt --download-archive "downloads.log" "$@"
+}
+
 function yt-fk() {
     # Download videos in 4K resolution
-    yt -f "bestvideo[ext=mp4][height<=2160][fps>=23]+bestaudio[ext=m4a]" "$@"
+    yt -f "bestvideo[ext=mp4][height<=2160]+bestaudio[ext=m4a]" "$@"
+}
+
+function ytt() {
+    # Download videos in max resolution
+    yt -f "bestvideo[ext=mp4]+bestaudio[ext=m4a]" "$@"
 }
 
 function yt-beginning() {
     #  Download youtube playlist or channel from the beginning
-    # --restrict-filenames              Restrict filenames to only ASCII characters, and avoid "&" and spaces in filenames
     yt --playlist-reverse "$@"
 }
 
@@ -46,6 +56,19 @@ function batch_convert() {
     done
 }
 
+function convert_to_av1() {
+    # Convert video to av1 format
+
+    if [ -z "$1" ]; then
+        echo 'Input file is missing. E.g. "video.webm"'
+        # Non-zero decimal number in the 1 - 255 range for failure
+        return 1
+    fi
+
+    # -c:a copy         stream copy audio instead of re-encoding
+    ffmpeg -hide_banner -i "$1" -c:a copy -c:v libaom-av1 -crf 30 -cpu-used 8 "${1%.*}".av1-30.mkv
+}
+
 function convert_to_hevc() {
     # Convert video to High Efficiency Video Coding (HEVC) / H.265
 
@@ -56,8 +79,10 @@ function convert_to_hevc() {
     fi
 
     # -preset medium    (default)
-    # -c:a copy			stream copy audio instead of re-encoding
-    ffmpeg -i "$1" -c:v libx265 -preset ultrafast -vtag hvc1 -c:a copy "${1%.*}".hevc.mp4
+    # -c:a copy         stream copy audio instead of re-encoding
+    # -crf 28           (default)
+    # -tag:v hvc1       Make file compatible with Apple "industry standard" H.265. Gives Final Cut and Apple stuff compatibility
+    ffmpeg -hide_banner -i "$1" -c:a copy -c:v libx265 -preset ultrafast -crf 20 -vtag hvc1 "${1%.*}".hevc-ultrafast-20.mp4
 }
 
 function convert_to_avc() {
@@ -71,7 +96,7 @@ function convert_to_avc() {
 
     # -c:a copy			stream copy audio instead of re-encoding
     # -preset medium    (default)
-    ffmpeg -i "$1" -c:v libx264 -c:a copy "${1%.*}".avc.mp4
+    ffmpeg -hide_banner -i "$1" -c:v libx264 -c:a copy "${1%.*}".avc.mp4
 }
 
 function convert_to_mp3s() {
@@ -209,26 +234,25 @@ function path-switcher() {
 }
 
 function open_in_file_explorer() {
-    # Open current directory in system specific file explorer
+    # Open current directory in system specific file explorer or open file
 
-    if [[ "$(uname)" == "Darwin" ]]; then open . && return; fi
-    if [[ $(uname) == "Linux" ]]; then xdg-open . && return; fi
-    explorer .
+    local path_or_file_to_open
+    if [ -z "$1" ]; then
+        path_or_file_to_open=.
+    else
+        path_or_file_to_open="$1"
+    fi
+
+    if [[ "$(uname)" == "Darwin" ]]; then open "$path_or_file_to_open" && return; fi
+    if [[ $(uname) == "Linux" ]]; then xdg-open "$path_or_file_to_open" && return; fi
+    start "$path_or_file_to_open"
 }
 
 function pwdc() {
     # Copy current working directory to clipboard
 
-    if [ "$(uname)" = "Darwin" ]; then
-        # When using MacOS (e.g. working from zsh)
-        pwd | pbcopy
-    fi
-
-    if [ "$(uname)" = "Linux" ]; then
-        # When using Linux
-        pwd | xclip
-    fi
-
+    if [ "$(uname)" = "Darwin" ]; then pwd | pbcopy && return; fi
+    if [ "$(uname)" = "Linux" ]; then pwd | xclip && return; fi
     # When using Bash for Windows
     pwd | clip
 }

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<doublecmd DCVersion="1.1.16 gamma" ConfigVersion="15">
+<doublecmd DCVersion="1.1.23 gamma" ConfigVersion="15">
   <Toolbars>
     <MainToolbar>
       <Row>
@@ -211,11 +211,11 @@
     <AutoSizeColumn>1</AutoSizeColumn>
     <CustomColumnsChangeAllColumns>False</CustomColumnsChangeAllColumns>
     <BriefViewFileExtAligned>False</BriefViewFileExtAligned>
-    <DateTimeFormat>dd/mm/yy hh:nn:ss</DateTimeFormat>
+    <DateTimeFormat>yyyy/mm/dd hh:mm:ss</DateTimeFormat>
     <ColumnsTitleLikeValues>False</ColumnsTitleLikeValues>
     <CutTextToColumnWidth>True</CutTextToColumnWidth>
     <ExtendCellWidth>False</ExtendCellWidth>
-    <ShowSystemFiles>False</ShowSystemFiles>
+    <ShowSystemFiles>True</ShowSystemFiles>
     <ListFilesInThread>True</ListFilesInThread>
     <LoadIconsSeparately>True</LoadIconsSeparately>
     <DelayLoadingTabs>True</DelayLoadingTabs>
@@ -379,7 +379,7 @@
   <FilesViews>
     <Sorting>
       <CaseSensitivity>0</CaseSensitivity>
-      <NaturalSorting>False</NaturalSorting>
+      <NaturalSorting>True</NaturalSorting>
       <SpecialSorting>False</SpecialSorting>
       <SortFolderMode>1</SortFolderMode>
       <NewFilesPosition>2</NewFilesPosition>
@@ -473,6 +473,7 @@
       <MulRenFilenameWithFullPathInLog>False</MulRenFilenameWithFullPathInLog>
       <MulRenPathRangeSeparator>- </MulRenPathRangeSeparator>
     </MultiRename>
+    <DefaultDropEffect>True</DefaultDropEffect>
   </FileOperations>
   <Tabs>
     <Options>49937</Options>
@@ -489,7 +490,7 @@
   </Configuration>
   <History>
     <SearchReplaceHistory Save="True"/>
-    <DirHistory Save="True"/>
+    <DirHistory Save="True" Count="30"/>
     <CmdLineHistory Save="True"/>
     <FileMaskHistory Save="True"/>
     <VolumeSizeHistory Save="True"/>
@@ -558,10 +559,21 @@
     </ShowInMenus>
     <ShowButtonGlyphs>0</ShowButtonGlyphs>
   </Icons>
-  <IgnoreList Enabled="False">
+  <IgnoreList Enabled="True">
     <IgnoreListFile>%DC_CONFIG_PATH%/ignorelist.txt</IgnoreListFile>
   </IgnoreList>
-  <DirectoryHotList/>
+  <DirectoryHotList>
+    <HotDir Name="-" Path=""/>
+    <HotDir Name="&amp;CloudStorage " Path="~/Library/CloudStorage"/>
+    <HotDir Name="&amp;Dropbox" Path="~/Dropbox"/>
+    <HotDir Name="Downloads - &amp;j" Path="~/Downloads"/>
+    <HotDir Name="&amp;i - DropsyncFiles" Path="$HOME/Dropbox/DropsyncFiles"/>
+    <HotDir Name="&amp;l - shared_IL" Path="~/Dropbox/linked/shared_IL"/>
+    <HotDir Name="&amp;media" Path="~/Dropbox/DropsyncFiles/media"/>
+    <HotDir Name="d&amp;otfiles" Path="~/Dropbox/code/dotfiles"/>
+    <HotDir Name="&amp;user home" Path="$HOME"/>
+    <HotDir Name="de&amp;v" Path="$HOME/dev"/>
+  </DirectoryHotList>
   <Viewer>
     <PreviewVisible>False</PreviewVisible>
     <ImageStretch>False</ImageStretch>
@@ -621,6 +633,7 @@
     <FilterSingles>True</FilterSingles>
     <FileMask Save="True">*</FileMask>
     <DateTimeFormat>yyyy.mm.dd hh:nn:ss</DateTimeFormat>
+    <FilterUnknown>True</FilterUnknown>
   </SyncDirs>
   <InternalAssociations>
     <OfferToAddNewFileType>False</OfferToAddNewFileType>
@@ -723,7 +736,7 @@
           <Title>Name</Title>
           <Unique>64B467F3-C4AA-E6C3-1EBE-13291EC46931</Unique>
           <FuncString>[DC().GETFILENAMENOEXT{}]</FuncString>
-          <Width>482</Width>
+          <Width>567</Width>
           <Align>0</Align>
           <Font>
             <Name>default</Name>
@@ -771,7 +784,7 @@
           <Title>Date</Title>
           <Unique>E7D89C44-CF89-EBD7-66F1-608EBF580C0D</Unique>
           <FuncString>[DC().GETFILETIME{}]</FuncString>
-          <Width>140</Width>
+          <Width>157</Width>
           <Align>1</Align>
           <Font>
             <Name>default</Name>
@@ -940,7 +953,23 @@
         <Extension>[E]</Extension>
         <FilenameStyle>0</FilenameStyle>
         <ExtensionStyle>0</ExtensionStyle>
-        <Find>---</Find>
+        <Find/>
+        <Replace>-</Replace>
+        <RegExp>False</RegExp>
+        <UseSubs>False</UseSubs>
+        <CaseSensitive>False</CaseSensitive>
+        <OnlyFirst>False</OnlyFirst>
+        <Counter>1</Counter>
+        <Interval>1</Interval>
+        <Width>0</Width>
+      </Preset>
+      <Preset>
+        <Name>From OneDrive to DRB CameraUploads</Name>
+        <Filename>[N1:4]-[N5:6]-[N7:8] [N10:11].[N12:13].[N14:15] - [N]</Filename>
+        <Extension>[E]</Extension>
+        <FilenameStyle>0</FilenameStyle>
+        <ExtensionStyle>0</ExtensionStyle>
+        <Find/>
         <Replace>_</Replace>
         <RegExp>True</RegExp>
         <UseSubs>True</UseSubs>

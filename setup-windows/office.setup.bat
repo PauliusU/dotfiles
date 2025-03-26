@@ -45,3 +45,6 @@ ECHO **** Office spellcheckers ****
 "d:\Dropbox\soft\MSO\proofingtools2016_lt-lt-x64.exe" /quiet
 "d:\Dropbox\soft\MSO\proofingtools2016_ru-ru-x64.exe" /quiet
 winget install Grammarly.Grammarly.Office &:: Grammarly for Microsoft Office Suite. No scoop alternative as of 2023-03-13
+
+ECHO **** Toggl Track - time tracking ****
+winget install Toggl.TogglTrack

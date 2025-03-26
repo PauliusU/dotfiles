@@ -149,6 +149,8 @@ alias dst='open -a Docker'                                                      
 alias dstop='docker stop $(docker ps -a -q)'                                                              # Docker stope all containers
 alias dvls='docker volume ls'                                                                             # List docker volumes
 export DOCKER_FORMAT='ID\t{{.ID}}\nNAME\t{{.Names}}\nIMAGE\t{{.Image}}\nPORTS\t{{.Ports}}\nCOMMAND\t{{.Command}}\nCREATED\t{{.CreatedAt}}\nSTATUS\t{{.Status}}\n'
+# AWS CDK
+alias cdkk="cdk deploy"
 
 # Shell control
 alias __="append_less_pipe"                      # Add "| less" to passed param
