@@ -1,16 +1,16 @@
--- Run code from within Neovim
 return {
     'CRAG666/code_runner.nvim',
+    desc = 'Run code from within Neovim',
     dependencies = 'nvim-lua/plenary.nvim',
     event = 'BufEnter', -- Lazy load when entering a buffer
     config = function()
         require('code_runner').setup({
-            -- put here the commands by filetype
             filetype = {
+                go = "go run $fileName",
                 java = "cd $dir && javac $fileName && java $fileNameWithoutExt",
                 python = "python3 -u",
+                rust = "cd $dir && rustc $fileName && $dir/$fileNameWithoutExt",
                 typescript = "tsx", -- similar to ts-node --esm --swc
-                rust = "cd $dir && rustc $fileName && $dir/$fileNameWithoutExt"
             },
         })
 
