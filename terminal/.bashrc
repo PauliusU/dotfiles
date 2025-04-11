@@ -20,4 +20,4 @@ bind '"\C-f":"path-switcher\n"'
 
 eval "$(zoxide init bash)"
 
-source $DOTFILES/terminal/.shellrc.sh
+source "$DOTFILES/terminal/.shellrc.sh"

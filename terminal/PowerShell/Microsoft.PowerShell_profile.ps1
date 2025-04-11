@@ -63,7 +63,7 @@ function Use-ScoopList {
 }
 
 function Use-ScoopSearch {
-    # Searche for programs in scoop system
+    # Search for programs in scoop system
     scoop search $args
 }
 
@@ -106,3 +106,5 @@ Set-PSReadlineKeyHandler -Chord Ctrl+d -Function DeleteCharOrExit
 # Ctrl+a overrides default 'select all'
 # Set-PSReadlineKeyHandler -Chord Ctrl+a -Function BeginningOfLine
 
+# Setup zoxide
+Invoke-Expression (& { (zoxide init powershell | Out-String) })

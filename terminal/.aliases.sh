@@ -49,6 +49,10 @@ alias bunnn="brew uninstall --ignore-dependencies"
 alias bupc="brew upgrade --cask" # Upgrade all casks installed with homebrew
 alias bupd="brew update"         # Update homebrew itself and the package lists
 alias bupg="brew upgrade"        # Upgrade all software installed with homebrew
+alias si="brew install"
+alias ss="brew search"
+alias sun="brew uninstall"
+alias suu="brew update && brew upgrade && brew upgrade --cask"
 alias sysu="softwareupdate -ai"  # Run all macOS updates for Xcode, etc..
 if [[ $(uname) == "Linux" ]]; then
     alias ai="sudo apt install"
@@ -60,9 +64,14 @@ if [[ $(uname) == "Linux" ]]; then
     alias au="sudo apt update"     # Update repositories
     alias ag="sudo apt upgrade -y" # Update software (packages)
     alias auu="sudo apt update && sudo apt upgrade -y"
+    alias si="sudo apt install"
+    alias ss="sudo apt search"
+    alias sun="sudo apt remove"
+    alias suu="sudo apt update && sudo apt upgrade -y"
 fi
 
 # Git
+alias gbb=git-branch                                                                    # Fuzzy find git branches
 alias gcca="git config --list"                                                          # Show git config
 alias gccg="git config --list --global"                                                 # Show global git config
 alias gccl="git config --list --local"                                                  # Show local git config
@@ -74,6 +83,7 @@ alias gcontr="git shortlog -s -n"                                               
 # Lazygit
 alias lg="lazygit"
 # GitHub CLI
+alias ghg='gh browse'  # Open GitHub repo in browser
 alias ghh="gh browse"  # Open GitHub repo in browser
 alias ghp="gh pr list" # List pull requests
 # JS/TS, npm, yarn
@@ -220,7 +230,9 @@ alias tmks="tmux kill-server"                                                   
 alias tmm='echo tmux: $TMUX'                                                                   # = tmux new = tmux new-session
 alias tmx="tmux new-session -ADs main"                                                         # Create "main" session or attach to it (if exists) ref: https://github.com/threkk/dotfiles/blob/d1c3c6681286e3e289d04f64a8ffb37fdbdbbc98/dotfiles/alias
 alias tt="tmux switch -t main || tmux new -As main"                                            # Switch to "main" session or create it if needed
-alias tg="tmux switch -t dotfiles || tmux new -s dotfiles -c $DOTFILES -d && tmux switch -t dotfiles"                     # Switch to "dotfiles" session
+alias to="tmux switch -t dotfiles || tmux new -s dotfiles -c $DOTFILES -d && tmux switch -t dotfiles" # Switch to "dotfiles" session
+alias tn="tmux switch -t notes || tmux new -s notes -c $NOTES -d && tmux switch -t notes"      # Switch to "notes" session
+alias tu="tmux switch -t utils || tmux new -s utils -c $HOME/dev/utils -d && tmux switch -t utils" # Switch to "utils" session or create it if needed
 alias v='$BREW_HOME/bin/vim'                                                                   # Shorthand for vim
 alias vi='$BREW_HOME/bin/vim'                                                                  # Shorthand for vim
 alias vim="nvim"                                                                               # Replace vim with neovim

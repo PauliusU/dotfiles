@@ -10,6 +10,7 @@ mkdir -p ~/scripts
 # Symlinks for common files and folders. -f forces linking if file already exists
 ln -nsf ~/Dropbox/code ~/code
 ln -nsf ~/Dropbox/dev ~/dev
+ln -nsf ~/Dropbox/notes ~/Dropbox/dev/notes
 ln -nsf ~/Dropbox/projects ~/projects
 ln -nsf ~/Library/CloudStorage ~/storage
 

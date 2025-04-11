@@ -246,7 +246,7 @@
   </Tools>
   <Fonts>
     <Main>
-      <Name>default</Name>
+      <Name>JetBrainsMono Nerd Font</Name>
       <Size>10</Size>
       <Style>1</Style>
       <Quality>0</Quality>
@@ -736,12 +736,12 @@
           <Title>Name</Title>
           <Unique>64B467F3-C4AA-E6C3-1EBE-13291EC46931</Unique>
           <FuncString>[DC().GETFILENAMENOEXT{}]</FuncString>
-          <Width>567</Width>
+          <Width>568</Width>
           <Align>0</Align>
           <Font>
-            <Name>default</Name>
+            <Name>Monaco</Name>
             <Size>10</Size>
-            <Style>1</Style>
+            <Style>0</Style>
             <Quality>0</Quality>
           </Font>
           <UseInvertedSelection>False</UseInvertedSelection>
@@ -755,9 +755,9 @@
           <Width>50</Width>
           <Align>0</Align>
           <Font>
-            <Name>default</Name>
+            <Name>Monaco</Name>
             <Size>10</Size>
-            <Style>1</Style>
+            <Style>0</Style>
             <Quality>0</Quality>
           </Font>
           <UseInvertedSelection>False</UseInvertedSelection>
@@ -771,9 +771,9 @@
           <Width>70</Width>
           <Align>1</Align>
           <Font>
-            <Name>default</Name>
+            <Name>Monaco</Name>
             <Size>10</Size>
-            <Style>1</Style>
+            <Style>0</Style>
             <Quality>0</Quality>
           </Font>
           <UseInvertedSelection>False</UseInvertedSelection>
@@ -787,9 +787,9 @@
           <Width>157</Width>
           <Align>1</Align>
           <Font>
-            <Name>default</Name>
+            <Name>Monaco</Name>
             <Size>10</Size>
-            <Style>1</Style>
+            <Style>0</Style>
             <Quality>0</Quality>
           </Font>
           <UseInvertedSelection>False</UseInvertedSelection>
@@ -803,9 +803,9 @@
           <Width>100</Width>
           <Align>0</Align>
           <Font>
-            <Name>default</Name>
+            <Name>Monaco</Name>
             <Size>10</Size>
-            <Style>1</Style>
+            <Style>0</Style>
             <Quality>0</Quality>
           </Font>
           <UseInvertedSelection>False</UseInvertedSelection>
@@ -949,19 +949,24 @@
     <Presets>
       <Preset>
         <Name>{BC322BF1-2185-47F6-9F99-D27ED1E23E53}</Name>
-        <Filename>0[N]</Filename>
+        <Filename>z__ [N]</Filename>
         <Extension>[E]</Extension>
         <FilenameStyle>0</FilenameStyle>
         <ExtensionStyle>0</ExtensionStyle>
         <Find/>
-        <Replace>-</Replace>
-        <RegExp>False</RegExp>
+        <Replace/>
+        <RegExp>True</RegExp>
         <UseSubs>False</UseSubs>
         <CaseSensitive>False</CaseSensitive>
         <OnlyFirst>False</OnlyFirst>
         <Counter>1</Counter>
         <Interval>1</Interval>
         <Width>0</Width>
+        <Log>
+          <Enabled>False</Enabled>
+          <Append>False</Append>
+          <File/>
+        </Log>
       </Preset>
       <Preset>
         <Name>From OneDrive to DRB CameraUploads</Name>
