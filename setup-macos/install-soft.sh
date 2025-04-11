@@ -103,10 +103,10 @@ if [ "$(uname)" = "Darwin" ]; then
     brew install --cask karabiner-elements # Free, open source, mac. Remap the keys on a Mac at the kernel level. Ex KeyRemap4MacBook
     ln -nsf "$DOTFILES/.config/karabiner" "$HOME/.config/karabiner"
     brew install --cask hammerspoon        # Free, open source, mac
-    ln -nsf "$(pwd)/hammerspoon" "$HOME/.hammerspoon"
+    defaults write org.hammerspoon.Hammerspoon MJConfigFile "$XDG_CONFIG_HOME"/hammerspoon/init.lua
+    ln -nsf "$(pwd)/hammerspoon" "$HOME/.config/hammerspoon"
 
     # Espanso. Free, open source, cross-platform text expander
-    brew tap espanso/espanso # Add espanso tap, because Espanso is hosted outside the core homebrew repository
     brew install --cask espanso
     espanso path
     # espanso edit # open espanso configuration file in editor
@@ -152,11 +152,11 @@ if [ "$(uname)" = "Darwin" ]; then
     brew install tlrc
     tldr --version # Note: install is 'tlrc' but command is 'tldr'
 
-    echo "**** System statistics in menu bar ****"
+    echo "**** System info and statistics ****"
+    # Stats in the menu bar
     brew install stats
-
-    # echo "**** Toggl (a.k.a ToggleDesktop) ****"
-    # brew install --cask toggl-track
+    # System information in terminal
+    brew install pfetch-rs
 
     # echo "**** Window management ****"
     # # brew install --cask alt-tab # AltTab - Windows alt-tab on macOS

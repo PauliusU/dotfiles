@@ -74,7 +74,7 @@ function convert_to_hevc() {
 
     if [ -z "$1" ]; then
         echo 'Input file is missing. E.g. "video.webm"'
-        # non-zero decimal number in the 1 - 255 range for failure
+        # Non-zero decimal number in the 1 - 255 range for failure
         return 1
     fi
 
@@ -90,11 +90,11 @@ function convert_to_avc() {
 
     if [ -z "$1" ]; then
         echo 'Input file is missing. E.g. "video.webm"'
-        # non-zero decimal number in the 1 - 255 range for failure
+        # Non-zero decimal number in the 1 - 255 range for failure
         return 1
     fi
 
-    # -c:a copy			stream copy audio instead of re-encoding
+    # -c:a copy         stream copy audio instead of re-encoding
     # -preset medium    (default)
     ffmpeg -hide_banner -i "$1" -c:v libx264 -c:a copy "${1%.*}".avc.mp4
 }
@@ -104,7 +104,7 @@ function convert_to_mp3s() {
 
     if [ -z "$1" ]; then
         echo 'FILE FILTER ARGUMENT IS MISSING. E.g. "*.opus"'
-        # non-zero decimal number in the 1 - 255 range for failure
+        # Non-zero decimal number in the 1 - 255 range for failure
         return 1
     fi
 
@@ -116,7 +116,7 @@ function merge_mp3s() {
 
     for file in *.mp3; do
         echo "Processing $file"
-        echo "file '$file'" >>list.txt
+        echo "file '$file'" >> list.txt
         ffprobe "$file" 2>&1 | awk '/Duration/ {print $2}'
     done
     ffmpeg -f concat -safe 0 -i list.txt -c copy merged.mp3
@@ -129,7 +129,7 @@ function git_change_origin() {
 
     if [ -z "$1" ]; then
         echo 'ERROR: new remote is missing'
-        # non-zero decimal number in the 1 - 255 range for failure
+        # Non-zero decimal number in the 1 - 255 range for failure
         return 1
     fi
 

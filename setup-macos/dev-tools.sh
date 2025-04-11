@@ -176,8 +176,11 @@ redis-cli -v
 echo "**** JavaScript, TypeScript, Node.js, NPM, yarn, Volta ****"
 mkdir -p "$HOME/.config/npm"
 brew install volta
+# Volta install on Ubuntu
+if [ "$(uname)" = "Linux" ]; then
+    curl https://get.volta.sh | bash
+fi
 
-# curl https://get.volta.sh | bash
 volta -v
 
 volta install node@22

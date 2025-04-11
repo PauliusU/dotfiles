@@ -26,7 +26,7 @@ if [ "$(uname)" = "Darwin" ]; then
     echo "**** alacritty - a fast, cross-platform, OpenGL terminal emulator ****"
     brew install --cask alacritty
     mkdir -p ~/.config/alacritty
-    ln -sf $(pwd)/terminal/alacritty/alacritty.toml ~/.config/alacritty/alacritty.toml
+    ln -sf $(pwd)/.config/alacritty/alacritty.toml ~/.config/alacritty/alacritty.toml
 fi
 
 echo "**** tmux ****"

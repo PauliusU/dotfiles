@@ -17,7 +17,7 @@ TERMINAL := 'wt'
 VIVALDI := SCOOP . '\apps\vivaldi\current\Application\vivaldi.exe'
 
 ; Files
-NOTES := 'd:\Dropbox\DropsyncFiles\audiob\notes_PC.md'
+NOTES := 'd:\Dropbox\DropsyncFiles\audiob\notes-pc.md'
 
 ; Keyboard layouts
 EN_layout := 0x0409 ; English (USA)
