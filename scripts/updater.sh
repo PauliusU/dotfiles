@@ -2,19 +2,24 @@
 
 visible_line="================================================================"
 
-echo "**** 📦 NPM updates ****"
+echo "**** 📦 NPM and PNPM updates ****"
 npm update -g npm-check-updates
+pnpm self-update
 echo $visible_line
 
 echo "**** 🦀 Rust updates ****"
 rustup update stable
 echo $visible_line
 
+echo "**** 🐍 Python and pipx updates ****"
+pipx upgrade-all
+echo $visible_line
+
 if [ "$(uname)" = "Darwin" ]; then
     echo "**** 🍎 macOS updates ****"
 
     brew update
-    # Upgrade outdated packages (called "formulae" in Homebrew terminology) 
+    # Upgrade outdated packages (called "formulae" in Homebrew terminology)
     brew upgrade
     # Upgrade all installed casks, even those that are marked as "auto_updates: false" or "version :latest"
     brew upgrade --cask --greedy
