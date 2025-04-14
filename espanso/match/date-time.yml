@@ -22,18 +22,33 @@ matches:
         params:
           # Custom date format YYYYMMDD
           format: '%Y%m%d'
+  
+  # Print the current date with weekday (YYYY-MM-DD_u)
+  - triggers:
+    - 'ddd;'
+    replace: '{{mydate3}}'
+    vars:
+      - name: mydate3
+        type: date
+        params:
+          # Custom date format YYYY-MM-DD_u
+          # Monday = 1, Tuesday = 2, …, Sunday = 7. (ISO 8601)
+          format: '%Y-%m-%d_%u'
 
   # Current week number in a year (e.g. W16)
   - triggers:
       - ':week'
       - ':wk'
       - 'wk;'
+      - 'ww;'
     replace: 'W{{myweek}}'
     vars:
       - name: myweek
         type: date
         params:
-          format: '%W'
+          # Use the week number in ISO 8601 week date (01–53).
+          # Ref: https://docs.rs/chrono/latest/chrono/format/strftime/index.html
+          format: '%V' 
 
   # Current time (e.g. 20:34)
   - triggers:

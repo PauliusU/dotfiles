@@ -1,4 +1,4 @@
-return {                                -- Nvim-tree - a file explorer written in LUA
+return {
     'nvim-tree/nvim-tree.lua',
     desc = 'A File Explorer For Neovim Written In Lua',
     cmd = { 'NvimTreeFindFileToggle' }, -- lazy load the plugin if command is run
