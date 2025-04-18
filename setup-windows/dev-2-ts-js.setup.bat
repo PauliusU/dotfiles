@@ -4,8 +4,8 @@ TITLE JavaScript and TypeScript ecosystem
 
 ECHO **** Volta [JavaScript Tool Manager] *****
 powershell scoop install volta
-:: Install latest Node.js 20 version
-volta install node@20
+:: Install latest Node.js 22 version
+volta install node@22
 :: Update NPM (newer than the one with Node)
 volta install npm
 :: Create a symlink to the config file

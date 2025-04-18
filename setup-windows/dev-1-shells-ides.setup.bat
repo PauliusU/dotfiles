@@ -27,7 +27,7 @@ MKLINK /J "%USERPROFILE%\.bashrc" "%DOTFILES%\terminal\.bashrc"
 MKLINK "%SCOOP%\apps\git\current\usr\bin\tmux-sessionizer" "%DOTFILES%\terminal\tmux-sessionizer.sh"
 :: # ln -sf "$DOTFILES\scripts\private\info.sh" "$SCOOP\apps\git\current\usr\bin\info"
 :: # ln -sf "$DOTFILES\scripts\updater.sh" "$SCOOP\apps\git\current\usr\bin\updater"
-:: Git-bash depencencies
+:: Git-bash dependencies
 :: Fuzzy find directories for path-switcher
 powershell scoop install fzf
 
@@ -80,7 +80,7 @@ ECHO **** Visual Studio Code [VSCode] ****
 powershell scoop install vscode
 REG IMPORT "%SCOOP%\apps\vscode\current\install-context.reg"
 REG IMPORT "%SCOOP%\apps\vscode\current\install-associations.reg"
-powershell code -v
+code -v
 
 TITLE DBs
 

@@ -3,6 +3,8 @@
 ECHO **** AHK ****
 
 powershell scoop install autohotkey
+ASSOC .ahk=ahkfile
+FTYPE ahkfile="%SCOOP%\apps\autohotkey\current\v2\AutoHotkey64.exe" "%%1"
 
 :: Run AHK
 START "%SCOOP%\apps\autohotkey\current\v2\AutoHotkey64.exe" "%DOTFILES%\ahk\main.ahk"

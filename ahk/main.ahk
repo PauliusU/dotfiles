@@ -78,18 +78,20 @@ CapsLock & K:: GetKeyState("Shift", "P")
     : OpenAppOrFile(SCOOP . '\apps\slack\current\slack.exe', 'Slack')
 CapsLock & L:: OpenAppOrFile(BROWSER . ' calendar.google.com', 'Google Calendar')
 CapsLock & M:: OpenYoutube()
-CapsLock & N:: Run(EDITOR_VISUAL . ' ' . NOTES)
+CapsLock & N:: GetKeyState("Shift", "P")
+    ? OpenAppOrFile(SCOOP . '\apps\obsidian\current\Obsidian.exe', 'Obsidian')
+    : Run(EDITOR_VISUAL . ' ' . NOTES)
 CapsLock & O:: Run(EDITOR_VISUAL . ' ' . DOTFILES)
 CapsLock & P:: OpenSpotify()
 CapsLock & Q:: ToggleSoundDevice('Headphones', 'Speakers')
 CapsLock & R:: OpenAppOrFile(SCOOP . '\apps\anki\current\anki.cmd', 'Anki')
 CapsLock & S:: OpenAppOrFile(FILE_MANAGER, 'ahk_exe TOTALCMD64.EXE')
-CapsLock & T:: OpenAppOrFile(SCOOP . '\apps\todotxt-net\current\todotxt.exe', 'todotxt.net')
+CapsLock & T:: OpenAppOrFile(EnvGet('LOCALAPPDATA') . '\TogglTrack\TogglTrack.exe', 'ahk_exe TogglTrack.exe')
 CapsLock & U:: OpenAppOrFile(SCOOP . '\apps\qBittorrent\current\qbittorrent.exe', 'ahk_exe qbittorrent.exe')
 CapsLock & V:: OpenAppOrFile(VIVALDI . ' --start-fullscreen', 'ahk_exe vivaldi.exe')
 CapsLock & W:: Run('chrome')
 CapsLock & X:: OpenAppOrFile(PLAYER, 'ahk_exe mpv.exe')
-CapsLock & Y:: OpenAppOrFile(SCOOP . '\apps\toggl\current\TogglDesktop.exe', 'ahk_exe TogglDesktop.exe')
+CapsLock & Y:: OpenAppOrFile(SCOOP . '\apps\todotxt-net\current\todotxt.exe', 'todotxt.net')
 CapsLock & Z:: OpenAppOrFile(FILE_SEARCH, 'ahk_exe Everything64.exe')
 CapsLock & Numpad0:: OpenAppOrFile(USER_HOME . '\Desktop', 'Desktop')
 CapsLock & Numpad1:: OpenAppOrFile('::{645FF040-5081-101B-9F08-00AA002F954E}', 'Recycle Bin')
@@ -114,8 +116,8 @@ CapsLock & NumpadMult:: Run('C:\Windows\SysWOW64\calc.exe')    ; Calculator
 ^!#D:: CurrentYearDay()    ; => 295
 ^!#F:: FullDate()    ; => 2022-10-22 20:46
 ^!#G:: PathUnix()    ; c:\windows\path\example => /c/windows/path/example
-^!#H:: ToggleHiddenFiles()    ; File explorer setting 'Show hidden files, folders, and drives'
 ^!#I:: ToInverted()    ; teXT EXAmple => TExt exaMPLE
+^!#H:: ToggleHiddenFiles()    ; File explorer setting 'Show hidden files, folders, and drives'
 ^!#J:: CurrentDate()    ; => 2029-12-31
 ^!#K:: CurrentShortDate()    ; => 20291231
 ^!#L:: ToLowercase()    ; TEXT Example => text example
