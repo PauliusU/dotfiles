@@ -29,16 +29,16 @@ hs.hotkey.bind(mash, "W", fn.sayHello) -- [ ⌃ + ⌥ + ⌘ + W ]
 
 -- Text and key manipulation
 Hyper:bind({}, "J", nil, fn.getDate())
-hs.hotkey.bind(mash, "G", fn.getDate()) -- [ ⌃ + ⌥ + ⌘ + G ]
+hs.hotkey.bind(mash, "D", fn.getDate()) -- [ ⌃ + ⌥ + ⌘ + G ]
 -- VIM like arrow keys
-hs.hotkey.bind(mash, "I", fn.press({}, "up")) -- ↑
-hs.hotkey.bind(mash, "K", fn.press({}, "down")) -- ↓
-hs.hotkey.bind(mash, "J", fn.press({}, "left")) -- ← ◀
+hs.hotkey.bind(mash, "K", fn.press({}, "up")) -- ↑
+hs.hotkey.bind(mash, "J", fn.press({}, "down")) -- ↓
+hs.hotkey.bind(mash, "H", fn.press({}, "left")) -- ←
 hs.hotkey.bind(mash, "L", fn.press({}, "right")) -- →
 -- NON VIM like shortcuts
 hs.hotkey.bind(mash, "U", fn.press({ "alt" }, "left")) -- left one word
 hs.hotkey.bind(mash, "O", fn.press({ "alt" }, "right")) -- one word right
-hs.hotkey.bind(mash, "H", fn.press({}, "home")) -- start of the line
+hs.hotkey.bind(mash, "G", fn.press({}, "home")) -- start of the line
 hs.hotkey.bind(mash, ";", fn.press({}, "end")) -- end of the line
 -- Programming keys in any keyboard layout
 hs.hotkey.bind({ "alt", "shift" }, 18, fn.printText("!")) -- 1 Ą
@@ -71,15 +71,16 @@ Hyper:bind("Shift", "A", nil, fn.open("alacritty"))
 Hyper:bind("Shift", "D", nil, fn.open("Postman"))
 Hyper:bind("Shift", "H", nil, fn.open("VLC"))
 Hyper:bind("Shift", "I", nil, fn.open("System Settings"))
-Hyper:bind("Shift", "J", nil, fn.open("iTerm"))
+Hyper:bind("Shift", "J", nil, fn.open("Ghostty"))
 Hyper:bind("Shift", "K", nil, fn.open("Ferdium"))
 Hyper:bind("Shift", "L", nil, fn.open("Calendar"))
 Hyper:bind("Shift", "M", nil, fn.open("mpv"))
+Hyper:bind("Shift", "N", nil, fn.open("Obsidian"))
 Hyper:bind("Shift", "P", nil, fn.open("Music"))
 Hyper:bind("Shift", "S", nil, fn.open("Marta"))
 Hyper:bind("Shift", "U", nil, fn.open("Messages"))
 Hyper:bind("Shift", "V", nil, fn.open("Safari"))
-Hyper:bind({}, "A", nil, fn.open("iTerm"))
+Hyper:bind({}, "A", nil, fn.open("Notion"))
 Hyper:bind({}, "B", nil, fn.open("MongoDB Compass"))
 Hyper:bind({}, "C", nil, fn.open("DisplayLink Manager"))
 Hyper:bind({}, "D", nil, fn.open("Visual Studio Code"))
@@ -92,7 +93,7 @@ Hyper:bind({}, "J", nil, fn.open("alacritty"))
 Hyper:bind({}, "K", nil, fn.open("Slack"))
 Hyper:bind({}, "L", nil, fn.exec("open 'https://calendar.google.com'"))
 -- Hyper:bind({}, "M", nil, fn.hideAllWindows()) -- [ Hyper + M ]
-Hyper:bind({}, "N", nil, fn.exec("open ~/Dropbox/DropsyncFiles/audiob/notes_PC.md"))
+Hyper:bind({}, "N", nil, fn.exec("open ~/Dropbox/DropsyncFiles/audiob/notes-pc.md"))
 Hyper:bind({}, "O", nil, fn.exec("$HOME/bin/homebrew/bin/code $HOME/code/dotfiles"))
 Hyper:bind({}, "P", nil, fn.open("Spotify"))
 -- Hyper:bind({}, "R", nil, fn.reloadHs())
@@ -102,9 +103,10 @@ Hyper:bind({}, "U", nil, fn.open("Anki"))
 Hyper:bind({}, "W", nil, fn.open("Foxit PDF Reader"))
 Hyper:bind({}, "X", fn.open("mpv"))
 Hyper:bind({}, "V", nil, fn.open("Arc"))
-Hyper:bind({}, "Y", fn.open("Terminal"))
+Hyper:bind({}, "Y", fn.open("Kitty"))
 Hyper:bind({}, "Z", fn.open("EasyFind"))
 Hyper:bind({}, "pad7", fn.exec("open ~/Dropbox/DropsyncFiles/audiob/DBs/input.xlsx"))
+hs.hotkey.bind(shift_mash, "N", fn.open("Notion"))
 
 -- Window management
 hs.hotkey.bind(mash, "pad4", wm.moveWindow(wm.screenPositions.left))

@@ -6,7 +6,7 @@ powershell scoop install git
 
 git config --global user.name "PauliusU"
 git config --global user.email "48020370+PauliusU@users.noreply.github.com"
-:: Line endings for OS compatability. macOS and Linux 'input', Windows 'true'
+:: Line endings for OS compatibility. macOS and Linux 'input', Windows 'true'
 git config --global core.autocrlf true 
 git config --global core.editor "nvim"
 git config --global core.excludesfile "%DOTFILES%\.config\git\.gitignore_global"
