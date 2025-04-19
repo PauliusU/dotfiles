@@ -2,13 +2,13 @@
 return {
     {
         -- surround.vim
-        -- Control "surroundings": parentheses, brackets, quotes, XML tags, and more.
-        'tpope/vim-surround'
-        -- surround word with single quotes: ysiw'
+        'tpope/vim-surround',
+        desc = 'Control "surroundings": parentheses, brackets, quotes, XML tags, and more.'
+        -- Surround word with single quotes: ysiw'
     },
     {
-        -- hardtime.nvim - establish good neovim habits
-        "m4xshen/hardtime.nvim", -- establish good neovim habits
+        "m4xshen/hardtime.nvim",
+        desc = "hardtime.nvim - establish good neovim habits",
         dependencies = { 'MunifTanjim/nui.nvim', "nvim-lua/plenary.nvim" },
         config = function()
             require("hardtime").setup({
@@ -17,6 +17,10 @@ return {
                     ["j"] = { "x" },
                     ["k"] = { "x" },
                     ["<C-P>"] = { "x" },
+                },
+                disabled_keys = {
+                    ["<Left>"] = {},
+                    ["<Right>"] = {},
                 },
             })
         end
@@ -52,8 +56,8 @@ return {
         end,
     },
     {
-        -- Add indentation guides even on blank lines
         'lukas-reineke/indent-blankline.nvim',
+        desc = 'Add indentation guides even on blank lines',
         main = "ibl",
         opts = {
             indent = {
@@ -67,8 +71,9 @@ return {
     {
         'RRethy/vim-illuminate'
     },
-    { -- Auto convert strings to py f-strings or js template strings and back
+    {
         "chrisgrieser/nvim-puppeteer",
+        desc = "Auto convert strings to py f-strings or js template strings and back",
         dependencies = "nvim-treesitter/nvim-treesitter",
         lazy = false, -- plugin lazy-loads itself
     },
@@ -82,8 +87,8 @@ return {
         end,
     },
     {
-        --  splitting/joining blocks of code like arrays, hashes, statements, objects, dictionaries, etc.
         'Wansmer/treesj',
+        desc = 'splitting/joining blocks of code like arrays, hashes, statements, objects, dictionaries, etc.',
         keys = {
             { 'M',          ':TSJToggle<cr>',   desc = ":TSJToggle" },
             { '<C-g>',      ':TSJToggle<cr>',   desc = ":TSJToggle" },
@@ -115,13 +120,8 @@ return {
         end,
     },
     {
-        "monaqa/dial.nvim",
-        -- lazy-load on keys
-        -- mode is `n` by default. For more advanced options, check the section on key mappings
-        keys = { "<C-a>", { "<C-x>", mode = "n" } },
-    },
-    { -- Replaces the UI for messages, cmdline and the popupmenu.
         "folke/noice.nvim",
+        desc = "Replaces the UI for messages, cmdline and the popupmenu",
         event = "VeryLazy",
         opts = {
             lsp = {
@@ -147,9 +147,8 @@ return {
         lazy = true,
     },
     {
-        -- Neovim setup for init.lua and plugin development with full
-        -- signature help, docs and completion for the nvim lua API.
         "folke/neodev.nvim",
+        desc = "Neovim setup for init.lua and plugin development with full signature help, docs and completion for the nvim lua API.",
         opts = {}
     },
     {
@@ -169,7 +168,7 @@ return {
             -- left empty to use the default settings
             vim.keymap.set("n", "<leader>xt", function() require("trouble").toggle() end, { desc = "Trouble toggle" }),
             vim.keymap.set("n", "<leader>xw", function() require("trouble").toggle("workspace_diagnostics") end,
-            { desc = "Trouble toggle workspace_diagnostics" }),
+                { desc = "Trouble toggle workspace_diagnostics" }),
             vim.keymap.set("n", "<leader>xd", function() require("trouble").toggle("document_diagnostics") end,
                 { desc = "Trouble toggle document_diagnostics" }),
             vim.keymap.set("n", "<leader>xq", function() require("trouble").toggle("quickfix") end,
@@ -195,7 +194,7 @@ return {
         -- },
         opts = {
             vim.keymap.set("n", "<leader>rr", "<cmd>ToggleTermSendCurrentLine<cr>",
-                { desc = "ToggleTerm: send current line" }),
+                { desc = "ToggleTerm: send current line (and run)" }),
             vim.keymap.set({ "n", "t" }, "<M-C-x>", "<cmd>ToggleTerm<cr>", { desc = "ToggleTerm" })
         }
     },
@@ -254,4 +253,38 @@ return {
             notifications = true,
         }
     },
+    {
+        'echasnovski/mini.ai',
+        -- 'cit', 'cat', 'vit' - to change HTML tags
+        -- 'cio', 'cao' - to change
+        desc = 'Extend and create a/i textobjects',
+        version = false, -- use 'main' branch and the latest commit (as opposed to 'stable', branch)
+    },
+    {
+        'mrcjkb/rustaceanvim',
+        version = '^5', -- Recommended
+        lazy = false,   -- This plugin is already lazy
+    },
+    {
+        'rust-lang/rust.vim',
+        desc = 'Rust - automatic formatting on save',
+        ft = 'rust',
+        init = function()
+            vim.g.rustfmt_autosave = 1
+            -- vim.g.rustfmt_fail_silently = 1
+        end
+    },
+    {
+        'MeanderingProgrammer/render-markdown.nvim',
+        -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.nvim' }, -- if you use the mini.nvim suite
+        -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.icons' }, -- if you use standalone mini plugins
+        dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' }, -- if you prefer nvim-web-devicons
+        ---@module 'render-markdown'
+        ---@type render.md.UserConfig
+        opts = {
+            heading = {
+                icons = { "󰎤 ", "󰎧 ", "󰎪 ", "󰎭 ", "󰎱 ", "󰎳 " },
+            }
+        },
+    }
 }

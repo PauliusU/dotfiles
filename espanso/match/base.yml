@@ -70,3 +70,11 @@ matches:
   # MongoDB _id in reverse order
   - triggers: [':mgr', 'mngr']
     replace: '{_id: -1}'
+
+  # Markdown TODO
+  - triggers: ['mdt;']
+    replace: '- [ ] $|$'
+
+  # AWS CloudWatch Logs Insights filter
+  - triggers: ['cw;']
+    replace: '| filter @message like "$|$"'
