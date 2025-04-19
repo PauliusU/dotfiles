@@ -20,13 +20,18 @@ if [ "$(uname)" = "Darwin" ]; then
     brew install --cask font-fira-code-nerd-font
     brew install --cask font-jetbrains-mono-nerd-font
 
-    # echo "**** iterm2 - Terminal.app replacement ****"
-    # brew install --cask iterm2
-
     echo "**** alacritty - a fast, cross-platform, OpenGL terminal emulator ****"
     brew install --cask alacritty
     mkdir -p ~/.config/alacritty
-    ln -sf $(pwd)/.config/alacritty/alacritty.toml ~/.config/alacritty/alacritty.toml
+    ln -sf "$(pwd)/.config/alacritty/alacritty.toml" ~/.config/alacritty/alacritty.toml
+
+    echo "**** ghostty ****"
+    brew install --cask ghossy
+    ln -sf "$(pwd)/.config/ghostty" ~/.config/ghostty
+
+    echo "**** kitty - the fast, feature-rich, GPU based terminal emulator ****"
+    brew install --cask kitty
+    ln -sf "$(pwd)/.config/kitty" ~/.config/kitty
 fi
 
 echo "**** tmux ****"

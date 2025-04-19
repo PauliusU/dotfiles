@@ -11,22 +11,31 @@ Modes:
     'o' - operator_pending_mode -- e.g. y in yiw
 ]]
 
--- Set <space> as the leader key
+-- Set <space> as the leader key (default is "\" backslash)
 vim.g.mapleader = " "
 
 -- Manage config
 vim.keymap.set("n", "<leader>zz", "<cmd>source $MYVIMRC<CR>", { desc = 'Reload config' })
-vim.keymap.set('n', '<leader>lr', '<cmd>source %<CR>', { desc = '[L]oad file a.k.a source active buffer' })
+vim.keymap.set("n", "<leader>rr", "<cmd>source ~/.config/nvim/init.lua<CR>", { desc = 'Reload config 2' })
+vim.keymap.set("n", "<leader>lf", "<cmd>source %<CR>", { desc = "[L]oad file a.k.a source active buffer" })
 
 -- Switch modes
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex, { desc = 'Explore file tree ([P]roject [V]view)' })
-vim.keymap.set("i", "jk", "<Esc>", { desc = 'Exist insert mode' })
+vim.keymap.set("i", "jk", "<Esc>", { desc = 'Exit insert mode' })
+vim.keymap.set("i", "kj", "<Esc>", { desc = 'Exit insert mode' })
+vim.keymap.set("i", "ii", "<Esc>", { desc = 'Exit insert mode' })
+vim.keymap.set("i", ";;", "<Esc>", { desc = 'Exit insert mode' })
 vim.keymap.set("t", "jk", "<C-\\><C-n>", { desc = 'Exit terminal mode' })
 vim.keymap.set("i", "<C-c>", "<Esc>", { desc = 'Enter normal mode' })
+
+-- Split screen (splits)
+vim.keymap.set({ "n", "v" }, "<leader>d", "<cmd>vs<CR>", { desc = "Vertical split (vsplit)" })
+vim.keymap.set({ "n", "v" }, "<leader>D", "<cmd>split<CR>", { desc = "Horizontal split" })
 
 -- Navigation
 vim.keymap.set({ "n", "v", "i" }, "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>",
     { desc = "Switch tmux sessions" })
+
 -- Switch buffers
 local default_opts = { noremap = true, silent = true }
 vim.keymap.set("n", "<S-h>", ":bprevious<CR>", { desc = "Previous buffer" })
@@ -34,12 +43,24 @@ vim.keymap.set("n", "<S-l>", ":bnext<CR>", { desc = "Next buffer" })
 vim.keymap.set({ "n", "v", "i" }, "[b", "<cmd>bp<CR>", { desc = "Previous buffer :bprevious" })
 vim.keymap.set({ "n", "v", "i" }, "]b", "<cmd>bn<CR>", { desc = "Next buffer :bnext" })
 -- vim.keymap.set({ "n" }, "š", "<cmd>b#<CR>", { desc = "Toggle between two buffers. <C-^> in other layout" })
-vim.keymap.set("n", "<leader>bb", "<cmd>e #<cr>", { desc = "Switch to other buffer" })
--- Switch tabs
+vim.keymap.set("n", "<leader>bb", "<cmd>e #<cr>", { desc = "Switch to other buffer (toggle buffers)" })
+-- Navigate tabs
 vim.keymap.set({ "n" }, "]t", "<cmd>tabnext<CR>", { desc = "Next tab" })
 vim.keymap.set({ "n" }, "[t", "<cmd>tabprevious<CR>", { desc = "Previous tab" })
+vim.keymap.set({ "n" }, "<C-t>", "<cmd>tabnew<CR>", { desc = "Open tab" })
+vim.keymap.set({ "n" }, "<leader>c", "<cmd>tabc<CR>", { desc = "Close tab" })
+-- Switch to specific tab with number
+vim.keymap.set({ "n" }, "<leader>1", "<cmd>tabn 1<CR>", { desc = "Go to tab 1" })
+vim.keymap.set({ "n" }, "<leader>2", "<cmd>tabn 2<CR>", { desc = "Go to tab 2" })
+vim.keymap.set({ "n" }, "<leader>3", "<cmd>tabn 3<CR>", { desc = "Go to tab 3" })
+vim.keymap.set({ "n" }, "<leader>4", "<cmd>tabn 4<CR>", { desc = "Go to tab 4" })
+vim.keymap.set({ "n" }, "<leader>5", "<cmd>tabn 5<CR>", { desc = "Go to tab 5" })
+vim.keymap.set({ "n" }, "<leader>6", "<cmd>tabn 6<CR>", { desc = "Go to tab 6" })
+vim.keymap.set({ "n" }, "<leader>7", "<cmd>tabn 7<CR>", { desc = "Go to tab 7" })
+vim.keymap.set({ "n" }, "<leader>8", "<cmd>tabn 8<CR>", { desc = "Go to tab 8" })
+vim.keymap.set({ "n" }, "<leader>9", "<cmd>tablast<CR>", { desc = "Go to the last" })
 
--- Quickfix navigation
+-- Navigate errors (quickfix) and issues
 vim.keymap.set("n", "<C-A-j>", "<cmd>cnext<CR>zz", { desc = "Quickfix next" })
 vim.keymap.set("n", "<C-A-k>", "<cmd>cprev<CR>zz", { desc = "Quickfix previous" })
 vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz", { desc = "Like :cnext but use location list and not the quickfix" })
@@ -127,14 +148,17 @@ vim.keymap.set({ "v" }, "<C-g>", "<cmd>'<,'>sort<CR>", { desc = 'Sort selected l
 vim.keymap.set({ "n", "x" }, "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 vim.keymap.set({ "n", "x" }, "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 -- Move Lines (test)
-vim.keymap.set("n", "<S-<>", "<cmd>m .+1<cr>==", { desc = "Move down" })
-vim.keymap.set("n", "<A-k>", "<cmd>m .-2<cr>==", { desc = "Move up" })
-vim.keymap.set("n", "<A-j>", "<cmd>m .+1<cr>==", { desc = "Move down" })
-vim.keymap.set("n", "<A-k>", "<cmd>m .-2<cr>==", { desc = "Move up" })
-vim.keymap.set("i", "<A-j>", "<esc><cmd>m .+1<cr>==gi", { desc = "Move down" })
-vim.keymap.set("i", "<A-k>", "<esc><cmd>m .-2<cr>==gi", { desc = "Move up" })
-vim.keymap.set("v", "<A-j>", ":m '>+1<cr>gv=gv", { desc = "Move down" })
-vim.keymap.set("v", "<A-k>", ":m '<-2<cr>gv=gv", { desc = "Move up" })
+vim.keymap.set("n", "<S-<>", "<cmd>m .+1<cr>==", { desc = "Move line down" })
+vim.keymap.set("n", "<A-k>", "<cmd>m .-2<cr>==", { desc = "Move line up" })
+vim.keymap.set("n", "<A-j>", "<cmd>m .+1<cr>==", { desc = "Move line down" })
+vim.keymap.set("n", "<A-k>", "<cmd>m .-2<cr>==", { desc = "Move line up" })
+vim.keymap.set("i", "<A-j>", "<esc><cmd>m .+1<cr>==gi", { desc = "Move line down [2]" })
+vim.keymap.set("i", "<A-k>", "<esc><cmd>m .-2<cr>==gi", { desc = "Move line up [2]" })
+vim.keymap.set("v", "<A-j>", ":m '>+1<cr>gv=gv", { desc = "Move line down [3]" })
+vim.keymap.set("v", "<A-k>", ":m '<-2<cr>gv=gv", { desc = "Move line up [3" })
+-- Insert a newline without entering in insert mode
+vim.keymap.set("n", "<leader>o", "o<Esc>k", { desc = "New line below (without entering insert mode)" })
+vim.keymap.set("n", "<leader>O", "o<Esc>j", { desc = "New line above (without entering insert mode)" })
 
 local function vim_opt_toggle(opt, on, off)
     return function()
@@ -151,3 +175,9 @@ local function vim_opt_toggle(opt, on, off)
 end
 vim.keymap.set('n', '<F3>', vim_opt_toggle("spell", true, false), { desc = "Toggle spelling" })
 vim.keymap.set('n', 'U', '<C-r>', { desc = "Redo", noremap = true })
+
+-- ref: linkarzu
+vim.keymap.set("n", "<leader>msle", function()
+    vim.opt.spelllang = "en"
+    vim.cmd("echo 'Spelling language set to English'")
+end, { desc = "Spelling language English" })
