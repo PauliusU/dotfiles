@@ -18,4 +18,9 @@ MKLINK /J "%USERPROFILE%\gDrive" "D:\linked\gDrive"
 IF NOT EXIST "%LOCALAPPDATA%\Google" MKDIR "%LOCALAPPDATA%\Google"
 :: WARNING Google Drive does not work with folder junctions
 XCOPY /E /I "%USER_BAK%\AppData\Local\Google\DriveFS" "%LOCALAPPDATA%\Google\DriveFS"
-winget install Google.Drive
+winget install Google.GoogleDrive
+
+ECHO **** OneDrive ****
+MKLINK /J "%LOCALAPPDATA%\Microsoft\OneDrive" "%USER_BAK%\AppData\Local\Microsoft\OneDrive"
+MKLINK /J "%USERPROFILE%\OneDriveLinked" "%OneDrive%"
+MKLINK /J "e:\dwn\video" "%OneDrive%\z\tor"
