@@ -73,7 +73,14 @@ nvim --version
 powershell scoop install ripgrep
 powershell scoop install fd
 :: C and C++ compiler for LSP dependencies
-powershell scoop install gcc
+WHERE gcc >nul 2>&1
+IF %errorlevel% neq 0 (
+    ECHO GCC is not found. Fixing scoop app and reinstalling...
+    powehershell scoop uninstall gcc
+    powershell scoop install gcc
+) else (
+    ECHO GCC is already installed
+)
 g++ --version
 
 ECHO **** Visual Studio Code [VSCode] ****
@@ -122,7 +129,14 @@ ECHO **** Postman ****
 powershell scoop install postman
 
 ECHO **** Rust ****
-powershell scoop install rustup
+WHERE rustup >nul 2>&1
+IF %errorlevel% neq 0 (
+    ECHO Rustup is not found. Fixing scoop app and reinstalling...
+    powehershell scoop uninstall rustup
+    powershell scoop install rustup
+) else (
+    ECHO Rustup is already installed
+)
 rustup update stable
 winget install Microsoft.VisualStudio.2022.BuildTools
 rustc --version

@@ -3,7 +3,14 @@
 TITLE JavaScript and TypeScript ecosystem
 
 ECHO **** Volta [JavaScript Tool Manager] *****
-powershell scoop install volta
+WHERE volta >nul 2>&1
+IF %errorlevel% neq 0 (
+    ECHO Volta is not found. Fixing scoop app and reinstalling...
+    powehershell scoop uninstall volta
+    powershell scoop install volta
+) else (
+    ECHO Volta is already installed
+)
 :: Install latest Node.js 22 version
 volta install node@22
 :: Update NPM (newer than the one with Node)
