@@ -1,4 +1,4 @@
--- LSP, completion and snippets
+-- LSP, completion, and snippets
 return {
     { -- Collection of LSP configs for Neovim's built-in LSP
         'neovim/nvim-lspconfig',
@@ -7,6 +7,7 @@ return {
             { 'williamboman/mason.nvim' },
             -- Extension to mason.nvim that makes it easier to use lspconfig with mason.nvim
             { 'williamboman/mason-lspconfig.nvim' },
+            'WhoIsSethDaniel/mason-tool-installer.nvim',
         },
         config = function()
             ---
@@ -26,9 +27,12 @@ return {
 
             require('mason-lspconfig').setup({
                 ensure_installed = {
+                    'asm_lsp',
                     'bashls',
                     'clangd',
                     'cssls',
+                    'docker_compose_language_service',
+                    'dockerls',
                     'eslint',
                     'gopls',
                     'jsonls',
@@ -37,9 +41,30 @@ return {
                     'pylsp', -- has number of static analyzers built-in
                     'rust_analyzer',
                     'tailwindcss',
-                    'tsserver',
+                    'taplo', -- toml
+                    'ts_ls', -- typescript
                     'yamlls',
-                }
+                    -- Sandbox LSPs
+                    'html',
+                    'emmet_ls',
+                    'harper_ls', -- markdown
+                },
+                -- auto-install congigured servers (with lspconfig)
+                automatic_installation = true, -- not the same as 'ensure_installed'
+            })
+
+            local mason_tool_installer = require('mason-tool-installer')
+            mason_tool_installer.setup({
+                ensure_installed = {
+                    -- 'eslint',
+                    -- 'prettier',
+                    -- 'stylelint',
+                    -- 'typescript',
+                    -- 'typescript-language-server',
+                    -- 'typescript-formatter',
+                    'shellcheck', -- bash linter
+                    'stylua',     -- lua formatter
+                },
             })
 
             local lspconfig = require('lspconfig')
@@ -165,7 +190,7 @@ return {
             vim.keymap.set("n", "<leader>lo", '<cmd>TSOrganizeImports<cr>', { desc = 'Typescript: organize imports' })
 
             -- TypeScript and JavaScript
-            lspconfig.tsserver.setup {
+            lspconfig.ts_ls.setup {
                 commands = {
                     TSOrganizeImports = {
                         ts_organize_imports,
@@ -211,20 +236,27 @@ return {
             lspconfig.jsonls.setup({})
 
             -- Rust
-            lspconfig.rust_analyzer.setup({
-                on_attach = on_attach,
-                settings = {
-                    ['rust-analyzer'] = {
-                        cargo = {
-                            -- Help with autocomplete on Cargo crates
-                            allFeatures = true,
-                        }
-                    }
-                }
-            })
+            -- lspconfig.rust_analyzer.setup({
+            --     on_attach = on_attach,
+            --     settings = {
+            --         ['rust-analyzer'] = {
+            --             cargo = {
+            --                 -- Help with autocomplete on Cargo crates
+            --                 allFeatures = true,
+            --             }
+            --         }
+            --     }
+            -- })
             lspconfig.pylsp.setup({}) -- python
             lspconfig.gopls.setup({})
-            lspconfig.clangd.setup({  -- c, cpp
+            lspconfig.asm_lsp.setup({
+                filetypes = {
+                    'asm',
+                    's', -- not default
+                    'vmasm'
+                },
+            })
+            lspconfig.clangd.setup({ -- c, cpp
                 -- Fix "Multiple different client offset_encodings detected" error
                 -- ref: https://www.reddit.com/r/neovim/comments/12qbcua/multiple_different_client_offset_encodings/
                 cmd = { "clangd", "--offset-encoding=utf-16", },
@@ -232,10 +264,46 @@ return {
             lspconfig.bashls.setup({}) -- bash
             lspconfig.yamlls.setup({})
             lspconfig.cssls.setup({})
-            -- lspconfig.ltex.setup({})
+            lspconfig.dockerls.setup({})
+            lspconfig.docker_compose_language_service.setup({})
             lspconfig.markdown_oxide.setup({})
+            lspconfig.taplo.setup({}) -- toml
             lspconfig.tailwindcss.setup({})
             lspconfig.prismals.setup({})
+            -- Sandbox
+            lspconfig.lemminx.setup({}) -- xml
+            lspconfig.html.setup({})
+            lspconfig.emmet_ls.setup({
+                filetypes = {
+                    'html',
+                    'css',
+                    'sass',
+                    'scss',
+                    'less',
+                    'typescriptreact',
+                    'javascriptreact',
+                    'vue',
+                    'svelte',
+                    -- 'markdown',
+                },
+            })
+            lspconfig.harper_ls.setup({ -- Spell checking, grammar checking, and more
+                settings = {
+                    ["harper-ls"] = {
+                        linters = {
+                            ToDoHyphen = false,
+                        },
+                        -- Only link English if the text has multiple languages
+
+                        isolateEnglish = true,
+                        markdown = {
+                            -- [ignores this part]()
+                            -- [[ also ignores marksman links ]]
+                            IgnoreLinkTitle = true,
+                        },
+                    },
+                },
+            })
             lspconfig.sqlls.setup({})
 
             --
@@ -354,26 +422,25 @@ return {
                 }
             })
 
-            -- Change diagnostic icons
-            -- sign_define is not a lua function, it's vimscript.
-            local sign = function(opts)
-                vim.fn.sign_define(opts.name, {
-                    texthl = opts.name,
-                    text = opts.text,
-                    numhl = ''
-                })
-            end
-
-            sign({ name = 'DiagnosticSignError', text = '✘' })
-            sign({ name = 'DiagnosticSignWarn', text = '' })
-            sign({ name = 'DiagnosticSignHint', text = '⚑' })
-            sign({ name = 'DiagnosticSignInfo', text = '' })
-
             -- Diagnostics config
             vim.diagnostic.config({
-                virtual_text = true,      -- Show diagnostic message using virtual text
-                severity_sort = true,     -- Order diagnostics by severity
-                signs = true,             -- Show a sign next to the line with a diagnostic.
+                virtual_text = true,  -- Show diagnostic message using virtual text
+                severity_sort = true, -- Order diagnostics by severity
+                -- Show a sign next to the line with a diagnostic
+                signs = {
+                    text = {
+                        [vim.diagnostic.severity.ERROR] = '✘',
+                        [vim.diagnostic.severity.WARN] = '',
+                        [vim.diagnostic.severity.INFO] = '',
+                        [vim.diagnostic.severity.HINT] = '⚑',
+                    },
+                    linehl = {
+                        [vim.diagnostic.severity.ERROR] = 'ErrorMsg',
+                    },
+                    numhl = {
+                        [vim.diagnostic.severity.WARN] = 'WarningMsg',
+                    },
+                },
                 update_in_insert = false, -- Update diagnostics while editing in insert mode.
                 underline = true,         -- Use an underline to show a diagnostic location.
                 float = {                 -- Show diagnostic messages in floating windows.
@@ -391,5 +458,19 @@ return {
         opts = {
             -- options
         },
+    },
+    {
+        "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
+        config = function()
+            require("lsp_lines").setup()
+
+            -- Show virtual lines only for the current line's diagnostics:
+            vim.diagnostic.config({ virtual_lines = { only_current_line = true } })
+
+            -- TODO: test. If you don't want to highlight the entire diagnostic line, use:
+            -- vim.diagnostic.config({ virtual_lines = { highlight_whole_line = false } })
+
+            vim.keymap.set("", "<leader>kl", require("lsp_lines").toggle, { desc = "[P] Toggle lsp_lines" })
+        end,
     },
 }
