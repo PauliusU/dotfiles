@@ -17,10 +17,39 @@ return {
             local telescope_builtin = require('telescope.builtin')
             require('telescope').setup {
                 defaults = {
-                    file_ignore_patterns = {
-                        "node_modules/",
-                        ".git/"
+                    -- path_display = { "smart" }, -- smarter display of long paths
+                    vimgrep_arguments = {
+                        "rg",
+                        "--follow",        -- Follow symbolic links
+                        "--no-heading",    -- Don't group matches by each file
+                        "--with-filename", -- Print the file path with the matched lines
+                        "--line-number",   -- Show line numbers
+                        "--column",        -- Show column numbers
+                        "--smart-case",    -- Smart case search
+                        "--hidden",        -- Search for hidden files
+                        '--no-ignore-vcs', -- Search in git ignored files
+                        -- '--color=never',
+                        --     '--files',
+
+                        -- Exclude some patterns from search
+                        "--glob=!**/.git/*",
+                        "--glob=!**/.idea/*",
+                        "--glob=!**/.venv/*",
+                        -- "--glob=!**/.vscode/*",
+                        "--glob=!**/build/*",
+                        "--glob=!**/node_modules/*",
+                        "--glob=!**/dist/*",
+                        "--glob=!**/yarn.lock",
+                        "--glob=!**/package-lock.json",
+
+                        --     '-g',
+                        --     '!{node_modules,.git,dist}',
                     },
+                    -- file_ignore_patterns = {
+                    --     "node_modules",
+                    --     ".git",
+                    --     ".venv"
+                    -- },
                     mappings = {
                         i = {
                             -- map actions.which_key to <C-h> (default: <C-/>)
@@ -32,11 +61,18 @@ return {
                     }
                 },
                 pickers = {
-                    find_files = { hidden = true }, -- TODO: test this
+                    find_files = {
+                        -- file_ignore_patterns = { 'node_modules', '.git', '.venv' },
+                        hidden = true,
+                    }, -- TODO: test this
                     live_grep = {
+                        -- file_ignore_patterns = { 'node_modules', '.git', '.venv' },
                         additional_args = function(opts)
                             return { "--hidden" } -- search hidden files e.g. starting with '.'
                         end
+                    },
+                    grep_string = {
+                        additional_args = { "--hidden" }
                     },
                 },
             }
@@ -45,10 +81,12 @@ return {
                 -- Find all filles including hidden in the project
                 return function()
                     telescope_builtin.find_files {
-                        -- --files            print file list used in search
-                        -- --hidden           search hidden files and folders
-                        -- --no-ignore-vcs    don't respect ignore files (e.g. .gitignore)
-                        find_command = { 'rg', '--files', '--hidden', '--no-ignore-vcs' },
+                        find_command = {
+                            'rg',
+                            '--files',         -- print file list used in search
+                            '--hidden',        -- search hidden files and folders
+                            '--no-ignore-vcs', -- don't respect ignore files (e.g. .gitignore)
+                        },
                         -- previewer = false
                     }
                 end
@@ -58,9 +96,15 @@ return {
                 -- Find all files exluding node_modules, .git and dist folders
                 return function()
                     telescope_builtin.find_files {
-                        -- -g                 glob - include or exlude files and directories from searching
-                        find_command = { 'rg', '--files', '--hidden', '--no-ignore-vcs', '-g',
-                            '!{node_modules,.git,dist}' },
+                        find_command = {
+                            'rg',
+                            '--files',
+                            '--hidden',
+                            '--no-ignore-vcs',
+                            '-g',
+                            -- -g                 glob - include or exlude files and directories from searching
+                            '!{node_modules,.git,dist}',
+                        },
                         -- previewer = false
                     }
                 end
