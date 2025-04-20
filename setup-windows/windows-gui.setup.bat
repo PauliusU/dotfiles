@@ -51,8 +51,4 @@ d:\Dropbox\soft\cli-tools\ShLib_and_SLUtil_win32\ShLib\ShLib.exe add "%APPDATA%\
 d:\Dropbox\soft\cli-tools\ShLib_and_SLUtil_win32\ShLib\ShLib.exe add "%APPDATA%\Microsoft\Windows\Libraries\DDiskFiles.library-ms" "D:\soft"
 
 ECHO **** Set display refresh rate ****
-:: Get display refresh rate
-wmic PATH Win32_videocontroller get currentrefreshrate
 IF EXIST %PC_HOME_FILE% d:\Dropbox\soft\cli-tools\nircmd-x64\nircmd.exe setdisplay monitor:0 1920 1080 32 75 -updatereg
-:: Get display refresh rate to check the changes
-wmic PATH Win32_videocontroller get currentrefreshrate

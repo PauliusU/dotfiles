@@ -2,17 +2,8 @@
 
 # Install software and setup symlinks
 
-echo "=========================== BREW [NON ADMIN] ============================"
+echo "================================= BREW =================================="
 
-if [[ $(command -v brew) == "" ]]; then
-    echo "Installing brew"
-    mkdir -p ~/bin
-    cd ~/bin
-    mkdir -p homebrew && curl -L https://github.com/Homebrew/brew/tarball/master | tar xz --strip 1 -C homebrew
-    eval "$(homebrew/bin/brew shellenv)"
-    brew update --force --quiet
-    chmod -R go-w "$(brew --prefix)/share/zsh"
-fi
 brew --version
 brew update  # Update brew itself
 brew upgrade # Update packages (installed programs)

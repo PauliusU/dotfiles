@@ -6,9 +6,9 @@ TITLE Shells and terminals
 
 ECHO **** Nerd fonts [ADMIN] ****
 powershell scoop bucket add nerd-fonts
-powershell sudo scoop install -g CascadiaCode-NF-Mono
-powershell sudo scoop install -g FiraCode-NF-Mono
-powershell sudo scoop install -g JetBrainsMono-NF
+powershell scoop install -g CascadiaCode-NF-Mono
+powershell scoop install -g FiraCode-NF-Mono
+powershell scoop install -g JetBrainsMono-NF
 
 ECHO **** Alacritty ****
 powershell scoop install alacritty
@@ -81,6 +81,7 @@ IF %errorlevel% neq 0 (
 ) else (
     ECHO GCC is already installed
 )
+gcc --version
 g++ --version
 
 ECHO **** Visual Studio Code [VSCode] ****
