@@ -287,6 +287,7 @@ return {
                     -- 'markdown',
                 },
             })
+            lspconfig.gh_actions_ls.setup({}) -- GitHub Actions
             lspconfig.harper_ls.setup({ -- Spell checking, grammar checking, and more
                 settings = {
                     ["harper-ls"] = {
@@ -328,7 +329,7 @@ return {
                     { name = 'nvim_lsp_signature_help' },                    -- Display function signatures with current parameter emphasized
                     { name = 'nvim_lua',               keyword_length = 2 }, -- Complete neovim's Lua runtime API such vim.lsp.*
                     { name = 'buffer',                 keyword_length = 3 }, -- Suggest words found in the current buffer (source current buffer)
-                    { name = 'luasnip',                keyword_length = 2 }, -- Shows avaiable snippets and expands them if they are chosen
+                    { name = 'luasnip',                keyword_length = 2 }, -- Shows available snippets and expands them if they are chosen
                     { name = 'calc' },                                       -- source for math calculation
                 },
                 window = {
@@ -461,6 +462,7 @@ return {
     },
     {
         "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
+        desc = "Renders diagnostics using virtual lines on top of the real line of code.",
         config = function()
             require("lsp_lines").setup()
 

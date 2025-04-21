@@ -51,6 +51,7 @@ return {
     },
     {
         "zbirenbaum/copilot.lua",
+        desc = "GitHub Copilot. Run ':Copilot auth' to get started.",
         cmd = "Copilot",
         event = "InsertEnter",
         config = function()
