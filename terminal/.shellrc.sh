@@ -110,7 +110,8 @@ if [ -n "$ZSH_VERSION" ]; then
 
     # Shell integrations
 
-    eval "$(zoxide init zsh)" # Enable zoxide for zsh
+    # Enable zoxide for zsh
+    eval "$(zoxide init zsh)"
 
     ### FZF
     eval "$(fzf --zsh)" # Set up fzf key bindings (C^t) and fuzzy completion

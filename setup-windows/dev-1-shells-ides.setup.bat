@@ -138,8 +138,12 @@ IF %errorlevel% neq 0 (
 ) else (
     ECHO Rustup is already installed
 )
-rustup update stable
-winget install Microsoft.VisualStudio.2022.BuildTools
+:: rustup update stable
+:: winget install Microsoft.VisualStudio.2022.BuildTools
+:: rustup uninstall toolchain stable-x86_64-pc-windows-msvc
+rustup toolchain install stable-x86_64-pc-windows-gnu
+rustup default stable-x86_64-pc-windows-gnu
+rustup show
 rustc --version
 cargo --version
 
@@ -165,3 +169,4 @@ wsl.exe --install
 wsl --update
 :: See WSL and kernel version
 wsl --status
+wsl -l

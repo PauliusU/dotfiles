@@ -10,6 +10,9 @@ export TIME_STYLE='+%F %T' # ISO 8601 date format for ls and lsd
 # Common paths
 export DOTFILES="$HOME/Dropbox/code/dotfiles"
 export SCRIPTS_PATH="$HOME/Dropbox/code/dotfiles/scripts"
+if [ "$(uname)" = "Darwin" ]; then
+    export CLOUD_STORAGE="$HOME/Library/CloudStorage"
+fi
 
 # XDG paths
 export XDG_CONFIG_HOME="$HOME/.config"
@@ -32,36 +35,12 @@ export NVM_DIR="$XDG_DATA_HOME/nvm"
 export PYTHONSTARTUP="$HOME/python/pythonrc"
 export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
 export SONARLINT_USER_HOME="$XDG_DATA_HOME/sonarlint"
-export TERMINFO="$XDG_DATA_HOME/terminfo" # ncurses terminfo database
+export TERMINFO="$XDG_DATA_HOME/terminfo"                          # ncurses terminfo database
 export TERMINFO_DIRS="$XDG_DATA_HOME/terminfo:/usr/share/terminfo" # ncurses terminfo database
 export TS_NODE_HISTORY="$XDG_STATE_HOME/ts_node_repl_history"
 export VOLTA_HOME="$XDG_DATA_HOME/volta"
 export ZDOTDIR="$HOME/.config/zsh"
 # source "$HOME/.cargo/env" # add Rust to system PATH
-
-if [ "$(uname)" = "Darwin" ]; then
-    export CLOUD_STORAGE="$HOME/Library/CloudStorage"
-
-    prepend_path() {
-        # Prepend directory to PATH
-        # Skipped if directory does not exist
-        # Argument should be /absolute/path or ~/user/path
-        if [ -d "$1" ]; then
-            # Export to sub-processes (make it inherited by child processes)
-            export PATH="$1:$PATH"
-        fi
-    }
-
-    export CONDA_HOME="$HOME/bin/homebrew/anaconda3"
-
-    # Order matters, first entry in PATH will take priority over later ones
-    prepend_path "$CONDA_HOME/bin"      # Conda lowest in precedence for Python
-    prepend_path "$HOME/.local/bin"     # Python packages store some bins here
-    prepend_path "$VOLTA_HOME/bin"      # Use Volta Node instead of global Node by default
-
-    # Clean-up
-    unset -f prepend_path
-fi
 
 # Colorful man pages in 'less' pager
 export LESS_TERMCAP_mb=$'\e[1;32m'
@@ -71,3 +50,21 @@ export LESS_TERMCAP_se=$'\e[0m'
 export LESS_TERMCAP_so=$'\e[01;33m'
 export LESS_TERMCAP_ue=$'\e[0m'
 export LESS_TERMCAP_us=$'\e[1;4;31m'
+
+# PATH
+prepend_path() {
+    # Prepend directory to PATH
+    # Skipped if directory does not exist
+    # Argument should be /absolute/path or ~/user/path
+    if [ -d "$1" ]; then
+        # Export to sub-processes (make it inherited by child processes)
+        export PATH="$1:$PATH"
+    fi
+}
+
+# Order matters, first entry in PATH will take priority over later ones
+prepend_path "$HOME/.local/bin" # Python packages store some bins here
+prepend_path "$VOLTA_HOME/bin" # Use Volta Node instead of global Node by default
+
+# Clean-up
+unset -f prepend_path

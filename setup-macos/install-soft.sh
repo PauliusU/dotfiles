@@ -157,18 +157,27 @@ if [ "$(uname)" = "Darwin" ]; then
 fi
 
 if [ "$(uname)" = "Linux" ]; then
+    sudo apt update
+    sudo apt upgrade -y
+
     sudo apt install -y bat           # Better cat
     sudo apt install -y btop          # Better top or htop
     sudo apt install -y bwm-ng        # Bandwidth meter
-    sudo apt install -y du-dust       # Better du
+    sudo apt install -y du-dust       # Better du [since 24.10]
+    sudo apt install -y fd-find       # Better find
     sudo apt install -y fish          # Fish shell
     sudo apt install -y fzf           # Fuzzy finder
-    sudo apt install -y fd-find       # Better find
     sudo apt install -y git           # Version control
+    sudo apt install -y jq            # JSON parser
+    sudo apt install -y lsd           # Better ls
     sudo apt install -y mc            # Midnight Commander
     sudo apt install -y ripgrep       # Better grep
     sudo apt install -y tmux          # Terminal multiplexer
     sudo apt install -y zoxide        # Better cd
+
+    mkdir -p ~/.local/bin
+    ln -s /usr/bin/batcat ~/.local/bin/bat
+    ln -s "$(which fdfind)" ~/.local/bin/fd
 
     sudo apt install -y doublecmd-gtk # Double Commander - GUI file manager
     sudo apt install -y mpv
