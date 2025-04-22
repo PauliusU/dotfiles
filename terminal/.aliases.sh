@@ -50,6 +50,7 @@ alias bupc="brew upgrade --cask" # Upgrade all casks installed with homebrew
 alias bupd="brew update"         # Update homebrew itself and the package lists
 alias bupg="brew upgrade"        # Upgrade all software installed with homebrew
 alias si="brew install"
+alias sl="brew list"
 alias ss="brew search"
 alias sun="brew uninstall"
 alias suu="brew update && brew upgrade && brew upgrade --cask"
@@ -65,6 +66,7 @@ if [[ $(uname) == "Linux" ]]; then
     alias ag="sudo apt upgrade -y" # Update software (packages)
     alias auu="sudo apt update && sudo apt upgrade -y"
     alias si="sudo apt install"
+    alias sl="apt list --installed"
     alias ss="sudo apt search"
     alias sun="sudo apt remove"
     alias suu="sudo apt update && sudo apt upgrade -y"

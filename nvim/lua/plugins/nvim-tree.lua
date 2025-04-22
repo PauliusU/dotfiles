@@ -17,6 +17,10 @@ return {
 
         -- Default options: https://github.com/nvim-tree/nvim-tree.lua/blob/aaee4cd896b74f85a81bed7eef2db7869960c4d0/lua/nvim-tree.lua#L361
         require("nvim-tree").setup({
+            view = {
+                side = "right", -- Set the tree to appear on the right-hand side
+                width = 40, -- Make panel broader. Default: 30
+            },
             filters = {
                 git_ignored = false,   -- shows git ignored files in the tree
                 custom = { '^.git$' }, -- hides .git folder in the tree
