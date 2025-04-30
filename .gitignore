@@ -9,6 +9,7 @@ private.lua
 *.lnk
 
 .config/karabiner/automatic_backups
+.config/lazygit/state.yml
 espanso/match/packages/*
 Library/Preferences/doublecmd/colors.json
 Library/Preferences/doublecmd/extassoc.xml
@@ -25,7 +26,6 @@ nvim/lazy-lock.json
 nvim/lua/snippets/
 nvim/spell/
 nvim/undodir/
-terminal/lazygit/state.yml
 terminal/PowerShell/Modules/
 terminal/PowerShell/Scripts/
 terminal/WindowsTerminal/elevated-state.json
