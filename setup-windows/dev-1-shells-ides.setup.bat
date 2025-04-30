@@ -118,7 +118,7 @@ cdk --version
 ECHO **** Git tools ****
 powershell scoop install lazygit
 IF NOT EXIST "%APPDATA%\jesseduffield\" MKDIR "%APPDATA%\jesseduffield\"
-MKLINK /J "%APPDATA%\jesseduffield\lazygit\" "%DOTFILES%\terminal\lazygit"
+MKLINK /J "%APPDATA%\jesseduffield\lazygit\" "%DOTFILES%\.config\lazygit"
 :: Git-delta. git diff | delta
 powershell scoop install delta
 
