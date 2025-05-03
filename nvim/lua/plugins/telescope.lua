@@ -111,7 +111,7 @@ return {
             end
 
             -- File pickers
-            vim.keymap.set('n', '<C-p>', FindMostFiles(), { desc = 'telescope: Find files' })
+            vim.keymap.set('n', '<leader><leader>', FindMostFiles(), { desc = 'telescope: Find files' })
             vim.keymap.set('n', '<C-A-p>', telescope_builtin.git_files, { desc = 'telescope: Search only git files' })
             vim.keymap.set('n', '<C-A-s>', telescope_builtin.live_grep,
                 { desc = 'telescope: Search string. Respects .gitignore.' })
@@ -156,7 +156,9 @@ return {
             -- LSP
             vim.keymap.set('n', '<leader>lr', telescope_builtin.lsp_references,
                 { desc = 'telescope: Search [L]SP [R]eferences' })
-            vim.keymap.set('n', '<C-A-n>', telescope_builtin.lsp_document_symbols,
+            vim.keymap.set('n', '<M-o>', telescope_builtin.lsp_document_symbols,
+                { desc = 'telescope: Search LSP document Symbols' })
+            vim.keymap.set('n', '<C-A-o>', telescope_builtin.lsp_document_symbols,
                 { desc = 'telescope: Search LSP document Symbols' })
             vim.keymap.set('n', '<leader>lw', telescope_builtin.lsp_workspace_symbols,
                 { desc = 'telescope: Search [L]SP workspace [S]ymbols' })
@@ -199,7 +201,7 @@ return {
             require("telescope").load_extension "frecency"
             vim.keymap.set("n", "<leader>fd", "<Cmd>Telescope frecency<CR>",
                 { desc = "telescope: frecency" })
-            vim.keymap.set("n", "<leader><leader>", "<Cmd>Telescope frecency workspace=CWD<CR>",
+            vim.keymap.set("n", "<C-p>", "<Cmd>Telescope frecency workspace=CWD<CR>",
                 { desc = "telescope: frecency CWD" })
         end,
     }
