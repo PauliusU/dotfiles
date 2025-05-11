@@ -30,8 +30,8 @@ if [ -n "$ZSH_VERSION" ]; then
 
     # Change directory without `cd`
     setopt AUTO_CD
-    # # Use case-insensitive globbing (i.e. *.jpg = *.JPG)
-    # setopt NO_CASE_GLOB
+    # Disable globbing for non-existing files
+    unsetopt nomatch
 
     # History settings
     # Append to history file instead of replacing when using multiple zsh sessions.
@@ -50,11 +50,6 @@ if [ -n "$ZSH_VERSION" ]; then
     setopt HIST_REDUCE_BLANKS
     # Puts timestamps in the history
     # setopt EXTENDED_HISTORY
-
-    # # Enable autocorrect
-    # setopt correct
-    # # Enable autocorrect for commands
-    # setopt correct_all
 
     # List the existing ZSH options
     # setopt

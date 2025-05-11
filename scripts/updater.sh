@@ -9,6 +9,7 @@ echo $visible_line
 
 echo "**** 🦀 Rust updates ****"
 rustup update stable
+cargo install --list
 echo $visible_line
 
 echo "**** 🐍 Python and pipx updates ****"
