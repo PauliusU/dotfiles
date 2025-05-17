@@ -107,7 +107,7 @@ return {
                     vim.keymap.set('n', '<F2>', vim.lsp.buf.rename,
                         { desc = 'lsp: rename all references to the symbol under the cursor', remap = false })
                     -- Select a code action available at the current cursor position
-                    vim.keymap.set('n', '<leader>h', vim.lsp.buf.code_action,
+                    vim.keymap.set('n', '<leader>ha', vim.lsp.buf.code_action,
                         { desc = 'lsp: code action', remap = false })
                     vim.keymap.set({ 'v', 'n' }, '<F1>', vim.lsp.buf.code_action,
                         { desc = 'lsp: code action', remap = false })

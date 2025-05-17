@@ -127,7 +127,7 @@ return {
                 { desc = 'telescope: [?] Find recently opened files' })
             vim.keymap.set('n', '<leader>sz', telescope_builtin.oldfiles,
                 { desc = 'telescope: Find recently opened files' })
-            vim.keymap.set('n', '<leader>sc', telescope_builtin.commands, { desc = 'telescope: [S]earch [C]ommands' })
+            vim.keymap.set('n', '<leader>scc', telescope_builtin.commands, { desc = 'telescope: [S]earch [C]ommands' })
             vim.keymap.set('n', '<leader>st', telescope_builtin.tags, { desc = 'telescope: [S]earch [T]ags' })
             vim.keymap.set('n', '<leader>sch', telescope_builtin.command_history,
                 { desc = 'telescope: Lookup in [C]earch [H]istory' })

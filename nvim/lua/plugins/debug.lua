@@ -133,7 +133,7 @@ return {
         vim.keymap.set('n', '<F12>', dap.step_out, { desc = 'debug: Step Out' })
         vim.keymap.set('n', '<S-F11>', dap.step_out, { desc = 'debug: Step Out' })
         vim.keymap.set('n', '<F9>', dap.toggle_breakpoint, { desc = 'debug: Toggle Breakpoint 2' })
-        vim.keymap.set('n', '<leader>b', dap.toggle_breakpoint, { desc = 'debug: Toggle Breakpoint' })
+        vim.keymap.set('n', '<leader>br', dap.toggle_breakpoint, { desc = 'debug: Toggle Breakpoint' })
         vim.keymap.set('n', '<leader>B', function()
             dap.set_breakpoint(vim.fn.input 'Breakpoint condition: ')
         end, { desc = 'debug: Set Breakpoint' })

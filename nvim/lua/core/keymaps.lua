@@ -21,7 +21,6 @@ vim.keymap.set("n", "<leader>lf", "<cmd>source %<CR>", { desc = "[L]oad file a.k
 
 -- Switch modes
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex, { desc = 'Explore file tree ([P]roject [V]view)' })
-vim.keymap.set("i", "jk", "<Esc>", { desc = 'Exit insert mode' })
 vim.keymap.set("i", "kj", "<Esc>", { desc = 'Exit insert mode' })
 vim.keymap.set("i", "ii", "<Esc>", { desc = 'Exit insert mode' })
 vim.keymap.set("i", ";;", "<Esc>", { desc = 'Exit insert mode' })
@@ -29,7 +28,7 @@ vim.keymap.set("t", "jk", "<C-\\><C-n>", { desc = 'Exit terminal mode' })
 vim.keymap.set("i", "<C-c>", "<Esc>", { desc = 'Enter normal mode' })
 
 -- Split screen (splits)
-vim.keymap.set({ "n", "v" }, "<leader>d", "<cmd>vs<CR>", { desc = "Vertical split (vsplit)" })
+vim.keymap.set({ "n", "v" }, "<leader>df", "<cmd>vs<CR>", { desc = "Vertical split (vsplit)" })
 vim.keymap.set({ "n", "v" }, "<leader>D", "<cmd>split<CR>", { desc = "Horizontal split" })
 
 -- Navigation
@@ -40,15 +39,15 @@ vim.keymap.set({ "n", "v", "i" }, "<C-f>", "<cmd>silent !tmux neww tmux-sessioni
 local default_opts = { noremap = true, silent = true }
 vim.keymap.set("n", "<S-h>", ":bprevious<CR>", { desc = "Previous buffer" })
 vim.keymap.set("n", "<S-l>", ":bnext<CR>", { desc = "Next buffer" })
-vim.keymap.set({ "n", "v", "i" }, "[b", "<cmd>bp<CR>", { desc = "Previous buffer :bprevious" })
-vim.keymap.set({ "n", "v", "i" }, "]b", "<cmd>bn<CR>", { desc = "Next buffer :bnext" })
+vim.keymap.set({ "n", "v" }, "[b", "<cmd>bp<CR>", { desc = "Previous buffer :bprevious" })
+vim.keymap.set({ "n", "v" }, "]b", "<cmd>bn<CR>", { desc = "Next buffer :bnext" })
 -- vim.keymap.set({ "n" }, "š", "<cmd>b#<CR>", { desc = "Toggle between two buffers. <C-^> in other layout" })
 vim.keymap.set("n", "<leader>bb", "<cmd>e #<cr>", { desc = "Switch to other buffer (toggle buffers)" })
 -- Navigate tabs
 vim.keymap.set({ "n" }, "]t", "<cmd>tabnext<CR>", { desc = "Next tab" })
 vim.keymap.set({ "n" }, "[t", "<cmd>tabprevious<CR>", { desc = "Previous tab" })
 vim.keymap.set({ "n" }, "<C-t>", "<cmd>tabnew<CR>", { desc = "Open tab" })
-vim.keymap.set({ "n" }, "<leader>c", "<cmd>tabc<CR>", { desc = "Close tab" })
+vim.keymap.set({ "n" }, "<leader>cc", "<cmd>tabc<CR>", { desc = "Close tab" })
 -- Switch to specific tab with number
 vim.keymap.set({ "n" }, "<leader>1", "<cmd>tabn 1<CR>", { desc = "Go to tab 1" })
 vim.keymap.set({ "n" }, "<leader>2", "<cmd>tabn 2<CR>", { desc = "Go to tab 2" })
@@ -63,8 +62,8 @@ vim.keymap.set({ "n" }, "<leader>9", "<cmd>tablast<CR>", { desc = "Go to the las
 -- Navigate errors (quickfix) and issues
 vim.keymap.set("n", "<C-A-j>", "<cmd>cnext<CR>zz", { desc = "Quickfix next" })
 vim.keymap.set("n", "<C-A-k>", "<cmd>cprev<CR>zz", { desc = "Quickfix previous" })
-vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz", { desc = "Like :cnext but use location list and not the quickfix" })
-vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz", { desc = "Like :cprev but use location list and not the quickfix" })
+vim.keymap.set("n", "<leader>kj", "<cmd>lnext<CR>zz", { desc = "Like :cnext but use location list and not the quickfix" })
+vim.keymap.set("n", "<leader>kl", "<cmd>lprev<CR>zz", { desc = "Like :cprev but use location list and not the quickfix" })
 -- Moving cursor in normal mode
 vim.keymap.set('n', 'gh', '_', { desc = 'Go to start of line. Faster that "_"' })
 vim.keymap.set('n', 'gl', '$', { desc = 'Go to end of line. Faster that "$"' })
@@ -99,7 +98,7 @@ vim.keymap.set("n", "n", "nzzzv", { desc = 'Center search results' })
 vim.keymap.set("n", "N", "Nzzzv", { desc = 'Center search results' })
 
 -- Copy, paste, delete
-vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]], { desc = 'Delete to void register' })
+vim.keymap.set({ "n", "v" }, "<leader>ds", [["_d]], { desc = 'Delete to void register' })
 vim.keymap.set("x", "<leader>p", [["_dP]], { desc = 'Paste without messing your register' })
 vim.keymap.set("v", "p", '"_dP', { desc = "Paste over currently selected text without yanking it" })
 vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]], { desc = 'asbjornHaland -- copy to system clipboard #1' })
@@ -127,7 +126,7 @@ vim.keymap.set('n', '+', '<C-a>', { desc = 'Increment number' })
 vim.keymap.set('n', '-', '<C-x>', { desc = 'Decrement number' })
 
 -- Other text manipulations
-vim.keymap.set("n", "<leader>n", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
+vim.keymap.set("n", "<leader>nr", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
     { desc = "Rename symbol (replace word under the cursor)" })
 vim.keymap.set("n", "J", "mzJ`z", { desc = 'Join lines. Append line below, but keep cursor in place' })
 vim.keymap.set("n", "qq", "i<CR><Esc>", { desc = 'split line' })
