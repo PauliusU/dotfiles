@@ -5,7 +5,7 @@ return {
         keys = {
             { 'M',          ':TSJToggle<cr>',   desc = ":TSJToggle" },
             { '<C-g>',      ':TSJToggle<cr>',   desc = ":TSJToggle" },
-            { '<leader>m',  desc = ":TSJToggle" },
+            { '<leader>mm',  desc = ":TSJToggle" },
             { '<leader>j',  desc = ":TSJoin" },
             { '<leader>qs', ':TSJSplit<cr>',    desc = ':TSJSplit' },
         },
