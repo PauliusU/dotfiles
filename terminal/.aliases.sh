@@ -227,6 +227,7 @@ alias taru='tar xzvf'                                                           
 alias tarx="tar -xvf"                                                                          # Unzip
 alias tarz='tar czvf'                                                                          # Zip
 alias td="tmux detach"                                                                         # Exit the tmux window to come back to later
+alias tl="tmux-session-picker"                                                                 # Fuzzy find tmux sessions
 alias tls="tmux ls"                                                                            # = tmux list-sessions
 alias tmks="tmux kill-server"                                                                  # Cleanly and gracefully kill all tmux open sessions (and server)
 alias tmm='echo tmux: $TMUX'                                                                   # = tmux new = tmux new-session

@@ -124,6 +124,15 @@ function merge_mp3s() {
     mv merged.mp3 "${PWD##*/}".mp3
 }
 
+
+function extract_audio() {
+    # Extract audio from video
+
+    # -vn                   skips the inclusion of the video stream,
+    # -acodec copy			copies the picked audio streams (without re-encoding)
+    ffmpeg -i "$1" -vn -acodec copy "${1%.*}.aac"
+}
+
 function git_change_origin() {
     # Change old git repo remote origin to new
 
@@ -139,14 +148,6 @@ function git_change_origin() {
     git remote add origin "$1"
     git push --set-upstream origin master
     git push -u origin master
-}
-
-function extract_audio() {
-    # Extract audio from video
-
-    # -vn					skips the inclusion of the video stream,
-    # -acodec copy			copies the picked audio streams (without re-encoding)
-    ffmpeg -i "$1" -vn -acodec copy "${1%.*}.aac"
 }
 
 function ver() {
