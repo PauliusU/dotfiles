@@ -1,7 +1,8 @@
 @ECHO OFF &:: Clean output and hide path of running command
 
 ECHO **** Python ****
-winget install Python.Python.3.13
+:: REM winget install Python.Python.3.13
+scoop install uv
 python --version
 
 ECHO **** pip ****
