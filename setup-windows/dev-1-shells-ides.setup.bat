@@ -20,6 +20,8 @@ powershell scoop install coreutils
 powershell scoop install bat
 :: LSDeluxe - ls with colors, icons, tree-view, etc.
 powershell scoop install lsd
+powershell scoop install dust
+cargo install diskonaut
 
 ECHO **** Git-Bash ****
 MKLINK /J "%USERPROFILE%\.bashrc" "%DOTFILES%\terminal\.bashrc"
@@ -146,6 +148,8 @@ rustup default stable-x86_64-pc-windows-gnu
 rustup show
 rustc --version
 cargo --version
+:: List installed Rust packages
+cargo install --list
 
 ECHO **** Go ****
 powershell scoop install go
@@ -161,6 +165,9 @@ winget install Docker.DockerDesktop
 docker --version
 :: Disable running Docker Desktop at startup
 REG DELETE HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Run /v "Docker Desktop" /f
+
+ECHO **** VirtualBox ****
+winget install Oracle.VirtualBox
 
 ECHO **** WSL ****
 :: Install recommended Windows Subsystem for Linux features

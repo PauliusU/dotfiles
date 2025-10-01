@@ -22,6 +22,7 @@ mpv/cache/*
 mpv/script-modules/*
 mpv/scripts/*
 mpv/watch_later/*
+mpv/watch_history.jsonl
 nvim/lazy-lock.json
 nvim/lua/snippets/
 nvim/spell/

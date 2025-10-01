@@ -48,8 +48,11 @@ end
 function functions.open(name)
     return function()
         if name == "mpv" then
-            local app = hs.appfinder.appFromName(name):activate()
-            if app then return end
+            local app = hs.appfinder.appFromName(name)
+            if app then
+                app:activate()
+                return
+            end
         end
 
         if name == "finder" then
@@ -60,7 +63,9 @@ function functions.open(name)
         hs.application.open(name)
 
         local window = hs.window.focusedWindow()
-        window:maximize()
+        if window then
+            window:maximize() -- Maximize without animation
+        end
     end
 end
 
@@ -94,7 +99,7 @@ end
 function functions.toggleLayout()
     return function()
         if (hs.keycodes.currentLayout() == "U.S.") then
-            hs.keycodes.setLayout("Lithuanian")
+            hs.keycodes.setLayout("Lithuanian – QWERTY")
         else
             hs.keycodes.setLayout("U.S.")
         end
