@@ -41,10 +41,19 @@ return {
             end
         end
 
+        -- Sort function that puts folders first, then natural order
+        local function folders_first_cmp(a, b)
+            if a.type == b.type then
+                return natural_cmp(a, b)
+            else
+                return a.type == "directory"
+            end
+        end
+
         -- Default options: https://github.com/nvim-tree/nvim-tree.lua/blob/aaee4cd896b74f85a81bed7eef2db7869960c4d0/lua/nvim-tree.lua#L361
         require("nvim-tree").setup({
             sort_by = function(nodes)
-                table.sort(nodes, natural_cmp)
+                table.sort(nodes, folders_first_cmp)
             end,
             view = {
                 side = "right", -- Set the tree to appear on the right-hand side

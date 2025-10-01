@@ -25,4 +25,20 @@ return {
             vim.api.nvim_set_keymap("n", "<Leader>nc", ":lua require('neogen').generate({ type = 'class' })<CR>", opts)
         end
     },
+    {
+        'cordx56/rustowl',
+        ft = 'rust',   -- PU: Lazy-load on filetype
+        version = '*', -- Latest stable version
+        build = 'cargo binstall rustowl',
+        lazy = false,  -- This plugin is already lazy
+        opts = {
+            client = {
+                on_attach = function(_, buffer)
+                    vim.keymap.set('n', '<leader>xo', function()
+                        require('rustowl').toggle(buffer)
+                    end, { buffer = buffer, desc = 'Toggle RustOwl' })
+                end
+            },
+        },
+    }
 }

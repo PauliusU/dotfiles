@@ -34,6 +34,7 @@ return {
                         -- Exclude some patterns from search
                         "--glob=!**/.git/*",
                         "--glob=!**/.idea/*",
+                        "--glob=!**/.nx/*",
                         "--glob=!**/.venv/*",
                         -- "--glob=!**/.vscode/*",
                         "--glob=!**/build/*",
@@ -103,7 +104,7 @@ return {
                             '--no-ignore-vcs',
                             '-g',
                             -- -g                 glob - include or exlude files and directories from searching
-                            '!{node_modules,.git,dist}',
+                            '!{node_modules,.git,.nx,dist}',
                         },
                         -- previewer = false
                     }
