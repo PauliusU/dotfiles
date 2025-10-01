@@ -9,7 +9,7 @@ return {
                 go = "go run $fileName",
                 java = "cd $dir && javac $fileName && java $fileNameWithoutExt",
                 python = "python3 -u",
-                rust = "cd $dir && rustc $fileName && $dir/$fileNameWithoutExt",
+                rust = "cd $dir && rustc --edition=2021 $fileName && $dir/$fileNameWithoutExt",
                 typescript = "tsx", -- similar to ts-node --esm --swc
             },
         })
