@@ -1,7 +1,9 @@
 gui:
-  showFileTree: false # disable auto-showing changed files in a tree format
-  nerdFontsVersion: "3" # nerd fonts version to use ("2" or "3"); empty means don't show nerd font icons
+  # Disable auto-showing changed files in a tree format
+  showFileTree: false
+  # Nerd fonts version to use ("2" or "3"); empty means don't show nerd font icons
+  nerdFontsVersion: "3"
 git:
   paging:
-    # more readable diffs using git-delta
+    # More readable diffs using git-delta
     pager: delta --dark --paging=never

@@ -7,7 +7,7 @@ live_config_reload = true
 size = 14.0
 
 [font.normal]
-family = "FiraCode Nerd Font Mono"
+family = "JetBrainsMono Nerd Font"
 style = "Regular"
 
 [[mouse.bindings]]

@@ -67,9 +67,9 @@ defaults read com.apple.dock | grep wvous
 
 # Desktop & Dock => options inaccesible in the UI
 echo "**** Allow exiting Finder via ⌘ + Q; doing so will also hide desktop icons ****"
-# defaults write com.apple.finder QuitMenuItem -bool true
 defaults read com.apple.finder QuitMenuItem
 # defaults write com.apple.finder QuitMenuItem -bool NO # Default value
+defaults write com.apple.finder QuitMenuItem -bool true; killall Finder
 
 echo "**** Show the ~/Library folder ****"
 chflags nohidden ~/Library
