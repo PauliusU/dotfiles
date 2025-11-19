@@ -67,17 +67,15 @@ return {
                 },
             })
 
-            local lspconfig = require('lspconfig')
-            local lsp_defaults = lspconfig.util.default_config
-
             -- Keymaps common for all LSPs
             vim.keymap.set("n", "<leader>lm", '<cmd>Mason<cr>', { desc = 'Open Mason' })
             vim.keymap.set('n', '<leader>lp', '<cmd>LspInfo<cr>', { desc = 'LspInfo' })
 
-            -- Merge the defaults lspconfig provides with capabilities nvim-cmp adds
-            lsp_defaults.capabilities = vim.tbl_deep_extend(
+            -- Set up capabilities for LSP
+            local capabilities = vim.lsp.protocol.make_client_capabilities()
+            capabilities = vim.tbl_deep_extend(
                 'force',
-                lsp_defaults.capabilities,
+                capabilities,
                 require('cmp_nvim_lsp').default_capabilities()
             )
 
@@ -153,7 +151,8 @@ return {
             -- LSP servers
             ---
 
-            lspconfig.lua_ls.setup({
+            -- Lua LSP
+            vim.lsp.config('lua_ls', {
                 settings = {
                     Lua = {
                         diagnostics = {
@@ -167,6 +166,7 @@ return {
                     }
                 }
             })
+            vim.lsp.enable('lua_ls')
 
             local on_attach = function(client, bufnr)
                 print('CUSTOM ON_ATTACH')
@@ -190,7 +190,7 @@ return {
             vim.keymap.set("n", "<leader>lo", '<cmd>TSOrganizeImports<cr>', { desc = 'Typescript: organize imports' })
 
             -- TypeScript and JavaScript
-            lspconfig.ts_ls.setup {
+            vim.lsp.config('ts_ls', {
                 commands = {
                     TSOrganizeImports = {
                         ts_organize_imports,
@@ -221,9 +221,10 @@ return {
                         },
                     },
                 },
-            }
+            })
+            vim.lsp.enable('ts_ls')
 
-            lspconfig.eslint.setup({
+            vim.lsp.config('eslint', {
                 on_attach = function(client, _bufnr)
                     if client.name == "eslint" then
                         client.server_capabilities.documentFormattingProvider = true
@@ -232,11 +233,13 @@ return {
                     end
                 end
             })
+            vim.lsp.enable('eslint')
 
-            lspconfig.jsonls.setup({})
+            vim.lsp.config('jsonls', {})
+            vim.lsp.enable('jsonls')
 
             -- Rust
-            -- lspconfig.rust_analyzer.setup({
+            -- vim.lsp.config('rust_analyzer', {
             --     on_attach = on_attach,
             --     settings = {
             --         ['rust-analyzer'] = {
@@ -247,33 +250,65 @@ return {
             --         }
             --     }
             -- })
-            lspconfig.pylsp.setup({}) -- python
-            lspconfig.gopls.setup({})
-            lspconfig.asm_lsp.setup({
+            -- vim.lsp.enable('rust_analyzer')
+
+            vim.lsp.config('pylsp', {}) -- python
+            vim.lsp.enable('pylsp')
+
+            vim.lsp.config('gopls', {})
+            vim.lsp.enable('gopls')
+
+            vim.lsp.config('asm_lsp', {
                 filetypes = {
                     'asm',
                     's', -- not default
                     'vmasm'
                 },
             })
-            lspconfig.clangd.setup({ -- c, cpp
+            vim.lsp.enable('asm_lsp')
+
+            vim.lsp.config('clangd', { -- c, cpp
                 -- Fix "Multiple different client offset_encodings detected" error
                 -- ref: https://www.reddit.com/r/neovim/comments/12qbcua/multiple_different_client_offset_encodings/
                 cmd = { "clangd", "--offset-encoding=utf-16", },
             })
-            lspconfig.bashls.setup({}) -- bash
-            lspconfig.yamlls.setup({})
-            lspconfig.cssls.setup({})
-            lspconfig.dockerls.setup({})
-            lspconfig.docker_compose_language_service.setup({})
-            lspconfig.markdown_oxide.setup({})
-            lspconfig.taplo.setup({}) -- toml
-            lspconfig.tailwindcss.setup({})
-            lspconfig.prismals.setup({})
+            vim.lsp.enable('clangd')
+
+            vim.lsp.config('bashls', {}) -- bash
+            vim.lsp.enable('bashls')
+
+            vim.lsp.config('yamlls', {})
+            vim.lsp.enable('yamlls')
+
+            vim.lsp.config('cssls', {})
+            vim.lsp.enable('cssls')
+
+            vim.lsp.config('dockerls', {})
+            vim.lsp.enable('dockerls')
+
+            vim.lsp.config('docker_compose_language_service', {})
+            vim.lsp.enable('docker_compose_language_service')
+
+            vim.lsp.config('markdown_oxide', {})
+            vim.lsp.enable('markdown_oxide')
+
+            vim.lsp.config('taplo', {}) -- toml
+            vim.lsp.enable('taplo')
+
+            vim.lsp.config('tailwindcss', {})
+            vim.lsp.enable('tailwindcss')
+
+            vim.lsp.config('prismals', {})
+            vim.lsp.enable('prismals')
+
             -- Sandbox
-            lspconfig.lemminx.setup({}) -- xml
-            lspconfig.html.setup({})
-            lspconfig.emmet_ls.setup({
+            vim.lsp.config('lemminx', {}) -- xml
+            vim.lsp.enable('lemminx')
+
+            vim.lsp.config('html', {})
+            vim.lsp.enable('html')
+
+            vim.lsp.config('emmet_ls', {
                 filetypes = {
                     'html',
                     'css',
@@ -287,8 +322,12 @@ return {
                     -- 'markdown',
                 },
             })
-            lspconfig.gh_actions_ls.setup({}) -- GitHub Actions
-            lspconfig.harper_ls.setup({ -- Spell checking, grammar checking, and more
+            vim.lsp.enable('emmet_ls')
+
+            vim.lsp.config('gh_actions_ls', {}) -- GitHub Actions
+            vim.lsp.enable('gh_actions_ls')
+
+            vim.lsp.config('harper_ls', { -- Spell checking, grammar checking, and more
                 settings = {
                     ["harper-ls"] = {
                         linters = {
@@ -305,7 +344,10 @@ return {
                     },
                 },
             })
-            lspconfig.sqlls.setup({})
+            vim.lsp.enable('harper_ls')
+
+            vim.lsp.config('sqlls', {})
+            vim.lsp.enable('sqlls')
 
             --
             -- Autocompletion
