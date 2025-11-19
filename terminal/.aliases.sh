@@ -12,6 +12,7 @@ alias drb="cd ~/Dropbox/"
 alias ds="cd ~/Dropbox/DropsyncFiles"
 alias dt="cd ~/Desktop/" # "dt" is also a command line tool to display information about your domain on Linux or Unix system
 alias dwn="cd ~/Downloads/"
+alias med="cd ~/Dropbox/DropsyncFiles/media"
 alias prj="cd ~/Dropbox/projects/"
 # Save and then change the current directory. With no arguments, pushd exchanges the top two directories.
 alias pu="pushd"
@@ -85,7 +86,7 @@ alias gcontr="git shortlog -s -n"                                               
 # Lazygit
 alias lg="lazygit"
 # GitHub CLI
-alias ghg='gh browse'  # Open GitHub repo in browser
+alias ghg='gh pr view --web || gh browse'  # Open GitHub repo in browser (pull request if in PR branch)
 alias ghh="gh browse"  # Open GitHub repo in browser
 alias ghp="gh pr list" # List pull requests
 # JS/TS, npm, yarn
@@ -149,7 +150,7 @@ alias cww="cargo watch -q -c -x 'run -q'" # Watch for changes and run (without n
 alias da='docker attach'                                                                                  # Get back to running container
 alias dcls='docker compose ls -a'                                                                         # List running compose projects
 alias ddr='docker run -it --rm --name disposable'                                                         # Run any disposable container and delete it after exiting
-alias ddru='docker run -it --rm --name disposable-ubuntu ubuntu:23.04 || docker attach disposable-ubuntu' # Run Ubuntu container and automatically delete it when it exits
+alias ddru='docker run -it --rm --name disposable-ubuntu ubuntu:25.04 || docker attach disposable-ubuntu' # Run Ubuntu container and automatically delete it when it exits
 alias dei='docker exec -it'                                                                               # Docker run interactive shell
 alias dls='docker images'                                                                                 # See downloaded images = docker image ls
 alias dnls='docker network ls'                                                                            # List docker networks
@@ -207,6 +208,7 @@ alias shutdown="sudo shutdown -h now"                     # Requires root passwo
 alias startup="gnome-session-properties"                  # Startup applications (Linux)
 
 # Program access
+alias bb="cursor ."                                                                            # Open current folder in Cursor
 alias bw="bwm-ng -d"                                                                           # Network speed with dynamic units like K, M or G
 alias bww="bmon -p en8,en0"                                                                    # Network speed with specific interfaces
 alias cdd="code ."                                                                             # Open current folder in VS Code

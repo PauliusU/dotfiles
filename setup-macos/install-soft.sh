@@ -12,16 +12,16 @@ echo "============================ INSTALL SOFT ==============================="
 
 echo "**** 7zip ****"
 # p7zip is the command line version of 7-Zip for Linux / Unix, made by an independent developer.
-brew install p7zip # Posix 7zip (older version). Acessible using "7z"
+brew install p7zip # Posix 7zip (older version). Accessible using "7z"
 7z -version
-brew install 7zip # Latest version. Acessible using "7zz"
+brew install 7zip # Latest version. Accessible using "7zz"
 7zz -version
 
 echo "**** Benchmarks ****"
 brew install hyperfine # A command-line benchmarking tool
 
 echo "**** Disk usage ****"
-brew install diskonaut # disk usage analyzer and visualiser
+brew install diskonaut # disk usage analyzer and visualizer
 brew install dust # du alternative
 brew install ncdu # ncurses du
 
@@ -61,8 +61,16 @@ if [ "$(uname)" = "Darwin" ]; then
     # Enable charging when your battery dips under 80, and disable it when it exceeds 80
     battery maintain 80
     battery status
+
     # Battery info GUI
     brew install --cask coconutbattery
+
+    # batt - control battery charging on Apple Silicon MacBooks
+    brew install batt
+    sudo brew services start batt
+    batt limit 80
+    batt status
+    batt version
 
     echo "**** Dropbox sync ****"
     brew install --cask dropbox # official client (takes up device spot)
@@ -81,10 +89,8 @@ if [ "$(uname)" = "Darwin" ]; then
     brew install --cask double-commander
     ln -nsf "$DOTFILES/Library/Preferences/doublecmd" "$HOME/Library/Preferences/doublecmd"
 
-    # echo "**** File search (everything alternatives) ****"
-    # brew install --cask easyfind
-    # # sudo port install recoll # cluncy design
-    # # fsearch - everything alternative for Linux only
+    echo "**** File search (everything alternatives) ****"
+    brew install --cask thelowtechguys-cling
 
     echo "**** Google Chrome ****"
     brew install --cask google-chrome
@@ -97,11 +103,10 @@ if [ "$(uname)" = "Darwin" ]; then
     defaults write org.hammerspoon.Hammerspoon MJConfigFile "$XDG_CONFIG_HOME"/hammerspoon/init.lua
     ln -nsf "$(pwd)/hammerspoon" "$HOME/.config/hammerspoon"
 
-    # Espanso. Free, open source, cross-platform text expander
+    # Espanso - free, open source, cross-platform text expander
     brew install --cask espanso
     espanso path
     # espanso edit # open espanso configuration file in editor
-    # espanso install basic-emojis
     espanso package list       # List installed espanso packages
     espanso package update all # Update all packages
     espanso --version

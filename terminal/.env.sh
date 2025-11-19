@@ -20,6 +20,9 @@ export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_STATE_HOME="$HOME/.local/state"
 
+# XDG non-standard convenience variables
+export XDG_BIN_DIR=$HOME/.local/bin
+
 # Home directory cleanup using XDG paths
 export AWS_SHARED_CREDENTIALS_FILE="$XDG_CONFIG_HOME/aws/credentials"
 export AWS_CONFIG_FILE="$XDG_CONFIG_HOME/aws/config"
@@ -33,6 +36,7 @@ export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
 export NODE_REPL_HISTORY="$XDG_DATA_HOME/node_repl_history"
 export NVM_DIR="$XDG_DATA_HOME/nvm"
 export PYTHONSTARTUP="$HOME/python/pythonrc"
+export PSQL_HISTORY="$XDG_DATA_HOME/psql_history"
 export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
 export SONARLINT_USER_HOME="$XDG_DATA_HOME/sonarlint"
 export TERMINFO="$XDG_DATA_HOME/terminfo"                          # ncurses terminfo database
@@ -65,6 +69,8 @@ prepend_path() {
 # Order matters, first entry in PATH will take priority over later ones
 prepend_path "$HOME/.local/bin" # Python packages store some bins here
 prepend_path "$VOLTA_HOME/bin" # Use Volta Node instead of global Node by default
+prepend_path "$XDG_DATA_HOME/mise/shims"
+prepend_path "$GOPATH/bin"
 
 # Clean-up
 unset -f prepend_path

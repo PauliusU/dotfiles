@@ -22,7 +22,6 @@ fi
 chmod 600 ~/.ssh/id_rsa
 # Test SSH
 ssh -T git@github.com
-ssh -T git@gitlab.mellifera.team
 
 echo "**** GIT ****"
 brew install git
@@ -162,11 +161,13 @@ rustup toolchain list
 rustc --version
 cargo --version
 cargo install cargo-watch
+cargo install cargo-binstall
+env | grep -E 'CARGO_HOME|RUSTUP_HOME'
 
 if [ "$(uname)" = "Darwin" ]; then
     echo "**** Docker ****"
     # Docker desktop
-    brew install --cask docker
+    brew install --cask docker-desktop
     docker version
     docker compose version
 
