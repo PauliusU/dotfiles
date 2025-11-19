@@ -15,6 +15,7 @@ private.lua
 .github/copilot-instructions.md
 espanso/match/packages/*
 Library/Preferences/doublecmd/colors.json
+Library/Preferences/doublecmd/doublecmd.xml
 Library/Preferences/doublecmd/extassoc.xml
 Library/Preferences/doublecmd/history.xml
 Library/Preferences/doublecmd/multiarc.ini
