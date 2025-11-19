@@ -1,5 +1,7 @@
+.cursor/
 .idea/
 .vscode/
+.cursorrules
 
 private/
 *.private*
@@ -10,6 +12,7 @@ private.lua
 
 .config/karabiner/automatic_backups
 .config/lazygit/state.yml
+.github/copilot-instructions.md
 espanso/match/packages/*
 Library/Preferences/doublecmd/colors.json
 Library/Preferences/doublecmd/extassoc.xml

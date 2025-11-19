@@ -4,6 +4,6 @@ gui:
   # Nerd fonts version to use ("2" or "3"); empty means don't show nerd font icons
   nerdFontsVersion: "3"
 git:
-  paging:
-    # More readable diffs using git-delta
-    pager: delta --dark --paging=never
+  pagers:
+    - # More readable diffs using git-delta
+      pager: delta --dark --paging=never
