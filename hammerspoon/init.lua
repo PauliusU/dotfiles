@@ -69,6 +69,7 @@ hs.hotkey.bind(ctrl_opt, "Z", fn.open("Terminal")) -- [ ⌃ + ⌥ + Z ]
 hs.hotkey.bind(mash, "E", fn.open("Finder")) -- Finder (recent files) [ ⌃ + ⌥ + ⌘ + F ]
 Hyper:bind("Shift", "A", nil, fn.open("alacritty"))
 Hyper:bind("Shift", "D", nil, fn.open("Postman"))
+Hyper:bind("Shift", "G", nil, fn.open("Mail"))
 Hyper:bind("Shift", "H", nil, fn.open("VLC"))
 Hyper:bind("Shift", "I", nil, fn.open("System Settings"))
 Hyper:bind("Shift", "J", nil, fn.open("Ghostty"))
@@ -77,7 +78,7 @@ Hyper:bind("Shift", "L", nil, fn.open("Calendar"))
 Hyper:bind("Shift", "M", nil, fn.open("mpv"))
 Hyper:bind("Shift", "N", nil, fn.open("Obsidian"))
 Hyper:bind("Shift", "P", nil, fn.open("Music"))
-Hyper:bind("Shift", "S", nil, fn.open("Marta"))
+Hyper:bind("Shift", "S", nil, fn.open("Cursor"))
 Hyper:bind("Shift", "U", nil, fn.open("Messages"))
 Hyper:bind("Shift", "V", nil, fn.open("Safari"))
 Hyper:bind("Shift", "X", nil, fn.open("Claude"))
@@ -111,6 +112,7 @@ Hyper:bind({}, "pad7", fn.exec("open ~/Dropbox/DropsyncFiles/audiob/DBs/input.xl
 hs.hotkey.bind(shift_mash, "N", fn.open("Notion"))
 
 -- Window management
+hs.hotkey.bind(opt_cmd, "n", wm.maximizeWindow()) -- Maximize active window [ ⌥ + ⌘ + N ]
 hs.hotkey.bind(mash, "pad4", wm.moveWindow(wm.screenPositions.left))
 hs.hotkey.bind(mash, "pad6", wm.moveWindow(wm.screenPositions.right))
 hs.hotkey.bind(mash, "pad2", wm.moveWindow(wm.screenPositions.bottom))
