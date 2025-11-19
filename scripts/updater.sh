@@ -3,7 +3,9 @@
 visible_line="================================================================"
 
 echo "**** 📦 NPM and PNPM updates ****"
+npm list -g --depth=0 --long
 npm update -g npm-check-updates
+npm update -g typescript
 pnpm self-update
 echo $visible_line
 

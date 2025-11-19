@@ -1,8 +1,15 @@
 ECHO "**** UPDATE SOFT ****"
 
+ECHO "**** NPM ****"
+npm list -g --depth=0 --long
+
 ECHO "**** PIP ****"
 python -m pip list --user
 python -m pip install --upgrade pip --user
+
+ECHO "**** Rust ****"
+rustup update
+cargo install --list
 
 ECHO "**** SCOOP ****"
 scoop status

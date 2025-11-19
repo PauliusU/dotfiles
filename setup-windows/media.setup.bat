@@ -72,6 +72,9 @@ FTYPE Audio.WAV="%SCOOP%\apps\mpv\current\mpv.exe" "%%1"
 ASSOC .wma=Audio.WMA
 FTYPE Audio.WMA="%SCOOP%\apps\mpv\current\mpv.exe" "%%1"
 
+ECHO **** Plex ****
+powershell scoop install plex-server
+
 ECHO **** Spotify ****
 MKLINK /J "%APPDATA%\Spotify" "%USER_BAK%\AppData\Roaming\Spotify"
 MKLINK /J "%LOCALAPPDATA%\Spotify" "%USER_BAK%\AppData\Local\Spotify"
