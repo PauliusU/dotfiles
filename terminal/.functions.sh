@@ -1,36 +1,32 @@
 echo ".functions.sh ◘"
 
 function yt() {
-    #  Download youtube playlist or channel
+    #  Download youtube video, playlist or channel
 
     # Format for h264 and h265 codec:   -f "bestvideo[vcodec~='^((he|a)vc|h26[45])'][ext=mp4][height>=720][height<=1080][fps>=23]+bestaudio[ext=m4a]" \
-    # --restrict-filenames              Restrict filenames to only ASCII characters, and avoid "&" and spaces in filenames
+    # --merge-output-format             Force container format when merging video and audio streams (MP4 for better device/player compatibility)
     # --add-metadata                    Alias for --embed-metadata but supports youtube-dl as well
+    # --restrict-filenames              Restrict filenames to only ASCII characters, and avoid "&" and spaces in filenames
     # --embed-thumbnail                 yt-dlp: Embed thumbnail in the video as cover art || youtube-dl: Embed thumbnail in the audio as cover art
+    # --cookies-from-browser            Extract cookies from browser to avoid YouTube bot detection
     # -i                                alias for --ignore-errors
     yt-dlp \
-        -f "bestvideo[ext=mp4][height<=1080][fps>=23]+bestaudio[ext=m4a]" \
-        -o "%(upload_date)s-%(title)s_%(height)sp%(fps)s.%(ext)s" \
-        --restrict-filenames \
+        -f "bestvideo+bestaudio" \
+        -o "%(upload_date)s-%(title)s_%(height)sp%(fps)s-%(vcodec)s.%(ext)s" \
+        --merge-output-format mp4 \
         --add-metadata \
+        --restrict-filenames \
         --embed-thumbnail \
+        --cookies-from-browser chrome \
         -i \
         "$@"
 }
 
 function yyt() {
-    # Download with archive
-    yt --download-archive "downloads.log" "$@"
-}
-
-function yt-fk() {
-    # Download videos in 4K resolution
-    yt -f "bestvideo[ext=mp4][height<=2160]+bestaudio[ext=m4a]" "$@"
-}
-
-function ytt() {
-    # Download videos in max resolution
-    yt -f "bestvideo[ext=mp4]+bestaudio[ext=m4a]" "$@"
+    #  Download youtube playlist or channel with archive
+    yt \
+        --download-archive "downloads.log" \
+        "$@"
 }
 
 function yt-beginning() {
@@ -43,17 +39,9 @@ function yt-chapters() {
     yt --split-chapters "$@"
 }
 
-function batch_convert() {
-    # Converts an entire directory with ffmpeg
-    # Usage: batch_convert mkv mp4
-    # Ref: https://stackoverflow.com/a/52338741
-
-    old_extension=$1
-    new_extension=$2
-
-    for i in *."$old_extension"; do
-        ffmpeg -i "$i" "${i%.*}.$new_extension"
-    done
+function ytl() {
+    # Download youtube playlist or channel but limit resolution to 1080p
+    yt -f "bestvideo[height<=1080]+bestaudio" "$@"
 }
 
 function convert_to_av1() {
@@ -78,25 +66,25 @@ function convert_to_hevc() {
         return 1
     fi
 
+    if [[ "$(uname)" == "Darwin" ]]; then
+        # Hardware accelerated HEVC encoding on macOS (Apple Silicon)
+        ffmpeg -hide_banner -i "$1" -c:a copy -c:v hevc_videotoolbox -q:v 50 -allow_sw 1 -tag:v hvc1 "${1%.*}.hevc-q50.mp4"
+        return
+    fi
+
+    if [[ "$(uname)" == "Windows" ]]; then
+        # Hardware accelerated HEVC encoding on Windows (NVIDIA GPU)
+        # p1                fastest NVENC preset for windows
+        ffmpeg -hide_banner -i "$1" -c:a copy -c:v hevc_nvenc -preset p3 -b:v 0 -qp 20 -vtag hvc1 "${1%.*}.hevc-p3-20.mp4"
+        return
+    fi
+
+    # Software HEVC encoding
     # -preset medium    (default)
     # -c:a copy         stream copy audio instead of re-encoding
     # -crf 28           (default)
     # -tag:v hvc1       Make file compatible with Apple "industry standard" H.265. Gives Final Cut and Apple stuff compatibility
-    ffmpeg -hide_banner -i "$1" -c:a copy -c:v libx265 -preset ultrafast -crf 20 -vtag hvc1 "${1%.*}".hevc-ultrafast-20.mp4
-}
-
-function convert_to_avc() {
-    # Convert video to Advanced Video Coding (AVC) / H.264
-
-    if [ -z "$1" ]; then
-        echo 'Input file is missing. E.g. "video.webm"'
-        # Non-zero decimal number in the 1 - 255 range for failure
-        return 1
-    fi
-
-    # -c:a copy         stream copy audio instead of re-encoding
-    # -preset medium    (default)
-    ffmpeg -hide_banner -i "$1" -c:v libx264 -c:a copy "${1%.*}".avc.mp4
+    ffmpeg -hide_banner -i "$1" -c:a copy -c:v libx265 -preset ultrafast -crf 20 -tag:v hvc1 "${1%.*}".hevc-ultrafast-20.mp4
 }
 
 function convert_to_mp3s() {
