@@ -156,8 +156,7 @@ alias dls='docker images'                                                       
 alias dnls='docker network ls'                                                                            # List docker networks
 alias dps='docker ps --format="$DOCKER_FORMAT"'                                                           # See running containers = docker container ls
 alias dpss='docker ps -a --format="$DOCKER_FORMAT"'                                                       # See all containers (not only those that run) = docker container ls -a
-alias drn='docker run -w /src -v $PWD:/src --rm node:18'                                                  # Run Node commands without installing it. "-w /src" - creates folder inside a container.
-alias dru='docker start -i ubun || docker run -it --name ubun -h ubuntu -v ubuntu-vol:/home pu/ubuntu fish'        # Run custom Ubuntu container (create it if needed)
+alias drn='docker run -w /src -v $PWD:/src --rm node:22'                                                  # Run Node commands without installing it. "-w /src" - creates folder inside a container.
 alias dst='open -a Docker'                                                                                # Docker [st]art daemon
 alias dstop='docker stop $(docker ps -a -q)'                                                              # Docker stope all containers
 alias dvls='docker volume ls'                                                                             # List docker volumes
