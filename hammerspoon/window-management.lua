@@ -75,14 +75,14 @@ function windowManagement.toggleFullscreen()
 end
 
 -- Maximize either specified or focused window (a.k.a. maximize layout) by
--- moving it to the center of the sreen and let it fill up the entire screen.
+-- moving it to the center of the screen and let it fill up the entire screen.
 function windowManagement.maximizeWindow(window)
     return function()
         if window == nil then
             window = hs.window.focusedWindow()
         end
         if window then
-            -- ALternative (did the same in my tests)
+            -- Alternative (did the same in my tests)
             -- hs.layout.apply({ { nil, window, window:screen(), hs.layout.maximized, 0, 0 } })
             window:maximize()
 
@@ -157,7 +157,7 @@ function windowManagement.closeWindow()
     end
 end
 
--- Move active window to display by it's number (not to other space)
+-- Move active window to display by its number (not to other space)
 -- Move active windows to previous monitor (not previous space)
 -- Ref: https://stackoverflow.com/questions/54151343/how-to-move-an-application-between-monitors-in-hammerspoon
 function windowManagement.moveWindowToDisplay(displayNo)

@@ -4,7 +4,7 @@ local functions = {}
 
 ----------------- Hammerspoon utilities (reload configuration) -----------------
 
--- Reload Hammerspoon configuraion
+-- Reload Hammerspoon configuration
 function functions.reloadHs()
     return function()
         hs.reload()
@@ -25,7 +25,7 @@ function functions.printText(text)
     end
 end
 
--- Send keystroke (imitate printint with keyboard)
+-- Send keystroke (imitate printing with keyboard)
 function functions.press(modifier, key)
     return function()
         local delayInMicroseconds = 0
@@ -69,7 +69,7 @@ function functions.open(name)
     end
 end
 
--- Excecute shell commands
+-- Execute shell commands
 -- @param command to be executed
 function functions.exec(command)
     return function()
