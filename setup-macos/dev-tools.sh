@@ -42,7 +42,7 @@ git config --global alias.br "branch -a -v"
 git config --global alias.st "status -s -b"
 # View tags sorted by version number oldest first (use -r for newest first)
 git config --global alias.tags "! git tag | sort -V"
-# Show git global file and it's contents
+# Show git global file and its contents
 git config --global --list --show-origin
 git --version
 

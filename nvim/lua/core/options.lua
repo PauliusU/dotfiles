@@ -1,7 +1,7 @@
 -- Neovim options
 
 -- Line numbers
-vim.opt.number = true         -- Show line nubmers
+vim.opt.number = true         -- Show line numbers
 -- vim.opt.relativenumber = true -- Relative line numbers
 vim.opt.cursorline = true     -- Highlight the screen line of the cursor
 
