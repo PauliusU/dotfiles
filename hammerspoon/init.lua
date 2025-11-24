@@ -148,6 +148,16 @@ hs.hotkey.bind(mash, "S", wm.moveWindowToDisplay(1))
 hs.hotkey.bind(mash, "D", wm.moveWindowToDisplay(3))
 hs.hotkey.bind(mash, "B", wm.moveWindowToDisplay())
 
+-- Application switching (Set 1: Bracket keys)
+hs.hotkey.bind(opt_cmd, "[", wm.previousApplication()) -- Switch to previous application [ ⌥ + ⌘ + [ ]
+hs.hotkey.bind(opt_cmd, "]", wm.nextApplication()) -- Switch to next application [ ⌥ + ⌘ + ] ]
+hs.hotkey.bind(opt_cmd, "\\", wm.toggleLastTwoApplications()) -- Toggle between last two applications [ ⌥ + ⌘ + \ ]
+
+-- Application switching (Set 2: Arrow keys)
+hs.hotkey.bind(opt_cmd, "left", wm.previousApplication()) -- Switch to previous application [ ⌥ + ⌘ + ← ]
+hs.hotkey.bind(opt_cmd, "right", wm.nextApplication()) -- Switch to next application [ ⌥ + ⌘ + → ]
+hs.hotkey.bind(opt_cmd, "/", wm.toggleLastTwoApplications()) -- Toggle between last two applications [ ⌥ + ⌘ + / ]
+
 -- System control (sound, keyboard layout)
 hs.hotkey.bind(shift_mash, "R", fn.restartOSWindow()) -- [ ⌃ + ⌥ + ⌘ + ⇧ + R ]
 Hyper:bind({ "shift" }, "R", nil, fn.restartOSWindow())

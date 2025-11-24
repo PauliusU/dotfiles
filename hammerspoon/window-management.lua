@@ -177,4 +177,124 @@ function windowManagement.moveWindowToDisplay(displayNo)
     end
 end
 
+-- Track last two applications for toggle functionality
+local lastTwoApplications = { nil, nil }
+
+-- Update last two applications when window focus changes
+local function updateLastTwoApplications(currentApp)
+    if currentApp and currentApp:kind() == 1 then -- Only track regular applications
+        if lastTwoApplications[1] ~= currentApp then
+            lastTwoApplications[2] = lastTwoApplications[1]
+            lastTwoApplications[1] = currentApp
+        end
+    end
+end
+
+-- Subscribe to window focus events to track application changes
+hs.window.filter.default:subscribe(hs.window.filter.windowFocused, function(window)
+    if window then
+        local app = window:application()
+        updateLastTwoApplications(app)
+    end
+end)
+
+-- Helper function to activate application with no animations
+local function activateAppNoAnimation(app)
+    -- Ensure animation duration is 0
+    hs.window.animationDuration = 0
+    
+    -- For mpv, use immediate activation
+    if app:name() == "mpv" then
+        app:activate(true) -- true = allWindows (activate all windows)
+        -- Small delay to ensure mpv window is ready
+        hs.timer.usleep(10000) -- 10ms delay
+    else
+        app:activate(true)
+    end
+end
+
+-- Switch to previous application (Command+Tab style)
+function windowManagement.previousApplication()
+    return function()
+        local apps = hs.application.runningApplications()
+        local focusedApp = hs.application.frontmostApplication()
+        local previousApp = nil
+        local found = false
+
+        -- Find the previous application
+        for i, app in ipairs(apps) do
+            if app:kind() == 1 then -- Only regular applications
+                if app == focusedApp and previousApp then
+                    activateAppNoAnimation(previousApp)
+                    return
+                end
+                if app == focusedApp then
+                    found = true
+                end
+                if not found then
+                    previousApp = app
+                end
+            end
+        end
+
+        -- If no previous app found, wrap around to the last app
+        if found then
+            for i = #apps, 1, -1 do
+                local app = apps[i]
+                if app:kind() == 1 and app ~= focusedApp then
+                    activateAppNoAnimation(app)
+                    return
+                end
+            end
+        end
+    end
+end
+
+-- Switch to next application (Command+Tab style)
+function windowManagement.nextApplication()
+    return function()
+        local apps = hs.application.runningApplications()
+        local focusedApp = hs.application.frontmostApplication()
+        local found = false
+
+        -- Find the next application
+        for i, app in ipairs(apps) do
+            if app:kind() == 1 then -- Only regular applications
+                if found then
+                    activateAppNoAnimation(app)
+                    return
+                end
+                if app == focusedApp then
+                    found = true
+                end
+            end
+        end
+
+        -- If no next app found, wrap around to the first app
+        for i, app in ipairs(apps) do
+            if app:kind() == 1 and app ~= focusedApp then
+                activateAppNoAnimation(app)
+                return
+            end
+        end
+    end
+end
+
+-- Toggle between the last two applications
+function windowManagement.toggleLastTwoApplications()
+    return function()
+        local currentApp = hs.application.frontmostApplication()
+        
+        -- Update tracking with current app
+        updateLastTwoApplications(currentApp)
+        
+        -- Switch to the other app if available
+        if lastTwoApplications[2] and lastTwoApplications[2] ~= currentApp then
+            activateAppNoAnimation(lastTwoApplications[2])
+        elseif lastTwoApplications[1] and lastTwoApplications[1] ~= currentApp then
+            activateAppNoAnimation(lastTwoApplications[1])
+        end
+    end
+end
+
 return windowManagement
