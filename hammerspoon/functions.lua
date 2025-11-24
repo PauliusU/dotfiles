@@ -47,19 +47,34 @@ end
 -- A closure function (will not work without it)
 function functions.open(name)
     return function()
+        -- Ensure animation duration is 0 for instant switching
+        hs.window.animationDuration = 0
+        
+        -- mpv: needs special handling because it's a command-line app, not a standard bundle. 
+        -- hs.appfinder.appFromName() is more reliable than hs.application.open()
         if name == "mpv" then
-            local app = hs.appfinder.appFromName(name)
-            if app then
-                app:activate()
+            local mpvApp = hs.appfinder.appFromName(name)
+            if mpvApp then
+                mpvApp:activate(true) -- true = allWindows (activate all windows)
+                hs.timer.usleep(10000) -- Small delay to ensure mpv window is ready
+                local window = mpvApp:mainWindow()
+                if window then
+                    window:maximize() -- Maximize to match behavior of other applications
+                end
                 return
             end
         end
 
+        -- Finder: needs special handling to bring all windows to front when activated
         if name == "finder" then
-            hs.appfinder.appFromName(name):activate()
-            return
+            local finderApp = hs.appfinder.appFromName(name)
+            if finderApp then
+                finderApp:activate(true) -- true = allWindows (activate all windows and bring to front)
+                return
+            end
         end
 
+        -- Standard application opening: works for most GUI applications
         hs.application.open(name)
 
         local window = hs.window.focusedWindow()
