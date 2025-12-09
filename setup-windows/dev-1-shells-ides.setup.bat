@@ -24,21 +24,21 @@ powershell scoop install dust
 cargo install diskonaut
 
 ECHO **** Git-Bash ****
-MKLINK /J "%USERPROFILE%\.bashrc" "%DOTFILES%\terminal\.bashrc"
+MKLINK /J "%USERPROFILE%\.bashrc" "%DOTFILES%\shell\.bashrc"
 :: Symlink works (not /J folder junction)
-MKLINK "%SCOOP%\apps\git\current\usr\bin\tmux-sessionizer" "%DOTFILES%\terminal\tmux-sessionizer.sh"
-:: # ln -sf "$DOTFILES\scripts\private\info.sh" "$SCOOP\apps\git\current\usr\bin\info"
-:: # ln -sf "$DOTFILES\scripts\updater.sh" "$SCOOP\apps\git\current\usr\bin\updater"
+MKLINK "%SCOOP%\apps\git\current\usr\bin\tmux-sessionizer" "%DOTFILES%\scripts\tmux-sessionizer.sh"
+:: # ln -nsf "$DOTFILES\scripts\private\info.sh" "$SCOOP\apps\git\current\usr\bin\info"
+:: # ln -nsf "$DOTFILES\scripts\updater.sh" "$SCOOP\apps\git\current\usr\bin\updater"
 :: Git-bash dependencies
 :: Fuzzy find directories for path-switcher
 powershell scoop install fzf
 
 ECHO **** PowerShell ****
-MKLINK /J "%USERPROFILE%\Documents\WindowsPowerShell" "%DOTFILES%\terminal\PowerShell"
+MKLINK /J "%USERPROFILE%\Documents\WindowsPowerShell" "%DOTFILES%\setup-windows\terminal\PowerShell"
 powershell $PSVersionTable
 
 ECHO **** Windows Terminal ****
-MKLINK /J "%LOCALAPPDATA%\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\" "%DOTFILES%\terminal\WindowsTerminal"
+MKLINK /J "%LOCALAPPDATA%\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\" "%DOTFILES%\setup-windows\terminal\WindowsTerminal"
 
 TITLE IDEs and text editors
 
@@ -110,7 +110,7 @@ TITLE Other programming tools
 
 ECHO **** AWS tools ****
 :: AWS CLI
-MKLINK /J "%USERPROFILE%\.aws\" "d:\Dropbox\dev\config\.aws"
+MKLINK /J "%USERPROFILE%\.aws\" "d:\Dropbox\dev\utils\config\.aws"
 powershell scoop install aws
 aws --version
 :: AWS CDK

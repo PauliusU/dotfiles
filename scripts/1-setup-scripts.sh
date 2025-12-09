@@ -19,7 +19,7 @@ function create_terminal_commands() {
         echo "BASE_NAME: $BASE_NAME"
         echo "$script"
         # Create symlink for looped script
-        ln -sf "$script" "$HOME/.local/bin/$BASE_NAME"
+        ln -nsf "$script" "$HOME/.local/bin/$BASE_NAME"
     done
     echo "Terminal commands created for $1"
 }

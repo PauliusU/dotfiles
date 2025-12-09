@@ -209,9 +209,9 @@ function path-selector() {
     find \
         ~ \
         ~/.config \
+        ~/Dropbox \
         ~/Dropbox/code \
         ~/Dropbox/dev \
-        ~/Dropbox/DropsyncFiles \
         ~/Dropbox/projects \
         ~/repos \
         -mindepth 1 -maxdepth 1 -type d | fzf

@@ -9,10 +9,9 @@ alias dl="cd ~/Downloads/"
 alias doc="cd ~/Documents/"
 alias dot="cd $DOTFILES"
 alias drb="cd ~/Dropbox/"
-alias ds="cd ~/Dropbox/DropsyncFiles"
 alias dt="cd ~/Desktop/" # "dt" is also a command line tool to display information about your domain on Linux or Unix system
 alias dwn="cd ~/Downloads/"
-alias med="cd ~/Dropbox/DropsyncFiles/media"
+alias med="cd ~/Dropbox/media"
 alias prj="cd ~/Dropbox/projects/"
 # Save and then change the current directory. With no arguments, pushd exchanges the top two directories.
 alias pu="pushd"
@@ -37,24 +36,20 @@ if [ -n "$BASH_VERSION" ]; then
 fi
 
 # Software management
-alias bc="brew cleanup" # Remove old versions of installed software
-alias bi="brew install"
-alias bl="brew list"
-alias br="brew reinstall"
-alias bs="brew search"
-alias bsl="brew services list"
-alias bss="brew services stop"
-alias bu="brew update && brew upgrade && brew upgrade --cask && brew cleanup"
-alias bunn="brew uninstall"
-alias bunnn="brew uninstall --ignore-dependencies"
-alias bupc="brew upgrade --cask" # Upgrade all casks installed with homebrew
-alias bupd="brew update"         # Update homebrew itself and the package lists
-alias bupg="brew upgrade"        # Upgrade all software installed with homebrew
+alias scl="brew cleanup" # Remove old versions of installed software
 alias si="brew install"
 alias sl="brew list"
+alias sr="brew reinstall"
 alias ss="brew search"
+alias ssl="brew services list"
+alias sss="brew services stop"
 alias sun="brew uninstall"
+alias sunnn="brew uninstall --ignore-dependencies"
 alias suu="brew update && brew upgrade && brew upgrade --cask"
+alias supc="brew upgrade --cask" # Upgrade all casks installed with homebrew
+alias supd="brew update"         # Update homebrew itself and the package lists
+alias supg="brew upgrade"        # Upgrade all software installed with homebrew
+alias suuu="brew update && brew upgrade && brew upgrade --cask && brew cleanup"
 alias sysu="softwareupdate -ai"  # Run all macOS updates for Xcode, etc..
 if [[ $(uname) == "Linux" ]]; then
     alias ai="sudo apt install"
@@ -89,7 +84,7 @@ alias lg="lazygit"
 alias ghg='gh pr view --web || gh browse'  # Open GitHub repo in browser (pull request if in PR branch)
 alias ghh="gh browse"  # Open GitHub repo in browser
 alias ghp="gh pr list" # List pull requests
-# JS/TS, npm, yarn
+# JS/TS, npm, yarn, pnpm, bun
 alias ncul="ncu --target lastest"         # Show available depenecy updates with breaking changes
 alias ncuu="ncu --upgrade --target minor" # Upgrade to non breaking dependency versions (minor and bugfixes) in package.json
 alias npmg="npm list -g --depth 0"        # List global packages
@@ -116,27 +111,14 @@ alias pi="pnpm install"
 alias pii="pnpm install && rm -f pnpm-lock.yaml"
 alias bii="bun install --no-save"
 alias bt="bun test"
-# Python, pip and jupyter
+# Python and pip
 alias py="python || python3"
 alias py3="python3"
 alias python="python3"
 alias pipi="PIP_REQUIRE_VIRTUALENV=false && pip install --upgrade --user" # Install package in user scope
 alias pipl="pip list --user"                                              # List user packages
 alias pipll="pip list"                                                    # List global packages
-alias jn="jupyter notebook"
-alias jl="jupyter lab"
 alias pve="python -m venv venv && source venv/bin/activate" # Create virtual environment
-# Pipenv
-alias peg="pipenv graph"                                 # Dependency graph
-alias peh="pipenv --where"                               # Project home path
-alias pei="pipenv install"                               # Install dependencies
-alias per="pipenv run"                                   # Run a command in the virtual environment without launching a shell
-alias perm="pipenv --rm"                                 # Remove virtual environment
-alias pes="pipenv shell"                                 # Activate virtual environment
-alias pess='[ -z \"$PIPENV_ACTIVE\" ] && echo \"false\"' # Check if pipenv environment is activated
-alias peu="pipenv update"                                # Update all or specified dependencies
-alias peun="pipenv uninstall"                            # Uninstall dependency
-alias pew="pipenv --venv"                                # Check location of the environment
 # Rust and cargo
 alias ca="cargo add"
 alias cb="cargo build"
@@ -252,7 +234,3 @@ alias timer="echo 'Timer started. <ctrl+d> to break.' && date && time cat && dat
 # Network
 alias ip="curl icanhazip.com"                                       # External IP
 alias ipi="ifconfig | grep inet | grep -v inet6 | awk '{print $2}'" # Internal IPs
-
-# Scripts and functions
-alias di='python3 $DOTFILES/scripts/fs_dropbox_ignore_node_modules.private.py'
-alias fss='$DOTFILES/scripts/fs.sh'

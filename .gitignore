@@ -1,7 +1,7 @@
+.claude/
 .cursor/
 .idea/
 .vscode/
-.cursorrules
 
 private/
 *.private*
@@ -13,6 +13,9 @@ private.lua
 .config/karabiner/automatic_backups
 .config/lazygit/state.yml
 .github/copilot-instructions.md
+.local/share/crush/
+.local/share/opencode/
+AGENTS.md
 espanso/match/packages/*
 Library/Preferences/doublecmd/colors.json
 Library/Preferences/doublecmd/doublecmd.xml
@@ -25,13 +28,13 @@ Library/Preferences/doublecmd/wfx.ini
 mpv/cache/*
 mpv/script-modules/*
 mpv/scripts/*
-mpv/watch_later/*
 mpv/watch_history.jsonl
+mpv/watch_later/*
 nvim/lazy-lock.json
 nvim/lua/snippets/
 nvim/spell/
 nvim/undodir/
-terminal/PowerShell/Modules/
-terminal/PowerShell/Scripts/
-terminal/WindowsTerminal/elevated-state.json
-terminal/WindowsTerminal/state.json
+setup-windows/terminal/PowerShell/Modules/
+setup-windows/terminal/PowerShell/Scripts/
+setup-windows/terminal/WindowsTerminal/elevated-state.json
+setup-windows/terminal/WindowsTerminal/state.json

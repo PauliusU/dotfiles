@@ -1,6 +1,11 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 # Install software and setup symlinks
+
+# Ensure DOTFILES variable is available
+if [ -z "$DOTFILES" ]; then
+    DOTFILES="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+fi
 
 echo "================================= BREW =================================="
 
@@ -56,6 +61,7 @@ if [ "$(uname)" = "Darwin" ]; then
     # brew install --cask displaylink
 
     echo "**** Battery ****"
+
     # Battery charge limiter for Apple Silicon Macbook devices
     brew install --cask battery
     # Enable charging when your battery dips under 80, and disable it when it exceeds 80
@@ -101,7 +107,7 @@ if [ "$(uname)" = "Darwin" ]; then
     ln -nsf "$DOTFILES/.config/karabiner" "$HOME/.config/karabiner"
     brew install --cask hammerspoon        # Free, open source, mac
     defaults write org.hammerspoon.Hammerspoon MJConfigFile "$XDG_CONFIG_HOME"/hammerspoon/init.lua
-    ln -nsf "$(pwd)/hammerspoon" "$HOME/.config/hammerspoon"
+    ln -nsf "$DOTFILES/hammerspoon" "$HOME/.config/hammerspoon"
 
     # Espanso - free, open source, cross-platform text expander
     brew install --cask espanso
@@ -110,7 +116,7 @@ if [ "$(uname)" = "Darwin" ]; then
     espanso package list       # List installed espanso packages
     espanso package update all # Update all packages
     espanso --version
-    ln -nsf "$(pwd)/espanso" "$HOME/Library/Application Support/espanso"
+    ln -nsf "$DOTFILES/espanso" "$HOME/Library/Application Support/espanso"
 
     # ### macOS built-in automation options ####
     # Script Editor (called AppleScript Editor from 2009 to 2014) for the AppleScript and Javascript
@@ -139,7 +145,6 @@ if [ "$(uname)" = "Darwin" ]; then
     brew install --cask obs
 
     echo "**** PDFs ****"
-    # brew install --cask adobe-acrobat-reader
     brew install --cask foxitreader
 
     echo "**** Raycast launcher (better Spotlight) ****"
@@ -153,11 +158,6 @@ if [ "$(uname)" = "Darwin" ]; then
     brew install stats
     # System information in terminal
     brew install pfetch-rs
-
-    # echo "**** Window management ****"
-    # # brew install --cask alt-tab # AltTab - Windows alt-tab on macOS
-    # # brew install --cask rectangle
-    # brew install --cask amethyst
 
 fi
 

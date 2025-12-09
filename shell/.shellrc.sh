@@ -2,11 +2,11 @@
 echo ".shellrc.sh ◘"
 
 # Load aliases (and other custom settings)
-export DOTFILES="$HOME/Dropbox/code/dotfiles"
-source "$DOTFILES/terminal/.env.sh"
-source "$DOTFILES/terminal/.aliases.sh"
-source "$DOTFILES/terminal/.functions.sh"
-source "$DOTFILES/terminal/.shellrc.private.sh"
+export DOTFILES="$HOME/Dropbox/github/dotfiles"
+source "$DOTFILES/shell/.env.sh"
+source "$DOTFILES/shell/.aliases.sh"
+source "$DOTFILES/shell/.functions.sh"
+source "$DOTFILES/shell/.shellrc.private.sh"
 
 # ----------------------------------- TMUX -------------------------------------
 if [ -n "$ZSH_VERSION" ]; then # zsh
