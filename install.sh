@@ -7,7 +7,8 @@ set -e  # Exit on error
 
 # Get the directory where this script is located
 DOTFILES="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-cd "$DOTFILES"
+echo "DOTFILES: $DOTFILES"
+cd "$DOTFILES" || exit 1
 
 echo "================================================================"
 echo "  Dotfiles Installation Script"
@@ -74,9 +75,9 @@ if [[ "$PLATFORM" == "macOS" ]]; then
     fi
     
     # Terminal and shell configuration
-    if [ -f "$DOTFILES/terminal/terminal-and-shell.sh" ]; then
+    if [ -f "$DOTFILES/setup-macos/terminal-and-shell.sh" ]; then
         echo "💻 Configuring terminal and shell..."
-        source "$DOTFILES/terminal/terminal-and-shell.sh"
+        source "$DOTFILES/setup-macos/terminal-and-shell.sh"
         echo "✓ Terminal configuration complete"
         echo ""
     fi
@@ -110,6 +111,14 @@ if [[ "$PLATFORM" == "macOS" ]]; then
         echo "🔐 Setting up private git configuration..."
         source "$DOTFILES/setup-macos/private/git.setup.sh"
         echo "✓ Private git setup complete"
+        echo ""
+    fi
+    
+    # AI tools setup (if exists)
+    if [ -f "$DOTFILES/setup-macos/ai-tools.private.sh" ]; then
+        echo "🤖 Setting up AI tools..."
+        source "$DOTFILES/setup-macos/ai-tools.private.sh"
+        echo "✓ AI tools setup complete"
         echo ""
     fi
     
@@ -172,4 +181,3 @@ echo "  3. Run this script again anytime to update your setup"
 echo ""
 echo "  This script is idempotent - safe to run multiple times!"
 echo "================================================================"
-

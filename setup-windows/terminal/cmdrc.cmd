@@ -44,12 +44,5 @@ DOSKEY wu = winget upgrade --all --silent
 DOSKEY wun = winget uninstall $*
 
 :: ----------------------------- Program access --------------------------------
-DOSKEY nv = nvim
+DOSKEY n = nvim
 DOSKEY rdd = RD /s /q $* &:: remove non empty directory
-DOSKEY vi = nvim
-DOSKEY vim = nvim
-DOSKEY yy = yarn install --check-files
-
-:: --------------------------------- Scripts  ----------------------------------
-DOSKEY di = python "%DOTFILES%\scripts\fs_dropbox_ignore_node_modules.private.py"
-DOSKEY nd = node "d:\Dropbox\code\daily-tasks-ts\dist\app.js"

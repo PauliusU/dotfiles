@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-# filepath: /Users/paulius/Dropbox/code/dotfiles/scripts/tmux-session-picker.sh
 
 # Check if tmux is installed
 if ! command -v tmux &>/dev/null; then

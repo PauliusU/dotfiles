@@ -8,8 +8,8 @@ export LANG="en_US.UTF-8"
 export TIME_STYLE='+%F %T' # ISO 8601 date format for ls and lsd
 
 # Common paths
-export DOTFILES="$HOME/Dropbox/code/dotfiles"
-export SCRIPTS_PATH="$HOME/Dropbox/code/dotfiles/scripts"
+export DOTFILES="$HOME/Dropbox/github/dotfiles"
+export SCRIPTS_PATH="$HOME/Dropbox/github/dotfiles/scripts"
 if [ "$(uname)" = "Darwin" ]; then
     export CLOUD_STORAGE="$HOME/Library/CloudStorage"
 fi

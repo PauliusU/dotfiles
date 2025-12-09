@@ -7,13 +7,13 @@ echo "=============================== DEV TOOLS ==============================="
 echo "**** AWS tools ****"
 brew install awscli
 aws --version
-ln -nsf ~/Dropbox/dev/config/.aws ~/.aws
-ln -nsf ~/Dropbox/dev/config/.aws ~/.config/aws
+ln -nsf ~/Dropbox/dev/utils/config/.aws ~/.aws
+ln -nsf ~/Dropbox/dev/utils/config/.aws ~/.config/aws
 brew install aws-cdk
 cdk --version
 
 echo "**** SSH ****"
-ln -nsf ~/Dropbox/dev/config/.ssh ~/.ssh
+ln -nsf ~/Dropbox/dev/utils/config/.ssh ~/.ssh
 if [ ! -f ~/.ssh/id_rsa ]; then
     # Generate public/private rsa key pair.
     ssh-keygen -t rsa -C "48020370+PauliusU@users.noreply.github.com"
@@ -27,12 +27,12 @@ echo "**** GIT ****"
 brew install git
 mkdir -p "$HOME/.config/git"
 touch "$HOME/.config/git/config"
-ln -sf "$DOTFILES/.config/git/.gitignore_global" "$HOME/.config/git/ignore"
+ln -nsf "$DOTFILES/.config/git/.gitignore_global" "$HOME/.config/git/ignore"
 git config --global user.name "PauliusU"
 git config --global user.email "48020370+PauliusU@users.noreply.github.com"
 git config --global core.autocrlf input # Line endings for OS compatability. macOS and Linux 'input', Windows 'true'
 git config --global core.editor "nvim"
-# ln -sf "$(pwd)/.gitignore_global" "$HOME/.gitignore_global"
+# ln -nsf "$(pwd)/.gitignore_global" "$HOME/.gitignore_global"
 # git config --global core.excludesfile ~/.gitignore_global
 # Git global aliases
 # ref: https://dev.to/michaelcurrin/dotfiles-git-config-348o
@@ -60,7 +60,7 @@ gh --version
 
 echo "**** Neovim / Vim ****"
 brew install neovim
-ln -nsf "$(pwd)/nvim" "$HOME/.config/nvim"
+ln -nsf "$DOTFILES/nvim" "$HOME/.config/nvim"
 # Delete local Neovim cache to prevent any issues
 rm -rf ~/.local/share/nvim
 # Nvim telescope plugin requirements for grep_string and live_grep functions
@@ -83,8 +83,8 @@ echo "**** Python [Python 3] and artificial intelligence ****"
 
 brew install python                   # Defaults to python3
 # Set python symlinks (requires sudo)
-ln -sf -- "$BREW_HOME/bin/python3" /usr/local/bin/py
-ln -sf -- "$BREW_HOME/bin/python3" /usr/local/bin/python
+ln -nsf -- "$BREW_HOME/bin/python3" /usr/local/bin/py
+ln -nsf -- "$BREW_HOME/bin/python3" /usr/local/bin/python
 
 if [ "$(uname)" = "Linux" ]; then
     sudo apt install -y python3
@@ -97,12 +97,11 @@ python --version
 
 # Pip
 python3 -m pip install --upgrade pip
-ln -sf -- "$BREW_HOME/bin/pip3" /usr/local/bin/pip
+ln -nsf -- "$BREW_HOME/bin/pip3" /usr/local/bin/pip
 pip3 --version
 pip --version
 
 # Pip global user packages
-pip3 install --upgrade --user notebook   # Run using "jupyter notebook"
 pip3 install --upgrade --user subliminal # For subs script in MPV
 
 brew install uv
@@ -137,7 +136,7 @@ bun --version
 # Update outdated npm version installed with Node
 volta install npm
 npm -v
-ln -sf ~/Dropbox/dev/config/.npmrc ~/.config/npm/npmrc
+ln -nsf ~/Dropbox/dev/utils/config/.npmrc ~/.config/npm/npmrc
 npm i -g typescript
 tsc -v
 npm i -g ts-node
