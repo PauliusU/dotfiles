@@ -25,7 +25,7 @@ function yt() {
 function yyt() {
     #  Download youtube playlist or channel with archive
     yt \
-        --download-archive "downloads.log" \
+        --download-archive "$DOTFILES/.config/yt-dlp/downloads.log" \
         "$@"
 }
 

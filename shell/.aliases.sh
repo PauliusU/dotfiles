@@ -73,7 +73,8 @@ alias gbb=git-branch                                                            
 alias gcca="git config --list"                                                          # Show git config
 alias gccg="git config --list --global"                                                 # Show global git config
 alias gccl="git config --list --local"                                                  # Show local git config
-alias gll="git log --pretty='%C(yellow)%h %Creset%C(cyan)%ar %C(green)%an %C(reset)%s'" # Prettier git log. "gl" is alias for "git pull" in git plugin
+alias gll="git log --pretty='%C(yellow)%h %Creset%C(cyan)%ar %C(green)%an %C(reset)%s'" # Prettier git log
+alias gl="git pull"
 alias gpp="git push && git push --tags"                                                 # Push commits and tags
 alias gs="git status -s -b"                                                             # Cleaner git status
 alias gw="git config --get core.isWork || echo false"                                   # Check if work config is applied

@@ -41,7 +41,7 @@ if [[ "$PLATFORM" == "macOS" ]]; then
     echo "  macOS Setup"
     echo "================================================================"
     echo ""
-    
+
     # Check for Homebrew (required for macOS setup)
     if ! command -v brew &> /dev/null; then
         echo "⚠️  Homebrew not found. Please install Homebrew first:"
@@ -49,7 +49,7 @@ if [[ "$PLATFORM" == "macOS" ]]; then
         echo ""
         read -p "Press Enter to continue after installing Homebrew, or Ctrl+C to exit..."
     fi
-    
+
     # File system setup (creates directories and symlinks)
     if [ -f "$DOTFILES/setup-macos/file-system.sh" ]; then
         echo "📁 Setting up file system..."
@@ -57,7 +57,7 @@ if [[ "$PLATFORM" == "macOS" ]]; then
         echo "✓ File system setup complete"
         echo ""
     fi
-    
+
     # Install software via Homebrew
     if [ -f "$DOTFILES/setup-macos/install-soft.sh" ]; then
         echo "📦 Installing software..."
@@ -65,7 +65,7 @@ if [[ "$PLATFORM" == "macOS" ]]; then
         echo "✓ Software installation complete"
         echo ""
     fi
-    
+
     # Setup terminal commands (symlinks scripts to ~/.local/bin)
     if [ -f "$DOTFILES/scripts/1-setup-scripts.sh" ]; then
         echo "🔧 Setting up terminal commands..."
@@ -73,7 +73,7 @@ if [[ "$PLATFORM" == "macOS" ]]; then
         echo "✓ Terminal commands setup complete"
         echo ""
     fi
-    
+
     # Terminal and shell configuration
     if [ -f "$DOTFILES/setup-macos/terminal-and-shell.sh" ]; then
         echo "💻 Configuring terminal and shell..."
@@ -81,7 +81,7 @@ if [[ "$PLATFORM" == "macOS" ]]; then
         echo "✓ Terminal configuration complete"
         echo ""
     fi
-    
+
     # File associations
     if [ -f "$DOTFILES/setup-macos/file-associations.sh" ]; then
         echo "🔗 Setting up file associations..."
@@ -89,7 +89,7 @@ if [[ "$PLATFORM" == "macOS" ]]; then
         echo "✓ File associations setup complete"
         echo ""
     fi
-    
+
     # macOS system settings
     if [ -f "$DOTFILES/setup-macos/settings-macos.sh" ]; then
         echo "⚙️  Applying macOS system settings..."
@@ -97,7 +97,7 @@ if [[ "$PLATFORM" == "macOS" ]]; then
         echo "✓ System settings applied"
         echo ""
     fi
-    
+
     # Development tools
     if [ -f "$DOTFILES/setup-macos/dev-tools.sh" ]; then
         echo "🛠️  Setting up development tools..."
@@ -105,7 +105,7 @@ if [[ "$PLATFORM" == "macOS" ]]; then
         echo "✓ Development tools setup complete"
         echo ""
     fi
-    
+
     # Private git setup (if exists)
     if [ -f "$DOTFILES/setup-macos/private/git.setup.sh" ]; then
         echo "🔐 Setting up private git configuration..."
@@ -113,7 +113,7 @@ if [[ "$PLATFORM" == "macOS" ]]; then
         echo "✓ Private git setup complete"
         echo ""
     fi
-    
+
     # AI tools setup (if exists)
     if [ -f "$DOTFILES/setup-macos/ai-tools.private.sh" ]; then
         echo "🤖 Setting up AI tools..."
@@ -121,17 +121,17 @@ if [[ "$PLATFORM" == "macOS" ]]; then
         echo "✓ AI tools setup complete"
         echo ""
     fi
-    
+
     echo "================================================================"
     echo "  ✓ macOS setup complete!"
     echo "================================================================"
-    
+
 elif [[ "$PLATFORM" == "WSL" ]] || [[ "$PLATFORM" == "Linux" ]]; then
     echo "================================================================"
     echo "  WSL/Linux Setup"
     echo "================================================================"
     echo ""
-    
+
     # File system setup (includes WSL-specific symlinks)
     if [ -f "$DOTFILES/setup-macos/file-system.sh" ]; then
         echo "📁 Setting up file system..."
@@ -139,11 +139,11 @@ elif [[ "$PLATFORM" == "WSL" ]] || [[ "$PLATFORM" == "Linux" ]]; then
         echo "✓ File system setup complete"
         echo ""
     fi
-    
+
     echo "ℹ️  For full Linux/WSL setup, please run platform-specific scripts manually."
     echo "   See setup-macos/ directory for available scripts."
     echo ""
-    
+
 elif [[ "$PLATFORM" == "Windows" ]]; then
     echo "================================================================"
     echo "  Windows Setup"
@@ -160,7 +160,7 @@ elif [[ "$PLATFORM" == "Windows" ]]; then
     echo "   5. base-4-ahk.setup.bat"
     echo "   6. Other setup scripts as needed"
     echo ""
-    
+
 else
     echo "❌ Unsupported platform: $PLATFORM"
     echo "   This script currently supports macOS, WSL, Linux, and Windows."

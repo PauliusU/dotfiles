@@ -24,3 +24,7 @@ ECHO **** OneDrive ****
 MKLINK /J "%LOCALAPPDATA%\Microsoft\OneDrive" "%USER_BAK%\AppData\Local\Microsoft\OneDrive"
 MKLINK /J "%USERPROFILE%\OneDriveLinked" "%OneDrive%"
 MKLINK /J "e:\dwn\video" "%OneDrive%\z\tor"
+
+ECHO **** Rclone - CLI for cloud storage ****
+powershell scoop install rclone
+rclone version

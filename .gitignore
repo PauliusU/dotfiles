@@ -12,6 +12,8 @@ private.lua
 
 .config/karabiner/automatic_backups
 .config/lazygit/state.yml
+.config/rclone/
+.config/yt-dlp/downloads.log
 .github/copilot-instructions.md
 .local/share/crush/
 .local/share/opencode/
