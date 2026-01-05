@@ -79,8 +79,9 @@ if [ "$(uname)" = "Darwin" ]; then
     batt version
 
     echo "**** Dropbox sync ****"
-    brew install --cask dropbox # official client (takes up device spot)
-    # brew install maestral # does not take device spot, but slower sync
+    brew install --cask dropbox # Official Dropbox client (takes up device spot)
+    brew install maestral # Does not take device spot, but slower sync
+    maestral --version
 
     echo "**** Duti - file association manager (macOS only) ****"
     brew install duti

@@ -17,9 +17,30 @@ defaults read NSGlobalDomain AppleMetricUnits
 
 echo "**** Reduce animations ****"
 # Accessibility => Display => Reduce motion => on
+# This reduces fullscreen transition animations and other system animations
 defaults write com.apple.universalaccess reduceMotion -bool true
 defaults read com.apple.universalaccess reduceMotion
-defaults write com.apple.dock autohide-time-modifier -float 0.15; killall Dock
+
+# Dock: speed up autohide animation
+defaults write com.apple.dock autohide-time-modifier -float 0.15
+defaults read com.apple.dock autohide-time-modifier
+killall Dock
+
+# Finder: disable window animations and Get Info animations
+defaults write com.apple.finder DisableAllAnimations -bool true
+defaults read com.apple.finder DisableAllAnimations
+
+# Dock: disable Mission Control expose animations completely
+defaults write com.apple.dock expose-animation-duration -float 0
+defaults read com.apple.dock expose-animation-duration
+
+# Global: disable automatic window animations
+defaults write -g NSAutomaticWindowAnimationsEnabled -bool false
+defaults read -g NSAutomaticWindowAnimationsEnabled
+
+# Global: reduce window resize time to near-instant
+defaults write -g NSWindowResizeTime -float 0.001
+defaults read -g NSWindowResizeTime
 
 # Desktop & Dock => Dock
 echo "**** Enable Dock autohide ****"
@@ -65,7 +86,7 @@ defaults write com.apple.dock wvous-bl-corner -int 11
 defaults write com.apple.dock wvous-bl-corner -int 4
 defaults read com.apple.dock | grep wvous
 
-# Desktop & Dock => options inaccesible in the UI
+# Desktop & Dock => options inaccessible in the UI
 echo "**** Allow exiting Finder via ⌘ + Q; doing so will also hide desktop icons ****"
 defaults read com.apple.finder QuitMenuItem
 # defaults write com.apple.finder QuitMenuItem -bool NO # Default value
@@ -73,15 +94,6 @@ defaults write com.apple.finder QuitMenuItem -bool true; killall Finder
 
 echo "**** Show the ~/Library folder ****"
 chflags nohidden ~/Library
-
-echo "**** Reduce animations ****"
-# Finder: disable window animations and Get Info animations
-defaults write com.apple.finder DisableAllAnimations -bool true
-defaults read com.apple.finder | grep DisableAllAnimations
-
-# Speed up Mission Control animations
-defaults write com.apple.dock expose-animation-duration -float 0.1
-defaults read com.apple.dock expose-animation-duration
 
 echo "***** Hide single external drive from desktop ****"
 sudo chflags hidden /Volumes/SSD4
@@ -102,7 +114,7 @@ defaults write "~/Library/Preferences/com.apple.HIToolbox" AppleSelectedInputSou
 
 defaults read ~/Library/Preferences/com.apple.HIToolbox
 
-# Trackpad => Scroll & Zoom => Natural scolling
+# Trackpad => Scroll & Zoom => Natural scrolling
 echo "**** Scroll direction - Disable “natural” (Lion-style) scrolling ****"
 # defaults write NSGlobalDomain com.apple.swipescrolldirection -bool false
 defaults write -g com.apple.swipescrolldirection -bool FALSE
