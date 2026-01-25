@@ -81,7 +81,7 @@ Hyper:bind("Shift", "P", nil, fn.open("Music"))
 Hyper:bind("Shift", "S", nil, fn.open("Visual Studio Code"))
 Hyper:bind("Shift", "U", nil, fn.open("Messages"))
 Hyper:bind("Shift", "V", nil, fn.open("Safari"))
-Hyper:bind("Shift", "X", nil, fn.open("Claude"))
+Hyper:bind("Shift", "X", nil, fn.open("ChatGPT"))
 Hyper:bind("Shift", "Z", nil, fn.open("Find Any File"))
 Hyper:bind({}, "A", nil, fn.open("Notion"))
 Hyper:bind({}, "B", nil, fn.open("MongoDB Compass"))
@@ -96,15 +96,15 @@ Hyper:bind({}, "J", nil, fn.open("alacritty"))
 Hyper:bind({}, "K", nil, fn.open("Slack"))
 Hyper:bind({}, "L", nil, fn.exec("open 'https://calendar.google.com'"))
 -- Hyper:bind({}, "M", nil, fn.hideAllWindows()) -- [ Hyper + M ]
-Hyper:bind({}, "N", nil, fn.exec("open ~/Dropbox/notes/notes-pc.md"))
-Hyper:bind({}, "O", nil, fn.exec("$HOME/bin/homebrew/bin/code $HOME/github/dotfiles"))
+Hyper:bind({}, "N", nil, fn.exec("open ~/notes/notes-pc.md"))
+Hyper:bind({}, "O", nil, fn.exec("/opt/homebrew/bin/cursor $HOME/github/dotfiles"))
 Hyper:bind({}, "P", nil, fn.open("Spotify"))
 -- Hyper:bind({}, "R", nil, fn.reloadHs())
 Hyper:bind({}, "S", fn.open("Double Commander"))
 Hyper:bind({}, "T", nil, fn.open("Toggl Track"))
 Hyper:bind({}, "U", fn.open("Kitty"))
 Hyper:bind({}, "W", nil, fn.open("Foxit PDF Reader"))
-Hyper:bind({}, "X", fn.open("ChatGPT"))
+Hyper:bind({}, "X", fn.open("Claude"))
 Hyper:bind({}, "V", nil, fn.open("Arc"))
 Hyper:bind({}, "Y", nil, fn.open("Anki"))
 Hyper:bind({}, "Z", fn.open("Cling"))
@@ -142,10 +142,11 @@ hs.hotkey.bind("alt", "F4", wm.closeWindow()) -- [ ⌥ + F4 ]
 Hyper:bind({}, "M", nil, wm.hideAllWindows()) -- [ Hyper + M ]
 hs.hotkey.bind(mash, "M", wm.hideAllWindows()) -- [ ⌃ + ⌥ + ⌘ + H ]
 -- -- Displays
-hs.hotkey.bind(mash, "A", wm.moveWindowToDisplay(2))
-hs.hotkey.bind(mash, "S", wm.moveWindowToDisplay(1))
-hs.hotkey.bind(mash, "D", wm.moveWindowToDisplay(3))
-hs.hotkey.bind(mash, "B", wm.moveWindowToDisplay())
+hs.hotkey.bind(mash, "A", wm.moveWindowToDisplay(2)) -- Move to display 2
+hs.hotkey.bind(mash, "S", wm.moveWindowToDisplay(1)) -- Move to display 1
+hs.hotkey.bind(mash, "D", wm.moveWindowToDisplay(3)) -- Move to display 3
+hs.hotkey.bind(mash, "B", wm.moveWindowToDisplay()) -- Move to next display
+hs.hotkey.bind(mash, "V", wm.moveWindowToPreviousDisplay()) -- Move to previous display
 
 -- Application switching (Set 1: Bracket keys)
 hs.hotkey.bind(opt_cmd, "[", wm.previousApplication()) -- Switch to previous application [ ⌥ + ⌘ + [ ]
@@ -164,10 +165,10 @@ hs.hotkey.bind("ctrl", "space", fn.toggleLayout()) -- Overrides system layout ch
 hs.hotkey.bind(opt_cmd, "up", sound.volumeChange(10)) -- Increase volume [ ⌥ + ⌘ + ↑ ]
 hs.hotkey.bind(opt_cmd, "down", sound.volumeChange( -10)) -- Decrease volume [ ⌥ + ⌘ + ↓ ]
 
---  Mac keyboard
-hs.hotkey.bind(mash, "F7", sound.previousSong())
-hs.hotkey.bind(mash, "F8", sound.togglePlayPause())
-hs.hotkey.bind(mash, "F9", sound.nextSong())
+-- Media shortcuts
+hs.hotkey.bind(mash, "F1", sound.previousSong())
+hs.hotkey.bind(mash, "F2", sound.togglePlayPause())
+hs.hotkey.bind(mash, "F3", sound.nextSong())
 hs.hotkey.bind(mash, "F10", sound.mute())
 hs.hotkey.bind(mash, "F11", sound.soundDown()) -- Decrease volume [ ⌃ + ⌥ + ⌘ + F11 ]
 hs.hotkey.bind(mash, "F12", sound.soundUp()) -- Increase volume [ ⌃ + ⌥ + ⌘ + F12 ]

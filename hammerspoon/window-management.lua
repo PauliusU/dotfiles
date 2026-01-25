@@ -69,8 +69,12 @@ windowManagement.screenPositions = screenPositions
 -- Toggle fullscreen of a window
 function windowManagement.toggleFullscreen()
     return function()
+        -- Ensure animation duration is 0 before fullscreen transition
+        hs.window.animationDuration = 0
         local window = hs.window.frontmostWindow()
-        window:setFullscreen(not window:isFullscreen())
+        if window then
+            window:setFullscreen(not window:isFullscreen())
+        end
     end
 end
 
@@ -177,6 +181,17 @@ function windowManagement.moveWindowToDisplay(displayNo)
     end
 end
 
+-- Move active window to the previous display
+function windowManagement.moveWindowToPreviousDisplay()
+    return function()
+        local window = hs.window.focusedWindow()
+        if window then
+            local targetScreen = window:screen():previous()
+            window:moveToScreen(targetScreen, false, false, 0)
+        end
+    end
+end
+
 -- Track last two applications for toggle functionality
 local lastTwoApplications = { nil, nil }
 
@@ -193,21 +208,45 @@ end
 -- Subscribe to window focus events to track application changes
 hs.window.filter.default:subscribe(hs.window.filter.windowFocused, function(window)
     if window then
+        -- Ensure animation duration is 0 when switching to any window
+        hs.window.animationDuration = 0
+        
         local app = window:application()
         updateLastTwoApplications(app)
+        
+        -- If switching to a fullscreen window, ensure no animations
+        if window:isFullScreen() then
+            hs.window.animationDuration = 0
+        end
     end
 end)
 
 -- Helper function to activate application with no animations
 local function activateAppNoAnimation(app)
-    -- Ensure animation duration is 0
+    -- Ensure animation duration is 0 for all window operations
     hs.window.animationDuration = 0
     
-    -- For mpv, use immediate activation
-    if app:name() == "mpv" then
+    -- Check if app has any fullscreen windows - these need special handling
+    local hasFullscreen = false
+    local windows = app:allWindows()
+    for _, window in ipairs(windows) do
+        if window:isFullScreen() then
+            hasFullscreen = true
+            break
+        end
+    end
+    
+    -- For apps with fullscreen windows, ensure animation is disabled before activation
+    if hasFullscreen then
+        -- Force animation duration to 0 before activating fullscreen app
+        hs.window.animationDuration = 0
         app:activate(true) -- true = allWindows (activate all windows)
-        -- Small delay to ensure mpv window is ready
+        -- Small delay to ensure window state is ready
         hs.timer.usleep(10000) -- 10ms delay
+    elseif app:name() == "mpv" then
+        -- mpv-specific handling (even when not fullscreen)
+        app:activate(true) -- true = allWindows (activate all windows)
+        hs.timer.usleep(10000) -- Small delay to ensure mpv window is ready
     else
         app:activate(true)
     end
