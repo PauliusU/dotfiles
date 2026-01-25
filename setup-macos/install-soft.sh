@@ -78,21 +78,11 @@ if [ "$(uname)" = "Darwin" ]; then
     batt status
     batt version
 
-    echo "**** Dropbox sync ****"
-    brew install --cask dropbox # Official Dropbox client (takes up device spot)
-    brew install maestral # Does not take device spot, but slower sync
-    maestral --version
-
     echo "**** Duti - file association manager (macOS only) ****"
     brew install duti
     duti -V # capital V
 
     echo "**** File management and file search ****"
-    # brew install --cask marta # Marta File Manager for macOS. Native. Extensible. Fast. 🚀
-    # # Marta settings
-    # ln -nsf "$(pwd)/marta" "$HOME/Library/Application Support/org.yanex.marta"
-    # # Marta terminal integration
-    # ln -s /Applications/Marta.app/Contents/Resources/launcher /usr/local/bin/marta
     brew install --cask double-commander
     ln -nsf "$DOTFILES/Library/Preferences/doublecmd" "$HOME/Library/Preferences/doublecmd"
 
@@ -119,18 +109,16 @@ if [ "$(uname)" = "Darwin" ]; then
     espanso --version
     ln -nsf "$DOTFILES/espanso" "$HOME/Library/Application Support/espanso"
 
-    # ### macOS built-in automation options ####
-    # Script Editor (called AppleScript Editor from 2009 to 2014) for the AppleScript and Javascript
-    #       plain text (.applescript), as a compiled script (.scpt), as a script bundle (.scptd), or as an application (.app).
-    # Automator # built-in in macOS since 10.4
-    # Shortcuts / apple shortcuts / siri shortcuts (formerly Workflow). Syncs with iPhone.
-
     echo "**** keecastr - on-screen keyboard shortcut presenter ****"
     brew install --cask keycastr
 
     echo "**** Keepassxc - Keepass port for macOS ****"
     brew install --cask keepassxc
     keepassxc-cli -v
+
+    echo "**** Maestral ****"
+    brew install maestral
+    maestral --version
 
     echo "**** Messaging ****"
     brew install --cask slack
@@ -145,8 +133,10 @@ if [ "$(uname)" = "Darwin" ]; then
     echo "**** OBS Studio ****"
     brew install --cask obs
 
-    echo "**** PDFs ****"
+    echo "**** PDFs and other documents ****"
     brew install --cask foxitreader
+    # Swiss-army knife to convert one markup format file into another (Markdown, HTML, PDF, etc.)
+    brew install pandoc
 
     echo "**** Raycast launcher (better Spotlight) ****"
     brew install --cask raycast
@@ -182,8 +172,8 @@ if [ "$(uname)" = "Linux" ]; then
     sudo apt install -y zoxide        # Better cd
 
     mkdir -p ~/.local/bin
-    ln -s /usr/bin/batcat ~/.local/bin/bat
-    ln -s "$(which fdfind)" ~/.local/bin/fd
+    ln -nsf /usr/bin/batcat ~/.local/bin/bat
+    ln -nsf "$(which fdfind)" ~/.local/bin/fd
 
     sudo apt install -y doublecmd-gtk # Double Commander - GUI file manager
     sudo apt install -y mpv

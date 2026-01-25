@@ -25,7 +25,7 @@ if [ "$(uname)" = "Darwin" ]; then
     ln -nsf "$DOTFILES/.config/alacritty/alacritty.toml" ~/.config/alacritty/alacritty.toml
 
     echo "**** ghostty ****"
-    brew install --cask ghossy
+    brew install --cask ghostty
     ln -nsf "$DOTFILES/.config/ghostty" ~/.config/ghostty
 
     echo "**** kitty - the fast, feature-rich, GPU based terminal emulator ****"
@@ -35,7 +35,6 @@ fi
 
 echo "**** tmux ****"
 brew install tmux
-sudo apt install -y tmux
 tmux -V # capital V
 mkdir -p ~/.config/tmux/plugins
 # Tmux Plugin Manager (in non standard directory)
@@ -58,6 +57,8 @@ if [ "$(uname)" = "Linux" ]; then
     chsh -s "$(which zsh)"
     # Verify the change of shell
     echo "$SHELL"
+
+    sudo apt install -y tmux
 fi
 
 if [ "$(uname)" = "Darwin" ]; then
@@ -66,10 +67,13 @@ fi
 
 # Antigen - The plugin manager for zsh.
 curl -L git.io/antigen >~/.config/antigen.zsh
-antigen update # Update all bundles
-antigen selfupdate # Update antigen itself
-antigen list # List currently running bundles
-antigen version
+# Antigen commands only work if antigen is already sourced in shell
+if type antigen &>/dev/null; then
+    antigen update      # Update all bundles
+    antigen selfupdate  # Update antigen itself
+    antigen list        # List currently running bundles
+    antigen version
+fi
 
 mkdir -p "$HOME/.config/zsh/"
 mkdir -p "$XDG_STATE_HOME"/zsh/
@@ -86,4 +90,5 @@ if ! grep -q "source.*shell/.shellrc.sh" ~/.bashrc 2>/dev/null; then
     echo "source \"$DOTFILES/shell/.shellrc.sh\"" >>~/.bashrc
 fi
 
-source ~/.zshrc
+# Reload shell config (commented out - can cause issues if zshrc has errors or sources this script)
+# [ -f ~/.zshrc ] && source ~/.zshrc || true

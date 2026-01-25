@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 echo "**** File system setup ****"
 
@@ -8,15 +8,17 @@ mkdir -p ~/repos
 mkdir -p ~/scripts
 
 # Symlinks for common files and folders. -f forces linking if file already exists
-ln -nsf ~/Dropbox/code ~/code
-ln -nsf ~/Dropbox/dev ~/dev
-ln -nsf ~/Dropbox/notes ~/Dropbox/dev/notes
-ln -nsf ~/Dropbox/projects ~/projects
+if [ -n "$FS" ]; then
+    ln -nsf "$FS/dev" ~/dev
+    ln -nsf "$FS/github" ~/github
+    ln -nsf "$FS/notes" ~/notes
+    ln -nsf "$FS/projects" ~/projects
+fi
 ln -nsf ~/Library/CloudStorage ~/storage
 
 if [[ "$(uname -sr)" == "Linux"*"microsoft"* ]]; then
     echo "**** WSL setup ****"
     ln -nsf /mnt/d/Dropbox ~/Dropbox
-    ln -nsf /mnt/d/Dropbox/code ~/code
+    ln -nsf /mnt/d/Dropbox/github ~/github
     ln -nsf /mnt/d/Dropbox/dev ~/dev
 fi

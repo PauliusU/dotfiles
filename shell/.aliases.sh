@@ -2,27 +2,35 @@ echo ".aliases.sh ◘"
 
 # Navigation and file listing
 alias -- -='cd -' # Toggle between last two directories with single dash '-'
-alias cde="cd ~/code/"
-alias cl="cd $CLOUD_STORAGE"
+alias cde="cd ~/github/"
+alias cs="cd $CLOUD_STORAGE"
 alias dev="cd ~/dev/"
 alias dl="cd ~/Downloads/"
 alias doc="cd ~/Documents/"
 alias dot="cd $DOTFILES"
-alias drb="cd ~/Dropbox/"
+alias dd="cd $FS"        # "dd" is also a low-level disk utility; this alias replaces it
 alias dt="cd ~/Desktop/" # "dt" is also a command line tool to display information about your domain on Linux or Unix system
 alias dwn="cd ~/Downloads/"
-alias med="cd ~/Dropbox/media"
-alias prj="cd ~/Dropbox/projects/"
+alias med="cd ~/media"
+alias prj="cd ~/projects/"
 # Save and then change the current directory. With no arguments, pushd exchanges the top two directories.
 alias pu="pushd"
 # Remove the top entry from the directory stack, and cd to the new top directory.
 alias po="popd"
 alias zz="cd -" # Toggle between last two directories
-# Always list directory contents upon "cd"
+# Custom cd function to use zoxide or builtin cd and list files
 function cd() {
-    z "$@" || builtin cd "$@" || return 1 # If cd fails, don't try to run ls
-    ls -A                       # List entries starting with ., but do not list implied . and ..
+    # Check if shell is interactive (human use) vs non-interactive (scripts/LLMs)
+    if [[ $- == *i* ]]; then
+        # Interactive shell: use zoxide or builtin cd and list files
+        z "$@" || builtin cd "$@" || return 1
+        ls -A
+    else
+        # Non-interactive shell: use builtin cd only (no file listing output - not needed for LLMs)
+        builtin cd "$@" || return 1
+    fi
 }
+
 if [ -n "$ZSH_VERSION" ]; then
     # ZSH suffix aliases
     alias -s log="tail -f"
@@ -86,7 +94,7 @@ alias ghg='gh pr view --web || gh browse'  # Open GitHub repo in browser (pull r
 alias ghh="gh browse"  # Open GitHub repo in browser
 alias ghp="gh pr list" # List pull requests
 # JS/TS, npm, yarn, pnpm, bun
-alias ncul="ncu --target lastest"         # Show available depenecy updates with breaking changes
+alias ncul="ncu --target lastest"         # Show available dependency updates with breaking changes
 alias ncuu="ncu --upgrade --target minor" # Upgrade to non breaking dependency versions (minor and bugfixes) in package.json
 alias npmg="npm list -g --depth 0"        # List global packages
 alias nb="npm run build"
@@ -154,6 +162,7 @@ alias ag="alias | grep"                          # Quick search in aliases
 alias brc='$EDITOR ~/.bashrc'                    # Bash config
 alias c="clear"                                  # Clear shell screen
 alias cls="clear"                                # Or user keyboard shortcut Command + K { # K }
+alias dev-env="$DOTFILES/install.sh"             # Setup/update dev environment (idempotent)
 alias ee="exit"                                  # Quit shell (one of alternative aliased)
 alias ef="env | fzf"                             # Fuzzy find environment variables
 alias fn='find . -name'                          # Find by given NAME

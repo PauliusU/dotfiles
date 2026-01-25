@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 # Install and setup dev tools
 
@@ -7,13 +7,15 @@ echo "=============================== DEV TOOLS ==============================="
 echo "**** AWS tools ****"
 brew install awscli
 aws --version
-ln -nsf ~/Dropbox/dev/utils/config/.aws ~/.aws
-ln -nsf ~/Dropbox/dev/utils/config/.aws ~/.config/aws
+if [ -n "$FS" ]; then
+    ln -nsf "$FS/dev/utils/config/.aws" ~/.aws
+    ln -nsf "$FS/dev/utils/config/.aws" ~/.config/aws
+fi
 brew install aws-cdk
 cdk --version
 
 echo "**** SSH ****"
-ln -nsf ~/Dropbox/dev/utils/config/.ssh ~/.ssh
+[ -n "$FS" ] && ln -nsf "$FS/dev/utils/config/.ssh" ~/.ssh
 if [ ! -f ~/.ssh/id_rsa ]; then
     # Generate public/private rsa key pair.
     ssh-keygen -t rsa -C "48020370+PauliusU@users.noreply.github.com"
@@ -65,10 +67,18 @@ ln -nsf "$DOTFILES/nvim" "$HOME/.config/nvim"
 rm -rf ~/.local/share/nvim
 # Nvim telescope plugin requirements for grep_string and live_grep functions
 brew install ripgrep
-# scoop install fd
 brew install fd
-git clone https://github.com/LazyVim/starter ~/.config/nvim-lazyman
-git clone https://github.com/NvChad/NvChad ~/.config/nvim-nvchad --depth 1
+# Clone or update nvim config repos
+if [ -d ~/.config/nvim-lazyman ]; then
+    git -C ~/.config/nvim-lazyman pull
+else
+    git clone https://github.com/LazyVim/starter ~/.config/nvim-lazyman
+fi
+if [ -d ~/.config/nvim-nvchad ]; then
+    git -C ~/.config/nvim-nvchad pull
+else
+    git clone https://github.com/NvChad/NvChad ~/.config/nvim-nvchad --depth 1
+fi
 
 if [ "$(uname)" = "Linux" ]; then
     # sudo add-apt-repository ppa:neovim-ppa/stable
@@ -136,7 +146,7 @@ bun --version
 # Update outdated npm version installed with Node
 volta install npm
 npm -v
-ln -nsf ~/Dropbox/dev/utils/config/.npmrc ~/.config/npm/npmrc
+[ -n "$FS" ] && ln -nsf "$FS/dev/utils/config/.npmrc" ~/.config/npm/npmrc
 npm i -g typescript
 tsc -v
 npm i -g ts-node
@@ -153,7 +163,10 @@ go version
 
 echo "**** Rust ****"
 brew install rustup
-rustup-init
+# Only run rustup-init if rustup is not already installed
+if ! command -v rustup &>/dev/null; then
+    rustup-init -y
+fi
 # rustup component add rustfmt
 rustup --version
 rustup toolchain list

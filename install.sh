@@ -2,17 +2,54 @@
 
 # One-stop entry point for dotfiles environment setup
 # This script is idempotent - safe to run multiple times
-
-set -e  # Exit on error
+#
+# Usage:
+#   ./install.sh                    # Run all setup scripts
+#   ./install.sh --dry              # Dry-run (show what would run)
+#   ./install.sh file-system        # Run only scripts matching "file-system"
+#   ./install.sh --dry terminal     # Dry-run scripts matching "terminal"
 
 # Get the directory where this script is located
 DOTFILES="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+export DOTFILES="$DOTFILES"
 echo "DOTFILES: $DOTFILES"
+
+# Ensure FS is set (used by setup scripts for symlinks)
+[ -z "$FS" ] && export FS="$(cd "$DOTFILES/../.." && pwd)"
+
 cd "$DOTFILES" || exit 1
+
+# Parse script arguments
+grep_pattern=""
+dry_run="0"
+
+while [[ $# -gt 0 ]]; do
+    if [[ "$1" == "--dry" ]]; then
+        dry_run="1"
+    else
+        grep_pattern="$1"
+    fi
+    shift
+done
+
+# Log function: prefixes with [DRY_RUN] when in dry-run mode
+log() {
+    if [[ $dry_run == "1" ]]; then
+        echo "[DRY_RUN]: $1"
+    else
+        echo "$1"
+    fi
+}
 
 echo "================================================================"
 echo "  Dotfiles Installation Script"
 echo "  Repository: $DOTFILES"
+if [[ $dry_run == "1" ]]; then
+    echo "  Mode: DRY RUN"
+fi
+if [[ -n "$grep_pattern" ]]; then
+    echo "  Filter: $grep_pattern"
+fi
 echo "================================================================"
 echo ""
 
@@ -20,10 +57,10 @@ echo ""
 detect_platform() {
     if [[ "$(uname)" == "Darwin" ]]; then
         echo "macOS"
-    elif [[ "$(uname -sr)" == *"microsoft"* ]] || [[ "$(uname -sr)" == *"Microsoft"* ]]; then
-        echo "WSL"
     elif [[ "$(uname)" == "Linux" ]]; then
         echo "Linux"
+    elif [[ "$(uname -sr)" == *"microsoft"* ]] || [[ "$(uname -sr)" == *"Microsoft"* ]]; then
+        echo "WSL"
     elif [[ "$OSTYPE" == "msys" ]] || [[ "$OSTYPE" == "cygwin" ]]; then
         echo "Windows"
     else
@@ -47,80 +84,31 @@ if [[ "$PLATFORM" == "macOS" ]]; then
         echo "⚠️  Homebrew not found. Please install Homebrew first:"
         echo "   /bin/bash -c \"\$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)\""
         echo ""
-        read -p "Press Enter to continue after installing Homebrew, or Ctrl+C to exit..."
+        if [[ $dry_run == "0" ]]; then
+            read -p "Press Enter to continue after installing Homebrew, or Ctrl+C to exit..."
+        fi
     fi
 
-    # File system setup (creates directories and symlinks)
-    if [ -f "$DOTFILES/setup-macos/file-system.sh" ]; then
-        echo "📁 Setting up file system..."
-        source "$DOTFILES/setup-macos/file-system.sh"
-        echo "✓ File system setup complete"
-        echo ""
-    fi
+    # Find all .sh scripts in setup-macos (top-level only, excludes nested folders if any)
+    scripts=$(find "$DOTFILES/setup-macos" -maxdepth 1 -type f -name "*.sh" | sort)
 
-    # Install software via Homebrew
-    if [ -f "$DOTFILES/setup-macos/install-soft.sh" ]; then
-        echo "📦 Installing software..."
-        source "$DOTFILES/setup-macos/install-soft.sh"
-        echo "✓ Software installation complete"
-        echo ""
-    fi
+    for script in $scripts; do
+        script_name=$(basename "$script")
 
-    # Setup terminal commands (symlinks scripts to ~/.local/bin)
-    if [ -f "$DOTFILES/scripts/1-setup-scripts.sh" ]; then
-        echo "🔧 Setting up terminal commands..."
-        source "$DOTFILES/scripts/1-setup-scripts.sh"
-        echo "✓ Terminal commands setup complete"
-        echo ""
-    fi
+        # Skip scripts that do not match the grep pattern
+        if [[ -n "$grep_pattern" ]] && ! echo "$script_name" | grep -q "$grep_pattern"; then
+            log "skipping: grep \"$grep_pattern\" filtered out $script_name"
+            continue
+        fi
 
-    # Terminal and shell configuration
-    if [ -f "$DOTFILES/setup-macos/terminal-and-shell.sh" ]; then
-        echo "💻 Configuring terminal and shell..."
-        source "$DOTFILES/setup-macos/terminal-and-shell.sh"
-        echo "✓ Terminal configuration complete"
-        echo ""
-    fi
+        log "running: $script_name"
 
-    # File associations
-    if [ -f "$DOTFILES/setup-macos/file-associations.sh" ]; then
-        echo "🔗 Setting up file associations..."
-        source "$DOTFILES/setup-macos/file-associations.sh"
-        echo "✓ File associations setup complete"
-        echo ""
-    fi
-
-    # macOS system settings
-    if [ -f "$DOTFILES/setup-macos/settings-macos.sh" ]; then
-        echo "⚙️  Applying macOS system settings..."
-        source "$DOTFILES/setup-macos/settings-macos.sh"
-        echo "✓ System settings applied"
-        echo ""
-    fi
-
-    # Development tools
-    if [ -f "$DOTFILES/setup-macos/dev-tools.sh" ]; then
-        echo "🛠️  Setting up development tools..."
-        source "$DOTFILES/setup-macos/dev-tools.sh"
-        echo "✓ Development tools setup complete"
-        echo ""
-    fi
-
-    # Private git setup (if exists)
-    if [ -f "$DOTFILES/setup-macos/private/git.setup.sh" ]; then
-        echo "🔐 Setting up private git configuration..."
-        source "$DOTFILES/setup-macos/private/git.setup.sh"
-        echo "✓ Private git setup complete"
-        echo ""
-    fi
-
-    # AI tools setup (if exists)
-    if [ -f "$DOTFILES/setup-macos/ai-tools.private.sh" ]; then
-        echo "🤖 Setting up AI tools..."
-        source "$DOTFILES/setup-macos/ai-tools.private.sh"
-        echo "✓ AI tools setup complete"
-        echo ""
-    fi
+        if [[ $dry_run == "0" ]]; then
+            source "$script"
+            echo "✓ $script_name complete"
+            echo ""
+        fi
+    done
 
     echo "================================================================"
     echo "  ✓ macOS setup complete!"

@@ -1,12 +1,13 @@
 #!/usr/bin/env bash
 
-session_path=$(find \
+# -L follows symlinks
+session_path=$(find -L \
     ~ \
     ~/.config \
-    ~/Dropbox \
-    ~/Dropbox/code \
-    ~/Dropbox/dev \
-    ~/Dropbox/projects \
+    $FS \
+    ~/github \
+    ~/dev \
+    ~/projects \
     ~/repos \
     -mindepth 1 -maxdepth 1 -type d | fzf
 )

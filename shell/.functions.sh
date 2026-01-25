@@ -206,13 +206,13 @@ function mpv_detached() {
 function path-selector() {
     # Fuzzy find folders
 
-    find \
+    find -L \
         ~ \
         ~/.config \
-        ~/Dropbox \
-        ~/Dropbox/code \
-        ~/Dropbox/dev \
-        ~/Dropbox/projects \
+        $FS \
+        $FS/dev \
+        $FS/github \
+        $FS/projects \
         ~/repos \
         -mindepth 1 -maxdepth 1 -type d | fzf
 }

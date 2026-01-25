@@ -1,5 +1,11 @@
 #!/bin/sh
 
+# Check if duti is installed
+if ! command -v duti >/dev/null 2>&1; then
+    echo "❌ duti not installed, skipping file associations"
+    return 0 2>/dev/null || exit 0
+fi
+
 # Get the default app id for .sh and .jpg files (without a dot)
 duti -x sh
 duti -x jpg
