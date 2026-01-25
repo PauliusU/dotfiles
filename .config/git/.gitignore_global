@@ -11,3 +11,5 @@
 
 # Code Runner (VSCode extension) files
 tempCodeRunnerFile.*
+
+**/.claude/settings.local.json
