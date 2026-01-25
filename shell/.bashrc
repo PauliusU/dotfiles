@@ -20,4 +20,5 @@ bind '"\C-f":"path-switcher\n"'
 
 eval "$(zoxide init bash)"
 
+[ -z "$FS" ] && export FS="$(cd "$DOTFILES/../.." && pwd)"
 source "$DOTFILES/shell/.shellrc.sh"

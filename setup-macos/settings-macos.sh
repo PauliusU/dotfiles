@@ -83,7 +83,7 @@ defaults write com.apple.dock wvous-tr-corner -int 12
 # Bottom left screen corner → Launchpad [11]
 defaults write com.apple.dock wvous-bl-corner -int 11
 # Bottom right screen corner → Show desktop [4]
-defaults write com.apple.dock wvous-bl-corner -int 4
+defaults write com.apple.dock wvous-br-corner -int 4
 defaults read com.apple.dock | grep wvous
 
 # Desktop & Dock => options inaccessible in the UI
@@ -96,7 +96,7 @@ echo "**** Show the ~/Library folder ****"
 chflags nohidden ~/Library
 
 echo "***** Hide single external drive from desktop ****"
-sudo chflags hidden /Volumes/SSD4
+[ -d /Volumes/SSD4 ] && sudo chflags hidden /Volumes/SSD4
 killall Finder
 # # Unhide
 # sudo chflags nohidden /Volumes/SSD4

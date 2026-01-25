@@ -2,7 +2,8 @@
 echo ".shellrc.sh ◘"
 
 # Load aliases (and other custom settings)
-export DOTFILES="$HOME/Dropbox/github/dotfiles"
+[ -z "$FS" ] && export FS="$HOME/z"
+export DOTFILES="$FS/github/dotfiles"
 source "$DOTFILES/shell/.env.sh"
 source "$DOTFILES/shell/.aliases.sh"
 source "$DOTFILES/shell/.functions.sh"
@@ -141,6 +142,8 @@ if [ -n "$ZSH_VERSION" ]; then
 
     # Enable zoxide for zsh
     eval "$(zoxide init zsh)"
+    # Wrap __zoxide_cd to auto-list directory contents after navigation
+    __zoxide_cd() { \builtin cd -- "$@" && ls -A; }
 fi
 
 get_os # Defined in .functions.sh
