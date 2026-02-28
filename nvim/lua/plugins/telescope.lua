@@ -7,7 +7,6 @@ Telescope - fuzzy finder
 return {
     {
         'nvim-telescope/telescope.nvim',
-        branch = '0.1.x',
         dependencies = {
             'nvim-lua/plenary.nvim',
             -- not lsp symbols, but emojis, icons and etc.
@@ -16,6 +15,11 @@ return {
         config = function()
             local telescope_builtin = require('telescope.builtin')
             require('telescope').setup {
+                extensions = {
+                    frecency = {
+                        auto_validate = false, -- auto-remove invalid entries without prompting
+                    }
+                },
                 defaults = {
                     -- path_display = { "smart" }, -- smarter display of long paths
                     vimgrep_arguments = {

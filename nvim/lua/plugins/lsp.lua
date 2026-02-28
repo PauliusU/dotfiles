@@ -48,6 +48,7 @@ return {
                     'html',
                     'emmet_ls',
                     'harper_ls', -- markdown
+                    'marksman',  -- markdown headings/symbols
                 },
                 -- auto-install congigured servers (with lspconfig)
                 automatic_installation = true, -- not the same as 'ensure_installed'
@@ -291,6 +292,9 @@ return {
 
             vim.lsp.config('markdown_oxide', {})
             vim.lsp.enable('markdown_oxide')
+
+            vim.lsp.config('marksman', {})
+            vim.lsp.enable('marksman')
 
             vim.lsp.config('taplo', {}) -- toml
             vim.lsp.enable('taplo')

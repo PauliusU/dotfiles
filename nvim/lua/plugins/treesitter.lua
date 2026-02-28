@@ -1,6 +1,7 @@
 -- treesitter - amazingly fast code parsing
 return {
     'nvim-treesitter/nvim-treesitter',
+    branch = 'master', -- Use stable master branch (main branch is experimental rewrite)
     build = ':TSUpdate', -- update parsers on install
     event = {            -- lazy load plugin only in the buffer context
         'BufReadPre',    -- when opening a buffer for an already existing file

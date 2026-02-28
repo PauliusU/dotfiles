@@ -41,4 +41,11 @@ return {
 			},
 		},
 	},
+	{
+		-- Visualize and review your Neovim configuration activity with stats, insights, history, and heatmaps.
+		"aikhe/wrapped.nvim",
+		dependencies = { "nvzone/volt" }, -- UI framework dependency
+		cmd = { "WrappedNvim" },
+		opts = {},
+	},
 }
