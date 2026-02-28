@@ -78,6 +78,7 @@ fi
 mkdir -p "$HOME/.config/zsh/"
 mkdir -p "$XDG_STATE_HOME"/zsh/
 ln -nsf "$DOTFILES/shell/.shellrc.sh" ~/.shellrc.sh
+ln -nsf "$DOTFILES/shell/.p10k.zsh" ~/.config/zsh/.p10k.zsh
 
 # Add source line to config files only if it doesn't already exist
 if ! grep -q "source.*shell/.shellrc.sh" ~/.zshrc 2>/dev/null; then
