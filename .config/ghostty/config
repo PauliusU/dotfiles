@@ -1,1 +1,7 @@
 keybind = global:ctrl+shift+z=toggle_quick_terminal
+
+# Option (Alt) as Meta so tmux receives Alt+Shift+L etc. (e.g. switch-client -l)
+macos-option-as-alt = true
+
+# left/right padding in pixels (use window-padding-y for top/bottom)
+window-padding-x = 8
