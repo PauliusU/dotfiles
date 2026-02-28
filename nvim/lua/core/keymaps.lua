@@ -30,7 +30,7 @@ vim.keymap.set("i", "<C-c>", "<Esc>", { desc = 'Enter normal mode' })
 vim.keymap.set("t", "<M-;>", "<C-\\><C-n><C-w>p", { desc = "Toggle: terminal → buffer" })
 
 -- Split screen (splits)
-vim.keymap.set({ "n", "v" }, "<leader>df", "<cmd>vs<CR>", { desc = "Vertical split (vsplit)" })
+vim.keymap.set({ "n", "v" }, "<leader>dv", "<cmd>vs<CR>", { desc = "Vertical split (vsplit)" })
 vim.keymap.set({ "n", "v" }, "<leader>D", "<cmd>split<CR>", { desc = "Horizontal split" })
 
 -- Navigation
@@ -106,6 +106,11 @@ vim.keymap.set("v", "p", '"_dP', { desc = "Paste over currently selected text wi
 vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]], { desc = 'asbjornHaland -- copy to system clipboard #1' })
 vim.keymap.set("n", "<leader>Y", [["+Y]], { desc = 'asbjornHaland -- copy to system clipboard #2' })
 vim.keymap.set({ "n", "v" }, "<leader>v", [["+p]], { desc = 'Paste from system clipboard' })
+vim.keymap.set("n", "<leader>gy", function()
+  local path = vim.fn.expand("%:p")
+  vim.fn.setreg("+", path)
+  vim.notify("Copied: " .. path)
+end, { desc = "Copy absolute path to clipboard" })
 
 -- Similar to other editors (save, quit, select all)
 vim.keymap.set({ "n", "v", "i" }, "<A-s>", vim.cmd.update, { desc = ":write, but only when the buffer is modified." })
