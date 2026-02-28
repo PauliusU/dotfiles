@@ -5,7 +5,7 @@ Used to import other modules and set keyboard shortcuts in a single place
 
 ; Script startup settings
 #SingleInstance Force    ; Replace the old instance
-MsgBox('AHKv2', , 'T0.4')    ; Nofity that script has loaded
+MsgBox('AHKv2', , 'T0.4')    ; Notify that script has loaded
 TaskbarToggle()    ; Hide taskbar
 SetNumLockState('on')    ; Turn on NumLock
 
@@ -104,7 +104,7 @@ CapsLock & Numpad1:: OpenAppOrFile('::{645FF040-5081-101B-9F08-00AA002F954E}', '
 CapsLock & Numpad2:: EmptyRecycleBin()
 CapsLock & Numpad3:: OpenAppOrFile(USER_HOME . '\Downloads', 'Downloads')
 CapsLock & Numpad4:: Run('E:\dwn')
-CapsLock & Numpad5:: Run('d:\Dropbox\DropsyncFiles')
+CapsLock & Numpad5:: Run('d:\Dropbox\media')
 CapsLock & Numpad6:: OpenAppOrFile('D:\Dropbox\linked\shared_IL', 'shared_IL')
 CapsLock & Numpad7:: OpenAppOrFile('D:\Dropbox\DropsyncFiles\audiob\DBs\input.xlsx', 'input')
 CapsLock & Numpad8:: OpenAppOrFile(BROWSER . ' drive.google.com', 'Drive')
