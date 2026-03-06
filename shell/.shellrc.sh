@@ -72,9 +72,6 @@ if [ -n "$ZSH_VERSION" ]; then
     # Get list of key bindings
     # bindkey
 
-    # Load spaceship theme
-    source $(brew --prefix)/opt/spaceship/spaceship.zsh
-
     # Load Antigen plugin manager
     source ~/.config/antigen.zsh
     # Use plugins from the default repo (robbyrussell's oh-my-zsh).
@@ -82,6 +79,10 @@ if [ -n "$ZSH_VERSION" ]; then
     antigen bundle npm
     # Use plugins from other sources
     antigen bundle z-shell/brew-completions
+    # Theme (powerlevel10k) for prompt rendering.
+    antigen theme romkatv/powerlevel10k
+    # Old theme - spaceship
+    # source $(brew --prefix)/opt/spaceship/spaceship.zsh
     # Other plugins:
     antigen bundle zsh-users/zsh-syntax-highlighting
     antigen bundle zsh-users/zsh-completions
@@ -89,6 +90,11 @@ if [ -n "$ZSH_VERSION" ]; then
 
     # Tell Antigen that you're done.
     antigen apply
+    # Fallback for stale Antigen cache: ensure p10k function is available.
+    if ! (( $+functions[p10k] )); then
+        local p10k_theme="$HOME/.local/share/antigen/bundles/romkatv/powerlevel10k/powerlevel10k.zsh-theme"
+        [[ -r "$p10k_theme" ]] && source "$p10k_theme"
+    fi
     # List currently loaded bundles
     antigen list
 
