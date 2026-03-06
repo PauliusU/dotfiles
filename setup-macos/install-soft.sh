@@ -135,14 +135,18 @@ if [ "$(uname)" = "Darwin" ]; then
 
     echo "**** PDFs and other documents ****"
     brew install --cask foxitreader
+    # PDF manipulation
+    brew install qpdf
     # Swiss-army knife to convert one markup format file into another (Markdown, HTML, PDF, etc.)
     brew install pandoc
 
     echo "**** Raycast launcher (better Spotlight) ****"
     brew install --cask raycast
 
-    brew install tlrc
-    tldr --version # Note: install is 'tlrc' but command is 'tldr'
+    echo "**** Rclone - CLI for cloud storage ****"
+    brew install rclone
+    mkdir -p ~/.config/rclone
+    ln -nsf "$DOTFILES/.config/rclone" ~/.config/rclone
 
     echo "**** System info and statistics ****"
     # Stats in the menu bar
@@ -150,6 +154,9 @@ if [ "$(uname)" = "Darwin" ]; then
     # System information in terminal
     brew install pfetch-rs
 
+    echo "**** TLDR - CLI for documentation ****"
+    brew install tlrc
+    tldr --version # Note: install is 'tlrc' but command is 'tldr'
 fi
 
 if [ "$(uname)" = "Linux" ]; then
