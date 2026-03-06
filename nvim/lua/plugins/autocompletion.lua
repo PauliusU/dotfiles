@@ -57,10 +57,9 @@ return {
         config = function()
             require("copilot").setup({
                 -- Code Completion Model Configuration
-                -- copilot.lua handles GitHub code completion models (inline suggestions), NOT Chat Models
-                -- Available code completion models: "gpt-35-turbo" (default), "gpt-4o-copilot" (better)
-                -- gpt-4o-copilot is significantly better than default gpt-35-turbo and doesn't use premium requests
-                copilot_model = "gpt-4o-copilot",
+                -- copilot.lua handles inline code completion models only, NOT Chat Models
+                -- Chat models (Claude, Gemini, GPT-5, etc.) are not available here
+                copilot_model = "gpt-41-copilot",
                 suggestion = {
                     auto_trigger = true,
                     keymap = {
