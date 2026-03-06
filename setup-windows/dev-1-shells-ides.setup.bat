@@ -90,7 +90,6 @@ ECHO **** Visual Studio Code [VSCode] ****
 powershell scoop install vscode
 REG IMPORT "%SCOOP%\apps\vscode\current\install-context.reg"
 REG IMPORT "%SCOOP%\apps\vscode\current\install-associations.reg"
-code -v
 
 TITLE DBs
 
@@ -112,10 +111,8 @@ ECHO **** AWS tools ****
 :: AWS CLI
 MKLINK /J "%USERPROFILE%\.aws\" "d:\Dropbox\dev\utils\config\.aws"
 powershell scoop install aws
-aws --version
 :: AWS CDK
 npm install -g aws-cdk
-cdk --version
 
 ECHO **** Git tools ****
 powershell scoop install lazygit
