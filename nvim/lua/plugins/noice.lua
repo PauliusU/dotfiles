@@ -5,7 +5,7 @@ return {
         event = "VeryLazy",
         opts = {
             lsp = {
-                -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
+                -- Override markdown rendering so that **cmp** and other plugins use **Treesitter**
                 override = {
                     ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
                     ["vim.lsp.util.stylize_markdown"] = true,
@@ -14,7 +14,7 @@ return {
             },
         },
         dependencies = {
-            -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+            -- If you lazy-load any plugin below, make sure to add proper `module="..."` entries
             "MunifTanjim/nui.nvim",
             -- OPTIONAL:
             --   `nvim-notify` is only needed, if you want to use the notification view.
@@ -28,6 +28,9 @@ return {
     {
         "rcarriga/nvim-notify",
         lazy = true,
+        opts = {
+            top_down = false, -- Display notifications in the bottom-right corner
+        },
     },
 
 }
