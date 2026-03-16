@@ -23,6 +23,7 @@ if [ "$(uname)" = "Darwin" ]; then
     brew install --cask alacritty
     mkdir -p ~/.config/alacritty
     ln -nsf "$DOTFILES/.config/alacritty/alacritty.toml" ~/.config/alacritty/alacritty.toml
+    ln -nsf "$DOTFILES/.config/alacritty/base.toml" ~/.config/alacritty/base.toml
 
     echo "**** ghostty ****"
     brew install --cask ghostty

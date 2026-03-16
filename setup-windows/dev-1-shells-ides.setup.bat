@@ -12,6 +12,9 @@ powershell scoop install -g JetBrainsMono-NF
 
 ECHO **** Alacritty ****
 powershell scoop install alacritty
+IF NOT EXIST "%APPDATA%\alacritty\" MKDIR "%APPDATA%\alacritty"
+IF EXIST "%APPDATA%\alacritty\alacritty.toml" DEL /F /Q "%APPDATA%\alacritty\alacritty.toml"
+MKLINK "%APPDATA%\alacritty\alacritty.toml" "%DOTFILES%\.config\alacritty\alacritty-windows.toml"
 
 ECHO **** Core utils ****
 :: Basic cli tools (rm, cat, ls, etc.) used on Unix-like operating systems

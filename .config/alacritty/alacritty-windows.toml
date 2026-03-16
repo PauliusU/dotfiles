@@ -1,0 +1,17 @@
+# Windows-specific Alacritty config
+# Imports shared base config and overrides shell to Git Bash
+
+[general]
+import = ["D:/Dropbox/github/dotfiles/.config/alacritty/base.toml"]
+
+[font]
+size = 11.0
+
+[[keyboard.bindings]]
+action = "Paste"
+key = "V"
+mods = "Control"
+
+[terminal.shell]
+program = "D:/soft/scoop/apps/git/current/usr/bin/bash.exe"
+args = ["--login", "-i"]
