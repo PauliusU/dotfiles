@@ -6,6 +6,8 @@ return {
         vim.o.timeoutlen = 300
         local wk = require("which-key")
         wk.add({
+            { "<leader>a", group = "Avante AI" },
+            { "<leader>e", group = "Claude Code" },
             { "<leader>s", group = "Telescope search" },
             { "<leader>u", group = "UI" },
         })
