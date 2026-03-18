@@ -3,12 +3,10 @@
 <plist version="1.0">
 <!--
     hidutil kernel-level key remapping. Runs once at login, no background process.
-    Serves as BT fallback — Karabiner can't intercept Bluetooth HID devices.
-    Karabiner overrides these for dongle/USB devices it can see.
+    Serves as BLE fallback — Karabiner can't intercept Bluetooth HID devices.
 
-    Keychron V6 Max (ANSI) + Lithuanian layout mappings:
-      caps_lock (0x39) -> F18 (0x6D)        — used by Hammerspoon as hyper key
-      grave_accent (0x35) -> non_us_backslash (0x64) — fixes tilde on ANSI + Lithuanian
+    caps_lock (0x39) -> F18 (0x6D)              — Hammerspoon hyper key
+    non_us_backslash (0x64) -> grave_accent (0x35) — fixes tilde on ISO + Lithuanian (MX Keys BLE)
 -->
 <dict>
     <key>Label</key>
@@ -18,7 +16,7 @@
         <string>/usr/bin/hidutil</string>
         <string>property</string>
         <string>--set</string>
-        <string>{"UserKeyMapping":[{"HIDKeyboardModifierMappingSrc":0x700000039,"HIDKeyboardModifierMappingDst":0x70000006D},{"HIDKeyboardModifierMappingSrc":0x700000035,"HIDKeyboardModifierMappingDst":0x700000064}]}</string>
+        <string>{"UserKeyMapping":[{"HIDKeyboardModifierMappingSrc":0x700000039,"HIDKeyboardModifierMappingDst":0x70000006D},{"HIDKeyboardModifierMappingSrc":0x700000064,"HIDKeyboardModifierMappingDst":0x700000035}]}</string>
     </array>
     <key>RunAtLoad</key>
     <true/>

@@ -96,6 +96,14 @@ if [ "$(uname)" = "Darwin" ]; then
     # Better shortcuts with Karabiner Elements and Hammerspoon (for F18 setup)
     brew install --cask karabiner-elements # Free, open source, mac. Remap the keys on a Mac at the kernel level. Ex KeyRemap4MacBook
     ln -nsf "$DOTFILES/.config/karabiner" "$HOME/.config/karabiner"
+    # BLE keyboards bypass Karabiner — set keyboard type to ANSI so Lithuanian maps backtick correctly
+    # hidutil plist (com.local.KeyRemapping) handles caps_lock→F18 and non_us_backslash→grave_accent for BLE
+    sudo defaults write /Library/Preferences/com.apple.keyboardtype.plist keyboardtype -dict-add \
+        "2400-13364-0" -int 40 \
+        "53296-13364-33" -int 40 \
+        "50504-1133-0" -int 40
+    cp "$DOTFILES/setup-macos/com.local.KeyRemapping.plist" "$HOME/Library/LaunchAgents/"
+    launchctl load "$HOME/Library/LaunchAgents/com.local.KeyRemapping.plist" 2>/dev/null
     brew install --cask hammerspoon        # Free, open source, mac
     defaults write org.hammerspoon.Hammerspoon MJConfigFile "$XDG_CONFIG_HOME"/hammerspoon/init.lua
     ln -nsf "$DOTFILES/hammerspoon" "$HOME/.config/hammerspoon"
