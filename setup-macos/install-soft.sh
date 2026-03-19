@@ -102,8 +102,10 @@ if [ "$(uname)" = "Darwin" ]; then
         "2400-13364-0" -int 40 \
         "53296-13364-33" -int 40 \
         "50504-1133-0" -int 40
-    cp "$DOTFILES/setup-macos/com.local.KeyRemapping.plist" "$HOME/Library/LaunchAgents/"
-    launchctl load "$HOME/Library/LaunchAgents/com.local.KeyRemapping.plist" 2>/dev/null
+    cp -f "$DOTFILES/setup-macos/com.local.KeyRemapping.plist" "$HOME/Library/LaunchAgents/"
+    if ! launchctl list 2>/dev/null | grep -q com.local.KeyRemapping; then
+        launchctl load "$HOME/Library/LaunchAgents/com.local.KeyRemapping.plist"
+    fi
     brew install --cask hammerspoon        # Free, open source, mac
     defaults write org.hammerspoon.Hammerspoon MJConfigFile "$XDG_CONFIG_HOME"/hammerspoon/init.lua
     ln -nsf "$DOTFILES/hammerspoon" "$HOME/.config/hammerspoon"
