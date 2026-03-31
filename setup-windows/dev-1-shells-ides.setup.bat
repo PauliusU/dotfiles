@@ -77,6 +77,8 @@ nvim --version
 :: fzf, telescope and other search tools use ripgrep and fd
 powershell scoop install ripgrep
 powershell scoop install fd
+:: tree-sitter CLI required by nvim-treesitter main branch to compile parsers
+powershell scoop install tree-sitter
 :: C and C++ compiler for LSP dependencies
 WHERE gcc >nul 2>&1
 IF %errorlevel% neq 0 (
