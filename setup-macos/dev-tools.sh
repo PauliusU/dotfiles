@@ -62,6 +62,7 @@ gh --version
 
 echo "**** Neovim / Vim ****"
 brew install neovim
+brew install tree-sitter-cli # CLI required by nvim-treesitter main branch to compile parsers
 ln -nsf "$DOTFILES/nvim" "$HOME/.config/nvim"
 # Delete local Neovim cache to prevent any issues
 rm -rf ~/.local/share/nvim
