@@ -1,0 +1,11 @@
+# Line-ending policy for this multi-OS (macOS + Windows) repo.
+# Default: every text file is LF in the working tree on all platforms.
+# Binaries are auto-detected and left untouched.
+* text=auto eol=lf
+
+# Windows-only file types keep CRLF — they only ever run on Windows,
+# and CRLF is their native convention (cmd.exe is safest with it).
+*.bat text eol=crlf
+*.cmd text eol=crlf
+*.ps1 text eol=crlf
+*.ahk text eol=crlf
