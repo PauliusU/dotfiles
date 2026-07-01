@@ -1,4 +1,5 @@
 # .bashrc for git-bash on Windows
+# On Windows, psmux provides tmux-compatible multiplexer (tmux command alias)
 echo ".bashrc"
 
 if [[ $- == *i* ]]; then
@@ -14,7 +15,7 @@ fi
 
 bind '"\e[20~":"tmux-sessionizer\n"' # bind F9 to run tmux-sessionizer script
 bind '"\e[24~":"pwd\n"' # bind F12 to run pwd command
-bind '"\C-f":"path-switcher\n"'
+bind '"\C-f":"tmux-sessionizer\n"'
 # Get list of key bindings
 # bind -p
 
