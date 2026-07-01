@@ -15,10 +15,28 @@ return {
 
         -- Install parsers (async)
         require('nvim-treesitter').install {
-            'bash', 'c', 'cpp', 'css', 'dockerfile', 'gitignore',
-            'go', 'html', 'javascript', 'json', 'lua',
-            'markdown_inline', 'markdown', 'python', 'regex',
-            'rust', 'toml', 'tsx', 'typescript', 'vim', 'yaml',
+            'bash',
+            'c',
+            'cpp',
+            'css',
+            'dockerfile',
+            'gitignore',
+            'go',
+            'html',
+            'javascript',
+            'json',
+            'lua',
+            'markdown',
+            'markdown_inline',
+            'python',
+            'regex',
+            'rust',
+            'toml',
+            'tsx',
+            'typescript',
+            'vim',
+            'xml',
+            'yaml',
         }
 
         -- Highlight is built-in to nvim 0.12 (auto-enabled when parsers present)
@@ -43,10 +61,11 @@ return {
             end,
         })
 
-        -- Incremental selection via nvim 0.12 built-in node textobjects (an/in)
-        vim.keymap.set('n', '<A-i>', 'van', { desc = 'Select treesitter node' })
-        vim.keymap.set('x', '<A-i>', 'an', { desc = 'Expand to parent node' })
-        vim.keymap.set('x', '<A-u>', 'in', { desc = 'Shrink to child node' })
+        -- Incremental node selection (an/in). These textobjects come from
+        -- nvim-treesitter-textobjects (not core), hence remap=true below.
+        vim.keymap.set('n', '<A-i>', 'van', { remap = true, desc = 'Select treesitter node' })
+        vim.keymap.set('x', '<A-i>', 'an', { remap = true, desc = 'Expand to parent node' })
+        vim.keymap.set('x', '<A-u>', 'in', { remap = true, desc = 'Shrink to child node' })
 
         -- Textobjects
         require('nvim-treesitter-textobjects').setup {
