@@ -8,6 +8,10 @@ function yt() {
     # --add-metadata                    Alias for --embed-metadata but supports youtube-dl as well
     # --restrict-filenames              Restrict filenames to only ASCII characters, and avoid "&" and spaces in filenames
     # --embed-thumbnail                 yt-dlp: Embed thumbnail in the video as cover art || youtube-dl: Embed thumbnail in the audio as cover art
+    # --embed-subs                      Embed subtitles directly into the video file
+    # --sub-langs                       Languages of subtitles to download (set YT_SUBS_LANGS in private shell rc; default en)
+    # --write-auto-subs                 Also download auto-generated subtitles if manual subtitles aren't available
+    # --cookies                         Use cookie file for authentication
     # --cookies-from-browser            Extract cookies from browser to avoid YouTube bot detection
     # -i                                alias for --ignore-errors
     yt-dlp \
@@ -17,6 +21,9 @@ function yt() {
         --add-metadata \
         --restrict-filenames \
         --embed-thumbnail \
+        --embed-subs \
+        --sub-langs "${YT_SUBS_LANGS:-en}" \
+        --write-auto-subs \
         --cookies-from-browser chrome \
         -i \
         "$@"
@@ -199,8 +206,27 @@ function append_less_pipe() {
 }
 
 function mpv_detached() {
-    # Run detached MPV player which allows closing terminal without ending MPV
-    mpv --no-terminal 2 "$1" &>/dev/null &
+    # Run detached mpv in a portable way. Pick a sensible hwdec per-OS but
+    # call `mpv` from PATH to keep this function cross-platform.
+    local _uname hwdec
+    _uname="$(uname -s)"
+    case "$_uname" in
+        Darwin)
+            hwdec="videotoolbox"
+            ;;
+        Linux)
+            hwdec="auto"
+            ;;
+        MINGW*|CYGWIN*|MSYS*|Windows_NT)
+            hwdec="dxva2"
+            ;;
+        *)
+            hwdec="auto"
+            ;;
+    esac
+
+    mpv --no-terminal --force-window=immediate --vo=gpu \
+        --hwdec="$hwdec" "$@" >/dev/null 2>&1 &
 }
 
 function path-selector() {
@@ -244,4 +270,48 @@ function pwdc() {
     if [ "$(uname)" = "Linux" ]; then pwd | xclip && return; fi
     # When using Bash for Windows
     pwd | clip
+}
+
+function pdf-password-remove() {
+    # Remove password from PDF file using qpdf
+    # Usage: pdf-password-remove filename.pdf password
+    # Output: filename_unlocked.pdf in the same directory
+
+    if [ -z "$1" ]; then
+        echo 'ERROR: PDF filename is missing. Usage: pdf-password-remove filename.pdf password'
+        return 1
+    fi
+
+    if [ -z "$2" ]; then
+        echo 'ERROR: Password is missing. Usage: pdf-password-remove filename.pdf password'
+        return 1
+    fi
+
+    local input_file="$1"
+    local password="$2"
+
+    # Check if input file exists
+    if [ ! -f "$input_file" ]; then
+        echo "ERROR: File '$input_file' does not exist"
+        return 1
+    fi
+
+    # Generate output filename: replace .pdf with _unlocked.pdf
+    local output_file="${input_file%.pdf}_unlocked.pdf"
+
+    # Check if output file already exists
+    if [ -f "$output_file" ]; then
+        echo "ERROR: Output file '$output_file' already exists"
+        return 1
+    fi
+
+    # Remove password using qpdf
+    qpdf --password="$password" --decrypt "$input_file" "$output_file"
+
+    if [ $? -eq 0 ]; then
+        echo "Successfully removed password. Output: $output_file"
+    else
+        echo "ERROR: Failed to remove password from PDF"
+        return 1
+    fi
 }
