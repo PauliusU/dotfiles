@@ -68,7 +68,7 @@ hs.hotkey.bind("ctrl", "escape", fn.openTab()) -- Open Google Chrome tab [ ⌃ +
 hs.hotkey.bind(ctrl_opt, "Z", fn.open("Terminal")) -- [ ⌃ + ⌥ + Z ]
 hs.hotkey.bind(mash, "E", fn.open("Finder")) -- Finder (recent files) [ ⌃ + ⌥ + ⌘ + F ]
 Hyper:bind("Shift", "A", nil, fn.open("alacritty"))
-Hyper:bind("Shift", "D", nil, fn.open("Postman"))
+Hyper:bind("Shift", "D", nil, fn.open("Visual Studio Code"))
 Hyper:bind("Shift", "G", nil, fn.open("Mail"))
 Hyper:bind("Shift", "H", nil, fn.open("VLC"))
 Hyper:bind("Shift", "I", nil, fn.open("System Settings"))
@@ -79,7 +79,7 @@ Hyper:bind("Shift", "M", nil, fn.open("mpv"))
 Hyper:bind("Shift", "N", nil, fn.open("Obsidian"))
 Hyper:bind("Shift", "P", nil, fn.open("Music"))
 Hyper:bind("Shift", "Q", nil, fn.open("Codex"))
-Hyper:bind("Shift", "S", nil, fn.open("Visual Studio Code"))
+Hyper:bind("Shift", "S", nil, fn.open("Postman"))
 Hyper:bind("Shift", "U", nil, fn.open("Messages"))
 Hyper:bind("Shift", "V", nil, fn.open("Safari"))
 Hyper:bind("Shift", "X", nil, fn.open("ChatGPT"))
