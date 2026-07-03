@@ -44,6 +44,7 @@ return {
                     'taplo', -- toml
                     'ts_ls', -- typescript
                     'yamlls',
+                    'lemminx', -- xml
                     -- Sandbox LSPs
                     'html',
                     'emmet_ls',
@@ -305,10 +306,10 @@ return {
             vim.lsp.config('prismals', {})
             vim.lsp.enable('prismals')
 
-            -- Sandbox
             vim.lsp.config('lemminx', {}) -- xml
             vim.lsp.enable('lemminx')
 
+            -- Sandbox
             vim.lsp.config('html', {})
             vim.lsp.enable('html')
 
