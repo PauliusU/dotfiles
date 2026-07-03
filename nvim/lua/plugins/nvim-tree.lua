@@ -3,7 +3,8 @@ return {
     desc = 'A File Explorer For Neovim Written In Lua',
     cmd = { 'NvimTreeFindFileToggle' }, -- lazy load the plugin if command is run
     keys = {                            -- also lazy loads if any of the listed keymaps are pressed
-        { '<leader>i', '<cmd>NvimTreeFindFileToggle<CR>', desc = 'nvim-tree: find file in file tree' }
+        { '<leader>i', '<cmd>NvimTreeFindFileToggle<CR>', desc = 'nvim-tree: find file in file tree' },
+        { '<C-q>', '<cmd>NvimTreeFindFileToggle<CR>', desc = 'nvim-tree: find file in file tree' },
     },
     dependencies = { 'nvim-tree/nvim-web-devicons' }, -- optional, for file icons
     config = function()

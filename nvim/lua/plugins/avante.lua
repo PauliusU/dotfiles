@@ -2,7 +2,7 @@
 return {
 	{
 		"yetone/avante.nvim",
-		event = "VeryLazy",
+		cmd = { "AvanteAsk", "AvanteToggle", "AvanteChat", "AvanteSwitchProvider" },
 		version = false,
 		build = vim.fn.has("win32") == 1
 				and function(plugin)
@@ -24,6 +24,9 @@ return {
 		opts = {
 			provider = "claude",
 			mode = "agentic",
+			history = {
+				storage_path = vim.fn.expand("~/.local/share/avante/history"),
+			},
 			input = {
 				provider = "snacks", -- native provider crashes during OAuth on startup
 			},
@@ -66,13 +69,14 @@ return {
 			"nvim-tree/nvim-web-devicons",
 			{
 				"HakonHarnes/img-clip.nvim", -- requires: brew install pngpaste
-				event = "VeryLazy",
 				opts = {
 					default = {
 						embed_image_as_base64 = false,
 						prompt_for_file_name = false,
 						drag_and_drop = { insert_mode = true },
 						use_absolute_path = true,
+						-- central dir so pasted screenshots don't clutter each repo (or need .gitignore)
+						dir_path = vim.fn.expand("~/.local/share/nvim/pasted_images"),
 					},
 				},
 			},
