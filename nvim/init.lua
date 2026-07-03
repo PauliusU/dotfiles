@@ -5,5 +5,6 @@ vim.loader.enable()
 
 require('core.options')
 require('core.keymaps')
+require('core.undotree')
 require('core.autocommands')
 require('core.lazy_plugin_manager')
