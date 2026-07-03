@@ -32,6 +32,28 @@ autocmd('BufWritePre', {
     command = 'silent! EslintFixAll',
 })
 
+local FileChangeGroup = augroup('FileChangeDetect', {})
+
+autocmd({ 'FocusGained', 'BufEnter', 'CursorHold', 'CursorHoldI' }, {
+    group = FileChangeGroup,
+    pattern = '*',
+    callback = function()
+        if vim.fn.mode() ~= 'c' then
+            vim.cmd('checktime')
+        end
+    end,
+    desc = 'Auto-reload files changed outside nvim',
+})
+
+autocmd('FileChangedShellPost', {
+    group = FileChangeGroup,
+    pattern = '*',
+    callback = function()
+        vim.notify('File changed on disk. Reloaded.', vim.log.levels.WARN)
+    end,
+    desc = 'Notify on external file reload',
+})
+
 autocmd("BufEnter", {
     -- Turn off automaticly commenting the new line
     -- ref: https://www.reddit.com/r/neovim/comments/17fc669/turn_off_auto_commenting_lazynvim/?share_id=pD0z5W3DJ2RslBQ94PcV_

@@ -26,8 +26,10 @@ vim.keymap.set("i", "ii", "<Esc>", { desc = 'Exit insert mode' })
 vim.keymap.set("i", ";;", "<Esc>", { desc = 'Exit insert mode' })
 vim.keymap.set("t", "jk", "<C-\\><C-n>", { desc = 'Exit terminal mode' })
 vim.keymap.set("i", "<C-c>", "<Esc>", { desc = 'Enter normal mode' })
--- Claude Code toggle: terminal → buffer (Alt+;). Normal mode mapping in plugins/claude.lua
-vim.keymap.set("t", "<M-;>", "<C-\\><C-n><C-w>p", { desc = "Toggle: terminal → buffer" })
+-- Claude Code toggle from terminal mode via plugin smart toggle (focus/hide)
+vim.keymap.set("t", "<M-;>", "<C-\\><C-n><cmd>ClaudeCodeFocus<CR>", { desc = "Toggle Claude (terminal)" })
+vim.keymap.set("t", "<A-;>", "<C-\\><C-n><cmd>ClaudeCodeFocus<CR>", { desc = "Toggle Claude (terminal, Alt alias)" })
+vim.keymap.set("t", "<Esc>;", "<C-\\><C-n><cmd>ClaudeCodeFocus<CR>", { desc = "Toggle Claude (terminal, Esc fallback)" })
 
 -- Split screen (splits)
 vim.keymap.set({ "n", "v" }, "<leader>dv", "<cmd>vs<CR>", { desc = "Vertical split (vsplit)" })
