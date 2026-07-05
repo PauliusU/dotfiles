@@ -9,6 +9,15 @@ npm update -g typescript
 pnpm self-update
 echo $visible_line
 
+echo "**** 🟠 Claude Code update ****"
+claude update
+echo $visible_line
+
+echo "**** 🖱️  Cursor Agent update ****"
+# Official installer, not brew (brew cask hits macOS Gatekeeper). https://cursor.com/cli
+cursor-agent update
+echo $visible_line
+
 echo "**** 🦀 Rust updates ****"
 rustup update stable
 cargo install --list
@@ -23,12 +32,21 @@ if [ "$(uname)" = "Darwin" ]; then
 
     brew update
     # Upgrade outdated packages (called "formulae" in Homebrew terminology)
-    brew upgrade
+    brew upgrade -y
     # Upgrade all installed casks, even those that are marked as "auto_updates: false" or "version :latest"
-    brew upgrade --cask --greedy
+    brew upgrade --cask --greedy -y
     # Remove stale lock files and outdated downloads older than 120 days old
     brew cleanup
     # brew cleanup --prune=all --dry-run
+    echo $visible_line
+
+    # Update Microsoft Office (Word/Outlook/OneDrive) — NOT Homebrew-managed. MAU is
+    # set to Manual mode (no login-time checks), so updates run here via the msupdate CLI.
+    msupdate_cli="/Library/Application Support/Microsoft/MAU2.0/Microsoft AutoUpdate.app/Contents/MacOS/msupdate"
+    if [ -x "$msupdate_cli" ]; then
+        echo "**** Ⓜ️  Microsoft Office updates ****"
+        "$msupdate_cli" --install
+    fi
     echo $visible_line
 
     # Update macOS itself

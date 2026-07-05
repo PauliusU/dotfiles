@@ -8,7 +8,7 @@ python -m pip list --user
 python -m pip install --upgrade pip --user
 
 ECHO "**** Rust ****"
-rustup update
+rustup update --no-self-update
 cargo install --list
 
 ECHO "**** SCOOP ****"
