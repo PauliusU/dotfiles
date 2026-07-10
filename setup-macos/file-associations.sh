@@ -29,6 +29,9 @@ duti -s io.mpv .mkv all
 duti -s io.mpv .mov all
 duti -s io.mpv .mp4 all
 
+# EBOOKS - Preview instead of Apple Books (prevents auto-import to Books library)
+duti -s com.apple.Preview org.idpf.epub-container all
+
 # IMAGES
 
 echo

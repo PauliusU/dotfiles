@@ -48,6 +48,7 @@ echo "**** Network monitoring and testing ****"
 brew install bwm-ng
 brew install bmon
 brew tap teamookla/speedtest
+brew trust --formula teamookla/speedtest/speedtest  # trust required since brew 6.0 for non-official taps
 brew update
 brew install speedtest --force
 
@@ -62,21 +63,13 @@ if [ "$(uname)" = "Darwin" ]; then
 
     echo "**** Battery ****"
 
-    # Battery charge limiter for Apple Silicon Macbook devices
-    brew install --cask battery
-    # Enable charging when your battery dips under 80, and disable it when it exceeds 80
-    battery maintain 80
-    battery status
+    # Charge limiting is now native: macOS Tahoe 26.4+ added a built-in charge
+    # limit in System Settings > Battery > Charging (80-100%, 5% steps).
+    # Third-party limiters (batt, battery cask, AlDente) dropped as redundant -
+    # don't run two at once, they fight over the SMC charge-inhibit bit.
 
-    # Battery info GUI
+    # Battery info GUI (health/cycles/temperature - no charge control, no overlap)
     brew install --cask coconutbattery
-
-    # batt - control battery charging on Apple Silicon MacBooks
-    brew install batt
-    sudo brew services start batt
-    batt limit 80
-    batt status
-    batt version
 
     echo "**** Duti - file association manager (macOS only) ****"
     brew install duti
@@ -149,6 +142,12 @@ if [ "$(uname)" = "Darwin" ]; then
     brew install qpdf
     # Swiss-army knife to convert one markup format file into another (Markdown, HTML, PDF, etc.)
     brew install pandoc
+    # OCR: add searchable text layer to scanned PDFs. Usage: ocrmypdf -l lit+eng scan.pdf out.pdf
+    brew install ocrmypdf
+    # OCR language packs — tesseract-lang adds all languages (base tesseract ships English only)
+    brew install tesseract-lang
+    # PDF to structured markdown (tables, headings preserved) for PDFs that already have a text layer:
+    #   uvx --from marker-pdf marker_single document.pdf
 
     echo "**** Raycast launcher (better Spotlight) ****"
     brew install --cask raycast
