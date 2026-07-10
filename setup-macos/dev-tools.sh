@@ -8,14 +8,14 @@ echo "**** AWS tools ****"
 brew install awscli
 aws --version
 if [ -n "$FS" ]; then
-    ln -nsf "$FS/dev/utils/config/.aws" ~/.aws
-    ln -nsf "$FS/dev/utils/config/.aws" ~/.config/aws
+    ln -nsf "$FS/dev/config/.aws" ~/.aws
+    ln -nsf "$FS/dev/config/.aws" ~/.config/aws
 fi
 brew install aws-cdk
 cdk --version
 
 echo "**** SSH ****"
-[ -n "$FS" ] && ln -nsf "$FS/dev/utils/config/.ssh" ~/.ssh
+[ -n "$FS" ] && ln -nsf "$FS/dev/config/.ssh" ~/.ssh
 if [ ! -f ~/.ssh/id_rsa ]; then
     # Generate public/private rsa key pair.
     ssh-keygen -t rsa -C "48020370+PauliusU@users.noreply.github.com"
@@ -147,7 +147,7 @@ bun --version
 # Update outdated npm version installed with Node
 volta install npm
 npm -v
-[ -n "$FS" ] && ln -nsf "$FS/dev/utils/config/.npmrc" ~/.config/npm/npmrc
+[ -n "$FS" ] && ln -nsf "$FS/dev/config/.npmrc" ~/.config/npm/npmrc
 npm i -g typescript
 tsc -v
 npm i -g ts-node
