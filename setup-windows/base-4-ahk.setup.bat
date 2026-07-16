@@ -10,6 +10,7 @@ FTYPE ahkfile="%SCOOP%\apps\autohotkey\current\v2\AutoHotkey64.exe" "%%1"
 START "%SCOOP%\apps\autohotkey\current\v2\AutoHotkey64.exe" "%DOTFILES%\ahk\main.ahk"
 
 :: AHK system startup link
+:: %DOTFILES% uses forward slashes; normalize to backslashes or the .lnk target ends up blank.
 SET TARGET='%DOTFILES%\ahk\main.ahk'
 SET SHORTCUT='%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\AHK_MAIN_startup.lnk'
-powershell -NoProfile -ExecutionPolicy Bypass -Command "$ws = New-Object -ComObject WScript.Shell; $s = $ws.CreateShortcut(%SHORTCUT%); $S.TargetPath = %TARGET%; $S.Save()"
+powershell -NoProfile -ExecutionPolicy Bypass -Command "$ws = New-Object -ComObject WScript.Shell; $s = $ws.CreateShortcut((%SHORTCUT%).Replace('/','\')); $S.TargetPath = (%TARGET%).Replace('/','\'); $S.Save()"
