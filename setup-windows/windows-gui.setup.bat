@@ -42,13 +42,5 @@ REG ADD "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /V "H
 TASKKILL /f /im explorer.exe
 START explorer.exe
 
-TITLE Backup and Windows Libraries for File History
-
-ECHO **** Create "DDiskFiles" Library for backups ***
-d:\Dropbox\soft\cli-tools\ShLib_and_SLUtil_win32\ShLib\ShLib.exe create "%APPDATA%\Microsoft\Windows\Libraries\DDiskFiles.library-ms"
-d:\Dropbox\soft\cli-tools\ShLib_and_SLUtil_win32\ShLib\ShLib.exe add "%APPDATA%\Microsoft\Windows\Libraries\DDiskFiles.library-ms" "D:\Dropbox"
-d:\Dropbox\soft\cli-tools\ShLib_and_SLUtil_win32\ShLib\ShLib.exe add "%APPDATA%\Microsoft\Windows\Libraries\DDiskFiles.library-ms" "D:\linked"
-d:\Dropbox\soft\cli-tools\ShLib_and_SLUtil_win32\ShLib\ShLib.exe add "%APPDATA%\Microsoft\Windows\Libraries\DDiskFiles.library-ms" "D:\soft"
-
 ECHO **** Set display refresh rate ****
 IF EXIST %PC_HOME_FILE% d:\Dropbox\soft\cli-tools\nircmd-x64\nircmd.exe setdisplay monitor:0 1920 1080 32 75 -updatereg
