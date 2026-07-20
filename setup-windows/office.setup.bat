@@ -2,6 +2,7 @@
 
 ECHO **** Anki ****
 powershell scoop install anki
+RMDIR "%APPDATA%\Anki2" 2>NUL
 MKLINK /J "%APPDATA%\Anki2" "%SCOOP%\persist\anki\data"
 
 ECHO **** GoldenDict ****
@@ -33,17 +34,18 @@ REG ADD HKCU\Software\Classes\ms-officeapp\Shell\Open\Command /t REG_SZ /d rundl
 
 ECHO **** Microsoft Excel ****
 IF NOT EXIST "%APPDATA%\Microsoft\Excel\XLSTART" MKDIR "%APPDATA%\Microsoft\Excel\XLSTART"
-:: PERSONAL.XLSB does not work with folder junction
-IF NOT EXIST "%APPDATA%\Microsoft\Excel\XLSTART\PERSONAL.XLSB" COPY "d:\Dropbox\soft\MSO\excel\PERSONAL.XLSB" "%APPDATA%\Microsoft\Excel\XLSTART"
+:: PERSONAL.XLSB does not work with folder junction (real file copy required)
+COPY /Y "%DOTFILES%\mso\excel\PERSONAL.XLSB" "%APPDATA%\Microsoft\Excel\XLSTART"
 
 ECHO **** Microsoft Word ****
-DEL /Q "%APPDATA%\Microsoft\Templates"
-MKLINK /J "%APPDATA%\Microsoft\Templates" "d:\Dropbox\soft\MSO\word"
+RMDIR /S /Q "%APPDATA%\Microsoft\Templates" 2>NUL
+MKLINK /J "%APPDATA%\Microsoft\Templates" "%DOTFILES%\mso\word"
 
 ECHO **** Office spellcheckers ****
-"d:\Dropbox\soft\MSO\proofingtools2016_fr-fr-x64.exe" /quiet
-"d:\Dropbox\soft\MSO\proofingtools2016_lt-lt-x64.exe" /quiet
-"d:\Dropbox\soft\MSO\proofingtools2016_ru-ru-x64.exe" /quiet
+"%DOTFILES%\mso\proofingtools\proofingtools2016_fr-fr-x64.exe" /quiet
+"%DOTFILES%\mso\proofingtools\proofingtools2016_lt-lt-x64.exe" /quiet
+
+ECHO **** Grammarly for Office ****
 winget install Grammarly.Grammarly.Office &:: Grammarly for Microsoft Office Suite. No scoop alternative as of 2023-03-13
 
 ECHO **** Toggl Track - time tracking ****
