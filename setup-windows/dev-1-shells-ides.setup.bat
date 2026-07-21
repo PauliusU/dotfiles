@@ -122,7 +122,7 @@ TITLE Other programming tools
 
 ECHO **** AWS tools ****
 :: AWS CLI
-MKLINK /J "%USERPROFILE%\.aws\" "d:\Dropbox\dev\utils\config\.aws"
+MKLINK /J "%USERPROFILE%\.aws\" "d:\Dropbox\dev\config\.aws"
 powershell scoop install aws
 :: AWS CDK
 npm install -g aws-cdk
