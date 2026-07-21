@@ -36,6 +36,14 @@ MKLINK "%SCOOP%\apps\git\current\usr\bin\tmux-sessionizer" "%DOTFILES%\scripts\t
 :: Fuzzy find directories for path-switcher
 powershell scoop install fzf
 
+ECHO **** psmux - tmux-compatible multiplexer for Windows ****
+:: https://github.com/marlocarlo/psmux
+powershell scoop bucket add psmux https://github.com/marlocarlo/scoop-psmux
+powershell scoop install psmux
+:: Link psmux config (psmux reads ~/.tmux.conf)
+IF EXIST "%USERPROFILE%\.tmux.conf" DEL /F /Q "%USERPROFILE%\.tmux.conf"
+MKLINK "%USERPROFILE%\.tmux.conf" "%DOTFILES%\.config\tmux\tmux.windows.conf"
+
 ECHO **** PowerShell ****
 MKLINK /J "%USERPROFILE%\Documents\WindowsPowerShell" "%DOTFILES%\setup-windows\terminal\PowerShell"
 powershell $PSVersionTable
