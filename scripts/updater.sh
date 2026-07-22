@@ -45,7 +45,9 @@ if [ "$(uname)" = "Darwin" ]; then
     msupdate_cli="/Library/Application Support/Microsoft/MAU2.0/Microsoft AutoUpdate.app/Contents/MacOS/msupdate"
     if [ -x "$msupdate_cli" ]; then
         echo "**** Ⓜ️  Microsoft Office updates ****"
-        "$msupdate_cli" --install
+        # --list first: a bare --install times out on a cold MAU daemon
+        "$msupdate_cli" --list
+        "$msupdate_cli" --install --wait 300
     fi
     echo $visible_line
 
