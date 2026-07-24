@@ -22,10 +22,13 @@ private.lua
 AGENTS.md
 CLAUDE.md
 espanso/match/packages/*
+Library/Preferences/doublecmd/*.bak
 Library/Preferences/doublecmd/colors.json
 Library/Preferences/doublecmd/doublecmd.xml
 Library/Preferences/doublecmd/extassoc.xml
+Library/Preferences/doublecmd/favoritetabs.xml
 Library/Preferences/doublecmd/history.xml
+Library/Preferences/doublecmd/localconfig.xml
 Library/Preferences/doublecmd/multiarc.ini
 Library/Preferences/doublecmd/session.ini
 Library/Preferences/doublecmd/tabs.xml

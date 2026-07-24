@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<doublecmd DCVersion="1.1.17 gamma">
-  <Hotkeys Version="63">
+<doublecmd DCVersion="1.2.7 gamma">
+  <Hotkeys Version="71">
     <Form Name="Main">
       <Hotkey>
         <Shortcut>F1</Shortcut>
@@ -396,6 +396,38 @@
         <Param>index=9</Param>
       </Hotkey>
       <Hotkey>
+        <Shortcut>Shift+Cmd+.</Shortcut>
+        <Command>cm_ShowSysFiles</Command>
+      </Hotkey>
+      <Hotkey>
+        <Shortcut>Cmd+,</Shortcut>
+        <Command>cm_Options</Command>
+      </Hotkey>
+      <Hotkey>
+        <Shortcut>Cmd+Down</Shortcut>
+        <Command>cm_Open</Command>
+      </Hotkey>
+      <Hotkey>
+        <Shortcut>Cmd+Up</Shortcut>
+        <Command>cm_ChangeDirToParent</Command>
+      </Hotkey>
+      <Hotkey>
+        <Shortcut>Cmd+[</Shortcut>
+        <Command>cm_ViewHistoryPrev</Command>
+      </Hotkey>
+      <Hotkey>
+        <Shortcut>Cmd+]</Shortcut>
+        <Command>cm_ViewHistoryNext</Command>
+      </Hotkey>
+      <Hotkey>
+        <Shortcut>Cmd+W</Shortcut>
+        <Command>cm_CloseTab</Command>
+      </Hotkey>
+      <Hotkey>
+        <Shortcut>Cmd+K</Shortcut>
+        <Command>cm_MapNetworkDrive</Command>
+      </Hotkey>
+      <Hotkey>
         <Shortcut>Del</Shortcut>
         <Command>cm_Delete</Command>
         <Control>Files Panel</Control>
@@ -479,6 +511,16 @@
       <Hotkey>
         <Shortcut>Cmd+X</Shortcut>
         <Command>cm_CutToClipboard</Command>
+        <Control>Files Panel</Control>
+      </Hotkey>
+      <Hotkey>
+        <Shortcut>Cmd+=</Shortcut>
+        <Command>cm_MainFontZoomIn</Command>
+        <Control>Files Panel</Control>
+      </Hotkey>
+      <Hotkey>
+        <Shortcut>Cmd+-</Shortcut>
+        <Command>cm_MainFontZoomOut</Command>
         <Control>Files Panel</Control>
       </Hotkey>
     </Form>
@@ -643,6 +685,14 @@
         <Command>cm_ChangeEncoding</Command>
         <Param>UTF-16LE</Param>
       </Hotkey>
+      <Hotkey>
+        <Shortcut>Cmd+=</Shortcut>
+        <Command>cm_ZoomIn</Command>
+      </Hotkey>
+      <Hotkey>
+        <Shortcut>Cmd+-</Shortcut>
+        <Command>cm_ZoomOut</Command>
+      </Hotkey>
     </Form>
     <Form Name="Differ">
       <Hotkey>
@@ -696,6 +746,30 @@
       <Hotkey>
         <Shortcut>Alt+Right</Shortcut>
         <Command>cm_CopyLeftToRight</Command>
+      </Hotkey>
+      <Hotkey>
+        <Shortcut>Cmd+X</Shortcut>
+        <Command>cm_EditCut</Command>
+      </Hotkey>
+      <Hotkey>
+        <Shortcut>Cmd+C</Shortcut>
+        <Command>cm_EditCopy</Command>
+      </Hotkey>
+      <Hotkey>
+        <Shortcut>Cmd+Z</Shortcut>
+        <Command>cm_EditUndo</Command>
+      </Hotkey>
+      <Hotkey>
+        <Shortcut>Cmd+V</Shortcut>
+        <Command>cm_EditPaste</Command>
+      </Hotkey>
+      <Hotkey>
+        <Shortcut>Cmd+A</Shortcut>
+        <Command>cm_EditSelectAll</Command>
+      </Hotkey>
+      <Hotkey>
+        <Shortcut>Shift+Cmd+Z</Shortcut>
+        <Command>cm_EditRedo</Command>
       </Hotkey>
     </Form>
     <Form Name="Confirmation">
@@ -818,6 +892,14 @@
       <Hotkey>
         <Shortcut>Cmd+G</Shortcut>
         <Command>cm_EditGotoLine</Command>
+      </Hotkey>
+      <Hotkey>
+        <Shortcut>Cmd+=</Shortcut>
+        <Command>cm_ZoomIn</Command>
+      </Hotkey>
+      <Hotkey>
+        <Shortcut>Cmd+-</Shortcut>
+        <Command>cm_ZoomOut</Command>
       </Hotkey>
     </Form>
     <Form Name="Find Files">
