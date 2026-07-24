@@ -22,9 +22,8 @@ alias zz="cd -" # Toggle between last two directories
 function cd() {
     # Check if shell is interactive (human use) vs non-interactive (scripts/LLMs)
     if [[ $- == *i* ]]; then
-        # Interactive shell: use zoxide or builtin cd and list files
-        z "$@" || builtin cd "$@" || return 1
-        ls -A
+        # Interactive shell: use zoxide (has ls -A in __zoxide_cd wrapper) or fallback to builtin cd
+        z "$@" 2>/dev/null || { builtin cd "$@" && ls -A; }
     else
         # Non-interactive shell: use builtin cd only (no file listing output - not needed for LLMs)
         builtin cd "$@" || return 1
@@ -53,11 +52,11 @@ alias ssl="brew services list"
 alias sss="brew services stop"
 alias sun="brew uninstall"
 alias sunnn="brew uninstall --ignore-dependencies"
-alias suu="brew update && brew upgrade && brew upgrade --cask"
+alias suu="brew update && brew upgrade -y && brew upgrade --cask -y"
 alias supc="brew upgrade --cask" # Upgrade all casks installed with homebrew
 alias supd="brew update"         # Update homebrew itself and the package lists
 alias supg="brew upgrade"        # Upgrade all software installed with homebrew
-alias suuu="brew update && brew upgrade && brew upgrade --cask && brew cleanup"
+alias suuu="brew update && brew upgrade -y && brew upgrade --cask -y && brew cleanup"
 alias sysu="softwareupdate -ai"  # Run all macOS updates for Xcode, etc..
 if [[ $(uname) == "Linux" ]]; then
     alias ai="sudo apt install"
@@ -160,7 +159,7 @@ alias __="append_less_pipe"                      # Add "| less" to passed param
 alias af="alias | fzf"                           # Fuzzy find in aliases
 alias ag="alias | grep"                          # Quick search in aliases
 alias brc='$EDITOR ~/.bashrc'                    # Bash config
-alias c="clear"                                  # Clear shell screen
+alias c="claude"                                 # Claude Code launcher. For clear, use cls or Ctrl+L.
 alias cls="clear"                                # Or user keyboard shortcut Command + K { # K }
 alias dev-env="$DOTFILES/install.sh"             # Setup/update dev environment (idempotent)
 alias ee="exit"                                  # Quit shell (one of alternative aliased)
@@ -200,7 +199,7 @@ alias startup="gnome-session-properties"                  # Startup applications
 
 # Program access
 alias bb="cursor ."                                                                            # Open current folder in Cursor
-alias bw="bwm-ng -d"                                                                           # Network speed with dynamic units like K, M or G
+alias bwn="bwm-ng -d"                                                                          # Network speed with dynamic units like K, M or G
 alias bww="bmon -p en8,en0"                                                                    # Network speed with specific interfaces
 alias cdd="code ."                                                                             # Open current folder in VS Code
 alias chx="chmod +x"                                                                           # Make file executable
@@ -222,6 +221,7 @@ alias tarz='tar czvf'                                                           
 alias td="tmux detach"                                                                         # Exit the tmux window to come back to later
 alias tl="tmux-session-picker"                                                                 # Fuzzy find tmux sessions
 alias tls="tmux ls"                                                                            # = tmux list-sessions
+alias tmfresh='rm -f ~/.config/tmux/resurrect/last && tmux'                                    # Start tmux without restoring previous sessions
 alias tmks="tmux kill-server"                                                                  # Cleanly and gracefully kill all tmux open sessions (and server)
 alias tmm='echo tmux: $TMUX'                                                                   # = tmux new = tmux new-session
 alias tmx="tmux new-session -ADs main"                                                         # Create "main" session or attach to it (if exists) ref: https://github.com/threkk/dotfiles/blob/d1c3c6681286e3e289d04f64a8ffb37fdbdbbc98/dotfiles/alias
