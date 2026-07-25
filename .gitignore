@@ -11,6 +11,7 @@ private.lua
 
 .DS_Store
 *.lnk
+*.bak
 
 .config/karabiner/automatic_backups
 .config/lazygit/state.yml
@@ -22,7 +23,6 @@ private.lua
 AGENTS.md
 CLAUDE.md
 espanso/match/packages/*
-Library/Preferences/doublecmd/*.bak
 Library/Preferences/doublecmd/colors.json
 Library/Preferences/doublecmd/doublecmd.xml
 Library/Preferences/doublecmd/extassoc.xml
@@ -38,6 +38,7 @@ mpv/script-modules/*
 mpv/scripts/*
 mpv/watch_history.jsonl
 mpv/watch_later/*
+mso/
 nvim/lazy-lock.json
 nvim/lua/snippets/
 nvim/spell/
