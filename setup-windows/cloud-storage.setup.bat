@@ -11,11 +11,20 @@ MKLINK /J "%USERPROFILE%\dev" "d:\Dropbox\dev"
 MKLINK /J "%USERPROFILE%\Dropbox" "d:\Dropbox"
 MKLINK /J "%USERPROFILE%\media" "d:\Dropbox\DropsyncFiles\media"
 winget install Dropbox.Dropbox
+:: Recreate Dropbox ignore rules from Maestral's synced .mignore
+IF EXIST "d:\Dropbox\.mignore" (
+    COPY /Y "d:\Dropbox\.mignore" "d:\Dropbox\rules.dropboxignore"
+) ELSE (
+    ECHO WARNING: .mignore not found, Dropbox may not have synced yet
+)
 
 ECHO **** OneDrive ****
 MKLINK /J "%LOCALAPPDATA%\Microsoft\OneDrive" "%USER_BAK%\AppData\Local\Microsoft\OneDrive"
 MKLINK /J "%USERPROFILE%\OneDriveLinked" "%OneDrive%"
-MKLINK /J "e:\dwn\video" "%OneDrive%\z\tor"
+
+ECHO **** pCloud ****
+winget install pCloudAG.pCloudDrive
+MKLINK /D "e:\dwn\video" "P:\tor"
 
 ECHO **** Rclone - CLI for cloud storage ****
 powershell scoop install rclone
