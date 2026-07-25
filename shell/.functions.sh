@@ -206,8 +206,8 @@ function append_less_pipe() {
 }
 
 function mpv_detached() {
-    # Run detached mpv in a portable way. Pick a sensible hwdec per-OS but
-    # call `mpv` from PATH to keep this function cross-platform.
+    # Run detached mpv per-OS: sensible hwdec, and on macOS launch the mpv.app
+    # bundle (see below) instead of the Homebrew CLI formula.
     local _uname hwdec
     _uname="$(uname -s)"
     case "$_uname" in
@@ -225,8 +225,17 @@ function mpv_detached() {
             ;;
     esac
 
-    mpv --no-terminal --force-window=immediate --vo=gpu \
-        --hwdec="$hwdec" "$@" >/dev/null 2>&1 &
+    if [ "$_uname" = "Darwin" ]; then
+        # macOS: launch mpv.app via `open`. A backgrounded CLI mpv renders fine
+        # but its window won't foreground / isn't in Cmd+Tab — a bare CLI binary
+        # doesn't get window activation, while an .app bundle does via
+        # LaunchServices. Cask is deprecated (fails Gatekeeper, disabled
+        # 2026-09-01); when gone, wrap the formula binary in a tiny .app instead.
+        open -na mpv --args --force-window=immediate --hwdec="$hwdec" "$@"
+    else
+        mpv --no-terminal --force-window=immediate \
+            --hwdec="$hwdec" "$@" >/dev/null 2>&1 &
+    fi
 }
 
 function path-selector() {
