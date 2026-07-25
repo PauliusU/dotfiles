@@ -9,10 +9,6 @@ source "$DOTFILES/scripts/fs-cleanup.periodical.private.sh"
 source "$DOTFILES/scripts/fs-cloud-sync.private.sh"
 echo ""
 
-echo "**** 💾 Backup ****"
-source "$DOTFILES/scripts/fs-backup.sh"
-echo ""
-
 echo "**** ⚡ Unused caches ****"
 pnpm store prune
 echo ""
