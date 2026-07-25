@@ -66,11 +66,25 @@ prepend_path() {
     fi
 }
 
-# Order matters, first entry in PATH will take priority over later ones
+# prepend_path adds to the front of PATH — so the LAST line below wins (highest priority)
+prepend_path "$HOME/Library/Application Support/JetBrains/Toolbox/scripts"
+prepend_path "$XDG_DATA_HOME/npm/bin" # npm global packages
 prepend_path "$HOME/.local/bin" # Python packages store some bins here
 prepend_path "$VOLTA_HOME/bin" # Use Volta Node instead of global Node by default
 prepend_path "$XDG_DATA_HOME/mise/shims"
 prepend_path "$GOPATH/bin"
+prepend_path "/opt/homebrew/bin"
+
+# pnpm
+export PNPM_HOME="$HOME/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
+
+# Source cargo env if it exists (macOS/Linux; Windows sets Rust separately)
+[ -f "$CARGO_HOME/env" ] && . "$CARGO_HOME/env"
 
 # Clean-up
 unset -f prepend_path
