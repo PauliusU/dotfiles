@@ -145,6 +145,8 @@ vim.keymap.set("n", "<leader>nn", "<cmd> set nu! rnu! <CR>",
     { desc = "perf: toggle line numbers and relative line numbers" })
 vim.keymap.set("n", "Q", "<nop>", { desc = 'Disable capital Q' })
 vim.keymap.set({ "n", "v" }, "<A-z>", "<cmd>set wrap!<CR>", { desc = 'Toggle line wrap' })
+-- secondary: herdr swallows alt+z in its panes, so a leader binding that always reaches nvim
+vim.keymap.set({ "n", "v" }, "<leader>tw", "<cmd>set wrap!<CR>", { desc = 'Toggle line wrap (herdr-safe alt for alt+z)' })
 vim.keymap.set("n", "<leader>xc", "<cmd>!chmod +x %<CR>", { silent = true, desc = "Make file executable" })
 vim.keymap.set({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>", { desc = "Clear search highlight" })
 
