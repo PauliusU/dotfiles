@@ -1,0 +1,63 @@
+onboarding = false
+
+[keys]
+previous_workspace = ["ctrl+alt+up", "alt+k"]
+next_workspace = ["ctrl+alt+down", "alt+j"]
+focus_pane_left = ["ctrl+alt+left", "alt+h"]
+focus_pane_right = ["ctrl+alt+right", "alt+l"]
+split_vertical = ["prefix+v", "alt+v"]
+switch_workspace = "alt+1..9"
+next_agent = "alt+."
+previous_agent = "alt+,"
+previous_tab = "alt+u"
+next_tab = ["alt+i", "alt+m"]
+goto = ["prefix+g", "alt+g"]
+toggle_sidebar = ["prefix+b", "alt+b"]
+last_pane = "alt+backtick"
+new_workspace = "ctrl+n"
+new_tab = "ctrl+t"
+rename_workspace = "ctrl+y"
+rename_tab = ["prefix+shift+t", "alt+r"]
+close_tab = ["prefix+shift+x", "alt+w"]
+
+[[keys.command]]
+key = "prefix+t"
+type = "plugin_action"
+command = "herdr-navigator.open"
+description = "navigator (stock): jump"
+
+[[keys.command]]
+key = "alt+x"
+type = "plugin_action"
+command = "herdr-navigator.open"
+description = "navigator STOCK: jump"
+
+[[keys.command]]
+key = "alt+z"
+type = "plugin_action"
+command = "herdr-navigator-custom.open"
+description = "navigator CUSTOM: jump by session/tab name"
+
+[[keys.command]]
+key = "alt+a"
+type = "plugin_action"
+command = "herdr-navigator-custom.jump-back"
+description = "navigator: jump back to previous workspace"
+
+[ui]
+agent_panel_sort = "priority"
+prompt_new_tab_name = false
+hide_tab_bar_when_single_tab = true
+sidebar_collapsed_mode = "hidden"
+show_agent_labels_on_pane_borders = false
+
+[ui.toast]
+delivery = "terminal"
+
+# Sidebar: optimize claude rows first (per-agent); leave other agents on herdr default for now
+[ui.sidebar.agents.rows_by_agent]
+claude = [["state_icon", "workspace", "tab"], ["terminal_title_stripped"]]
+
+[experimental]
+pane_history = false
+switch_ascii_input_source_in_prefix = false
