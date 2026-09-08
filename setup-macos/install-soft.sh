@@ -127,11 +127,27 @@ if [ "$(uname)" = "Darwin" ]; then
     brew install --cask slack
     brew install --cask ferdium
 
-    echo "**** MPV (using cask for easier file associations) ****"
-    # brew install mpv
-    brew install --cask stolendata-mpv
+    echo "**** MPV ****"
+    brew install mpv
     mpv --version
     ln -nsf "$DOTFILES/mpv" "$HOME/.config/mpv"
+
+    # Compile the CLI formula binary into a small .app (mpv-wrapper.applescript, not committed
+    # as a binary) so `open -a mpv` / Finder / duti keep working.
+    mkdir -p "$HOME/Applications"
+    rm -rf "$HOME/Applications/mpv.app"
+    osacompile -o "$HOME/Applications/mpv.app" "$DOTFILES/mpv/mpv-wrapper.applescript"
+    MPV_APP_PLIST="$HOME/Applications/mpv.app/Contents/Info.plist"
+    /usr/libexec/PlistBuddy -c "Add :CFBundleIdentifier string io.mpv" "$MPV_APP_PLIST"
+    /usr/libexec/PlistBuddy -c "Delete :CFBundleDocumentTypes:0:CFBundleTypeExtensions" "$MPV_APP_PLIST"
+    /usr/libexec/PlistBuddy -c "Add :CFBundleDocumentTypes:0:CFBundleTypeExtensions array" "$MPV_APP_PLIST"
+    # Declares mpv.app CAPABLE of these extensions - file-associations.sh's `duti` still picks it as the default handler.
+    for ext in aac m4a ogg opus avi mkv mov mp4; do
+        /usr/libexec/PlistBuddy -c "Add :CFBundleDocumentTypes:0:CFBundleTypeExtensions: string $ext" "$MPV_APP_PLIST"
+    done
+    /usr/libexec/PlistBuddy -c "Delete :CFBundleDocumentTypes:0:CFBundleTypeOSTypes" "$MPV_APP_PLIST" 2>/dev/null
+    codesign --force --deep -s - "$HOME/Applications/mpv.app"
+    /System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -f "$HOME/Applications/mpv.app"
 
     echo "**** OBS Studio ****"
     brew install --cask obs

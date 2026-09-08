@@ -210,29 +210,23 @@ function mpv_detached() {
     # bundle (see below) instead of the Homebrew CLI formula.
     local _uname hwdec
     _uname="$(uname -s)"
-    case "$_uname" in
-        Darwin)
-            hwdec="videotoolbox"
-            ;;
-        Linux)
-            hwdec="auto"
-            ;;
-        MINGW*|CYGWIN*|MSYS*|Windows_NT)
-            hwdec="dxva2"
-            ;;
-        *)
-            hwdec="auto"
-            ;;
-    esac
 
     if [ "$_uname" = "Darwin" ]; then
-        # macOS: launch mpv.app via `open`. A backgrounded CLI mpv renders fine
-        # but its window won't foreground / isn't in Cmd+Tab — a bare CLI binary
-        # doesn't get window activation, while an .app bundle does via
-        # LaunchServices. Cask is deprecated (fails Gatekeeper, disabled
-        # 2026-09-01); when gone, wrap the formula binary in a tiny .app instead.
-        open -na mpv --args --force-window=immediate --hwdec="$hwdec" "$@"
+        # macOS: launches the compiled mpv.app wrapper, no --args - a bare CLI mpv
+        # never gets window focus.
+        open -na mpv "$@"
     else
+        case "$_uname" in
+            Linux)
+                hwdec="auto"
+                ;;
+            MINGW*|CYGWIN*|MSYS*|Windows_NT)
+                hwdec="dxva2"
+                ;;
+            *)
+                hwdec="auto"
+                ;;
+        esac
         mpv --no-terminal --force-window=immediate \
             --hwdec="$hwdec" "$@" >/dev/null 2>&1 &
     fi
