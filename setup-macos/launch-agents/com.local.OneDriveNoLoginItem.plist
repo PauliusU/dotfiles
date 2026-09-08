@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<!--
+    Un-registers OneDrive's macOS login item on every login, since its own "Open at
+    Login" preference no longer works and updates can silently re-enable the login
+    item. Uses OneDrive's own /removeloginitem flag; idempotent, doesn't quit OneDrive.
+-->
+<dict>
+    <key>Label</key>
+    <string>com.local.OneDriveNoLoginItem</string>
+    <key>ProgramArguments</key>
+    <array>
+        <string>/bin/sh</string>
+        <string>-c</string>
+        <string>[ -x "/Applications/OneDrive.app/Contents/MacOS/OneDrive" ] &amp;&amp; "/Applications/OneDrive.app/Contents/MacOS/OneDrive" /removeloginitem</string>
+    </array>
+    <key>RunAtLoad</key>
+    <true/>
+</dict>
+</plist>
