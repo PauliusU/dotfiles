@@ -15,6 +15,22 @@ return {
         desc = '🦀 Supercharge your Rust experience in Neovim! A heavily modified fork of rust-tools.nvim',
         version = '^5', -- Recommended
         lazy = false,   -- This plugin is already lazy
+        config = function()
+            -- Wire rustaceanvim's DAP integration to codelldb (installed via :MasonInstall codelldb)
+            -- so <F5>/<leader>br etc. from debug.lua actually work on Rust files.
+            local mason_registry = require('mason-registry')
+            local codelldb = mason_registry.get_package('codelldb')
+            local extension_path = codelldb:get_install_path() .. '/extension/'
+            local codelldb_path = extension_path .. 'adapter/codelldb'
+            local liblldb_path = extension_path .. 'lldb/lib/liblldb.dylib' -- macOS; use .so on Linux
+            local cfg = require('rustaceanvim.config')
+
+            vim.g.rustaceanvim = {
+                dap = {
+                    adapter = cfg.get_codelldb_adapter(codelldb_path, liblldb_path),
+                },
+            }
+        end,
     },
     {
         'saecki/crates.nvim',
