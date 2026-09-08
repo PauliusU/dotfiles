@@ -95,7 +95,7 @@ if [ "$(uname)" = "Darwin" ]; then
         "2400-13364-0" -int 40 \
         "53296-13364-33" -int 40 \
         "50504-1133-0" -int 40
-    cp -f "$DOTFILES/setup-macos/com.local.KeyRemapping.plist" "$HOME/Library/LaunchAgents/"
+    cp -f "$DOTFILES/setup-macos/launch-agents/com.local.KeyRemapping.plist" "$HOME/Library/LaunchAgents/"
     if ! launchctl list 2>/dev/null | grep -q com.local.KeyRemapping; then
         launchctl load "$HOME/Library/LaunchAgents/com.local.KeyRemapping.plist"
     fi

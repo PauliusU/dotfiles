@@ -121,7 +121,7 @@ defaults write -g com.apple.swipescrolldirection -bool FALSE
 defaults read -g com.apple.swipescrolldirection
 
 echo "**** hidutil key remapping (BT fallback for Karabiner) ****"
-cp "$(dirname "$0")/com.local.KeyRemapping.plist" ~/Library/LaunchAgents/
+cp "$(dirname "$0")/launch-agents/com.local.KeyRemapping.plist" ~/Library/LaunchAgents/
 launchctl load ~/Library/LaunchAgents/com.local.KeyRemapping.plist
 
 echo "🏖️🛝 Sandbox (test before including in the main configuration)"
