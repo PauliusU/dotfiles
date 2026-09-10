@@ -93,7 +93,7 @@ alias ghg='gh pr view --web || gh browse'  # Open GitHub repo in browser (pull r
 alias ghh="gh browse"  # Open GitHub repo in browser
 alias ghp="gh pr list" # List pull requests
 # JS/TS, npm, yarn, pnpm, bun
-alias ncul="ncu --target lastest"         # Show available dependency updates with breaking changes
+alias ncul="ncu --target latest"          # Show available dependency updates with breaking changes
 alias ncuu="ncu --upgrade --target minor" # Upgrade to non breaking dependency versions (minor and bugfixes) in package.json
 alias npmg="npm list -g --depth 0"        # List global packages
 alias nb="npm run build"
@@ -198,7 +198,7 @@ alias shutdown="sudo shutdown -h now"                     # Requires root passwo
 alias startup="gnome-session-properties"                  # Startup applications (Linux)
 
 # Program access
-alias bb="cursor ."                                                                            # Open current folder in Cursor
+alias bb="cursor -n ."                                                                         # Open current folder in Cursor (-n = classic IDE window, never the Agents/glass surface)
 alias bwn="bwm-ng -d"                                                                          # Network speed with dynamic units like K, M or G
 alias bww="bmon -p en8,en0"                                                                    # Network speed with specific interfaces
 alias cdd="code ."                                                                             # Open current folder in VS Code
@@ -214,6 +214,7 @@ alias n='nvim'                                                                  
 alias nv='if [ -f "./src/index.ts" ]; then nvim "./src/index.ts"; else nvim; fi'               # Neovim (open index.ts if exists)
 alias oo=open_in_file_explorer                                                                 # Open current folder in file explorer
 alias rmm="rm -rf"                                                                             # Remove non-empty folder
+alias rgg="rg -uu"                                                                             # Ripgrep search (ignore .gitignore and hidden files)
 alias space="du -sh"                                                                           # Space used by current folder (and subfolders)
 alias taru='tar xzvf'                                                                          # Unzip
 alias tarx="tar -xvf"                                                                          # Unzip
