@@ -12,7 +12,10 @@ function yt() {
     # --sub-langs                       Languages of subtitles to download (set YT_SUBS_LANGS in private shell rc; default en)
     # --write-auto-subs                 Also download auto-generated subtitles if manual subtitles aren't available
     # --cookies                         Use cookie file for authentication
-    # --cookies-from-browser            Extract cookies from browser to avoid YouTube bot detection
+    # --cookies-from-browser            Pass manually (e.g. `yt --cookies-from-browser chrome ...`) for age-restricted/private videos.
+    #                                   Dropped as a default: with cookies, YouTube serves the "tv" client, whose formats need a PO
+    #                                   token yt-dlp doesn't have, breaking `bestvideo+bestaudio` on public videos.
+    # --js-runtimes                     JS runtime to solve YouTube's "n" challenge (Deno is the default but isn't installed; Node is)
     # -i                                alias for --ignore-errors
     yt-dlp \
         -f "bestvideo+bestaudio" \
@@ -24,7 +27,7 @@ function yt() {
         --embed-subs \
         --sub-langs "${YT_SUBS_LANGS:-en}" \
         --write-auto-subs \
-        --cookies-from-browser chrome \
+        --js-runtimes node \
         -i \
         "$@"
 }
@@ -266,7 +269,7 @@ function open_in_file_explorer() {
     start "$path_or_file_to_open"
 }
 
-function pwdc() {
+function pw() {
     # Copy current working directory to clipboard
 
     if [ "$(uname)" = "Darwin" ]; then pwd | pbcopy && return; fi
