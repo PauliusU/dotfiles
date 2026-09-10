@@ -2,11 +2,8 @@
 
 visible_line="================================================================"
 
-echo "**** 📦 NPM and PNPM updates ****"
-npm list -g --depth=0 --long
-npm update -g npm-check-updates
-npm update -g typescript
-pnpm self-update
+echo "**** 📦 mise-managed tool updates (see .config/mise/config.toml) ****"
+mise upgrade
 echo $visible_line
 
 echo "**** 🟠 Claude Code update ****"
@@ -23,8 +20,10 @@ rustup update stable
 cargo install --list
 echo $visible_line
 
-echo "**** 🐍 Python and pipx updates ****"
+echo "**** 🐍 Python via pipx and uv ****"
 pipx upgrade-all
+# Remove only dangling, unused entries.
+uv cache prune
 echo $visible_line
 
 if [ "$(uname)" = "Darwin" ]; then
