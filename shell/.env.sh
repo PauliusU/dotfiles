@@ -43,7 +43,6 @@ export SONARLINT_USER_HOME="$XDG_DATA_HOME/sonarlint"
 export TERMINFO="$XDG_DATA_HOME/terminfo"                          # ncurses terminfo database
 export TERMINFO_DIRS="$XDG_DATA_HOME/terminfo:/usr/share/terminfo" # ncurses terminfo database
 export TS_NODE_HISTORY="$XDG_STATE_HOME/ts_node_repl_history"
-export VOLTA_HOME="$XDG_DATA_HOME/volta"
 export ZDOTDIR="$HOME/.config/zsh"
 # source "$HOME/.cargo/env" # add Rust to system PATH
 
@@ -71,10 +70,9 @@ prepend_path() {
 prepend_path "$HOME/Library/Application Support/JetBrains/Toolbox/scripts"
 prepend_path "$XDG_DATA_HOME/npm/bin" # npm global packages
 prepend_path "$HOME/.local/bin" # Python packages store some bins here
-prepend_path "$VOLTA_HOME/bin" # Use Volta Node instead of global Node by default
-prepend_path "$XDG_DATA_HOME/mise/shims"
 prepend_path "$GOPATH/bin"
 prepend_path "/opt/homebrew/bin"
+prepend_path "$XDG_DATA_HOME/mise/shims" # mise-managed node wins over global/homebrew node
 
 # pnpm
 export PNPM_HOME="$HOME/.local/share/pnpm"

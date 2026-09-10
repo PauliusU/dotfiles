@@ -122,41 +122,22 @@ echo "**** Redis ****"
 brew install redis
 redis-cli -v
 
-echo "**** JavaScript, TypeScript, Node.js, NPM, yarn, Volta ****"
+echo "**** JavaScript, TypeScript, Node.js, NPM, pnpm, mise ****"
 mkdir -p "$HOME/.config/npm"
-brew install volta
-# Volta install on Ubuntu
-if [ "$(uname)" = "Linux" ]; then
-    curl https://get.volta.sh | bash
-fi
+brew list mise &>/dev/null || brew install mise
+mise --version
 
-volta -v
-
-volta install node@22
-# volta pin node@22
-# volta uninstall node is not supported. Remove node version from ~/.volta/tools/image/node/ instead
-volta list node
-volta which node
-node -v
-volta install pnpm
-pnpm -v
-# pnpm config set store-dir $HOME/.cache/.pnpm-store
-pnpm store path
-volta install bun
-bun --version
-# Update outdated npm version installed with Node
-volta install npm
-npm -v
+# Global tool set is declared in .config/mise/config.toml, shared across operating systems
+mkdir -p "$HOME/.config/mise"
+ln -nsf "$DOTFILES/.config/mise/config.toml" "$HOME/.config/mise/config.toml"
+mise install
 [ -n "$FS" ] && ln -nsf "$FS/dev/config/.npmrc" ~/.config/npm/npmrc
-npm i -g typescript
+node -v
+pnpm -v
+pnpm store path
 tsc -v
-npm i -g ts-node
-ts-node -v
-npm i -g tsx
-# Package to update dependency versions in package.json from terminal
-npm i -g npm-check-updates
 ncu -v
-volta list
+mise ls
 
 echo "**** Go Goland ****"
 brew install go
