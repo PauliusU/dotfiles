@@ -52,11 +52,10 @@ alias ssl="brew services list"
 alias sss="brew services stop"
 alias sun="brew uninstall"
 alias sunnn="brew uninstall --ignore-dependencies"
-alias suu="brew update && brew upgrade -y && brew upgrade --cask -y"
 alias supc="brew upgrade --cask" # Upgrade all casks installed with homebrew
 alias supd="brew update"         # Update homebrew itself and the package lists
 alias supg="brew upgrade"        # Upgrade all software installed with homebrew
-alias suuu="brew update && brew upgrade -y && brew upgrade --cask -y && brew cleanup"
+alias suu="brew update && brew upgrade -y && brew upgrade --cask -y && brew cleanup"
 alias sysu="softwareupdate -ai"  # Run all macOS updates for Xcode, etc..
 if [[ $(uname) == "Linux" ]]; then
     alias ai="sudo apt install"
