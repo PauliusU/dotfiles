@@ -97,8 +97,8 @@ CapsLock & U:: OpenDownloader()
 CapsLock & V:: OpenAppOrFile(VIVALDI . ' --start-fullscreen', 'ahk_exe vivaldi.exe')
 CapsLock & W:: Run('chrome')
 CapsLock & X:: GetKeyState("Shift", "P")
-    ? OpenAppOrFile(SCOOP . '\apps\chatgpt\current\PFiles\ChatGPT\ChatGPT.exe', 'ChatGPT')
-    : OpenAppOrFile(EnvGet('LOCALAPPDATA') . '\AnthropicClaude\claude.exe', 'Claude')
+    ? OpenAppOrFile('shell:appsFolder\OpenAI.Codex_2p2nqsd0c76g0!App', 'ChatGPT')
+    : OpenAppOrFile(SCOOP . '\apps\claude\current\claude.exe', 'Claude')
 CapsLock & Y:: OpenAppOrFile(SCOOP . '\apps\anki\current\anki.cmd', 'Anki')
 CapsLock & Z:: OpenAppOrFile(FILE_SEARCH, 'ahk_exe Everything64.exe')
 CapsLock & Numpad0:: OpenAppOrFile(USER_HOME . '\Desktop', 'Desktop')
@@ -114,9 +114,9 @@ CapsLock & Numpad9:: OpenAppOrFile('D:\Dropbox\DropsyncFiles\audiob\DBs\input_ch
 CapsLock & NumpadMult:: Run('C:\Windows\SysWOW64\calc.exe')    ; Calculator
 
 ; Scripts (Win-Fn based)
-#F1:: Run(SCRIPTS_PATH '\processes-kill.bat')
+#F1:: Run(SCRIPTS_PATH . '\windows\processes-kill.bat')
 #F2:: Run('powershell ' . SCRIPTS_PATH . '\fs-backup.private.ps1')
-#F3:: Run(SCRIPTS_PATH '\fs-cleanup.private.bat')
+#F3:: Run(SCRIPTS_PATH . '\windows\fs-cleanup.private.bat')
 #F5:: Run(EDITOR_VISUAL ' d:\Dropbox\dev\utils')
 
 ; Utils (Ctrl-Alt-Win based)
