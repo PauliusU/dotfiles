@@ -1,9 +1,10 @@
-# herdr-navigator-custom overrides — merged over plugin defaults (missing keys inherit).
-# Full option reference: examples/default-config.toml in the herdr-navigator plugin repo.
+# herdr-navigator-custom overrides — merged over plugin defaults (missing keys inherit)
+# Full option reference: examples/default-config.toml in the herdr-navigator plugin repo
 
 [picker]
 create_missing = false
-source_order = ["agent", "workspace", "project", "zoxide", "root", "server", "quick", "plugin", "session"]
+# "tab" is a custom-fork-only source, not upstream herdr-navigator
+source_order = ["agent", "workspace", "tab", "project", "zoxide", "root", "server", "quick", "plugin", "session"]
 agent_sort = "priority"
 
 [jump_back]

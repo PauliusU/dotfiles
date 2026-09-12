@@ -23,3 +23,7 @@ eval "$(zoxide init bash)"
 
 [ -z "$FS" ] && export FS="$(cd "$DOTFILES/../.." && pwd)"
 source "$DOTFILES/shell/.shellrc.sh"
+
+# Reports cwd via OSC 7, so herdr panes reopen in the right dir after a restart
+__herdr_osc7() { printf '\033]7;file:///%s\033\' "$(cygpath -m "$PWD" 2>/dev/null)"; }
+PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND$'\n'}__herdr_osc7"

@@ -1,24 +1,40 @@
 onboarding = false
 
 [keys]
-previous_workspace = ["ctrl+alt+up", "alt+k"]
-next_workspace = ["ctrl+alt+down", "alt+j"]
+previous_workspace = ["ctrl+alt+up", "alt+i"]
+next_workspace = ["ctrl+alt+down", "alt+u"]
 focus_pane_left = ["ctrl+alt+left", "alt+h"]
 focus_pane_right = ["ctrl+alt+right", "alt+l"]
-split_vertical = ["prefix+v", "alt+v"]
+# alt+v kept - it's Claude Code's Windows/WSL paste chord, harmless elsewhere
+split_vertical = ["prefix+v", "alt+v", "alt+d"]
 switch_workspace = "alt+1..9"
 next_agent = "alt+."
 previous_agent = "alt+,"
-previous_tab = "alt+u"
-next_tab = ["alt+i", "alt+m"]
+previous_tab = "alt+k"
+next_tab = "alt+j"
 goto = ["prefix+g", "alt+g"]
 toggle_sidebar = ["prefix+b", "alt+b"]
 last_pane = "alt+backtick"
-new_workspace = "ctrl+n"
+new_workspace = "alt+m"   # was ctrl+n - clashed with nvim next/previous pair
 new_tab = "ctrl+t"
 rename_workspace = "ctrl+y"
 rename_tab = ["prefix+shift+t", "alt+r"]
-close_tab = ["prefix+shift+x", "alt+w"]
+# f6 - alt+w/ctrl+alt+w die on Windows (AltGr), function keys don't
+close_tab = ["prefix+shift+x", "f6"]
+
+# Windows/WSL only: Claude Code's paste chord clashes with split_vertical above
+[[keys.command]]
+key = "alt+y"
+type = "shell"
+command = "bash -lc ~/.config/herdr/image-paste.private.sh"
+description = "paste clipboard image into the focused agent"
+
+# First press creates the 70/30 split, later presses zoom-toggle it
+[[keys.command]]
+key = "alt+/"
+type = "shell"
+command = "bash -lc ~/.config/herdr/toggle-side-terminal.sh"
+description = "toggle 70/30 side terminal (create once, then hide/show with state)"
 
 [[keys.command]]
 key = "prefix+t"
@@ -27,7 +43,7 @@ command = "herdr-navigator.open"
 description = "navigator (stock): jump"
 
 [[keys.command]]
-key = "alt+x"
+key = "alt+f"   # was alt+x - psmux binds M-x to kill-pane, herdr never saw it
 type = "plugin_action"
 command = "herdr-navigator.open"
 description = "navigator STOCK: jump"
@@ -39,7 +55,7 @@ command = "herdr-navigator-custom.open"
 description = "navigator CUSTOM: jump by session/tab name"
 
 [[keys.command]]
-key = "alt+a"
+key = "alt+e"   # was alt+a - clashed with nvim's select-all (<A-a> = <esc>ggVG)
 type = "plugin_action"
 command = "herdr-navigator-custom.jump-back"
 description = "navigator: jump back to previous workspace"
@@ -54,7 +70,7 @@ show_agent_labels_on_pane_borders = false
 [ui.toast]
 delivery = "terminal"
 
-# Sidebar: optimize claude rows first (per-agent); leave other agents on herdr default for now
+# Sidebar: custom rows for claude, other agents stay on herdr's default for now
 [ui.sidebar.agents.rows_by_agent]
 claude = [["state_icon", "workspace", "tab"], ["terminal_title_stripped"]]
 
