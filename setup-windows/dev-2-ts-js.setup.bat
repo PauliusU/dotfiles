@@ -2,47 +2,26 @@
 
 TITLE JavaScript and TypeScript ecosystem
 
-ECHO **** Volta [JavaScript Tool Manager] *****
-WHERE volta >nul 2>&1
+ECHO **** mise [Node.js / dev-tool version manager] *****
+WHERE mise >nul 2>&1
 IF %errorlevel% neq 0 (
-    ECHO Volta is not found. Fixing scoop app and reinstalling...
-    powehershell scoop uninstall volta
-    powershell scoop install volta
+    ECHO mise is not found. Installing via scoop...
+    powershell scoop install mise
 ) else (
-    ECHO Volta is already installed
+    ECHO mise is already installed
 )
-:: Install latest Node.js 22 version
-volta install node@22
-:: Update NPM (newer than the one with Node)
-volta install npm
-:: Create a symlink to the config file
+:: Global tool set is declared in .config/mise/config.toml, shared across operating systems
+IF NOT EXIST "%USERPROFILE%\.config\mise" MD "%USERPROFILE%\.config\mise"
+IF EXIST "%USERPROFILE%\.config\mise\config.toml" DEL /F /Q "%USERPROFILE%\.config\mise\config.toml"
+MKLINK "%USERPROFILE%\.config\mise\config.toml" "%DOTFILES%\.config\mise\config.toml"
+mise install
+:: Create a symlink to the npm config file
 MKLINK "%USERPROFILE%\.npmrc" "d:\Dropbox\dev\config\.npmrc"
-volta install pnpm
-REM pnpm config set store-dir %USERPROFILE%\.cache\.pnpm-store
-REM pnpm store path
-volta install bun
-:: Display current volta toolchain
-volta list
-volta list node
-:: Check paths
-volta which node
-volta which npm
 :: Check installed versions
-volta -v
+mise --version
 node -v
 npm -v
 pnpm -v
-
-ECHO **** NPM global packages ****
-:: TypeScript compiler for ts-node and other tools
-npm i -g typescript
+bun --version
 tsc -v
-:: Directly run TypeScript on Node.js without precompiling
-npm i -g ts-node
-ts-node -v
-:: Directly run TypeScript on Node.js without precompiling
-npm i -g tsx
-tsx -v
-:: Upgrade package.json dependencies
-npm i -g npm-check-updates
-npm list -g --depth 0
+mise ls

@@ -3,6 +3,8 @@
 ECHO **** AHK ****
 
 powershell scoop install autohotkey
+:: CLI tool for volume/display control, used by ahk/sound.ahk and windows-gui.setup.bat
+powershell scoop install nircmd
 ASSOC .ahk=ahkfile
 FTYPE ahkfile="%SCOOP%\apps\autohotkey\current\v2\AutoHotkey64.exe" "%%1"
 

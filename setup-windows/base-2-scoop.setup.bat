@@ -22,7 +22,6 @@ powershell scoop bucket add extras
 powershell scoop install aria2
 powershell scoop config aria2-warning-enabled false
 
-powershell scoop install sudo
 powershell scoop install refreshenv
 CALL RefreshEnv.cmd
 

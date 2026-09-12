@@ -43,4 +43,5 @@ TASKKILL /f /im explorer.exe
 START explorer.exe
 
 ECHO **** Set display refresh rate ****
-IF EXIST %PC_HOME_FILE% d:\Dropbox\soft\cli-tools\nircmd-x64\nircmd.exe setdisplay monitor:0 1920 1080 32 75 -updatereg
+powershell scoop install nircmd
+IF EXIST %PC_HOME_FILE% "%SCOOP%\apps\nircmd\current\nircmd.exe" setdisplay monitor:0 1920 1080 32 75 -updatereg

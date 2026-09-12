@@ -29,3 +29,5 @@ MKLINK /D "e:\dwn\video" "P:\tor"
 ECHO **** Rclone - CLI for cloud storage ****
 powershell scoop install rclone
 rclone version
+:: WinFsp is required for `rclone mount` to work at all
+scoop install winfsp-np
