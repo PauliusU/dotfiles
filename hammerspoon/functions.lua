@@ -49,8 +49,8 @@ function functions.open(name)
     return function()
         -- Ensure animation duration is 0 for instant switching
         hs.window.animationDuration = 0
-        
-        -- mpv: needs special handling because it's a command-line app, not a standard bundle. 
+
+        -- mpv: needs special handling because it's a command-line app, not a standard bundle.
         -- hs.appfinder.appFromName() is more reliable than hs.application.open()
         if name == "mpv" then
             local mpvApp = hs.appfinder.appFromName(name)
