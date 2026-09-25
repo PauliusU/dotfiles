@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
-# A herdr keybinding script. Toggles herdr's 70/30 side-terminal split
+# A herdr keybinding script. Toggles herdr's 65/35 side-terminal split
 # Identifies its two panes by label. Probes herdr's own feature support first
 
 set -u
 
 MAIN_LABEL="main"
 TERM_LABEL="scratch-term"
-RATIO="0.70"
+RATIO="0.65"
 
 command -v herdr >/dev/null 2>&1 || exit 0
 command -v jq    >/dev/null 2>&1 || exit 0

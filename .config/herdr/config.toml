@@ -29,12 +29,12 @@ type = "shell"
 command = "bash -lc ~/.config/herdr/image-paste.private.sh"
 description = "paste clipboard image into the focused agent"
 
-# First press creates the 70/30 split, later presses zoom-toggle it
+# First press creates the 65/35 split, later presses zoom-toggle it
 [[keys.command]]
 key = "alt+/"
 type = "shell"
 command = "bash -lc ~/.config/herdr/toggle-side-terminal.sh"
-description = "toggle 70/30 side terminal (create once, then hide/show with state)"
+description = "toggle 65/35 side terminal (create once, then hide/show with state)"
 
 [[keys.command]]
 key = "prefix+t"
