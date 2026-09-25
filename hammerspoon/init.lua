@@ -9,8 +9,15 @@ require "private" -- Not committed to Git
 -- Startup
 hs.hid.capslock.set(false) -- Disable caps lock
 
--- Reload config on write
-hs.pathwatcher.new(os.getenv("HOME") .. "/.hammerspoon/", fn.reloadHs()):start()
+-- Reload on .lua saves. Global so the watcher is not garbage-collected
+ConfigWatcher = hs.pathwatcher.new(hs.fs.pathToAbsolute(hs.configdir), function(paths)
+    for _, path in ipairs(paths) do
+        if path:match("%.lua$") then
+            hs.reload()
+            return
+        end
+    end
+end):start()
 hs.alert.show("Config loaded")
 
 ---------------------------- Keyboard shortcuts --------------------------------
