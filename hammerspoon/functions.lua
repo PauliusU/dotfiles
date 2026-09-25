@@ -50,8 +50,8 @@ function functions.open(name)
         -- Ensure animation duration is 0 for instant switching
         hs.window.animationDuration = 0
 
-        -- mpv: needs special handling because it's a command-line app, not a standard bundle.
-        -- hs.appfinder.appFromName() is more reliable than hs.application.open()
+        -- mpv: the live player is the bare Homebrew binary, not the mpv.app
+        -- wrapper, so find it by process name; open() targets the wrapper
         if name == "mpv" then
             local mpvApp = hs.appfinder.appFromName(name)
             if mpvApp then
