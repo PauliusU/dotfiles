@@ -37,5 +37,6 @@ on run argv
 		end if
 	end try
 	set mpvBin to my findMpvBinary()
-	do shell script quoted form of mpvBin & " --force-window=immediate --hwdec=videotoolbox" & argsText & " > /dev/null 2>&1 &"
+	-- pseudo-gui idles in an empty window; plain mpv exits at once when given no file
+	do shell script quoted form of mpvBin & " --player-operation-mode=pseudo-gui --hwdec=videotoolbox" & argsText & " > /dev/null 2>&1 &"
 end run
